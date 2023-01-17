@@ -13,4 +13,7 @@ DefaultContentLanguage = "ko"
 hasCJKLanguage = true
 
 # Change it to your Disqus shortname before using
-disqusShortname = "lemondouble.github.io"
+disqusShortname = "hugo-theme-stack"
+
+[params]
+favicon = "/favicon.ico"
