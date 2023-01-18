@@ -4,9 +4,9 @@ description:
 date: 2023-01-17T14:24:20Z
 image: cover.jfif
 categories:
-    - Kotlin
+    - 코틀린
 tags:
-    - Kotlin
+    - 코틀린
 ---
 
 - TIP : 숫자 작성할 때 var number = 1_000L 과 같이 작성 가능
