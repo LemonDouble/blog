@@ -75,7 +75,7 @@ enabled = true
 ## Comments
 [comments]
 enabled = true
-provider = "disqus"
+provider = "utterances"
 
 [comments.disqusjs]
 shortname = ""
@@ -85,9 +85,9 @@ admin = ""
 adminLabel = ""
 
 [comments.utterances]
-repo = ""
+repo = "LemonDouble/LemonDouble.github.io-comments"
 issueTerm = "pathname"
-label = ""
+label = "Comment"
 
 [comments.remark42]
 host = ""
