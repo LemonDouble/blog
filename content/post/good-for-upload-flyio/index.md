@@ -5,9 +5,11 @@ date: 2023-01-17T14:03:50Z
 image: cover.png
 categories:
     - SaaS
+    - Fly.io
 tags:
     - 컨테이너
     - SaaS
+    - Fly.io
 ---
 
 Fly.io 라는 회사에선 도커 이미지만 준비하면 간단히 도커 이미지를 특정 국가 등에 배포할 수 있는 기능을 제공합니다.
