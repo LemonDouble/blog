@@ -1,5 +1,5 @@
 ---
-title: "AWS SSO로 회사에서 보던 그 화면 집에서도 쓰기"
+title: "AWS SSO로 회사에서 보던 그 화면 집에서도 쓰기 (무료)"
 description: 
 date: 2023-01-21T16:17:06+09:00
 image: 2023-01-21-23-57-37.png
