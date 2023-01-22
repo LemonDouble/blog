@@ -124,3 +124,15 @@ Add New Monitor를 입력한 뒤, 다음과 같이 설정합니다.
 ### Appendix 1. TMI
 
 * 한국어를 지원합니다! Settings -> Appearance 에서 언어 설정을 할 수 있습니다.
+
+### Appendix 2. Custom Domain 사용하기
+
+* 저의 경우, 제 도메인이 있어 Integration 하려고 합니다.
+* 앱 페이지에 가서, IPv6을 가져옵니다. (IPv$는 Shared IPv4라 IPv6을 사용했습니다.)
+
+* 자신의 DNS 페이지에 가서 `CNAME` 유형을 선택하고, 값으론 `<앱이름>.fly.dev` 를 입력합니다.
+* 이후 https://fly.io/apps 대시보드에 들어가, kuma 앱 -> Certificates -> Add Certificate를 누른 후, 내가 입력한 커스텀 도메인을 입력합니다.
+
+![](2023-01-22-21-32-09.png)
+
+* 잠시 후 내가 생성한 커스텀 도메인으로 접속이 가능한걸 확인할 수 있습니다!
