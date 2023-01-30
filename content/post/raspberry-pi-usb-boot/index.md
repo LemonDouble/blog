@@ -52,7 +52,7 @@ Ref : https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#auto
 
 ### 4. 부팅 순서 적용 잘 됐는지 확인
 
-* `vevcgencmd bootloader_config`를 입력합니다.
+* `vcgencmd bootloader_config`를 입력합니다.
 * 아래에 `BOOT_ORDER=0xf14` 라고 세팅되어있는지 확인합니다. 세팅되어있지 않다면 뭔가 설정 중 꼬였으니 1~3을 반복합니다.
 * Ref : https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#configuration-properties
 ![](2023-01-29-18-07-12.png)
