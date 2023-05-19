@@ -54,7 +54,7 @@ tags:
 * `The connection to the server 127.0.0.1:6443 was refused - did you specify the right host or port?` 라는 이슈를 만납니다.
 * 아... 얘도 함정인가? 불안합니다.
 * 정말 다행이도 얘는 Known Issue이고, 해결 방법도 있습니다. (관련 [Github Issue](https://github.com/k3s-io/k3s/issues/4234))
-* `sudo apt install linux-modules-extra-raspi && reboot`를 입력해서 추가로 필요한 의존성을 깔아주고 재부팅 한 후 `kubectl get nodes`를 하면 잘 됩니다.
+* `sudo apt install linux-modules-extra-raspi && reboot`를 입력해서 추가로 필요한 의존성을 깔아주고 재부팅 한 후 `kubectl get nodes`를 하면 잘 됩니다. (공식 문서 [Link](https://docs.k3s.io/advanced#raspberry-pi))
 
 ### 2. 노드 추가하기
 
