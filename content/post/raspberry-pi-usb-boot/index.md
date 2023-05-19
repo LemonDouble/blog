@@ -42,6 +42,13 @@ Ref : https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#auto
 4. `sudo rpi-eeprom-update` 커맨드를 쳐서 업데이트가 잘 됐는지 확인합니다.
 
 
+- Update (2023.05.19)
+  - 위 rpi-eeprom-update 는 RPI4 부터 지원합니다.
+  - RPI 3B 이하를 사용 중이라면, [Booting Raspberry Pi 3 B With a USB Drive](https://www.instructables.com/Booting-Raspberry-Pi-3-B-With-a-USB-Drive/) 를 참고해 주세요.
+  - Raspbian os를 사용하면 해당 가이드를 그대로 따라하면 됩니다.
+  - Ubuntu를 사용 중이라면, config.txt는 `boot/firmware/config.txt` 를 수정하셔야 합니다!!!
+
+
 ### 3. 부팅 순서 정리
 
 * Ubuntu Server에는 raspi-config 프로그램이 없으므로 일단 설치합니다.
