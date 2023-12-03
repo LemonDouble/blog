@@ -2,7 +2,7 @@
 title: "ChatGPT는 상식 문제를 잘 풀 수 있을까? (논문)"
 description: 
 date: 2023-03-30T19:15:11+09:00
-image: cover.jpg
+image: cover.png
 categories:
     - AI
     - ChatGPT

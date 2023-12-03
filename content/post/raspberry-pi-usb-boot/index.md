@@ -2,7 +2,7 @@
 title: "SD카드 세개 날려먹고 화나서 쓰는 라즈베리파이 USB Boot 세팅 방법"
 description: 
 date: 2023-01-29T17:31:39+09:00
-image: cover.jpg
+image: cover.png
 categories:
     - 라즈베리 파이
 tags:
