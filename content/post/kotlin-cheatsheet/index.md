@@ -2,7 +2,7 @@
 title: "내가 볼려고 올리는 Kotlin Cheat Sheet"
 description: 
 date: 2023-01-17T14:24:20Z
-image: cover.jfif
+image: cover.png
 categories:
     - 코틀린
 tags:

@@ -2,7 +2,7 @@
 title: "3색 LED는 내부가 어떤 식으로 구성되어 있을까?"
 description: 
 date: 2023-01-17T13:45:21Z
-image: cover.webp
+image: cover.png
 math: 
 categories:
     - 전기전자

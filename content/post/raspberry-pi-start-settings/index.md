@@ -2,7 +2,7 @@
 title: "내가 보려고 올리는 라즈베리 파이 초기 세팅"
 description: 
 date: 2023-01-18T11:13:14Z
-image: cover.jpg
+image: cover.png
 categories:
     - 라즈베리 파이
 tags:

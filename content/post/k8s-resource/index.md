@@ -2,7 +2,7 @@
 title: "내가 보려고 쓰는 K8S 리소스 정리"
 description: 
 date: 2023-01-26T23:15:42+09:00
-image: 2023-01-26-23-16-50.png
+image: cover.png
 math: 
 categories:
     - K8S
