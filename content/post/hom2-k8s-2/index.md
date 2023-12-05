@@ -61,6 +61,10 @@ Control Node를 세대나 할당하기엔 자원이 너무 아깝고, 1대만 �
 
 [Supabase](https://supabase.com/) 에 가입한 후, Postgres 접속 권한을 설정 후 가져옵니다.
 
+설정할 수 있다면, Supabase는 PgBouncer도 지원하니, PgBouncer도 설정하면 좋습니다. 
+
+(동시 연결 수 제한 떄문에, 이후 Portainer를 설치하면 정상 작동은 하나 PgBouncer 없이는 에러 메세지가 많이 뜹니다.)
+
 ### Matser Node 설정하기
 
 *위 설정을 따라와 Ubuntu가 설치되어 있다고 가정합니다.*
