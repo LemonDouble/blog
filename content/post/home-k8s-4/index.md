@@ -48,7 +48,9 @@ spec:
   valuesContent: |-
     ports:
       web:
-        redirectTo: websecure
+        redirectTo:
+          port: websecure
+          priority: 10
     additionalArguments:
       - "--log.level=INFO"
       - "--certificatesresolvers.le.acme.email=yourMail@gmail.com"
