@@ -222,6 +222,8 @@ kubectl apply -f ingress.yaml
 
 만약 클러스터를 Public Repo로 사용한다면 이 설정은 생략해도 되겠지만, 혹시 모를 사고를 방지하기 위해 Git에서도 private Repo를 사용하고, ArgoCD에서도 연결해서 사용해 봅시다.
 
+Github에서 새로운 레포지토리 (빈 레포지토리) 를 하나 추가한 후, 해당 레포지토리를 ArgoCD와 연동해 봅니다.
+
 1. ArgoCD 로그인 후 Settings -> Repository -> Connect Repo를 누릅니다.
 2. connection method via ssh, Name은 아무거나, Proejct는 default, Repository URL은 git clone시 `ssh 주소`를, SSH private key data는 Control01 노드의 `~/.ssh/id_rsa` 를 복사해서 붙여넣어 줍니다.
 3. Git을 연결합니다.
