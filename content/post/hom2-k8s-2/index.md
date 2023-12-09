@@ -33,6 +33,8 @@ SD카드로도 클러스터 구축은 가능하나, USB Boot 설정을 한 후 U
 
 여기까지 오셨다면, 라즈베리 파이 Ubuntu 설치 + SSH 연결이 가능하다고 가정합니다.
 
+이후, `sudo apt update -y && sudo apt upgrdae -y && sudo apt install linux-modules-extra-raspi` 로 필요한 종속성 설치를 진행합니다. ([라즈베리 파이 + Ubuntu 22.04에 K3S 설치해서 쓰기](https://lemondouble.github.io/p/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4--ubuntu-22.04%EC%97%90-k3s-%EC%84%A4%EC%B9%98%ED%95%B4%EC%84%9C-%EC%93%B0%EA%B8%B0/) 참고)
+
 ### DHCP 서버 설정
 
 이후, 최초 한번 모든 파이를 켜 주고 나면 파이가 내부 IP를 할당받게 됩니다. (설정을 바꾸지 않았다면, 192.168.0.X 형태)

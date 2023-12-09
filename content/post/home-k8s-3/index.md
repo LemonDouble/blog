@@ -27,6 +27,19 @@ chmod 700 get_helm.sh
 ./get_helm.sh
 ```
 
+이후, kubeconfig 파일을 설정해 줍니다.
+
+```sh
+cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+chmod 600 ~/.kube/config
+```
+
+이후 bashrc 제일 밑에 다음 한 줄을 추가한 후, `source ~/.bashrc` 로 Shell 설정을 즉시 적용시킵니다.
+```sh
+export KUBECONFIG=~/.kube/config
+```
+
+
 Helm은 쿠버네티스의 패키지 매니저와 비슷한 역할을 합니다.
 
 예를 들어서, 제가 Kafka를 클러스터 모드로 설치하려고 한다고 가정해 봅시다.
