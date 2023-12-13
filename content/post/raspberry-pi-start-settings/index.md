@@ -38,6 +38,7 @@ tags:
 
 * 내부망에서만 열어둔 파이라면 보통 별 상관 없지만.. SSH Key가 있다면 패스워드 로그인은 어지간하면 막아놓는게 보안상 좋습니다.
 * `/etc/ssh/sshd_config` 에 들어가서 `PasswordAuthentication no` 로 설정해 줍니다.
+* `/etc/ssh/sshd_config.d/50-cloud-init.conf` 에 들어가서도 `PasswordAuthentication no` 로 설정해 줍니다.
 * 이후 `sudo systemctl reload sshd` 로 ssh 서버를 재시작합니다.
 
 ### 4. Wifi 연결 (선택)
