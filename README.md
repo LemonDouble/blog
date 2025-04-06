@@ -7,3 +7,4 @@
 ### 커맨드
 
 - `hugo server` : 로컬에서 서버 실행
+- `hugo new post/{foldername}/index.md` : 새 글 쓰기
