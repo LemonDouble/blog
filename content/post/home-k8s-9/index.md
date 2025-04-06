@@ -1,10 +1,8 @@
 ---
 title: "집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 9. CloudNativePG로 쿠버네티스에서 데이터베이스 운용하기"
-description: 
+slug: a4ded8cced5f045c
 date: 2023-12-12T22:09:10+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S

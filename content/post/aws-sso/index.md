@@ -1,6 +1,6 @@
 ---
 title: "AWS SSO로 회사에서 보던 그 화면 집에서도 쓰기 (무료)"
-description: 
+slug: 1c9eaebbdee2ac98
 date: 2023-01-21T16:17:06+09:00
 image: cover.png
 categories:

@@ -1,6 +1,6 @@
 ---
 title: "Fly.io 소개 및 Fly.io에 올리기 좋은 서비스 추천 (VaultWarden)"
-description: 
+slug: 740c42a214d8ce6b
 date: 2023-01-17T14:03:50Z
 image: cover.png
 categories:

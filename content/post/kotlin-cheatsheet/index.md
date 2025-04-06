@@ -1,6 +1,6 @@
 ---
 title: "내가 볼려고 올리는 Kotlin Cheat Sheet"
-description: 
+slug: f8a9d54607e901b4
 date: 2023-01-17T14:24:20Z
 image: cover.png
 categories:

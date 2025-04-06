@@ -1,9 +1,7 @@
 ---
 title: "Github OIDC를 이용해 Github Actions에 AWS Key 넣지 않고 AWS 리소스 사용하기 (무료)"
-description: 
 date: 2023-01-22T11:18:50+09:00
 image: cover.png
-math: 
 categories:
     - AWS
     - Github

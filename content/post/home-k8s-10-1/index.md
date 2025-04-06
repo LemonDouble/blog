@@ -1,10 +1,8 @@
 ---
 title: "집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 10-1. Basic Auth로 내부용 서비스 보호하기"
-description: 
+slug: 771435ba12d3f38c
 date: 2024-01-07T12:41:24+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S

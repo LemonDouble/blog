@@ -1,6 +1,6 @@
 ---
 title: "Bert-VITS2로 나만의 TTS 만들기"
-description: 
+slug: 9c06f7dc324b5986
 date: 2024-07-26T20:24:29+09:00
 image: cover.png
 categories:

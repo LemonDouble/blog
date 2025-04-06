@@ -1,6 +1,6 @@
 ---
 title: "Lemon Toolbox 첫 런칭 회고"
-description: 
+slug: 8b50460f83230126
 date: 2022-02-27T15:39:07+09:00
 image: image-18.png
 categories:

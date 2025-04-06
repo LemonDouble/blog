@@ -1,10 +1,8 @@
 ---
 title: "집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 4. Traefik https 인증 및 ArgoCD 설정"
-description: 
+slug: f10efbc0bcc4c537
 date: 2023-12-06T05:21:00+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S

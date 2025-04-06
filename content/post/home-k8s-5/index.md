@@ -1,10 +1,8 @@
 ---
 title: "집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 5. ArgoCD GitOps 설정 및 Longhorn 설치"
-description: 
+slug: 107eed6a453d6238
 date: 2023-12-09T09:16:13+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S

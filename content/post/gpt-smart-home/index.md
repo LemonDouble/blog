@@ -1,6 +1,6 @@
 ---
 title: "음성으로 컨트롤되는 인공지능 스마트홈 자랑하는 글"
-description: 
+slug: 30f1bf25ad8b594a
 date: 2024-07-26T22:07:33+09:00
 image: cover.png
 math: 

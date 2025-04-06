@@ -1,10 +1,8 @@
 ---
 title: "집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 7. Sealed Secrets를 통한 비밀 관리 + Traefik Basic Auth 설정"
-description: 
+slug: 1379182f14a62e9b
 date: 2023-12-10T00:41:05+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S

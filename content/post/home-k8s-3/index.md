@@ -1,10 +1,8 @@
 ---
 title: "집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 3. Helm 설치 및 MetalLB로 로드 밸런서 설정하기"
-description: 
+slug: 06a98c88458a5fb7
 date: 2023-12-06T05:20:00+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S

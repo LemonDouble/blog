@@ -1,10 +1,8 @@
 ---
 title: "집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 2. 클러스터 초기 설정 편"
-description: 
+slug: f4efced2e8d5b1d8
 date: 2023-12-03T22:20:29+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S

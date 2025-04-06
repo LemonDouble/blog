@@ -1,10 +1,8 @@
 ---
 title: "집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 7-1. Web UI를 통해 간편하게 Sealed Secrets 만들기"
-description: 
+slug: 567b4c177bdb8401
 date: 2023-12-10T00:41:05+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S

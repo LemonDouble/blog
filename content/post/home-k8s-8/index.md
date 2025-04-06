@@ -1,10 +1,8 @@
 ---
 title: "집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 8. Private Docker Registry 및 접속 ID/PW 설정하기"
-description: 
+slug: be354d4b5f50a3ee
 date: 2023-12-10T10:08:50+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S

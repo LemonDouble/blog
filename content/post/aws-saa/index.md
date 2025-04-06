@@ -1,6 +1,6 @@
 ---
 title: "AWS SAA 당일 시험 합격 후기글"
-description: 
+slug: d3c7a9de0a536286
 date: 2024-08-04T20:11:48+09:00
 image: cover.png
 math: 

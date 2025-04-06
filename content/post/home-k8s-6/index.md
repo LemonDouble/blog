@@ -1,10 +1,8 @@
 ---
 title: "집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 6. 분산 스토리지 추가 및 Longhorn을 통한 제공하기"
-description: 
+slug: 615befc538a81902
 date: 2023-12-09T10:48:57+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S

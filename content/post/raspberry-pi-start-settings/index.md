@@ -1,6 +1,6 @@
 ---
 title: "내가 보려고 올리는 라즈베리 파이 초기 세팅"
-description: 
+slug: 088bdb572b7dc509
 date: 2023-01-18T11:13:14Z
 image: cover.png
 categories:

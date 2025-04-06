@@ -1,10 +1,8 @@
 ---
 title: "집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 8-1. Docker Registry UI 설정 및 Registry GC 사용법"
-description: 
+slug: a68cc3e1f5e8a95b
 date: 2023-12-10T11:39:46+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S

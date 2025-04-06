@@ -1,10 +1,8 @@
 ---
 title: "Private DNS와 ALB를 이용해 VPC 외부에선 접속이 불가능한 API 만들기"
-description: 
+slug: acf607c351652785
 date: 2023-01-22T17:12:43+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - AWS
     - MSA

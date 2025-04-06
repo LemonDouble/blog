@@ -1,6 +1,6 @@
 ---
 title: "Fly.io에 올리기 좋은 서비스 (Uptime Kuma)"
-description: 
+slug: 7da6be543113ac58
 date: 2023-01-22T20:41:31+09:00
 image: cover.png
 math: 

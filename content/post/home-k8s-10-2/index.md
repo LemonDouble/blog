@@ -1,10 +1,8 @@
 ---
 title: "집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 10-2. Forward Auth와 OAuth2를 이용한 SSO 구현"
-description: 
+slug: a63eb8199e2089b6
 date: 2024-01-07T16:05:04+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S

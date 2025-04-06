@@ -1,10 +1,8 @@
 ---
 title: "HomeAssistant로 IoT 한번 해 보지 않을래요?"
-description: 
+slug: 107dcfce6eca0dd7
 date: 2023-05-21T09:40:47+09:00
 image: cover.png
-math: 
-license: 
 categories:
     - HomeAssistant
     - IoT
@@ -13,7 +11,6 @@ tags:
     - HomeAssistant
     - IoT
     - 라즈베리 파이
-comments: true
 ---
 
 IoT는 꽤 재밌는 주제인데도,

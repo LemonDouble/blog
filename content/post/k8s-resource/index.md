@@ -1,6 +1,6 @@
 ---
 title: "내가 보려고 쓰는 K8S 리소스 정리"
-description: 
+slug: f13e7c85c56b2c7c
 date: 2023-01-26T23:15:42+09:00
 image: cover.png
 math: 

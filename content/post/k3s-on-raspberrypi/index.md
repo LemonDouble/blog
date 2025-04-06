@@ -1,10 +1,8 @@
 ---
 title: "라즈베리 파이 + Ubuntu 22.04에 K3S 설치해서 쓰기"
-description: 
+slug: fe0cac9de367fc18
 date: 2023-01-18T11:56:02Z
 image: cover.png
-math: 
-license: 
 categories:
     - K8S
     - K3S
