@@ -789,9 +789,9 @@ for((key, value) in weekMap.entries){println(key) println(value)}
 ```
 
 - 컬렉션의 null 가능성
-    - List<Int?> : List 자체는 null X, 리스트 안에는 nullable
-    - List<Int>? : List 자체는 nullable, 리스트 안에는 null X
-    - List<Int?>? : List 자체도 nullable, 리스트 안에도 nullable
+    - `List<Int?>` : List 자체는 null X, 리스트 안에는 nullable
+    - `List<Int>?` : List 자체는 nullable, 리스트 안에는 null X
+    - `List<Int?>?` : List 자체도 nullable, 리스트 안에도 nullable
 
 - Java와 혼용시 주의할 점
     - Java는 불변/가변 리스트를 구분하지 않음
