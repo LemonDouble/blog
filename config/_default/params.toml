@@ -2,17 +2,18 @@
 mainSections = ["post"]
 # Output page's full content in RSS.
 rssFullContent = true
+favicon = "https://cdn.lemondouble.com/homepage/favicon.ico"
 
 [footer]
-since = 2023
-customText = "Lemon Blog"
+since = 2022
+customText = "LemonDouble"
 
 [dateFormat]
-published = "Jan 02, 2006"
-lastUpdated = "Jan 02, 2006 15:04 MST"
+published = "2006년 January 02일"
+lastUpdated = "2006년 January 02일, 15:04 KST"
 
 [sidebar]
-emoji = "🌴"
+emoji = "⛱️"
 subtitle = "이런저런 걸 합니다. 블로그 기고는 보통 제가 했던 일을 까먹지 않기 위해 합니다(..)"
 
 [sidebar.avatar]
@@ -21,6 +22,7 @@ local = true
 src = "img/avatar.png"
 
 [article]
+headingAnchor = false
 math = false
 readingTime = true
 
@@ -54,7 +56,7 @@ limit = 10
 type = "toc"
 
 [opengraph.twitter]
-site = "https://lemondouble.github.io"
+site = "https://blog.lemondouble.com"
 card = "summary_large_image"
 
 [defaultImage.opengraph]
@@ -70,7 +72,7 @@ default = "auto"
 enabled = true
 
 [imageProcessing.content]
-enabled = false
+enabled = true
 
 ## Comments
 [comments]

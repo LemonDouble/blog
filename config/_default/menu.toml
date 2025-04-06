@@ -22,3 +22,19 @@ url = "https://twitter.com/_lemon_berry_"
 
 [social.params]
 icon = "brand-twitter"
+
+[[social]]
+identifier = "mail"
+name = "mail"
+url = "mailto:contact@lemondouble.com"
+
+[social.params]
+icon = "mail"
+
+[[social]]
+identifier = "misskey"
+name = "misskey"
+url = "https://sns.lemondouble.com/@lemondouble"
+
+[social.params]
+icon = "misskey"
