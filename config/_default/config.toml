@@ -1,5 +1,4 @@
-# Change baseurl before deploy
-baseurl = "https://lemondouble.github.io/"
+baseurl = "https://blog.lemondouble.com"
 languageCode = "ko"
 title = "Lemon Blog"
 
