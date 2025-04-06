@@ -16,4 +16,4 @@ hasCJKLanguage = true
 disqusShortname = "hugo-theme-stack"
 
 [params]
-favicon = "/favicon.ico"
+favicon = "https://cdn.lemondouble.com/homepage/favicon.ico"
