@@ -653,11 +653,17 @@ a:hover {
 }
 
 .toc ul ul {
-    padding-left: 20px;
+    padding-left: 16px;
 }
 
 .toc li {
     margin: 4px 0;
+}
+
+.toc li > a::before {
+    content: "▸ ";
+    color: var(--accent);
+    font-family: 'Galmuri11', monospace;
 }
 
 .toc a {
