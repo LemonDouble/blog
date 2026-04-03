@@ -95,22 +95,6 @@
             </ul>
         </div>
 
-        {{/* Archives */}}
-        <div class="sidebar-widget pixel-border">
-            <h3 class="widget-title pixel-text">
-                <span class="title-icon">&#9654;</span> ARCHIVES
-            </h3>
-            <ul class="archive-list">
-                {{ range (.Site.RegularPages.GroupByDate "2006") }}
-                <li>
-                    <a href="/archives/#{{ .Key }}">
-                        <span class="cat-name">{{ .Key }}</span>
-                        <span class="cat-count">{{ len .Pages }}</span>
-                    </a>
-                </li>
-                {{ end }}
-            </ul>
-        </div>
     </aside>
 </div>
 {{ end }}

@@ -907,56 +907,6 @@ a:hover {
     margin-bottom: 16px;
 }
 
-/* --- Related --- */
-.related-posts {
-    background: var(--bg-card);
-    padding: 20px;
-}
-
-.related-posts .pixel-text {
-    font-size: 0.6rem;
-    color: var(--accent);
-    margin-bottom: 16px;
-}
-
-.related-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.related-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 12px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-dim);
-    color: var(--text-secondary);
-    transition: all 0.15s;
-}
-
-.related-card:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    padding-left: 18px;
-}
-
-.related-title {
-    font-size: 0.88rem;
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.related-date {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    flex-shrink: 0;
-    margin-left: 12px;
-}
 
 /* =========================
    LIST PAGE

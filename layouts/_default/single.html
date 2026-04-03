@@ -79,22 +79,5 @@
     </section>
     {{ end }}
 
-    {{/* Related Posts */}}
-    {{ $related := .Site.RegularPages.Related . | first 3 }}
-    {{ with $related }}
-    <section class="related-posts pixel-border">
-        <h3 class="pixel-text">
-            <span class="title-icon">&#9654;</span> RELATED POSTS
-        </h3>
-        <div class="related-grid">
-            {{ range . }}
-            <a href="{{ .RelPermalink }}" class="related-card">
-                <span class="related-title">{{ .Title }}</span>
-                <span class="related-date">{{ .Date.Format "2006.01.02" }}</span>
-            </a>
-            {{ end }}
-        </div>
-    </section>
-    {{ end }}
 </article>
 {{ end }}
