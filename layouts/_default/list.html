@@ -21,7 +21,7 @@
                     <a href="{{ $post.RelPermalink }}">
                         {{ $img := $post.Resources.GetMatch . }}
                         {{ if $img }}
-                            {{ $resized := $img.Fill "300x180" }}
+                            {{ $resized := $img.Fit "800x600" }}
                             <img src="{{ $resized.RelPermalink }}" alt="{{ $post.Title }}" loading="lazy">
                         {{ end }}
                     </a>
