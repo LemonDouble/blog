@@ -86,11 +86,31 @@ body {
     z-index: 9999;
     background: repeating-linear-gradient(
         0deg,
-        rgba(0, 0, 0, 0.12) 0px,
-        rgba(0, 0, 0, 0.12) 1px,
+        rgba(0, 0, 0, 0.04) 0px,
+        rgba(0, 0, 0, 0.04) 1px,
         transparent 1px,
-        transparent 4px
+        transparent 3px
     );
+}
+
+/* --- CRT Flicker / Static Noise Animation --- */
+@keyframes crt-flicker {
+    0% { opacity: 0.03; transform: translateY(0); }
+    10% { opacity: 0.06; }
+    20% { opacity: 0.02; transform: translateY(-1px); }
+    30% { opacity: 0.05; }
+    40% { opacity: 0.01; transform: translateY(1px); }
+    50% { opacity: 0.04; }
+    60% { opacity: 0.07; transform: translateY(-2px); }
+    70% { opacity: 0.02; }
+    80% { opacity: 0.05; transform: translateY(0); }
+    90% { opacity: 0.03; transform: translateY(1px); }
+    100% { opacity: 0.03; transform: translateY(0); }
+}
+
+@keyframes static-bar {
+    0% { top: -10%; }
+    100% { top: 110%; }
 }
 
 /* --- Pixel Border Utility --- */
@@ -331,8 +351,27 @@ a:hover {
     transition: filter 0.2s;
 }
 
-/* 8bit CRT scanline overlay on thumbnails */
+/* 8bit CRT static noise on thumbnails */
 .post-thumbnail::after {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, 0.08),
+        rgba(0, 255, 136, 0.04),
+        transparent
+    );
+    animation: static-bar 3s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.post-thumbnail::before {
     content: "";
     position: absolute;
     top: 0;
@@ -342,13 +381,14 @@ a:hover {
     background:
         repeating-linear-gradient(
             0deg,
-            rgba(0, 0, 0, 0.35) 0px,
-            rgba(0, 0, 0, 0.35) 2px,
-            transparent 2px,
-            transparent 5px
+            rgba(0, 0, 0, 0.06) 0px,
+            rgba(0, 0, 0, 0.06) 1px,
+            transparent 1px,
+            transparent 3px
         );
     pointer-events: none;
     z-index: 1;
+    animation: crt-flicker 0.15s infinite;
 }
 
 .post-card:hover .post-thumbnail img {
@@ -540,7 +580,27 @@ a:hover {
     filter: contrast(1.15) saturate(1.3) brightness(0.95);
 }
 
+/* CRT static bar sweep on cover */
 .post-cover::after {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 12px;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 255, 255, 0.06),
+        rgba(0, 255, 136, 0.03),
+        transparent
+    );
+    animation: static-bar 4s linear infinite;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.post-cover::before {
     content: "";
     position: absolute;
     top: 0;
@@ -550,10 +610,10 @@ a:hover {
     background:
         repeating-linear-gradient(
             0deg,
-            rgba(0, 0, 0, 0.3) 0px,
-            rgba(0, 0, 0, 0.3) 2px,
-            transparent 2px,
-            transparent 5px
+            rgba(0, 0, 0, 0.04) 0px,
+            rgba(0, 0, 0, 0.04) 1px,
+            transparent 1px,
+            transparent 3px
         ),
         linear-gradient(
             to bottom,
@@ -561,6 +621,8 @@ a:hover {
             var(--bg-card) 100%
         );
     pointer-events: none;
+    z-index: 1;
+    animation: crt-flicker 0.15s infinite;
 }
 
 .post-header-content {
