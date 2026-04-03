@@ -1,2 +1,5 @@
 public
 resources
+errors.md
+.playwright-mcp/
+.slack-downloads/
