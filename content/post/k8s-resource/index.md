@@ -40,7 +40,7 @@ tags:
 
 * 상태 확인
   * `livenessProbe` : Pod이 정상적으로 동작하고 있는지 확인
-  * `readnessProbe` : Pod이 생성되고 난 후, 트래픽을 받을 준비가 완료되었는지 확인 (READY 0/1 상태로 확인 가능) 
+  * `readinessProbe` : Pod이 생성되고 난 후, 트래픽을 받을 준비가 완료되었는지 확인 (READY 0/1 상태로 확인 가능) 
 
 ### 2. Service
 
@@ -53,7 +53,7 @@ tags:
   * svc.cluster.local은 K8S 기본값
 
 * Service는 어떻게 DNS를 가질까?
-  * `k exec client -- cat /etc/resolve.conf` 로 Pod의 DNS 설정 확인 -> Nameserver의 IP 확인 가능
+  * `k exec client -- cat /etc/resolv.conf` 로 Pod의 DNS 설정 확인 -> Nameserver의 IP 확인 가능
   * `k get svc -n kube-system` 입력하면 나오는 CoreDNS가 해당 IP
   * CoreDNS라는 서비스 통해 DNS 사용 가능
 
@@ -61,7 +61,7 @@ tags:
   * `ClusterIP` : (default) K8S 클러스터 내부에서만 접근 가능.
   * `NodePort` : Localhost의 특정 Port를 Service의 특정 포트와 연결 (Docker 생각하기)
     * 단, Nodeport는 모든 Node의 특정 포트를 해당 Service로 연결
-    * 예를 들어 32000번 Nodeport가 있다면, `master:32000`, `worker01:30002` 전부 32000번 포트로 연결됨
+    * 예를 들어 32000번 Nodeport가 있다면, `master:32000`, `worker01:32000` 전부 32000번 포트로 연결됨
   * `LoadBalancer` : Load Balancer 생성하여(Cloud 제공, 혹은 Software) Pod에 분산
     * 외부에선 LoadBalancer의 IP만 알면 되니 편하다. (ClusterIP -> Pod의 안정적 서비스 Endpoint, LoadBalancer -> Node의 안정적 서비스 Endpoint)
     * External-IP를 통해서 외부에서 접근 가능
@@ -105,7 +105,7 @@ tags:
 
 * CronJob
   * 주기적으로 Job을 실행할 수 있도록 Crontab과 같은 기능 제공
-  * `spec.schedule : "1/* * * * *"` 과 같이 지정
+  * `spec.schedule : "*/1 * * * *"` 과 같이 지정
 
 ### Namespace
 

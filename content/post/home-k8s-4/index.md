@@ -75,7 +75,7 @@ ArgoCD를 설치하고, Github SSO를 연동해 봅시다.
 
 ![ArgoCD OAuth 설정, Authorization callback URL이 중요](image.png)
 
-이때, Authorization callback URL을 `https://<방금 설정한 도메인>/api/dev/callback` 으로 설정합니다.
+이때, Authorization callback URL을 `https://<방금 설정한 도메인>/api/dex/callback` 으로 설정합니다.
 나머지는 자유롭게 바꾸셔도 상관없습니다.
 
 이후 `Client ID, Secret` 을 발급 후 기억합니다.
@@ -182,13 +182,13 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`https://argo.lemon.com`)
+      match: Host(`argo.lemon.com`)
       priority: 10
       services:
         - name: argo-cd-argocd-server
           port: 80
     - kind: Rule
-      match: Host(`https://argo.lemon.com`) && Headers(`Content-Type`, `application/grpc`)
+      match: Host(`argo.lemon.com`) && Headers(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - name: argo-cd-argocd-server
