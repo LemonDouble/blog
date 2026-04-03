@@ -451,7 +451,7 @@ class Penguin(): Animal(species, 2), Swimable, Flyable{
 }
 ```
 
-- Backing Field (getter, setter가 제공되는 property) 를 Interface에 선언 가능
+- 추상 Property를 Interface에 선언 가능 (단, Interface는 Backing Field를 가질 수 없음)
 
 ```kotlin
 // Kotlin
