@@ -775,7 +775,14 @@ a:hover {
 .post-content ul,
 .post-content ol {
     margin: 1em 0;
-    padding-left: 24px;
+    padding-left: 2em;
+    list-style-position: outside;
+}
+
+.post-excerpt ul,
+.post-excerpt ol {
+    padding-left: 2em;
+    list-style-position: outside;
 }
 
 .post-content li {
