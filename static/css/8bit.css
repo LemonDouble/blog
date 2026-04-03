@@ -343,6 +343,7 @@ a:hover {
 
 .post-info {
     padding: 16px;
+    overflow: hidden;
 }
 
 .post-thumbnail img {
@@ -831,8 +832,8 @@ a:hover {
 
 .post-excerpt ul,
 .post-excerpt ol {
-    padding-left: 2em;
-    list-style-position: outside;
+    padding-left: 1.2em;
+    list-style-position: inside;
 }
 
 .post-content li {
