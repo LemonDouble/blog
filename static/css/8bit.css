@@ -831,9 +831,12 @@ a:hover {
 }
 
 .post-excerpt ul,
-.post-excerpt ol {
+.post-excerpt ol,
+.post-info ul,
+.post-info ol {
     padding-left: 1.2em;
     list-style-position: inside;
+    margin: 0;
 }
 
 .post-content li {
