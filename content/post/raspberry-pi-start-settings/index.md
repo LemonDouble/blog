@@ -6,8 +6,10 @@ image: cover.png
 categories:
     - 라즈베리 파이
 tags:
-    - 라즈베리 파이
-    - 우분투
+    - SSH
+    - Ubuntu
+    - netplan
+    - 초기설정
 ---
 
 라즈베리 파이나, 홈 서버를 굴리다 보면 의외로(?) 서버를 초기화해야 하는 경우가 많습니다.

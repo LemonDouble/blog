@@ -7,7 +7,10 @@ math:
 categories:
     - K8S
 tags:
-    - K8S
+    - Pod
+    - Service
+    - Deployment
+    - 치트시트
 ---
 
 * `k get pod <podname> -o` 또는 `k describe pod <podname>`: 상태 정보 자세히 확인

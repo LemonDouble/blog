@@ -8,9 +8,11 @@ categories:
     - K3S
     - 라즈베리 파이
 tags:
-    - K8S
-    - K3S
-    - 라즈베리 파이
+    - Ubuntu
+    - DHCP
+    - Supabase
+    - PostgreSQL
+    - 클러스터구축
 ---
 
 ### 하드웨어

@@ -7,8 +7,10 @@ categories:
     - AWS
     - 자격증
 tags:
-    - AWS
+    - SAA
     - 자격증
+    - 온라인시험
+    - 합격후기
 ---
 
 AWS에는 활용 자격증이 있습니다. ([Link](https://aws.amazon.com/ko/certification/exams/))

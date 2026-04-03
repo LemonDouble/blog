@@ -8,8 +8,9 @@ categories:
     - SaaS
     - Fly.io
 tags:
-    - 컨테이너
-    - SaaS
+    - Uptime Kuma
+    - 모니터링
+    - Docker
     - Fly.io
 ---
 

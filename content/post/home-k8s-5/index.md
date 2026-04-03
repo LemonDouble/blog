@@ -8,9 +8,10 @@ categories:
     - K3S
     - 라즈베리 파이
 tags:
-    - K8S
-    - K3S
-    - 라즈베리 파이
+    - ArgoCD
+    - GitOps
+    - Longhorn
+    - 스토리지
 ---
 
 ### 1. GitOps 시작

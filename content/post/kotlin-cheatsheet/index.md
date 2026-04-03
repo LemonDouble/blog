@@ -6,7 +6,9 @@ image: cover.png
 categories:
     - 코틀린
 tags:
-    - 코틀린
+    - Kotlin
+    - JVM
+    - 치트시트
 ---
 
 - TIP : 숫자 작성할 때 var number = 1_000L 과 같이 작성 가능

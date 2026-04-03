@@ -11,10 +11,13 @@ categories:
     - 라즈베리 파이
     - AI
 tags:
-    - HomeAssistant
-    - IoT
-    - 라즈베리 파이
-    - AI
+    - Whisper
+    - GPT
+    - Zigbee
+    - MQTT
+    - 음성인식
+    - TTS
+    - 스마트홈
 ---
 
 ## 만든 스마트홈 미리보기 (일본어 주의)

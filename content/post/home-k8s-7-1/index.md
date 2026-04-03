@@ -8,9 +8,9 @@ categories:
     - K3S
     - 라즈베리 파이
 tags:
-    - K8S
-    - K3S
-    - 라즈베리 파이
+    - Sealed Secrets
+    - Web UI
+    - kubeseal
 ---
 
 ### 1. 서론

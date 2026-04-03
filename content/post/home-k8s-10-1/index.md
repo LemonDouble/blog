@@ -8,9 +8,10 @@ categories:
     - K3S
     - 라즈베리 파이
 tags:
-    - K8S
-    - K3S
-    - 라즈베리 파이
+    - Traefik
+    - Basic Auth
+    - Sealed Secrets
+    - 인증
 ---
 
 **아래 내용은 Sealed Secrets [섹션 3](https://lemondouble.github.io/p/%EC%A7%91%EC%97%90%EC%84%9C-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0-%EC%B0%A8%EB%A6%AC%EA%B8%B0-7.-sealed-secrets%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%B0%80-%EA%B4%80%EB%A6%AC--traefik-basic-auth-%EC%84%A4%EC%A0%95/#3-sealed-secrets-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-basic-auth-%EB%93%B1%EB%A1%9D%ED%95%B4%EB%B3%B4%EA%B8%B0)과 겹치는 부분이 많습니다. 해당 섹션을 진행하셨고, Basic Auth에 대해 잘 아신다면 스킵해도 무방합니다.** 

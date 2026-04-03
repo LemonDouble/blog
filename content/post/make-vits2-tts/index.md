@@ -6,9 +6,11 @@ image: cover.png
 categories:
     - AI
     - TTS
-tags : 
-    - AI
-    - TTS
+tags:
+    - Bert-VITS2
+    - 음성합성
+    - GPU
+    - 딥러닝
 ---
 
 ## 우리가 만들 오디오 한번 들어보기 (일본어) 

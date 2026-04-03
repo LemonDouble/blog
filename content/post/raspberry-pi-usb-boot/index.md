@@ -6,7 +6,9 @@ image: cover.png
 categories:
     - 라즈베리 파이
 tags:
-    - 라즈베리 파이
+    - USB Boot
+    - EEPROM
+    - SD카드
 ---
 
 라즈베리 파이는 다 좋은데 SD 카드 부팅이 굉장히 화가 날 때가 많습니다..

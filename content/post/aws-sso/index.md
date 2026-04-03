@@ -6,7 +6,10 @@ image: cover.png
 categories:
     - AWS
 tags:
-    - AWS
+    - IAM Identity Center
+    - SSO
+    - AWS CLI
+    - Organizations
 ---
 
 회사나 조직에서 AWS를 사용하다 보면, 다음과 같은 SSO (Single Sign On) 페이지를 통해 로그인 하는 아래와 같은 페이지를 본 적이 있으실 겁니다.

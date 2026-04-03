@@ -7,9 +7,10 @@ math:
 categories:
     - 전기전자
 tags:
+    - LED
+    - Arduino
     - 회로
-    - 임베디드
-    - 전기전자
+    - 아날로그
 ---
 
 Arduino를 만지다 보면, 단순히 LED를 껐다 키는

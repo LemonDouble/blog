@@ -6,7 +6,12 @@ image: image-18.png
 categories:
     - 서비스 회고
 tags:
-    - 서비스 회고
+    - AWS Lambda
+    - SQS
+    - BERT
+    - NLP
+    - 서버리스
+    - Twitter
 ---
 
 ![Lemon Toolbox 챗봇](image-18.png)

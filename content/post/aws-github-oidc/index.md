@@ -6,9 +6,11 @@ categories:
     - AWS
     - Github
 tags:
-    - AWS
-    - Github
     - OIDC
+    - IAM
+    - GitHub Actions
+    - CI/CD
+    - 보안
 ---
 
 Github Actions에서 AWS를 사용하려면 보통 다음과 같은 과정을 거칩니다.

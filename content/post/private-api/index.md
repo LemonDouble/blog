@@ -7,8 +7,10 @@ categories:
     - AWS
     - MSA
 tags:
-    - AWS
-    - MSA
+    - Route 53
+    - ALB
+    - VPC
+    - Private DNS
     - 네트워킹
 ---
 

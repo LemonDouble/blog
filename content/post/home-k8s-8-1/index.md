@@ -8,9 +8,9 @@ categories:
     - K3S
     - 라즈베리 파이
 tags:
-    - K8S
-    - K3S
-    - 라즈베리 파이
+    - Docker Registry
+    - GC
+    - Web UI
 ---
 
 ### 1. Private Registry는 좋은데, 관리하기가 너무 까다로워요!

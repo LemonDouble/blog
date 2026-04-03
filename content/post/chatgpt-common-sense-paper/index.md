@@ -8,10 +8,10 @@ categories:
     - ChatGPT
     - LLM
 tags:
-    - AI
     - ChatGPT
     - LLM
-    - 논문
+    - 논문리뷰
+    - 상식추론
 ---
 
 요즘 심심할 때 논문을 하나씩 읽는 취미가 생겼습니다.
