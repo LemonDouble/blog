@@ -1,0 +1,57 @@
+{{ define "main" }}
+<section class="list-page">
+    <h1 class="page-title pixel-text">
+        <span class="title-icon">&#9654;</span> {{ .Title | upper }}
+    </h1>
+
+    {{ if .Content }}
+    <div class="page-content pixel-border">
+        {{ .Content }}
+    </div>
+    {{ end }}
+
+    <div class="post-list">
+        {{ $paginator := .Paginate .Pages }}
+        {{ range $paginator.Pages }}
+        {{ $post := . }}
+        <article class="post-card pixel-border">
+            <div class="post-card-inner">
+                {{ with .Params.image }}
+                <div class="post-thumbnail">
+                    <a href="{{ $post.RelPermalink }}">
+                        {{ $img := $post.Resources.GetMatch . }}
+                        {{ if $img }}
+                            {{ $resized := $img.Fill "300x180" }}
+                            <img src="{{ $resized.RelPermalink }}" alt="{{ $post.Title }}" loading="lazy">
+                        {{ end }}
+                    </a>
+                </div>
+                {{ end }}
+                <div class="post-info">
+                    <h3 class="post-title">
+                        <a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a>
+                    </h3>
+                    <div class="post-meta">
+                        <time>{{ $post.Date.Format "2006.01.02" }}</time>
+                        <span class="meta-sep">&#8226;</span>
+                        <span>{{ $post.ReadingTime }} min</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+
+    {{ if gt $paginator.TotalPages 1 }}
+    <nav class="pagination pixel-border">
+        {{ if $paginator.HasPrev }}
+        <a href="{{ $paginator.Prev.URL }}" class="page-btn">&laquo; PREV</a>
+        {{ end }}
+        <span class="page-info">PAGE {{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
+        {{ if $paginator.HasNext }}
+        <a href="{{ $paginator.Next.URL }}" class="page-btn">NEXT &raquo;</a>
+        {{ end }}
+    </nav>
+    {{ end }}
+</section>
+{{ end }}

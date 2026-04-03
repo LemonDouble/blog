@@ -1,0 +1,100 @@
+{{ define "main" }}
+{{ $page := . }}
+<article class="post-single">
+    {{/* Post Header */}}
+    <header class="post-header pixel-border">
+        {{ with .Params.image }}
+        <div class="post-cover">
+            {{ $img := $page.Resources.GetMatch . }}
+            {{ if $img }}
+                {{ $resized := $img.Fit "800x400" }}
+                <img src="{{ $resized.RelPermalink }}" alt="{{ $page.Title }}">
+            {{ else }}
+                <img src="{{ . | absURL }}" alt="{{ $page.Title }}">
+            {{ end }}
+        </div>
+        {{ end }}
+        <div class="post-header-content">
+            <div class="post-categories">
+                {{ range .Params.categories }}
+                <a href="{{ "categories/" | absURL }}{{ . | urlize }}/" class="category-tag">{{ . }}</a>
+                {{ end }}
+            </div>
+            <h1 class="post-title pixel-text">{{ .Title }}</h1>
+            <div class="post-meta">
+                <time>{{ .Date.Format (.Site.Params.dateFormat.published | default "2006.01.02") }}</time>
+                <span class="meta-sep">&#8226;</span>
+                <span>{{ .ReadingTime }} min read</span>
+            </div>
+        </div>
+    </header>
+
+    {{/* Table of Contents */}}
+    {{ if .TableOfContents }}
+    <nav class="toc pixel-border">
+        <h3 class="toc-title pixel-text">
+            <span class="title-icon">&#9654;</span> TABLE OF CONTENTS
+        </h3>
+        {{ .TableOfContents }}
+    </nav>
+    {{ end }}
+
+    {{/* Content */}}
+    <div class="post-content pixel-border">
+        {{ .Content }}
+    </div>
+
+    {{/* Tags */}}
+    {{ with .Params.tags }}
+    <div class="post-tags">
+        {{ range . }}
+        <a href="{{ "tags/" | absURL }}{{ . | urlize }}/" class="tag-link">#{{ . }}</a>
+        {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* License */}}
+    <div class="post-license pixel-border">
+        <p>&copy; Licensed under CC BY-NC-SA 4.0</p>
+    </div>
+
+    {{/* Comments */}}
+    {{ if .Site.Params.comments.enabled }}
+    <section class="post-comments pixel-border">
+        <h3 class="pixel-text">
+            <span class="title-icon">&#9654;</span> COMMENTS
+        </h3>
+        <script src="https://giscus.app/client.js"
+            data-repo="{{ .Site.Params.comments.giscus.repo }}"
+            data-repo-id="{{ .Site.Params.comments.giscus.repoID }}"
+            data-category="{{ .Site.Params.comments.giscus.category }}"
+            data-category-id="{{ .Site.Params.comments.giscus.categoryID }}"
+            data-mapping="{{ .Site.Params.comments.giscus.mapping }}"
+            data-reactions-enabled="{{ .Site.Params.comments.giscus.reactionsEnabled }}"
+            data-emit-metadata="{{ .Site.Params.comments.giscus.emitMetadata }}"
+            data-theme="dark"
+            crossorigin="anonymous"
+            async>
+        </script>
+    </section>
+    {{ end }}
+
+    {{/* Related Posts */}}
+    {{ $related := .Site.RegularPages.Related . | first 3 }}
+    {{ with $related }}
+    <section class="related-posts pixel-border">
+        <h3 class="pixel-text">
+            <span class="title-icon">&#9654;</span> RELATED POSTS
+        </h3>
+        <div class="related-grid">
+            {{ range . }}
+            <a href="{{ .RelPermalink }}" class="related-card">
+                <span class="related-title">{{ .Title }}</span>
+                <span class="related-date">{{ .Date.Format "2006.01.02" }}</span>
+            </a>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+</article>
+{{ end }}

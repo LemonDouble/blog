@@ -1,0 +1,116 @@
+{{ define "main" }}
+<div class="home-layout">
+    {{/* Hero / Intro */}}
+    <section class="hero-box pixel-border">
+        <div class="hero-avatar">
+            <img src="/img/avatar.png" alt="Avatar" width="80" height="80">
+        </div>
+        <div class="hero-text">
+            <h1 class="hero-title pixel-text">{{ .Site.Title }}</h1>
+            <p class="hero-desc">{{ .Site.Params.description }}</p>
+            <div class="hero-stats">
+                <span class="stat">&#9632; {{ len (where .Site.RegularPages "Section" "post") }} POSTS</span>
+                <span class="stat">&#9632; {{ len .Site.Taxonomies.categories }} CATEGORIES</span>
+            </div>
+        </div>
+    </section>
+
+    {{/* Post List */}}
+    <section class="posts-section">
+        <h2 class="section-title pixel-text">
+            <span class="title-icon">&#9654;</span> RECENT POSTS
+        </h2>
+        <div class="post-list">
+            {{ $paginator := .Paginate (where .Site.RegularPages "Section" "post") }}
+            {{ range $paginator.Pages }}
+            {{ $post := . }}
+            <article class="post-card pixel-border">
+                <div class="post-card-inner">
+                    {{ with .Params.image }}
+                    <div class="post-thumbnail">
+                        <a href="{{ $post.RelPermalink }}">
+                            {{ $img := $post.Resources.GetMatch . }}
+                            {{ if $img }}
+                                {{ $resized := $img.Fill "300x180" }}
+                                <img src="{{ $resized.RelPermalink }}" alt="{{ $post.Title }}" loading="lazy">
+                            {{ end }}
+                        </a>
+                    </div>
+                    {{ end }}
+                    <div class="post-info">
+                        <div class="post-categories">
+                            {{ range .Params.categories }}
+                            <a href="{{ "categories/" | absURL }}{{ . | urlize }}/" class="category-tag">{{ . }}</a>
+                            {{ end }}
+                        </div>
+                        <h3 class="post-title">
+                            <a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a>
+                        </h3>
+                        <div class="post-meta">
+                            <time>{{ $post.Date.Format ($post.Site.Params.dateFormat.published | default "2006.01.02") }}</time>
+                            <span class="meta-sep">&#8226;</span>
+                            <span>{{ $post.ReadingTime }} min</span>
+                        </div>
+                        {{ if $post.Description }}
+                        <p class="post-excerpt">{{ $post.Description }}</p>
+                        {{ else }}
+                        <p class="post-excerpt">{{ $post.Summary | truncate 120 }}</p>
+                        {{ end }}
+                    </div>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+
+        {{/* Pagination */}}
+        {{ if gt $paginator.TotalPages 1 }}
+        <nav class="pagination pixel-border">
+            {{ if $paginator.HasPrev }}
+            <a href="{{ $paginator.Prev.URL }}" class="page-btn">&laquo; PREV</a>
+            {{ end }}
+            <span class="page-info">PAGE {{ $paginator.PageNumber }}/{{ $paginator.TotalPages }}</span>
+            {{ if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}" class="page-btn">NEXT &raquo;</a>
+            {{ end }}
+        </nav>
+        {{ end }}
+    </section>
+
+    {{/* Sidebar */}}
+    <aside class="sidebar">
+        {{/* Categories */}}
+        <div class="sidebar-widget pixel-border">
+            <h3 class="widget-title pixel-text">
+                <span class="title-icon">&#9654;</span> CATEGORIES
+            </h3>
+            <ul class="category-list">
+                {{ range .Site.Taxonomies.categories.Alphabetical }}
+                <li>
+                    <a href="{{ .Page.RelPermalink }}">
+                        <span class="cat-name">{{ .Page.Title }}</span>
+                        <span class="cat-count">{{ .Count }}</span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+
+        {{/* Archives */}}
+        <div class="sidebar-widget pixel-border">
+            <h3 class="widget-title pixel-text">
+                <span class="title-icon">&#9654;</span> ARCHIVES
+            </h3>
+            <ul class="archive-list">
+                {{ range (.Site.RegularPages.GroupByDate "2006") }}
+                <li>
+                    <a href="/archives/#{{ .Key }}">
+                        <span class="cat-name">{{ .Key }}</span>
+                        <span class="cat-count">{{ len .Pages }}</span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+    </aside>
+</div>
+{{ end }}

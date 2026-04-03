@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <link rel="icon" href="{{ .Site.Params.favicon }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+
+    {{/* Pixel Font - Galmuri (Korean + English pixel font) */}}
+    <link href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css" rel="stylesheet">
+
+    {{/* OG Tags */}}
+    <meta property="og:title" content="{{ .Title }}">
+    <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    {{ with .Params.image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+
+    <link rel="stylesheet" href="/css/8bit.css">
+
+    {{/* Google Analytics */}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9C6YX68EBM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9C6YX68EBM');
+    </script>
+
+    {{ hugo.Generator }}
+</head>
+<body>
+    <div class="scanlines"></div>
+    <div class="container">
+        {{/* Header */}}
+        <header class="site-header">
+            <div class="header-left">
+                <a href="/" class="site-logo">
+                    <span class="logo-icon">&#9733;</span>
+                    <span class="logo-text">{{ .Site.Title }}</span>
+                </a>
+            </div>
+            <nav class="header-nav">
+                <a href="/" class="nav-link{{ if .IsHome }} active{{ end }}">HOME</a>
+                <a href="/archives/" class="nav-link{{ if eq .RelPermalink "/archives/" }} active{{ end }}">ARCHIVE</a>
+                <a href="/about/" class="nav-link{{ if eq .RelPermalink "/about/" }} active{{ end }}">ABOUT</a>
+            </nav>
+            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                <span class="theme-icon">&#9788;</span>
+            </button>
+        </header>
+
+        {{/* Main */}}
+        <main class="site-main">
+            {{ block "main" . }}{{ end }}
+        </main>
+
+        {{/* Footer */}}
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-links">
+                    {{ with .Site.Params.social.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end }}
+                    {{ with .Site.Params.social.twitter }}<a href="{{ . }}" target="_blank" rel="noopener">Twitter</a>{{ end }}
+                    {{ with .Site.Params.social.email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
+                    {{ with .Site.Params.social.misskey }}<a href="{{ . }}" target="_blank" rel="noopener">Misskey</a>{{ end }}
+                </div>
+                <p class="footer-copy">&copy; {{ .Site.Params.footer.since }}-{{ now.Year }} {{ .Site.Params.footer.customText }} &bull; Powered by Hugo</p>
+                <p class="footer-pixel">PRESS START TO CONTINUE</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+    function toggleTheme() {
+        const html = document.documentElement;
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        document.querySelector('.theme-icon').innerHTML = next === 'dark' ? '&#9788;' : '&#9790;';
+    }
+    (function() {
+        const saved = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', saved);
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('.theme-icon').innerHTML = saved === 'dark' ? '&#9788;' : '&#9790;';
+        });
+    })();
+    </script>
+</body>
+</html>

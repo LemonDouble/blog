@@ -3,7 +3,6 @@ languageCode = "ko"
 title = "Lemon Blog"
 DefaultContentLanguage = "ko"
 hasCJKLanguage = true
-disqusShortname = "hugo-theme-stack"
 
 [pagination]
-pagerSize = 5
+pagerSize = 10
