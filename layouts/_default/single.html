@@ -7,7 +7,7 @@
         <div class="post-cover">
             {{ $img := $page.Resources.GetMatch . }}
             {{ if $img }}
-                {{ $resized := $img.Fit "800x400" }}
+                {{ $resized := $img.Fit "1200x600" }}
                 <img src="{{ $resized.RelPermalink }}" alt="{{ $page.Title }}">
             {{ else }}
                 <img src="{{ . | absURL }}" alt="{{ $page.Title }}">
