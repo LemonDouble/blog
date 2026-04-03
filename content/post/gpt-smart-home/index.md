@@ -11,6 +11,9 @@ categories:
     - 라즈베리 파이
     - AI
 tags:
+    - HomeAssistant
+    - IoT
+    - 라즈베리 파이
     - Whisper
     - GPT
     - Zigbee

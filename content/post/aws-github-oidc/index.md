@@ -6,6 +6,7 @@ categories:
     - AWS
     - Github
 tags:
+    - AWS
     - OIDC
     - IAM
     - GitHub Actions

@@ -7,6 +7,7 @@ categories:
     - AI
     - TTS
 tags:
+    - AI
     - Bert-VITS2
     - 음성합성
     - GPU

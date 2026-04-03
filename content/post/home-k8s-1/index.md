@@ -8,6 +8,9 @@ categories:
     - K3S
     - 라즈베리 파이
 tags:
+    - K8S
+    - K3S
+    - 라즈베리 파이
     - 하드웨어
     - SBC
     - SSD

@@ -7,6 +7,7 @@ math:
 categories:
     - K8S
 tags:
+    - K8S
     - Pod
     - Service
     - Deployment

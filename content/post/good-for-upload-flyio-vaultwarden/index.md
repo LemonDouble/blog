@@ -7,6 +7,7 @@ categories:
     - SaaS
     - Fly.io
 tags:
+    - 셀프호스팅
     - Vaultwarden
     - Bitwarden
     - 비밀번호관리

@@ -8,6 +8,7 @@ categories:
     - K3S
     - 라즈베리 파이
 tags:
+    - 라즈베리 파이
     - K3S
     - Ubuntu
     - 설치가이드

@@ -6,6 +6,7 @@ image: cover.png
 categories:
     - AWS
 tags:
+    - AWS
     - IAM Identity Center
     - SSO
     - AWS CLI

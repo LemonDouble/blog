@@ -6,6 +6,7 @@ image: cover.png
 categories:
     - 라즈베리 파이
 tags:
+    - 라즈베리 파이
     - USB Boot
     - EEPROM
     - SD카드

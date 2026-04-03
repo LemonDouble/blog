@@ -8,6 +8,7 @@ categories:
     - SaaS
     - Fly.io
 tags:
+    - 셀프호스팅
     - Uptime Kuma
     - 모니터링
     - Docker

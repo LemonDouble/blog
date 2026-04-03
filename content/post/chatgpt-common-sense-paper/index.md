@@ -8,6 +8,7 @@ categories:
     - ChatGPT
     - LLM
 tags:
+    - AI
     - ChatGPT
     - LLM
     - 논문리뷰

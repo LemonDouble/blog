@@ -8,6 +8,9 @@ categories:
     - IoT
     - 라즈베리 파이
 tags:
+    - HomeAssistant
+    - IoT
+    - 라즈베리 파이
     - Zigbee
     - ESPHome
     - 자동화

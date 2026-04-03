@@ -7,6 +7,7 @@ categories:
     - AWS
     - 자격증
 tags:
+    - AWS
     - SAA
     - 자격증
     - 온라인시험

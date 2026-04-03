@@ -7,6 +7,7 @@ categories:
     - AWS
     - MSA
 tags:
+    - AWS
     - Route 53
     - ALB
     - VPC
