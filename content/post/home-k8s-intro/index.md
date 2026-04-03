@@ -36,7 +36,7 @@ tags:
   - Raspberry PI 4b+ 8GB Model + 500GB SSD(PNY CS900 500GB) * 3
   - Sandisk USB Ultra Fit USB 3.1 32GB * 3
 - **GPU X86 Worker Node (For ML)**
-  - Ryzen 5600x + 64GB DDR4 3200 RAM + GTX3090 + NVME SSD(WD Black) 1TB + WD RED Plus 4TB HDD
+  - Ryzen 5600x + 64GB DDR4 3200 RAM + RTX3090 + NVME SSD(WD Black) 1TB + WD RED Plus 4TB HDD
 
 과 같이 구성하여 총 라즈베리 파이 4대, X86 GPU 서버 1대로 X86, ARM 혼합 클러스터를 운영하고 있습니다.
 
