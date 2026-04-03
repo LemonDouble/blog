@@ -47,10 +47,27 @@
                 <a href="/" class="nav-link{{ if .IsHome }} active{{ end }}">HOME</a>
                 <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link">ABOUT</a>
             </nav>
-            <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-                <span class="theme-icon">&#9788;</span>
-            </button>
+            <div class="header-actions">
+                <button class="search-toggle" onclick="openSearch()" aria-label="Search">
+                    <span class="search-icon">&#9906;</span>
+                </button>
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+                    <span class="theme-icon">&#9788;</span>
+                </button>
+            </div>
         </header>
+
+        {{/* Search Modal */}}
+        <div class="search-overlay" id="searchOverlay" onclick="if(event.target===this)closeSearch()">
+            <div class="search-modal pixel-border">
+                <div class="search-header">
+                    <span class="search-label pixel-text">&#9658; SEARCH</span>
+                    <button class="search-close" onclick="closeSearch()">&#10006;</button>
+                </div>
+                <input type="text" class="search-input" id="searchInput" placeholder="검색어를 입력하세요..." autocomplete="off">
+                <div class="search-results" id="searchResults"></div>
+            </div>
+        </div>
 
         {{/* Main */}}
         <main class="site-main">
@@ -88,6 +105,66 @@
             document.querySelector('.theme-icon').innerHTML = saved === 'dark' ? '&#9788;' : '&#9790;';
         });
     })();
+    </script>
+
+    <script>
+    // Search
+    let searchIndex = null;
+
+    function openSearch() {
+        document.getElementById('searchOverlay').classList.add('active');
+        const input = document.getElementById('searchInput');
+        input.value = '';
+        input.focus();
+        document.getElementById('searchResults').innerHTML = '';
+        if (!searchIndex) {
+            fetch('/index.json')
+                .then(r => r.json())
+                .then(data => { searchIndex = data; })
+                .catch(() => {});
+        }
+    }
+
+    function closeSearch() {
+        document.getElementById('searchOverlay').classList.remove('active');
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            openSearch();
+        }
+        if (e.key === 'Escape') closeSearch();
+    });
+
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+        const query = e.target.value.trim().toLowerCase();
+        const results = document.getElementById('searchResults');
+        if (!query || !searchIndex) {
+            results.innerHTML = !query ? '' : '<div class="search-empty">로딩 중...</div>';
+            return;
+        }
+        const matched = searchIndex.filter(function(item) {
+            return item.title.toLowerCase().includes(query) ||
+                   item.summary.toLowerCase().includes(query) ||
+                   (item.categories || []).some(function(c) { return c.toLowerCase().includes(query); }) ||
+                   (item.tags || []).some(function(t) { return t.toLowerCase().includes(query); });
+        }).slice(0, 10);
+
+        if (matched.length === 0) {
+            results.innerHTML = '<div class="search-empty">검색 결과가 없습니다.</div>';
+            return;
+        }
+        results.innerHTML = matched.map(function(item) {
+            var cats = (item.categories || []).map(function(c) {
+                return '<span class="search-cat">' + c + '</span>';
+            }).join('');
+            return '<a href="' + item.url + '" class="search-result-item">' +
+                '<div class="search-result-title">' + item.title + '</div>' +
+                '<div class="search-result-meta">' + item.date + (cats ? ' &middot; ' + cats : '') + '</div>' +
+                '</a>';
+        }).join('');
+    });
     </script>
 </body>
 </html>
