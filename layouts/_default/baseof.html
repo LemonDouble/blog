@@ -10,6 +10,8 @@
 
     {{/* Pixel Font - Galmuri (Korean + English pixel font) */}}
     <link href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css" rel="stylesheet">
+    {{/* Devicon - Programming language icons */}}
+    <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css" rel="stylesheet">
 
     {{/* OG Tags */}}
@@ -45,6 +47,7 @@
             </div>
             <nav class="header-nav">
                 <a href="/" class="nav-link{{ if .IsHome }} active{{ end }}">HOME</a>
+                <a href="/projects/" class="nav-link{{ if eq .RelPermalink "/projects/" }} active{{ end }}">PROJECTS</a>
                 <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link">ABOUT</a>
             </nav>
             <div class="header-actions">

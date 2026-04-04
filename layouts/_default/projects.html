@@ -1,0 +1,13 @@
+{{ define "main" }}
+<article class="projects-page">
+    {{/* Page Header */}}
+    <header class="projects-header pixel-border">
+        <h1 class="post-title pixel-text">{{ .Title }}</h1>
+    </header>
+
+    {{/* Content */}}
+    <div class="post-content pixel-border">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}

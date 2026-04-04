@@ -1137,6 +1137,76 @@ a:hover {
     }
 }
 
+/* =========================
+   PROJECTS PAGE
+   ========================= */
+.projects-page {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.projects-header {
+    background: var(--bg-card);
+    padding: 20px;
+}
+
+.projects-header .post-title {
+    font-size: 1.2rem;
+    color: var(--accent);
+    text-shadow: var(--glow);
+    margin: 0;
+}
+
+.projects-page .post-content h2 {
+    font-size: 1.4rem;
+    margin-top: 2.5em;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--border-color);
+}
+
+.projects-page .post-content h2:first-child {
+    margin-top: 0;
+}
+
+.projects-page .post-content h3 {
+    font-size: 1.1rem;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+    padding: 6px 0;
+    border-bottom: 2px dashed var(--border-dim);
+}
+
+.projects-page .post-content h3 code {
+    font-family: 'Galmuri11', monospace;
+    font-size: 0.6rem;
+    background: var(--accent-secondary);
+    color: var(--bg-primary);
+    border: none;
+    padding: 2px 8px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.projects-page .post-content blockquote {
+    border-left: 3px solid var(--accent-tertiary);
+    background: transparent;
+    padding: 4px 16px;
+    margin: 0 0 0.8em 0;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+.projects-page .post-content blockquote p {
+    margin-bottom: 0;
+}
+
+.projects-page .post-content i[class*="devicon-"] {
+    font-size: 1.1em;
+    vertical-align: -0.15em;
+    margin-right: 2px;
+}
+
 /* --- Selection --- */
 ::selection {
     background: var(--accent);
