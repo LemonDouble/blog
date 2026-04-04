@@ -232,6 +232,8 @@ a:hover {
     position: relative;
     display: flex;
     align-items: center;
+    height: 36px;
+    box-sizing: border-box;
     background: var(--bg-secondary);
     border: 2px solid var(--border-dim);
     padding: 0 10px;
@@ -325,7 +327,9 @@ a:hover {
     border: 2px solid var(--border-dim);
     color: var(--accent-tertiary);
     font-size: 1.2rem;
-    padding: 6px 10px;
+    height: 36px;
+    box-sizing: border-box;
+    padding: 0 10px;
     cursor: pointer;
     transition: all 0.15s;
 }
