@@ -20,25 +20,19 @@ menu:
 
 ### 2025
 
-| 프로젝트 | PR | 이야기 |
-|---|---|---|
-| [rustfs/rustfs](https://github.com/rustfs/rustfs) | [#1018](https://github.com/rustfs/rustfs/pull/1018) | Helm chart에서 storageSize를 data/log 별도 파라미터로 분리. 데이터 스토리지를 2TB로 설정하면 로그도 2TB가 되어서(...) 제발 쪼개주세요 했습니다. |
-| [thuliteio/doks](https://github.com/thuliteio/doks) | [#1356](https://github.com/thuliteio/doks/pull/1356) | Hugo 버전 올렸더니 되던 게 안 돌아가서.. 고쳤습니다. |
-| [Jaydee94/kubeseal-webgui](https://github.com/Jaydee94/kubeseal-webgui) | [#278](https://github.com/Jaydee94/kubeseal-webgui/pull/278) | 잘 쓰고 있었는데 Secret 클립보드 복사가 안 돼서.. 고쳤습니다. |
+- [rustfs/rustfs](https://github.com/rustfs/rustfs) [#1018](https://github.com/rustfs/rustfs/pull/1018) — Helm chart에서 storageSize를 data/log 별도 파라미터로 분리. 데이터 스토리지를 2TB로 설정하면 로그도 2TB가 되어서(...) 제발 쪼개주세요 했습니다.
+- [thuliteio/doks](https://github.com/thuliteio/doks) [#1356](https://github.com/thuliteio/doks/pull/1356) — Hugo 버전 올렸더니 되던 게 안 돌아가서.. 고쳤습니다.
+- [Jaydee94/kubeseal-webgui](https://github.com/Jaydee94/kubeseal-webgui) [#278](https://github.com/Jaydee94/kubeseal-webgui/pull/278) — 잘 쓰고 있었는데 Secret 클립보드 복사가 안 돼서.. 고쳤습니다.
 
 ### 2024
 
-| 프로젝트 | PR | 이야기 |
-|---|---|---|
-| [opensearch-project/helm-charts](https://github.com/opensearch-project/helm-charts) | [#618](https://github.com/opensearch-project/helm-charts/pull/618) | Helm에서 버전 올렸더니 배포가 안 돼서 봤더니 기본 opensearch.yml이 security plugin이랑 충돌하고 있었습니다. |
+- [opensearch-project/helm-charts](https://github.com/opensearch-project/helm-charts) [#618](https://github.com/opensearch-project/helm-charts/pull/618) — Helm에서 버전 올렸더니 배포가 안 돼서 봤더니 기본 opensearch.yml이 security plugin이랑 충돌하고 있었습니다.
 
 ### 2023
 
-| 프로젝트 | PR | 이야기 |
-|---|---|---|
-| [minio/operator](https://github.com/minio/operator) | [#1910](https://github.com/minio/operator/pull/1910) | existingSecret 적용이 안 돼서 봤더니 YAML 들여쓰기가 잘못되어 있었습니다. |
-| [getsentry/sentry](https://github.com/getsentry/sentry) | [#60571](https://github.com/getsentry/sentry/pull/60571) | 문서 읽고 있는데 오타가 보여서.. 여러분 오타 수정은 금방 PR 받아주거든요? 큰 오픈소스에 숟가락 얹기 최고의 방법입니다. |
-| [stepci/stepci](https://github.com/stepci/stepci) | [#66](https://github.com/stepci/stepci/pull/66) | CLI 기본 명령어 출력 추가. 처음으로 오픈소스에 PR을 넣어봤습니다! |
+- [minio/operator](https://github.com/minio/operator) [#1910](https://github.com/minio/operator/pull/1910) — existingSecret 적용이 안 돼서 봤더니 YAML 들여쓰기가 잘못되어 있었습니다.
+- [getsentry/sentry](https://github.com/getsentry/sentry) [#60571](https://github.com/getsentry/sentry/pull/60571) — 문서 읽고 있는데 오타가 보여서.. 여러분 오타 수정은 금방 PR 받아주거든요? 큰 오픈소스에 숟가락 얹기 최고의 방법입니다.
+- [stepci/stepci](https://github.com/stepci/stepci) [#66](https://github.com/stepci/stepci/pull/66) — CLI 기본 명령어 출력 추가. 처음으로 오픈소스에 PR을 넣어봤습니다!
 
 ---
 
