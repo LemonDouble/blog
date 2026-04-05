@@ -36,9 +36,8 @@ Docker Registry도 CLI로도 관리가 가능하지만, 좀 더 편하게 하기
 
 `modules/docker-registry-system/deployment.yaml`
 
+- 기존 deployment
 ```yaml
-... 기존 deployment
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
