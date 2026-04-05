@@ -24,7 +24,8 @@
     --border-dim: #334466;
     --link: #66ccff;
     --link-hover: #ff6b9d;
-    --code-bg: #0d0d2b;
+    --code-bg: #383a5e;
+    --code-text: #e0c0ff;
     --scanline: rgba(0, 255, 136, 0.03);
     --glow: 0 0 10px rgba(0, 255, 136, 0.3);
     --shadow: 0 4px 0 rgba(0, 0, 0, 0.5);
@@ -46,7 +47,8 @@
     --border-dim: #aaaaaa;
     --link: #2277aa;
     --link-hover: #cc3366;
-    --code-bg: #d0d0c0;
+    --code-bg: #e8e0d0;
+    --code-text: #8844aa;
     --scanline: rgba(0, 0, 0, 0.02);
     --glow: none;
     --shadow: 0 4px 0 rgba(0, 0, 0, 0.15);
@@ -906,9 +908,10 @@ a:hover {
 .post-content code {
     font-family: 'Source Code Pro', monospace;
     background: var(--code-bg);
+    color: var(--code-text);
     padding: 2px 6px;
     font-size: 0.88em;
-    border: 1px solid var(--border-dim);
+    border-radius: 4px;
 }
 
 .post-content pre {
@@ -917,9 +920,10 @@ a:hover {
     margin: 1.5em 0;
 }
 
-.post-content .highlight pre {
-    padding: 0;
+.post-content .code-block pre {
     margin: 0;
+    background: none;
+    border: none;
 }
 
 .post-content pre code {

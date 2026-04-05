@@ -1,0 +1,110 @@
+/* =================================================================
+   Code Block - Prism.js Overrides (VS Code style)
+   ================================================================= */
+
+/* Container */
+.code-block {
+    position: relative;
+    margin: 1.5em 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.code-block pre[class*="language-"] {
+    margin: 0;
+    border-radius: 8px;
+    font-size: 0.84rem;
+    line-height: 1.7;
+    tab-size: 4;
+}
+
+[data-theme="dark"] .code-block pre[class*="language-"] {
+    background: #1e1f29;
+    border: 1px solid #44475a;
+}
+
+[data-theme="light"] .code-block pre[class*="language-"] {
+    background: #fafafa;
+}
+
+.code-block code[class*="language-"] {
+    font-family: 'Source Code Pro', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.84rem;
+    line-height: 1.7;
+}
+
+/* Line numbers - just style, let Prism handle positioning */
+.code-block .line-numbers-rows {
+    border-right: none;
+}
+
+.code-block .line-numbers-rows > span::before {
+    color: inherit;
+}
+
+[data-theme="dark"] .code-block .line-numbers-rows > span::before {
+    color: #6272a4;
+}
+
+[data-theme="light"] .code-block .line-numbers-rows > span::before {
+    color: #a0a0a0;
+}
+
+/* Toolbar (copy button) */
+.code-block div.code-toolbar > .toolbar {
+    top: 8px;
+    right: 12px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.code-block div.code-toolbar:hover > .toolbar {
+    opacity: 1;
+}
+
+.code-block div.code-toolbar > .toolbar > .toolbar-item > button,
+.code-block div.code-toolbar > .toolbar > .toolbar-item > span {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'Source Code Pro', monospace;
+}
+
+[data-theme="dark"] .code-block div.code-toolbar > .toolbar > .toolbar-item > button {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ccc;
+    box-shadow: none;
+}
+
+[data-theme="dark"] .code-block div.code-toolbar > .toolbar > .toolbar-item > button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+[data-theme="light"] .code-block div.code-toolbar > .toolbar > .toolbar-item > button {
+    background: rgba(0, 0, 0, 0.08);
+    color: #555;
+    box-shadow: none;
+}
+
+[data-theme="light"] .code-block div.code-toolbar > .toolbar > .toolbar-item > button:hover {
+    background: rgba(0, 0, 0, 0.15);
+    color: #333;
+}
+
+/* Scrollbar */
+.code-block pre::-webkit-scrollbar {
+    height: 6px;
+}
+
+.code-block pre::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+}
+
+[data-theme="dark"] .code-block pre::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="light"] .code-block pre::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+}
