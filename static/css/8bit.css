@@ -912,11 +912,14 @@ a:hover {
 }
 
 .post-content pre {
-    background: var(--code-bg);
-    border: 2px solid var(--border-dim);
     padding: 16px;
     overflow-x: auto;
     margin: 1.5em 0;
+}
+
+.post-content .highlight pre {
+    padding: 0;
+    margin: 0;
 }
 
 .post-content pre code {
