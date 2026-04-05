@@ -26,6 +26,17 @@
             {{ $post := . }}
             <article class="post-card pixel-border">
                 <div class="post-card-inner">
+                    {{ with .Params.image }}
+                    <div class="post-thumbnail">
+                        <a href="{{ $post.RelPermalink }}">
+                            {{ $img := $post.Resources.GetMatch . }}
+                            {{ if $img }}
+                                {{ $resized := $img.Fit "800x600" }}
+                                <img src="{{ $resized.RelPermalink }}" alt="{{ $post.Title }}" loading="lazy">
+                            {{ end }}
+                        </a>
+                    </div>
+                    {{ end }}
                     <div class="post-info">
                         <div class="post-categories">
                             {{ range .Params.categories }}
