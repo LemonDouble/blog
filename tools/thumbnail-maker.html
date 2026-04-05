@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>썸네일 제작기</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Pretendard', sans-serif;
+  background: #1a1a2e;
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+h1 { font-size: 20px; margin-bottom: 16px; color: #fff; }
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.toolbar button, .toolbar label {
+  padding: 8px 14px;
+  border: 1px solid #444;
+  background: #2a2a4a;
+  color: #e0e0e0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'Pretendard', sans-serif;
+  transition: background 0.15s;
+}
+.toolbar button:hover, .toolbar label:hover { background: #3a3a6a; }
+.toolbar input[type="file"] { display: none; }
+.toolbar .sep { width: 1px; height: 28px; background: #444; }
+
+.canvas-wrap {
+  position: relative;
+  border: 2px solid #555;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+#canvas {
+  width: 820px;
+  height: 250px;
+  background: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.element {
+  position: absolute;
+  cursor: move;
+  user-select: none;
+}
+.element.selected {
+  outline: 2px solid #4a90d9;
+  outline-offset: 2px;
+}
+.element .resize-handle {
+  display: none;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #4a90d9;
+  border: 1px solid #fff;
+  border-radius: 2px;
+}
+.element.selected .resize-handle { display: block; }
+.resize-handle.se { right: -5px; bottom: -5px; cursor: se-resize; }
+.resize-handle.sw { left: -5px; bottom: -5px; cursor: sw-resize; }
+.resize-handle.ne { right: -5px; top: -5px; cursor: ne-resize; }
+.resize-handle.nw { left: -5px; top: -5px; cursor: nw-resize; }
+
+.rotate-handle {
+  display: none;
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #e67e22;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: grab;
+}
+.rotate-handle::after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 14px;
+  background: #e67e22;
+  left: 50%;
+  top: 12px;
+  transform: translateX(-50%);
+}
+.element.selected .rotate-handle { display: block; }
+
+.guide-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 99999;
+}
+.guide-overlay.hidden { display: none; }
+.guide-zone {
+  position: absolute;
+  border: 2px dashed;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+.guide-zone.image-zone {
+  left: 15px; top: 10px;
+  width: 340px; height: 230px;
+  background: rgba(52, 152, 219, 0.08);
+  border-color: rgba(52, 152, 219, 0.4);
+  color: rgba(52, 152, 219, 0.5);
+}
+.guide-zone.text-zone {
+  left: 375px; top: 20px;
+  width: 430px; height: 210px;
+  background: rgba(231, 76, 60, 0.06);
+  border-color: rgba(231, 76, 60, 0.35);
+  color: rgba(231, 76, 60, 0.45);
+}
+
+.element img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+.text-element {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  white-space: pre-wrap;
+  min-width: 20px;
+  min-height: 20px;
+  line-height: 1.4;
+}
+.text-element:focus {
+  outline: none;
+}
+
+.props-panel {
+  margin-top: 16px;
+  background: #2a2a4a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 50px;
+  width: 820px;
+  font-size: 13px;
+}
+.props-panel label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.props-panel input[type="number"] {
+  width: 60px;
+  padding: 4px 6px;
+  background: #1a1a2e;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 13px;
+  font-family: 'Pretendard', sans-serif;
+}
+.props-panel input[type="color"] {
+  width: 32px;
+  height: 28px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+}
+.props-panel select {
+  padding: 4px 6px;
+  background: #1a1a2e;
+  border: 1px solid #555;
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-size: 13px;
+  font-family: 'Pretendard', sans-serif;
+}
+.props-panel button {
+  padding: 4px 10px;
+  background: #c0392b;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: 'Pretendard', sans-serif;
+}
+.color-presets {
+  display: flex;
+  gap: 4px;
+}
+.color-preset {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: 2px solid #555;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.color-preset:hover { border-color: #fff; }
+.color-preset.active { border-color: #4a90d9; }
+
+.hint {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+}
+.layer-list {
+  margin-top: 12px;
+  background: #2a2a4a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 8px;
+  width: 820px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+.layer-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.layer-item:hover { background: #3a3a5a; }
+.layer-item.active { background: #3a3a6a; }
+.layer-item .layer-actions {
+  display: flex;
+  gap: 4px;
+}
+.layer-item .layer-actions button {
+  padding: 2px 6px;
+  background: #444;
+  border: none;
+  border-radius: 3px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 11px;
+}
+.layer-item .layer-actions button:hover { background: #555; }
+</style>
+</head>
+<body>
+
+<h1>썸네일 제작기 (820 x 250)</h1>
+
+<div class="toolbar">
+  <label>
+    <span>이미지 추가</span>
+    <input type="file" id="imageInput" accept="image/*" multiple>
+  </label>
+  <button id="addTextBtn">텍스트 추가</button>
+  <div class="sep"></div>
+  <button id="guideBtn">가이드 ON</button>
+  <div class="sep"></div>
+  <button id="exportBtn">PNG 내보내기</button>
+</div>
+
+<div class="canvas-wrap">
+  <div id="canvas">
+    <div class="guide-overlay hidden" id="guideOverlay">
+      <div class="guide-zone image-zone">이미지 영역</div>
+      <div class="guide-zone text-zone">텍스트 영역</div>
+    </div>
+  </div>
+</div>
+
+<div class="props-panel" id="propsPanel">
+  <span style="color:#888">요소를 선택하세요</span>
+</div>
+
+<div class="layer-list" id="layerList"></div>
+
+<div class="hint">
+  클릭: 선택 | 드래그: 이동 | 모서리: 크기조절 | 더블클릭 텍스트: 편집 | 텍스트 드래그 선택 후 색상 클릭: 부분 색상 변경 | Delete: 삭제 | Ctrl+D: 복제
+</div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const propsPanel = document.getElementById('propsPanel');
+const layerList = document.getElementById('layerList');
+let elements = [];
+let selectedEl = null;
+let zCounter = 1;
+
+// --- Element creation ---
+function createBaseElement(x, y, w, h) {
+  const el = document.createElement('div');
+  el.className = 'element';
+  el.style.left = x + 'px';
+  el.style.top = y + 'px';
+  el.style.width = w + 'px';
+  el.style.height = h + 'px';
+  el.style.zIndex = zCounter++;
+
+  ['se','sw','ne','nw'].forEach(pos => {
+    const handle = document.createElement('div');
+    handle.className = 'resize-handle ' + pos;
+    handle.dataset.handle = pos;
+    el.appendChild(handle);
+  });
+
+  const rotHandle = document.createElement('div');
+  rotHandle.className = 'rotate-handle';
+  el.appendChild(rotHandle);
+
+  el.dataset.rotation = '0';
+
+  canvas.appendChild(el);
+  elements.push(el);
+  setupDrag(el);
+  setupResize(el);
+  setupRotate(el);
+  selectElement(el);
+  updateLayerList();
+  return el;
+}
+
+function addImage(src, name) {
+  const img = new Image();
+  img.onload = () => {
+    let w = img.naturalWidth, h = img.naturalHeight;
+    const maxW = 400, maxH = 230;
+    if (w > maxW || h > maxH) {
+      const scale = Math.min(maxW / w, maxH / h);
+      w = Math.round(w * scale);
+      h = Math.round(h * scale);
+    }
+    const el = createBaseElement(20, Math.round((250 - h) / 2), w, h);
+    el.dataset.type = 'image';
+    el.dataset.name = name || 'image';
+    const imgEl = document.createElement('img');
+    imgEl.src = src;
+    imgEl.draggable = false;
+    el.insertBefore(imgEl, el.firstChild);
+  };
+  img.src = src;
+}
+
+function addText() {
+  const el = createBaseElement(300, 60, 480, 130);
+  el.dataset.type = 'text';
+  el.dataset.name = 'text';
+  const textDiv = document.createElement('div');
+  textDiv.className = 'text-element';
+  textDiv.contentEditable = false;
+  textDiv.innerHTML = '텍스트를 입력하세요';
+  el.insertBefore(textDiv, el.firstChild);
+
+  textDiv.addEventListener('dblclick', (e) => {
+    e.stopPropagation();
+    textDiv.contentEditable = true;
+    textDiv.focus();
+    const sel = window.getSelection();
+    sel.selectAllChildren(textDiv);
+  });
+  textDiv.addEventListener('blur', () => {
+    textDiv.contentEditable = false;
+  });
+  textDiv.addEventListener('mousedown', (e) => {
+    if (textDiv.contentEditable === 'true') {
+      e.stopPropagation();
+    }
+  });
+  textDiv.addEventListener('input', () => updateLayerList());
+}
+
+// --- Selection ---
+function selectElement(el) {
+  if (selectedEl) selectedEl.classList.remove('selected');
+  selectedEl = el;
+  if (el) {
+    el.classList.add('selected');
+    updatePropsPanel();
+  } else {
+    propsPanel.innerHTML = '<span style="color:#888">요소를 선택하세요</span>';
+  }
+  updateLayerList();
+}
+
+canvas.addEventListener('mousedown', (e) => {
+  if (e.target === canvas) selectElement(null);
+});
+
+// --- Drag ---
+function setupDrag(el) {
+  let startX, startY, origX, origY, dragging = false;
+
+  el.addEventListener('mousedown', (e) => {
+    if (e.target.classList.contains('resize-handle') || e.target.classList.contains('rotate-handle')) return;
+    const textEl = el.querySelector('.text-element');
+    if (textEl && textEl.contentEditable === 'true') return;
+
+    e.preventDefault();
+    selectElement(el);
+    dragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    origX = parseInt(el.style.left);
+    origY = parseInt(el.style.top);
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    el.style.left = (origX + e.clientX - startX) + 'px';
+    el.style.top = (origY + e.clientY - startY) + 'px';
+    updatePropsPanel();
+  });
+
+  document.addEventListener('mouseup', () => { dragging = false; });
+}
+
+// --- Resize ---
+function setupResize(el) {
+  let handle, startX, startY, origW, origH, origL, origT, resizing = false;
+
+  el.addEventListener('mousedown', (e) => {
+    if (!e.target.classList.contains('resize-handle')) return;
+    e.preventDefault();
+    e.stopPropagation();
+    selectElement(el);
+    resizing = true;
+    handle = e.target.dataset.handle;
+    startX = e.clientX;
+    startY = e.clientY;
+    origW = parseInt(el.style.width);
+    origH = parseInt(el.style.height);
+    origL = parseInt(el.style.left);
+    origT = parseInt(el.style.top);
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!resizing) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    let newW = origW, newH = origH, newL = origL, newT = origT;
+
+    if (handle.includes('e')) { newW = Math.max(20, origW + dx); }
+    if (handle.includes('w')) { newW = Math.max(20, origW - dx); newL = origL + dx; }
+    if (handle.includes('s')) { newH = Math.max(20, origH + dy); }
+    if (handle.includes('n')) { newH = Math.max(20, origH - dy); newT = origT + dy; }
+
+    // Shift: keep aspect ratio
+    if (e.shiftKey && el.dataset.type === 'image') {
+      const ratio = origW / origH;
+      if (Math.abs(dx) > Math.abs(dy)) {
+        newH = Math.round(newW / ratio);
+      } else {
+        newW = Math.round(newH * ratio);
+      }
+    }
+
+    el.style.width = newW + 'px';
+    el.style.height = newH + 'px';
+    el.style.left = newL + 'px';
+    el.style.top = newT + 'px';
+    updatePropsPanel();
+  });
+
+  document.addEventListener('mouseup', () => { resizing = false; });
+}
+
+// --- Rotate ---
+function setupRotate(el) {
+  let rotating = false, centerX, centerY;
+
+  const rotHandle = el.querySelector('.rotate-handle');
+  rotHandle.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    selectElement(el);
+    rotating = true;
+    const rect = el.getBoundingClientRect();
+    centerX = rect.left + rect.width / 2;
+    centerY = rect.top + rect.height / 2;
+    rotHandle.style.cursor = 'grabbing';
+  });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!rotating) return;
+    const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX) * (180 / Math.PI) + 90;
+    let deg = Math.round(angle);
+    // Snap to 0/90/180/270 when within 5 degrees
+    if (e.shiftKey) deg = Math.round(deg / 15) * 15;
+    el.dataset.rotation = deg;
+    el.style.transform = `rotate(${deg}deg)`;
+    updatePropsPanel();
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (rotating) rotHandle.style.cursor = 'grab';
+    rotating = false;
+  });
+}
+
+// --- Props panel ---
+function updatePropsPanel() {
+  if (!selectedEl) return;
+  const type = selectedEl.dataset.type;
+  const x = parseInt(selectedEl.style.left);
+  const y = parseInt(selectedEl.style.top);
+  const w = parseInt(selectedEl.style.width);
+  const h = parseInt(selectedEl.style.height);
+
+  let html = `
+    <label>X <input type="number" id="px" value="${x}"></label>
+    <label>Y <input type="number" id="py" value="${y}"></label>
+    <label>W <input type="number" id="pw" value="${w}"></label>
+    <label>H <input type="number" id="ph" value="${h}"></label>
+    <label>↻ <input type="number" id="prot" value="${parseInt(selectedEl.dataset.rotation)||0}" step="1">°</label>
+  `;
+
+  if (type === 'text') {
+    const textEl = selectedEl.querySelector('.text-element');
+    const fontSize = parseInt(window.getComputedStyle(textEl).fontSize);
+    const fontWeight = window.getComputedStyle(textEl).fontWeight;
+    const color = rgbToHex(window.getComputedStyle(textEl).color);
+    html += `
+      <div class="sep"></div>
+      <label>크기 <input type="number" id="pfontsize" value="${fontSize}" min="8" max="120"></label>
+      <label>굵기
+        <select id="pfontweight">
+          <option value="400" ${fontWeight==='400'?'selected':''}>Regular</option>
+          <option value="500" ${fontWeight==='500'?'selected':''}>Medium</option>
+          <option value="600" ${fontWeight==='600'?'selected':''}>SemiBold</option>
+          <option value="700" ${fontWeight==='700'||fontWeight==='bold'?'selected':''}>Bold</option>
+          <option value="800" ${fontWeight==='800'?'selected':''}>ExtraBold</option>
+          <option value="900" ${fontWeight==='900'?'selected':''}>Black</option>
+        </select>
+      </label>
+      <label>색상 <input type="color" id="pcolor" value="${color}"></label>
+      <div class="color-presets">
+        <div class="color-preset" style="background:#000000" data-color="#000000" title="검정"></div>
+        <div class="color-preset" style="background:#ff0000" data-color="#ff0000" title="빨강"></div>
+        <div class="color-preset" style="background:#e74c3c" data-color="#e74c3c" title="주홍"></div>
+        <div class="color-preset" style="background:#3498db" data-color="#3498db" title="파랑"></div>
+        <div class="color-preset" style="background:#ffffff; border:1px solid #999" data-color="#ffffff" title="흰색"></div>
+      </div>
+    `;
+  }
+
+  html += `<div style="flex:1"></div><button id="deleteEl">삭제</button>`;
+  propsPanel.innerHTML = html;
+
+  // Bind events
+  ['px','py','pw','ph'].forEach(id => {
+    const inp = document.getElementById(id);
+    if (!inp) return;
+    inp.addEventListener('change', () => {
+      if (id === 'px') selectedEl.style.left = inp.value + 'px';
+      if (id === 'py') selectedEl.style.top = inp.value + 'px';
+      if (id === 'pw') selectedEl.style.width = inp.value + 'px';
+      if (id === 'ph') selectedEl.style.height = inp.value + 'px';
+    });
+  });
+  document.getElementById('prot').addEventListener('change', (e) => {
+    const deg = parseInt(e.target.value) || 0;
+    selectedEl.dataset.rotation = deg;
+    selectedEl.style.transform = `rotate(${deg}deg)`;
+  });
+
+  if (type === 'text') {
+    const textEl = selectedEl.querySelector('.text-element');
+    document.getElementById('pfontsize').addEventListener('change', (e) => {
+      textEl.style.fontSize = e.target.value + 'px';
+    });
+    document.getElementById('pfontweight').addEventListener('change', (e) => {
+      textEl.style.fontWeight = e.target.value;
+    });
+    document.getElementById('pcolor').addEventListener('input', (e) => {
+      textEl.style.color = e.target.value;
+    });
+    document.querySelectorAll('.color-preset').forEach(p => {
+      p.addEventListener('mousedown', (e) => e.preventDefault());
+      p.addEventListener('click', () => {
+        const color = p.dataset.color;
+        const sel = window.getSelection();
+        if (sel.rangeCount > 0 && !sel.isCollapsed && textEl.contains(sel.anchorNode)) {
+          document.execCommand('foreColor', false, color);
+        } else {
+          textEl.style.color = color;
+        }
+        document.getElementById('pcolor').value = color;
+      });
+    });
+    document.getElementById('pcolor').addEventListener('mousedown', (e) => {
+      // color picker를 열 때 선택 영역 보존은 불가하므로 input 이벤트에서 처리
+    });
+    document.getElementById('pcolor').addEventListener('input', (e) => {
+      const sel = window.getSelection();
+      if (sel.rangeCount > 0 && !sel.isCollapsed && textEl.contains(sel.anchorNode)) {
+        document.execCommand('foreColor', false, e.target.value);
+      } else {
+        textEl.style.color = e.target.value;
+      }
+    });
+  }
+
+  document.getElementById('deleteEl').addEventListener('click', deleteSelected);
+}
+
+function deleteSelected() {
+  if (!selectedEl) return;
+  elements = elements.filter(e => e !== selectedEl);
+  selectedEl.remove();
+  selectedEl = null;
+  propsPanel.innerHTML = '<span style="color:#888">요소를 선택하세요</span>';
+  updateLayerList();
+}
+
+// --- Layer list ---
+function updateLayerList() {
+  layerList.innerHTML = '';
+  [...elements].reverse().forEach((el, ri) => {
+    const i = elements.length - 1 - ri;
+    const item = document.createElement('div');
+    item.className = 'layer-item' + (el === selectedEl ? ' active' : '');
+    const type = el.dataset.type;
+    let name = type === 'image' ? ('이미지: ' + (el.dataset.name||'')) : '';
+    if (type === 'text') {
+      const t = el.querySelector('.text-element');
+      name = '텍스트: ' + (t.textContent||'').substring(0, 20);
+    }
+    item.innerHTML = `
+      <span>${name}</span>
+      <div class="layer-actions">
+        <button data-action="up" title="위로">▲</button>
+        <button data-action="down" title="아래로">▼</button>
+      </div>
+    `;
+    item.addEventListener('click', (e) => {
+      if (e.target.tagName === 'BUTTON') return;
+      selectElement(el);
+    });
+    item.querySelector('[data-action="up"]').addEventListener('click', () => {
+      if (i < elements.length - 1) {
+        const z1 = el.style.zIndex;
+        const z2 = elements[i+1].style.zIndex;
+        el.style.zIndex = z2;
+        elements[i+1].style.zIndex = z1;
+        [elements[i], elements[i+1]] = [elements[i+1], elements[i]];
+        updateLayerList();
+      }
+    });
+    item.querySelector('[data-action="down"]').addEventListener('click', () => {
+      if (i > 0) {
+        const z1 = el.style.zIndex;
+        const z2 = elements[i-1].style.zIndex;
+        el.style.zIndex = z2;
+        elements[i-1].style.zIndex = z1;
+        [elements[i], elements[i-1]] = [elements[i-1], elements[i]];
+        updateLayerList();
+      }
+    });
+    layerList.appendChild(item);
+  });
+}
+
+// --- Keyboard ---
+document.addEventListener('keydown', (e) => {
+  if (!selectedEl) return;
+  const textEl = selectedEl.querySelector('.text-element');
+  if (textEl && textEl.contentEditable === 'true') return;
+
+  if (e.key === 'Delete' || e.key === 'Backspace') {
+    e.preventDefault();
+    deleteSelected();
+  }
+  if (e.key === 'd' && e.ctrlKey) {
+    e.preventDefault();
+    duplicateSelected();
+  }
+  // Arrow key nudge
+  const step = e.shiftKey ? 10 : 1;
+  if (e.key === 'ArrowLeft') { selectedEl.style.left = (parseInt(selectedEl.style.left) - step) + 'px'; updatePropsPanel(); }
+  if (e.key === 'ArrowRight') { selectedEl.style.left = (parseInt(selectedEl.style.left) + step) + 'px'; updatePropsPanel(); }
+  if (e.key === 'ArrowUp') { selectedEl.style.top = (parseInt(selectedEl.style.top) - step) + 'px'; updatePropsPanel(); e.preventDefault(); }
+  if (e.key === 'ArrowDown') { selectedEl.style.top = (parseInt(selectedEl.style.top) + step) + 'px'; updatePropsPanel(); e.preventDefault(); }
+});
+
+function duplicateSelected() {
+  if (!selectedEl) return;
+  const clone = selectedEl.cloneNode(true);
+  clone.style.left = (parseInt(selectedEl.style.left) + 20) + 'px';
+  clone.style.top = (parseInt(selectedEl.style.top) + 20) + 'px';
+  clone.style.zIndex = zCounter++;
+  clone.classList.remove('selected');
+  canvas.appendChild(clone);
+  elements.push(clone);
+  setupDrag(clone);
+  setupResize(clone);
+  setupRotate(clone);
+
+  // Re-bind text events
+  if (clone.dataset.type === 'text') {
+    const textDiv = clone.querySelector('.text-element');
+    textDiv.contentEditable = false;
+    textDiv.addEventListener('dblclick', (e) => {
+      e.stopPropagation();
+      textDiv.contentEditable = true;
+      textDiv.focus();
+    });
+    textDiv.addEventListener('blur', () => { textDiv.contentEditable = false; });
+    textDiv.addEventListener('mousedown', (e) => {
+      if (textDiv.contentEditable === 'true') e.stopPropagation();
+    });
+    textDiv.addEventListener('input', () => updateLayerList());
+  }
+  selectElement(clone);
+  updateLayerList();
+}
+
+// --- Image input ---
+document.getElementById('imageInput').addEventListener('change', (e) => {
+  Array.from(e.target.files).forEach(file => {
+    const reader = new FileReader();
+    reader.onload = (ev) => addImage(ev.target.result, file.name);
+    reader.readAsDataURL(file);
+  });
+  e.target.value = '';
+});
+
+// --- Add text ---
+document.getElementById('addTextBtn').addEventListener('click', addText);
+
+// --- Guide toggle ---
+const guideOverlay = document.getElementById('guideOverlay');
+const guideBtn = document.getElementById('guideBtn');
+guideBtn.addEventListener('click', () => {
+  guideOverlay.classList.toggle('hidden');
+  const on = !guideOverlay.classList.contains('hidden');
+  guideBtn.textContent = on ? '가이드 OFF' : '가이드 ON';
+  guideBtn.style.background = on ? '#3a6a3a' : '';
+});
+
+// --- Export ---
+document.getElementById('exportBtn').addEventListener('click', async () => {
+  // Deselect
+  if (selectedEl) selectedEl.classList.remove('selected');
+
+  // Hide handles & guide
+  canvas.querySelectorAll('.resize-handle, .rotate-handle').forEach(h => h.style.display = 'none');
+  guideOverlay.classList.add('hidden');
+
+  try {
+    const c = await html2canvas(canvas, {
+      width: 820,
+      height: 250,
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#ffffff',
+    });
+    const link = document.createElement('a');
+    link.download = 'cover.png';
+    link.href = c.toDataURL('image/png');
+    link.click();
+  } finally {
+    if (selectedEl) selectedEl.classList.add('selected');
+    canvas.querySelectorAll('.resize-handle, .rotate-handle').forEach(h => h.style.display = '');
+    // Restore guide if it was on
+    if (guideBtn.textContent === '가이드 OFF') guideOverlay.classList.remove('hidden');
+  }
+});
+
+// --- Helpers ---
+function rgbToHex(rgb) {
+  if (rgb.startsWith('#')) return rgb;
+  const m = rgb.match(/\d+/g);
+  if (!m) return '#000000';
+  return '#' + m.slice(0,3).map(x => parseInt(x).toString(16).padStart(2,'0')).join('');
+}
+
+// --- Clipboard paste ---
+document.addEventListener('paste', (e) => {
+  // Don't intercept paste when editing text
+  const textEl = selectedEl?.querySelector('.text-element');
+  if (textEl && textEl.contentEditable === 'true') return;
+
+  const items = e.clipboardData?.items;
+  if (!items) return;
+  for (const item of items) {
+    if (item.type.startsWith('image/')) {
+      e.preventDefault();
+      const blob = item.getAsFile();
+      const reader = new FileReader();
+      reader.onload = (ev) => addImage(ev.target.result, 'clipboard');
+      reader.readAsDataURL(blob);
+      return;
+    }
+  }
+});
+
+// --- Drag & Drop on canvas ---
+canvas.addEventListener('dragover', (e) => { e.preventDefault(); });
+canvas.addEventListener('drop', (e) => {
+  e.preventDefault();
+  Array.from(e.dataTransfer.files).forEach(file => {
+    if (!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => addImage(ev.target.result, file.name);
+    reader.readAsDataURL(file);
+  });
+});
+</script>
+</body>
+</html>
