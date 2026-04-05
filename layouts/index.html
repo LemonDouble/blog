@@ -54,7 +54,7 @@
                         {{ if $post.Description }}
                         <p class="post-excerpt">{{ $post.Description }}</p>
                         {{ else }}
-                        <p class="post-excerpt">{{ $post.Summary | truncate 120 }}</p>
+                        <p class="post-excerpt">{{ $post.Summary | plainify | truncate 120 }}</p>
                         {{ end }}
                     </div>
                 </div>
