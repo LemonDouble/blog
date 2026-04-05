@@ -367,6 +367,8 @@ function addImage(src, name) {
     const el = createBaseElement(20, Math.round((250 - h) / 2), w, h);
     el.dataset.type = 'image';
     el.dataset.name = name || 'image';
+    el.dataset.origW = w;
+    el.dataset.origH = h;
     const imgEl = document.createElement('img');
     imgEl.src = src;
     imgEl.draggable = false;
@@ -549,6 +551,16 @@ function updatePropsPanel() {
     <label>↻ <input type="number" id="prot" value="${parseInt(selectedEl.dataset.rotation)||0}" step="1">°</label>
   `;
 
+  if (type === 'image') {
+    const origW = parseInt(selectedEl.dataset.origW) || w;
+    const origH = parseInt(selectedEl.dataset.origH) || h;
+    const scalePercent = Math.round(w / origW * 100);
+    html += `
+      <div class="sep"></div>
+      <label>스케일 <input type="number" id="pscale" value="${scalePercent}" min="1" max="500" step="1">%</label>
+    `;
+  }
+
   if (type === 'text') {
     const textEl = selectedEl.querySelector('.text-element');
     const fontSize = parseInt(window.getComputedStyle(textEl).fontSize);
@@ -597,6 +609,20 @@ function updatePropsPanel() {
     selectedEl.dataset.rotation = deg;
     selectedEl.style.transform = `rotate(${deg}deg)`;
   });
+
+  if (type === 'image') {
+    document.getElementById('pscale').addEventListener('change', (e) => {
+      const scale = Math.max(1, parseInt(e.target.value) || 100) / 100;
+      const origW = parseInt(selectedEl.dataset.origW);
+      const origH = parseInt(selectedEl.dataset.origH);
+      const newW = Math.round(origW * scale);
+      const newH = Math.round(origH * scale);
+      selectedEl.style.width = newW + 'px';
+      selectedEl.style.height = newH + 'px';
+      document.getElementById('pw').value = newW;
+      document.getElementById('ph').value = newH;
+    });
+  }
 
   if (type === 'text') {
     const textEl = selectedEl.querySelector('.text-element');
