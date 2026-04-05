@@ -878,7 +878,7 @@ a:hover {
 }
 
 .post-content img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     border: 2px solid var(--border-dim);
     margin: 1.5em auto;
