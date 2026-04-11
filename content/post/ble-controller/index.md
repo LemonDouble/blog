@@ -82,7 +82,6 @@ AliExpress에서 TV 백라이트를 하나 샀습니다.
 
 그래서? 이 글은 [BLE Controller](https://github.com/Lemon-HACS/ble_controller)를 만들면서 겪은 기술적 문제들과 해결 과정을 정리한 글입니다.
 
----
 
 자 근데.. 삽질을 하려면.. 일단 블루투스 패킷 어떻게 뜯음..? 부터는 알아야하잖아요?
 
@@ -167,7 +166,6 @@ async def _keepalive_loop(self):
             await self._fire_on_connect()  # ping으로 연결 유지
 ```
 
----
 
 ### 2. 트러블슈팅 여정
 
@@ -220,7 +218,6 @@ async def write(self, char_uuid, data, response=False):
 
 **교훈**: BLE 디바이스를 제어하기 전에, nRF Connect 같은 앱으로 Characteristic Properties를 꼭 확인합시다. 디바이스가 ACK 주는지를 일단 좀 봐야합니다..
 
----
 
 #### 2-2. 0x0e Unlikely Error — Notify 구독 충돌
 
@@ -260,7 +257,6 @@ def _on_notify(self, _handle, data):
 
 구독/해제 반복이 사라지니 에러도 사라졌어요.
 
----
 
 #### 2-3. HA 엔티티 상태 업데이트 지연
 
@@ -287,7 +283,6 @@ self.async_write_ha_state()
 
 만약 디바이스 상태가 실제로 다르면? 그건 Keepalive 루프에서 주기적으로 디바이스 상태를 받아오니, 그걸 기준으로 교정합니다. 결과적으로 UI는 즉시 반응하고, 실제 상태와의 차이는 몇 초 내에 보정되는 구조예요.
 
----
 
 #### 2-4. BLE 연결 끊김 — Keepalive가 Keep Alive를 안 하던 문제
 
@@ -322,7 +317,6 @@ while True:
 1. 주기적 데이터 전송으로 디바이스가 연결을 안 끊음
 2. 상태 조회 응답으로 HA 엔티티 상태도 항상 최신
 
----
 
 #### 2-5. Keepalive 주기 — 디바이스마다 다르더라
 
@@ -356,7 +350,6 @@ if has_patterns and not notify_uuid:
     errors["base"] = "notify_uuid_required"
 ```
 
----
 
 ### 3. 실전 예시: uLamp TV 백라이트
 
@@ -420,7 +413,6 @@ HCI 로그에서 캡처한 전원 토글:
 - **Keepalive 5초**: 이 디바이스는 10초 주기에서도 idle disconnect 발생. 5초가 안정적
 - **Write With Response OFF 필수**: ffb1 Characteristic의 Properties가 0x06(Read + Write Without Response). Write With Response 켜면 ACK 기다리다 hang
 
----
 
 ### 4. 마무리
 

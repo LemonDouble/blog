@@ -27,7 +27,6 @@ tags:
 
 그러면 한번 설정해 봅시다!
 
----
 
 ## 1. IAM Identity Center 설정하기
 

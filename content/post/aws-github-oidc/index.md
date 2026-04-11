@@ -64,7 +64,6 @@ OIDC 연결을 통해 가능합니다! 또한, AWS가 권장하는 보안 모범
 
 한번만 세팅해 두면 Actions 돌리기가 꽤 편해지는 방법을 소개합니다!
 
----
 
 * 설정 방식은 공식 문서가 있습니다. 혹시 막히는 부분이 있다면 공식 문서를 참고하세요 ( [Link](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services) )
 
@@ -152,7 +151,6 @@ jobs:
 
 ![](2023-01-22-12-43-30.png)
 
----
 
 ### Appendix 1. 보안 강화하기
 

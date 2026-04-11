@@ -140,7 +140,6 @@ data class Money(val amount : Long){
 val sumMoney = money1 + money2
 ```
 
----
 
 ### 5. 조건문
 
@@ -292,7 +291,6 @@ printAll(*array) // spread 연산자
 printAll("Hello", "World", "!!")
 ```
 
----
 
 ### 9. 클래스
 
@@ -738,7 +736,6 @@ class Grandeur: Car("Grandeur",3_000L)
 // 위 Enum class처럼 when절 사용 가능
 ```
 
----
 
 ### 15. Collections (컬렉션)
 
@@ -1089,7 +1086,6 @@ val flattenList : List<Fruit>
 	= fruitsInList.flatten();
 ```
 
----
 
 ### 19. TakeIf, scope Function
 
@@ -1159,4 +1155,3 @@ this 쓰는 경우 : 확장 함수를 파라미터로 받음 block: T.() -> R : 
 */
 ```
 
----

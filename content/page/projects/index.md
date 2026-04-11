@@ -12,8 +12,6 @@ menu:
 
 여태까지 진행했던 프로젝트들을 정리한 페이지입니다. 개인 프로젝트부터 오픈소스 기여, 학교 과제까지 다 모아봤습니다(...) 생각보다 많네요.
 
----
-
 ## 오픈소스 기여
 
 뭔가 오픈소스 기여로 큰 부귀영화를 누릴 생각은 없지만.. 오픈소스 이것저것 쓰다 보면 의외로 안 돌아가는 게 한번씩 있거든요? 누군가 고쳐주길 기다리는 것보단 내가 고치는 게 빠르니까, 그때그때 필요한 건 직접 고쳐서 PR을 넣고 있습니다.
@@ -34,9 +32,56 @@ menu:
 - [getsentry/sentry](https://github.com/getsentry/sentry) [#60571](https://github.com/getsentry/sentry/pull/60571) — 문서 읽고 있는데 오타가 보여서.. 여러분 오타 수정은 금방 PR 받아주거든요? 큰 오픈소스에 숟가락 얹기 최고의 방법입니다.
 - [stepci/stepci](https://github.com/stepci/stepci) [#66](https://github.com/stepci/stepci/pull/66) — CLI 기본 명령어 출력 추가. 처음으로 오픈소스에 PR을 넣어봤습니다!
 
----
 
 ## 2026
+
+### [lemon-design-system](https://github.com/LemonDouble/lemon-design-system)
+> AI 에이전트 친화적 개인 디자인 시스템
+
+- **언어**: <i class="devicon-css3-plain colored"></i> CSS
+- **상태**: 완료
+
+[awesome-design-md](https://github.com/VoltAgent/awesome-design-md)를 GeekNews에서 봤는데, 다른 웹사이트의 디자인을 뜯어서 프리셋으로 제공한다는 건 마음에 안 들지만.. AI가 일관적인 디자인 시스템을 가질 수 있다는 아이디어 자체는 좋다고 생각했습니다. 
+
+원래 프로젝트를 이것저것 많이 하다 보니 나만의 디자인 시스템으로, 딱 디자인만 봐도 아 LemonDouble 프로젝트구나! 하고 알 수 있었으면 좋겠다는 생각을 했습니다.
+
+그래서 실제로 아는 디자이너분께 Figma로 외주도 줘 본 적이 있었는데.. 제가 어찌됐건 서버 개발자라서.. 구현하기 힘든 부분도 있고, 프로젝트마다 계속 컴포넌트가 필요한데 그 때마다 디자이너한테 외주를 줄 수도 없어서 적용은 못 하고 있었거든요. 
+
+그런데 이 방법론이라면 가능할지도 모르겠다는 생각이 들어서, 제 favicon의 로고를 시작으로 Primary / Secondary 컬러 뽑은 뒤, 각 색상별로 채도/명도 조절하며 시안 뽑고 눈으로 검수하면서 맘에 들 때까지 수정해서 만들어 봤습니다.
+
+블로그부터 프론트 떠있는 모든 페이지에 적용했습니다. 잘 되더라구요.
+
+### [hayakoe](https://github.com/LemonDouble/hayakoe)
+> ONNX 최적화 일본어 TTS 라이브러리
+
+- **언어**: <i class="devicon-python-plain colored"></i> Python
+- **상태**: 개발중
+
+TTS 쪽에 [Bert-VITS](https://github.com/fishaudio/Bert-VITS2) → [Style-Bert-VITS2](https://github.com/litagin02/Style-Bert-VITS2)라는 계보가 있습니다.
+
+Bert-VITS는 Fish-Speech 팀의 예전 모델이고, 지금은 autoregression 방식의 Fish-Speech 레포로 업데이트가 넘어가면서 레포 업데이트가 멈췄거든요.
+
+여기에서 style 관련 layer를 하나 얹고, 일본어 데이터를 더 많이 학습시켜 일본어 강화 Pretrained 모델을 제공하는게 Style-Bert-VITS2 레포지토리입니다. 추가로 이런저런 개선이 있었구요.
+
+그런데 Style-Bert-VITS2 라이브러리 업데이트가 한 8개월 전에 멈춰서.. 어차피 업데이트 멈춘 김에, 코드정리 한번 해서 더 편하게 쓸 수 있게 만들고 싶어서 작업해보고 있습니다.
+
+#### 구현 완료 내용
+
+- pyopenjtalk-prebuilt 라이브러리가 업데이트가 멈춰, Python 3.12 이상에서 사용할 수 없는 문제를, 해당 레포를 포크떠서 최신 버전도 빌드되게 수정한 lemon-pyopenjtalk-prebuilt 라이브러리로 변경
+- TTS 텍스트 내부에 영어가 들어가면 묵음으로 처리되는 이슈를 수정. [loanwords_gairaigo](https://github.com/jamesohortle/loanwords_gairaigo) 데이터를 활용해서 약 22만개 영어->카타카나 매핑을 자동 지원하고, 커스텀 사전 등록 기능 단순화
+- BERT weight를 다이나믹 양자화 해서 약 메모리 사용량 50% 절감
+- Synthesizer를 ONNX로 최적화해 CPU에서 약 1.6x 속도 증가 달성
+- BERT / Synthesizer 모델 로드를 분리하여 BERT는 공통으로 사용, 화자마다 달라지는 Synthesizer만 따로 로드하게 하여 화자 하나마다 200MB정도의 메모리만 사용하게 개선
+- PyPI 패키지로 배포하여 `pip install hayakoe` 후 3줄 코드로 바로 사용 가능하게 정리
+- CPU 전용 환경에서는 PyTorch 설치 없이 ONNX Runtime만으로 추론 가능하도록 듀얼 백엔드 구조로 변경
+- 문장 단위 스트리밍 TTS(`stream()`) 지원. 긴 텍스트를 한꺼번에 처리하지 않고 문장별로 순차 생성하여 실시간 응답에 활용 가능
+- `generate()`에서 긴 텍스트를 자동으로 문장 단위 분할 처리하여 약 37배 속도 향상 (400자 기준 143초 → 3.8초)
+- `weight_norm` → `parametrizations.weight_norm` 마이그레이션으로 PyTorch 2.x+ 호환성 확보
+
+#### 구현중인 내용
+
+- 데이터 추출을 하고 싶은 영상에서 학습 데이터를 자동으로 만들어주는 전처리 파이프라인 구현중. 영상 업로드 → 오디오 추출 → 배경음 분리 → Whisper 자막 생성 → 데이터셋 자동 구성까지 한 흐름으로 처리
+- 데이터셋 전처리부터 모델 학습, 품질 리포트 생성까지 한 흐름으로 진행할 수 있는 인터랙티브 학습 CLI 구현중
 
 ### super-arona `비공개`
 > 아로나와 대화하기 - LLM 기반 3D MMD 캐릭터 뷰어
@@ -109,25 +154,35 @@ Claude Code한테 일 시켜놓고 자리 비울 때 쓰려고 만든 MCP 서버
 - **실시간 진행상황**: Claude가 Read, Edit, Bash 같은 도구를 쓸 때마다 Slack 메시지가 실시간으로 업데이트됩니다.
 - **메시지 큐잉**: 클로드 작업중일 때 슬랙 쓰레드로 메시지 달아놓으면, 작업 끝나는 대로 나머지 이어서 처리합니다.
 - **이모지 리액션으로 취소**: ❌ 리액션 달면 작업이 중단됩니다.
+- **모델/effort 설정**: 스레드 내 명령어로 모델(sonnet/opus/haiku)과 effort 레벨을 변경할 수 있고, 글로벌 기본값도 저장 가능합니다.
+- **토큰 사용량 표시**: 응답 완료 시 모델명, 토큰 수, 캐시 히트율, 비용, 소요 시간을 자동으로 보여줍니다.
 
 ### [ble_controller](https://github.com/Lemon-HACS/ble_controller)
 > BLE GATT Write 기반 범용 Home Assistant 컨트롤러
 
 - **언어**: <i class="devicon-python-plain colored"></i> Python
-- **상태**: 개발중
+- **상태**: 완료
 
 알리에서 싸구려 TV 연동 백라이트를 샀는데, 앱 연동은 되는데 서드파티 연동이 따로 없어서.. 이 기회에 BLE HCI 덤프도 배워보자 싶어서 시작한 프로젝트입니다.
-전용 HA 통합이 없는 BLE 기기를 UI에서 Service UUID/Characteristic UUID/hex 페이로드만 지정하면 제어할 수 있는 범용 컨트롤러입니다.
+전용 HA 통합이 없는 BLE 기기를 UI에서 Service UUID/Characteristic UUID/hex 페이로드만 지정하면 제어할 수 있는 범용 컨트롤러입니다. [개발기 블로그 글](/p/ble-controller/)도 썼습니다.
 
 ### [extended_graph_agents](https://github.com/Lemon-HACS/extended_graph_agents)
 > LangGraph 스타일 시각적 멀티에이전트 워크플로우 에디터
 
 - **언어**: <i class="devicon-typescript-plain colored"></i> TypeScript
-- **상태**: 개발중
+- **상태**: 개발중 (방향 전환)
 
-LangGraph 보고 재밌겠다 싶어서 시작했습니다.
-홈어시스턴트에서 Entity가 점점 늘어나니까 한 Agent가 전부 처리하기엔 너무 부담되는데, 나눌 수 없을까? 해서 만들어본 프로젝트입니다.
-HA 사이드바에서 React Flow 캔버스로 노드를 드래그앤드롭해서 워크플로우를 구성하고, 저장하면 자동으로 HA Conversation Agent로 등록됩니다.
+LangGraph를 보고 영감을 받아 제작했습니다.
+
+홈어시스턴트에서 Entity가 점점 늘어나니까 한 Agent가 전부 처리하기엔 너무 부담되는데, 적절한 subagent로 나눌 수 없을까? 해서 만들어본 프로젝트입니다. 지금만 해도 엔티티가 한 300개 되거든요.
+
+처음에는 React Flow 캔버스로 노드를 드래그앤드롭해서 워크플로우를 직접 구성하는 방향이었는데, Claude Code를 열심히 쓰다 보니 깨달은 게 있습니다. 
+
+직접 그래프를 만들고 싶은 니즈가 사실 거의 없더라고요. 어떻게 구성해야할지도 사실 한 번 돌려봐야 감이 오는 것 같고..
+
+그래서 v2부터는 Claude Code처럼 자연어로 워크플로우를 계속 업데이트하고, 정말 안 되는 부분만 마지막에 직접 다듬는 방향으로 선회했습니다. 
+
+자연어로 설명하면 AI가 LangGraph 스타일 워크플로우를 자동 생성/수정하고, 저장하면 HA Conversation Agent로 바로 등록됩니다.
 
 ### [lemon_tts](https://github.com/Lemon-HACS/lemon_tts)
 > 다국어 입력→일본어 TTS Home Assistant 통합
@@ -181,7 +236,6 @@ Vault에서 제일 용량 큰 게 이미지라.. 클립보드 붙여넣기나 �
 
 pyopenjtalk이 Python 3.10 이상을 지원 안 해서 직접 빌드해서 공개한 패키지입니다. CMake/C++ 컴파일러 없이 pip install만으로 설치 가능합니다.
 
----
 
 ## 2025
 
@@ -201,7 +255,6 @@ GitHub Actions 러너에 [Skopeo](https://github.com/containers/skopeo)를 설�
 
 [sns.lemondouble.com](https://sns.lemondouble.com)에서 약 1년째 운영중인 Misskey 인스턴스입니다. `lemon` 브랜치에서 아이콘 변경 같은 커스터마이징을 하면서, 업스트림 릴리즈랑 꾸준히 싱크를 맞추고 있습니다.
 
----
 
 ## 2024
 
@@ -234,7 +287,6 @@ OpenWakeWord로 커스텀 웨이크워드를 학습시켜서 "아로나"라고 �
 웨이크워드 학습까지는 했는데.. 펌웨어 짜기가 아찔하고, 내장 마이크 성능도 안 좋고, 이 방향이 맞나 잘 모르겠어서 드랍했습니다.
 저는 움직이는 화면에서 아로나를 보고 싶었거든요.
 
----
 
 ## 2023
 
@@ -327,7 +379,6 @@ ChatGPT 검색할 때 한국어 프롬프트를 자동으로 영어로 번역해
 
 갑자기 트위터에 일론 머스크가 도지코인 로고를 띄워서(...) 이걸 날려버리고 싶은 마음에 처음으로 크롬 확장프로그램을 만들어봤습니다. 트위터 로고를 원래 주인인 Larry에게 돌려주는 확장입니다.
 
----
 
 ## 2022
 
@@ -355,7 +406,6 @@ LLM이 흔해진 지금은 BERT라고 하면 옛날 기술처럼 보이겠지만
 
 스카이림 모드팩 같은 100GB 넘는 대용량 파일을 전송할 방법이 필요해서 설계를 시작했는데.. 멀티파트 업로드는 뭐고, 저장 정책은 어떻게 하지, 하면서 생각할 게 너무너무 많아서 결국 드랍했습니다.
 
----
 
 ## 2021
 
@@ -442,7 +492,6 @@ OS를 직접 만들어보려 했는데.. 당시에는 너무 어려운 과제였
 
 "Architecture Patterns with Python" (Cosmic Python) 책을 읽으면서 DDD, Repository 패턴, Unit of Work, CQRS, 이벤트 드리븐 아키텍처 같은 것들을 학습한 레포지토리입니다. 많은 걸 배웠지만, 실제로 적용하는 건 또 다른 이야기더라는 걸 일하면서 깨달았습니다.
 
----
 
 ## 2017~2018
 

@@ -34,7 +34,6 @@ tags:
 
 ![](image1.png)
 
----
 
 `아래 환경은 Raspberry pi 4B + Ubuntu Server 22.04에서 진행했습니다.`
 
