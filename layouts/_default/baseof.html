@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}" data-theme="dark">
+<html lang="{{ .Site.LanguageCode }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,11 +8,11 @@
     <link rel="icon" href="{{ .Site.Params.favicon }}">
     <link rel="canonical" href="{{ .Permalink }}">
 
-    {{/* Pixel Font - Galmuri (Korean + English pixel font) */}}
+    {{/* Fonts */}}
     <link href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css" rel="stylesheet">
-    {{/* Devicon - Programming language icons */}}
-    <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css" rel="stylesheet">
+    {{/* Devicon */}}
+    <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet">
 
     {{/* OG Tags */}}
     <meta property="og:title" content="{{ .Title }}">
@@ -21,11 +21,11 @@
     <meta property="og:url" content="{{ .Permalink }}">
     {{ with .Params.image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
 
+    {{/* Styles */}}
     <link rel="stylesheet" href="/css/8bit.css">
 
-    {{/* Prism.js - Syntax Highlighting */}}
-    <link id="prism-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-dracula.min.css">
-    <link id="prism-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-one-light.min.css" disabled>
+    {{/* Prism.js - Syntax Highlighting (dark only) */}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-dracula.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css">
     <link rel="stylesheet" href="/css/code-block.css">
@@ -42,87 +42,75 @@
     {{ hugo.Generator }}
 </head>
 <body>
-    <div class="scanlines"></div>
-    <div class="container">
-        {{/* Header */}}
-        <header class="site-header">
-            <div class="header-left">
-                <a href="/" class="site-logo">
-                    <span class="logo-icon">&#9733;</span>
-                    <span class="logo-text">{{ .Site.Title }}</span>
-                </a>
+    {{/* Navigation */}}
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <img src="/img/brand/lemon-logo.webp" alt="Logo">
+                <span>{{ .Site.Title }}</span>
+            </a>
+            <div class="nav-links">
+                <a href="/" class="nav-link{{ if .IsHome }} active{{ end }}">Home</a>
+                <a href="/projects/" class="nav-link{{ if eq .RelPermalink "/projects/" }} active{{ end }}">Projects</a>
+                <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link">About</a>
             </div>
-            <nav class="header-nav">
-                <a href="/" class="nav-link{{ if .IsHome }} active{{ end }}">HOME</a>
-                <a href="/projects/" class="nav-link{{ if eq .RelPermalink "/projects/" }} active{{ end }}">PROJECTS</a>
-                <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link">ABOUT</a>
-            </nav>
-            <div class="header-actions">
+            <div class="nav-actions">
                 <div class="search-wrapper">
-                    <span class="search-icon">&#9906;</span>
+                    <span class="search-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    </span>
                     <input type="text" class="search-input" id="searchInput" placeholder="검색..." autocomplete="off">
                     <div class="search-results" id="searchResults"></div>
                 </div>
-                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
-                    <span class="theme-icon">&#9788;</span>
+                <button class="nav-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                 </button>
             </div>
-        </header>
+        </div>
+    </nav>
 
-        {{/* Main */}}
+    {{/* Mobile Menu */}}
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="/" class="nav-link{{ if .IsHome }} active{{ end }}" onclick="closeMobileMenu()">Home</a>
+        <a href="/projects/" class="nav-link{{ if eq .RelPermalink "/projects/" }} active{{ end }}" onclick="closeMobileMenu()">Projects</a>
+        <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link" onclick="closeMobileMenu()">About</a>
+    </div>
+
+    {{/* Main */}}
+    <div class="container">
         <main class="site-main">
             {{ block "main" . }}{{ end }}
         </main>
-
-        {{/* Footer */}}
-        <footer class="site-footer">
-            <div class="footer-content">
-                <div class="footer-links">
-                    {{ with .Site.Params.social.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end }}
-                    {{ with .Site.Params.social.twitter }}<a href="{{ . }}" target="_blank" rel="noopener">Twitter</a>{{ end }}
-                    {{ with .Site.Params.social.email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
-                    {{ with .Site.Params.social.misskey }}<a href="{{ . }}" target="_blank" rel="noopener">Misskey</a>{{ end }}
-                </div>
-                <p class="footer-copy">&copy; {{ .Site.Params.footer.since }}-{{ now.Year }} {{ .Site.Params.footer.customText }} &bull; Powered by Hugo</p>
-                <p class="footer-pixel">PRESS START TO CONTINUE</p>
-            </div>
-        </footer>
     </div>
 
+    {{/* Footer */}}
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                {{ with .Site.Params.social.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end }}
+                {{ with .Site.Params.social.twitter }}<a href="{{ . }}" target="_blank" rel="noopener">Twitter</a>{{ end }}
+                {{ with .Site.Params.social.email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
+                {{ with .Site.Params.social.misskey }}<a href="{{ . }}" target="_blank" rel="noopener">Misskey</a>{{ end }}
+            </div>
+            <p class="footer-copy">&copy; {{ .Site.Params.footer.since }}-{{ now.Year }} {{ .Site.Params.footer.customText }} &bull; Powered by Hugo</p>
+            <p class="footer-brand">LEMON BLOG</p>
+        </div>
+    </footer>
+
+    {{/* Mobile Menu Script */}}
     <script>
-    function setPrismTheme(theme) {
-        var dark = document.getElementById('prism-dark');
-        var light = document.getElementById('prism-light');
-        if (theme === 'dark') {
-            dark.removeAttribute('disabled');
-            light.setAttribute('disabled', '');
-        } else {
-            light.removeAttribute('disabled');
-            dark.setAttribute('disabled', '');
-        }
+    function toggleMobileMenu() {
+        var menu = document.getElementById('mobileMenu');
+        menu.classList.toggle('active');
     }
-    function toggleTheme() {
-        const html = document.documentElement;
-        const current = html.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
-        html.setAttribute('data-theme', next);
-        localStorage.setItem('theme', next);
-        document.querySelector('.theme-icon').innerHTML = next === 'dark' ? '&#9788;' : '&#9790;';
-        setPrismTheme(next);
+    function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.remove('active');
     }
-    (function() {
-        const saved = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', saved);
-        setPrismTheme(saved);
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelector('.theme-icon').innerHTML = saved === 'dark' ? '&#9788;' : '&#9790;';
-        });
-    })();
     </script>
 
+    {{/* Search */}}
     <script>
-    // Search
-    let searchIndex = null;
+    var searchIndex = null;
     (function() {
         fetch('/index.json')
             .then(function(r) { return r.json(); })
@@ -133,51 +121,53 @@
     var searchInput = document.getElementById('searchInput');
     var searchResults = document.getElementById('searchResults');
 
-    searchInput.addEventListener('input', function(e) {
-        var query = e.target.value.trim().toLowerCase();
-        if (!query || !searchIndex) {
-            searchResults.classList.remove('active');
-            searchResults.innerHTML = '';
-            return;
-        }
-        var matched = searchIndex.filter(function(item) {
-            return item.title.toLowerCase().includes(query) ||
-                   item.summary.toLowerCase().includes(query) ||
-                   (item.categories || []).some(function(c) { return c.toLowerCase().includes(query); }) ||
-                   (item.tags || []).some(function(t) { return t.toLowerCase().includes(query); });
-        }).slice(0, 10);
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            var query = e.target.value.trim().toLowerCase();
+            if (!query || !searchIndex) {
+                searchResults.classList.remove('active');
+                searchResults.innerHTML = '';
+                return;
+            }
+            var matched = searchIndex.filter(function(item) {
+                return item.title.toLowerCase().includes(query) ||
+                       item.summary.toLowerCase().includes(query) ||
+                       (item.categories || []).some(function(c) { return c.toLowerCase().includes(query); }) ||
+                       (item.tags || []).some(function(t) { return t.toLowerCase().includes(query); });
+            }).slice(0, 10);
 
-        if (matched.length === 0) {
-            searchResults.innerHTML = '<div class="search-empty">검색 결과가 없습니다.</div>';
-            searchResults.classList.add('active');
-            return;
-        }
-        searchResults.innerHTML = matched.map(function(item) {
-            var cats = (item.categories || []).map(function(c) {
-                return '<span class="search-cat">' + c + '</span>';
+            if (matched.length === 0) {
+                searchResults.innerHTML = '<div class="search-empty">검색 결과가 없습니다.</div>';
+                searchResults.classList.add('active');
+                return;
+            }
+            searchResults.innerHTML = matched.map(function(item) {
+                var cats = (item.categories || []).map(function(c) {
+                    return '<span class="search-cat">' + c + '</span>';
+                }).join('');
+                return '<a href="' + item.url + '" class="search-result-item">' +
+                    '<div class="search-result-title">' + item.title + '</div>' +
+                    '<div class="search-result-meta">' + item.date + (cats ? ' &middot; ' + cats : '') + '</div>' +
+                    '</a>';
             }).join('');
-            return '<a href="' + item.url + '" class="search-result-item">' +
-                '<div class="search-result-title">' + item.title + '</div>' +
-                '<div class="search-result-meta">' + item.date + (cats ? ' &middot; ' + cats : '') + '</div>' +
-                '</a>';
-        }).join('');
-        searchResults.classList.add('active');
-    });
-
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.search-wrapper')) {
-            searchResults.classList.remove('active');
-        }
-    });
-
-    searchInput.addEventListener('focus', function() {
-        if (searchInput.value.trim()) {
             searchResults.classList.add('active');
-        }
-    });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.search-wrapper')) {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        searchInput.addEventListener('focus', function() {
+            if (searchInput.value.trim()) {
+                searchResults.classList.add('active');
+            }
+        });
+    }
     </script>
 
-    {{/* Prism.js - Core + Plugins */}}
+    {{/* Prism.js */}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>

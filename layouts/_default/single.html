@@ -2,7 +2,7 @@
 {{ $page := . }}
 <article class="post-single">
     {{/* Post Header */}}
-    <header class="post-header pixel-border">
+    <header class="post-header">
         {{ with .Params.image }}
         <div class="post-cover">
             {{ $img := $page.Resources.GetMatch . }}
@@ -20,7 +20,7 @@
                 <a href="{{ "categories/" | absURL }}{{ . | urlize }}/" class="category-tag">{{ . }}</a>
                 {{ end }}
             </div>
-            <h1 class="post-title pixel-text">{{ .Title }}</h1>
+            <h1 class="post-title">{{ .Title }}</h1>
             <div class="post-meta">
                 <time>{{ .Date.Format (.Site.Params.dateFormat.published | default "2006.01.02") }}</time>
                 <span class="meta-sep">&#8226;</span>
@@ -31,16 +31,14 @@
 
     {{/* Table of Contents */}}
     {{ if .TableOfContents }}
-    <nav class="toc pixel-border">
-        <h3 class="toc-title pixel-text">
-            <span class="title-icon">&#9654;</span> TABLE OF CONTENTS
-        </h3>
+    <nav class="toc">
+        <h3 class="toc-title">Table of Contents</h3>
         {{ .TableOfContents }}
     </nav>
     {{ end }}
 
     {{/* Content */}}
-    <div class="post-content pixel-border">
+    <div class="post-content">
         {{ .Content }}
     </div>
 
@@ -54,16 +52,14 @@
     {{ end }}
 
     {{/* License */}}
-    <div class="post-license pixel-border">
+    <div class="post-license">
         <p>&copy; Licensed under CC BY-NC-SA 4.0</p>
     </div>
 
     {{/* Comments */}}
     {{ if .Site.Params.comments.enabled }}
-    <section class="post-comments pixel-border">
-        <h3 class="pixel-text">
-            <span class="title-icon">&#9654;</span> COMMENTS
-        </h3>
+    <section class="post-comments">
+        <h3 class="comments-title">Comments</h3>
         <script src="https://giscus.app/client.js"
             data-repo="{{ .Site.Params.comments.giscus.repo }}"
             data-repo-id="{{ .Site.Params.comments.giscus.repoID }}"

@@ -1,58 +1,137 @@
 /* =================================================================
-   Code Block - Prism.js Overrides (VS Code style)
+   Code Block - LemonDouble Design System
+   Traffic light header + Pretendard font + Custom syntax colors
    ================================================================= */
 
 /* Container */
 .code-block {
     position: relative;
     margin: 1.5em 0;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
+    background: var(--surface, #1C1816);
+    border: 1px solid var(--border, #2E2723);
 }
 
+/* Header with traffic lights */
+.code-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid var(--border, #2E2723);
+}
+
+.code-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.code-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot-red { background: #EF4444; }
+.dot-yellow { background: #FACC15; }
+.dot-green { background: #4ADE80; }
+
+.code-lang {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #5C524A;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Pre & Code */
 .code-block pre[class*="language-"] {
     margin: 0;
-    border-radius: 8px;
-    font-size: 0.84rem;
-    line-height: 1.7;
+    border-radius: 0;
+    background: transparent !important;
+    border: none !important;
+    font-size: 14px;
+    line-height: 1.8;
     tab-size: 4;
-}
-
-[data-theme="dark"] .code-block pre[class*="language-"] {
-    background: #1e1f29;
-    border: 1px solid #44475a;
-}
-
-[data-theme="light"] .code-block pre[class*="language-"] {
-    background: #fafafa;
+    padding: 16px 20px;
 }
 
 .code-block code[class*="language-"] {
-    font-family: 'Source Code Pro', 'Fira Code', 'Consolas', monospace;
-    font-size: 0.84rem;
-    line-height: 1.7;
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    font-variant-numeric: tabular-nums;
 }
 
-/* Line numbers - just style, let Prism handle positioning */
+/* Line numbers */
 .code-block .line-numbers-rows {
     border-right: none;
 }
 
 .code-block .line-numbers-rows > span::before {
-    color: inherit;
+    color: #5C524A;
 }
 
-[data-theme="dark"] .code-block .line-numbers-rows > span::before {
-    color: #6272a4;
+/* Syntax Token Colors (override Prism theme) */
+.code-block .token.keyword,
+.code-block .token.tag,
+.code-block .token.boolean,
+.code-block .token.important {
+    color: #F0B90B !important;
 }
 
-[data-theme="light"] .code-block .line-numbers-rows > span::before {
-    color: #a0a0a0;
+.code-block .token.string,
+.code-block .token.attr-value,
+.code-block .token.template-string {
+    color: #CD6B5E !important;
+}
+
+.code-block .token.class-name,
+.code-block .token.builtin,
+.code-block .token.function {
+    color: #4ADE80 !important;
+}
+
+.code-block .token.comment,
+.code-block .token.prolog,
+.code-block .token.doctype,
+.code-block .token.cdata {
+    color: #5C524A !important;
+}
+
+.code-block .token.number,
+.code-block .token.constant {
+    color: #CD6B5E !important;
+}
+
+.code-block .token.operator,
+.code-block .token.punctuation {
+    color: #A89E95 !important;
+}
+
+.code-block .token.property,
+.code-block .token.variable {
+    color: #F5F0EB !important;
+}
+
+.code-block .token.attr-name {
+    color: #F0B90B !important;
+}
+
+.code-block .token.selector {
+    color: #4ADE80 !important;
+}
+
+.code-block .token.regex {
+    color: #CD6B5E !important;
 }
 
 /* Toolbar (copy button) */
 .code-block div.code-toolbar > .toolbar {
-    top: 8px;
+    top: 44px;
     right: 12px;
     opacity: 0;
     transition: opacity 0.2s;
@@ -64,32 +143,18 @@
 
 .code-block div.code-toolbar > .toolbar > .toolbar-item > button,
 .code-block div.code-toolbar > .toolbar > .toolbar-item > span {
-    font-size: 0.72rem;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-family: 'Source Code Pro', monospace;
-}
-
-[data-theme="dark"] .code-block div.code-toolbar > .toolbar > .toolbar-item > button {
-    background: rgba(255, 255, 255, 0.1);
-    color: #ccc;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(240, 185, 11, 0.12);
+    color: #F0B90B;
     box-shadow: none;
 }
 
-[data-theme="dark"] .code-block div.code-toolbar > .toolbar > .toolbar-item > button:hover {
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-}
-
-[data-theme="light"] .code-block div.code-toolbar > .toolbar > .toolbar-item > button {
-    background: rgba(0, 0, 0, 0.08);
-    color: #555;
-    box-shadow: none;
-}
-
-[data-theme="light"] .code-block div.code-toolbar > .toolbar > .toolbar-item > button:hover {
-    background: rgba(0, 0, 0, 0.15);
-    color: #333;
+.code-block div.code-toolbar > .toolbar > .toolbar-item > button:hover {
+    background: rgba(240, 185, 11, 0.25);
 }
 
 /* Scrollbar */
@@ -99,12 +164,9 @@
 
 .code-block pre::-webkit-scrollbar-thumb {
     border-radius: 3px;
+    background: #2E2723;
 }
 
-[data-theme="dark"] .code-block pre::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-[data-theme="light"] .code-block pre::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.15);
+.code-block pre::-webkit-scrollbar-thumb:hover {
+    background: #3D3530;
 }
