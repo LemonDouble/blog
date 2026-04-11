@@ -23,19 +23,19 @@
 
                     {{/* primary */}}
                     <td class="skill-badges" data-level="주력">
-                        {{ range $items }}{{ if eq .level "primary" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}<span>{{ .name }}</span></span>
+                        {{ range $items }}{{ if eq .level "primary" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
                         {{ end }}{{ end }}
                     </td>
 
                     {{/* secondary */}}
                     <td class="skill-badges" data-level="가끔씩 써요">
-                        {{ range $items }}{{ if eq .level "secondary" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}<span>{{ .name }}</span></span>
+                        {{ range $items }}{{ if eq .level "secondary" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
                         {{ end }}{{ end }}
                     </td>
 
                     {{/* familiar */}}
                     <td class="skill-badges" data-level="할 줄은 알아요">
-                        {{ range $items }}{{ if eq .level "familiar" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}<span>{{ .name }}</span></span>
+                        {{ range $items }}{{ if eq .level "familiar" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
                         {{ end }}{{ end }}
                     </td>
                 </tr>

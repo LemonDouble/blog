@@ -7,6 +7,7 @@
   {{- range .items -}}
     {{- $skill := dict "name" .name "slug" .slug "level" .level "logo" .logo "color" .color "category" $category "category_slug" $categorySlug "category_order" $order -}}
     {{- with .logo_color -}}{{- $skill = merge $skill (dict "logo_color" .) -}}{{- end -}}
+    {{- with .custom_logo -}}{{- $skill = merge $skill (dict "custom_logo" .) -}}{{- end -}}
     {{- with .note -}}{{- $skill = merge $skill (dict "note" .) -}}{{- end -}}
     {{- $allSkills = $allSkills | append $skill -}}
   {{- end -}}
