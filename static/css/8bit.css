@@ -1360,16 +1360,26 @@ a:hover {
     font-family: var(--font-heading);
     font-weight: 700;
     font-size: 14px;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     padding: 12px 16px;
     text-align: left;
     border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+}
+
+.skills-table th:last-child {
+    border-right: none;
 }
 
 .skills-table td {
     padding: 16px;
     border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
     vertical-align: top;
+}
+
+.skills-table td:last-child {
+    border-right: none;
 }
 
 .skills-table tr:last-child td {
@@ -1394,15 +1404,18 @@ a:hover {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    padding: 4px 10px 4px 7px;
+    padding: 5px 10px 5px 7px;
     border-radius: 6px;
     font-family: var(--font-body);
     font-size: 12px;
     font-weight: 600;
-    color: #fff;
+    color: var(--text-primary);
+    background: color-mix(in srgb, var(--badge-color) 15%, transparent);
+    border: 1px solid color-mix(in srgb, var(--badge-color) 30%, transparent);
     text-decoration: none;
     line-height: 1;
     white-space: nowrap;
+    min-width: 72px;
 }
 
 .skill-badge img {
@@ -1410,6 +1423,7 @@ a:hover {
     width: 14px;
     height: 14px;
     flex-shrink: 0;
+    filter: drop-shadow(0 0 0.5px rgba(255,255,255,0.6)) drop-shadow(0 0 0.5px rgba(255,255,255,0.4));
 }
 
 /* 모바일: 테이블 → 카테고리별 카드로 전환 */
