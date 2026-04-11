@@ -7,6 +7,12 @@
     <div class="skills-table-wrapper">
         {{ $data := hugo.Data.skills }}
         <table class="skills-table">
+            <colgroup>
+                <col class="col-category">
+                <col class="col-level">
+                <col class="col-level">
+                <col class="col-level">
+            </colgroup>
             <thead>
                 <tr>
                     <th></th>
@@ -22,21 +28,27 @@
                     {{ $items := .items }}
 
                     {{/* primary */}}
-                    <td class="skill-badges" data-level="주력">
+                    <td data-level="주력">
+                        <div class="skill-badges">
                         {{ range $items }}{{ if eq .level "primary" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
                         {{ end }}{{ end }}
+                        </div>
                     </td>
 
                     {{/* secondary */}}
-                    <td class="skill-badges" data-level="가끔씩 써요">
+                    <td data-level="가끔씩 써요">
+                        <div class="skill-badges">
                         {{ range $items }}{{ if eq .level "secondary" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
                         {{ end }}{{ end }}
+                        </div>
                     </td>
 
                     {{/* familiar */}}
-                    <td class="skill-badges" data-level="할 줄은 알아요">
+                    <td data-level="할 줄은 알아요">
+                        <div class="skill-badges">
                         {{ range $items }}{{ if eq .level "familiar" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
                         {{ end }}{{ end }}
+                        </div>
                     </td>
                 </tr>
                 {{ end }}

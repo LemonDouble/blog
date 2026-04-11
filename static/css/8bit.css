@@ -1345,6 +1345,15 @@ a:hover {
 .skills-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.skills-table .col-category {
+    width: 110px;
+}
+
+.skills-table .col-level {
+    width: calc((100% - 110px) / 3);
 }
 
 .skills-table th {
@@ -1372,7 +1381,6 @@ a:hover {
     font-size: 14px;
     color: var(--text-primary);
     white-space: nowrap;
-    width: 1%;
 }
 
 .skill-badges {
@@ -1444,19 +1452,18 @@ a:hover {
     }
 
     /* 모바일에서 레벨 라벨 표시 */
-    .skill-badges::before {
+    .skills-table td[data-level]::before {
         content: attr(data-level);
         font-family: var(--font-body);
         font-size: 11px;
         font-weight: 600;
         color: var(--text-muted);
         display: block;
-        width: 100%;
         margin-bottom: 4px;
     }
 
     /* 뱃지가 없는 셀 숨기기 */
-    .skill-badges:empty {
+    .skills-table td[data-level]:not(:has(.skill-badge)) {
         display: none;
     }
 }
