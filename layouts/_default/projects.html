@@ -5,7 +5,52 @@
     </header>
 
     <div class="post-content">
-        {{ .Content }}
+        {{ $data := hugo.Data.projects }}
+
+        <p>{{ $data.intro }}</p>
+
+        <h2 id="오픈소스-기여">오픈소스 기여</h2>
+        <p>{{ $data.opensource.description }}</p>
+
+        {{ range $data.opensource.contributions }}
+        <h3 id="{{ .year }}">{{ .year }}</h3>
+        <ul>
+            {{ range .items }}
+            <li><a href="https://github.com/{{ .repo }}" target="_blank" rel="noopener noreferrer">{{ .repo }}</a> <a href="{{ .pr }}" target="_blank" rel="noopener noreferrer">#{{ .pr_number }}</a> — {{ .description }}</li>
+            {{ end }}
+        </ul>
+        {{ end }}
+
+        {{ range $data.projects }}
+        <h2 id="{{ .year }}">{{ .year }}</h2>
+
+        {{ range .items }}
+        {{ if .url }}
+        <h3 id="{{ .slug }}"><a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>{{ with .suffix }} {{ . }}{{ end }}{{ with .fork_of }} (Fork){{ end }}</h3>
+        {{ else if .private }}
+        <h3 id="{{ .slug }}">{{ .name }} <code>비공개</code></h3>
+        {{ else }}
+        <h3 id="{{ .slug }}">{{ .name }}</h3>
+        {{ end }}
+        <blockquote>
+        <p>{{ .tagline }}</p>
+        </blockquote>
+        <ul>
+        {{ if .languages }}
+        <li><strong>언어</strong>: {{ range $i, $lang := .languages }}{{ if $i }}, {{ end }}{{ partial "lang-icon" $lang }} {{ $lang }}{{ end }}</li>
+        {{ end }}
+        <li><strong>상태</strong>: {{ .status }}</li>
+        {{ with .fork_of }}
+        <li><strong>원본</strong>: <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">{{ . }}</a></li>
+        {{ end }}
+        {{ with .retrospective }}
+        <li><strong>회고</strong>: <a href="{{ . }}">{{ . }}</a></li>
+        {{ end }}
+        </ul>
+        {{ .description | markdownify }}
+        {{ end }}
+
+        {{ end }}
     </div>
 </article>
 {{ end }}

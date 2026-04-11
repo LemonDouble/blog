@@ -1,0 +1,15 @@
+{{- $data := hugo.Data.projects -}}
+{{- $allProjects := slice -}}
+{{- range $data.projects -}}
+  {{- $year := .year -}}
+  {{- range .items -}}
+    {{- $proj := dict "name" .name "slug" .slug "private" .private "tagline" .tagline "status" .status "description" .description "year" $year -}}
+    {{- with .languages -}}{{- $proj = merge $proj (dict "languages" .) -}}{{- end -}}
+    {{- with .featured -}}{{- $proj = merge $proj (dict "featured" .) -}}{{- end -}}
+    {{- with .url -}}{{- $proj = merge $proj (dict "url" .) -}}{{- end -}}
+    {{- with .fork_of -}}{{- $proj = merge $proj (dict "fork_of" .) -}}{{- end -}}
+    {{- with .retrospective -}}{{- $proj = merge $proj (dict "retrospective" .) -}}{{- end -}}
+    {{- $allProjects = $allProjects | append $proj -}}
+  {{- end -}}
+{{- end -}}
+{{- $allProjects | jsonify (dict "indent" "  ") -}}

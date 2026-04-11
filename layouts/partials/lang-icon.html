@@ -1,0 +1,14 @@
+{{- $lang := . -}}
+{{- $iconMap := dict
+    "CSS" "devicon-css3-plain colored"
+    "Python" "devicon-python-plain colored"
+    "TypeScript" "devicon-typescript-plain colored"
+    "JavaScript" "devicon-javascript-plain colored"
+    "Java" "devicon-java-plain colored"
+    "YAML" "devicon-yaml-plain colored"
+    "Hugo" "devicon-hugo-plain colored"
+    "C++" "devicon-cplusplus-plain colored"
+    "C" "devicon-c-plain colored"
+-}}
+{{- $class := index $iconMap $lang -}}
+{{- with $class -}}<i class="{{ . }}"></i>{{- end -}}
