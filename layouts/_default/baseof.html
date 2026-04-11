@@ -52,6 +52,7 @@
             <div class="nav-links">
                 <a href="/" class="nav-link{{ if .IsHome }} active{{ end }}">Home</a>
                 <a href="/projects/" class="nav-link{{ if eq .RelPermalink "/projects/" }} active{{ end }}">Projects</a>
+                <a href="/skills/" class="nav-link{{ if eq .RelPermalink "/skills/" }} active{{ end }}">Skills</a>
                 <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link">About</a>
             </div>
             <div class="nav-actions">
@@ -73,6 +74,7 @@
     <div class="mobile-menu" id="mobileMenu">
         <a href="/" class="nav-link{{ if .IsHome }} active{{ end }}" onclick="closeMobileMenu()">Home</a>
         <a href="/projects/" class="nav-link{{ if eq .RelPermalink "/projects/" }} active{{ end }}" onclick="closeMobileMenu()">Projects</a>
+        <a href="/skills/" class="nav-link{{ if eq .RelPermalink "/skills/" }} active{{ end }}" onclick="closeMobileMenu()">Skills</a>
         <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link" onclick="closeMobileMenu()">About</a>
     </div>
 

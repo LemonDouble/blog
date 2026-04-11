@@ -1,0 +1,47 @@
+{{ define "main" }}
+<article class="skills-page">
+    <header class="skills-header">
+        <h1 class="page-title">{{ .Title }}</h1>
+    </header>
+
+    <div class="skills-table-wrapper">
+        {{ $data := hugo.Data.skills }}
+        <table class="skills-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>주력</th>
+                    <th>가끔씩 써요</th>
+                    <th>할 줄은 알아요</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range $data.categories }}
+                <tr>
+                    <td class="skill-category-name"><strong>{{ .name }}</strong></td>
+                    {{ $items := .items }}
+
+                    {{/* primary */}}
+                    <td class="skill-badges" data-level="주력">
+                        {{ range $items }}{{ if eq .level "primary" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}<span>{{ .name }}</span></span>
+                        {{ end }}{{ end }}
+                    </td>
+
+                    {{/* secondary */}}
+                    <td class="skill-badges" data-level="가끔씩 써요">
+                        {{ range $items }}{{ if eq .level "secondary" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}<span>{{ .name }}</span></span>
+                        {{ end }}{{ end }}
+                    </td>
+
+                    {{/* familiar */}}
+                    <td class="skill-badges" data-level="할 줄은 알아요">
+                        {{ range $items }}{{ if eq .level "familiar" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}<span>{{ .name }}</span></span>
+                        {{ end }}{{ end }}
+                    </td>
+                </tr>
+                {{ end }}
+            </tbody>
+        </table>
+    </div>
+</article>
+{{ end }}

@@ -1,0 +1,14 @@
+{{- $data := hugo.Data.skills -}}
+{{- $allSkills := slice -}}
+{{- range $data.categories -}}
+  {{- $category := .name -}}
+  {{- $categorySlug := .slug -}}
+  {{- $order := .order -}}
+  {{- range .items -}}
+    {{- $skill := dict "name" .name "slug" .slug "level" .level "logo" .logo "color" .color "category" $category "category_slug" $categorySlug "category_order" $order -}}
+    {{- with .logo_color -}}{{- $skill = merge $skill (dict "logo_color" .) -}}{{- end -}}
+    {{- with .note -}}{{- $skill = merge $skill (dict "note" .) -}}{{- end -}}
+    {{- $allSkills = $allSkills | append $skill -}}
+  {{- end -}}
+{{- end -}}
+{{- $allSkills | jsonify (dict "indent" "  ") -}}
