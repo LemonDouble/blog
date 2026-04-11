@@ -1390,7 +1390,7 @@ a:hover {
     font-family: var(--font-heading);
     font-size: 14px;
     color: var(--text-primary);
-    white-space: nowrap;
+    white-space: pre-line;
 }
 
 .skill-badges {

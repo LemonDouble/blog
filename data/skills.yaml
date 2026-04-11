@@ -159,7 +159,7 @@ categories:
         logo_color: "white"
         color: "009639"
 
-  - name: "클라우드 & DB"
+  - name: "클라우드\n&\nDB"
     slug: "cloud-db"
     order: 4
     items:
