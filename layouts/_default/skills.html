@@ -16,9 +16,9 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th>주력</th>
-                    <th>가끔씩 써요</th>
-                    <th>할 줄은 알아요</th>
+                    <th>🔥 주력</th>
+                    <th>🛠️ 가끔씩 써요</th>
+                    <th>📚 할 줄은 알아요</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,7 +30,7 @@
                     {{/* primary */}}
                     <td data-level="주력">
                         <div class="skill-badges">
-                        {{ range $items }}{{ if eq .level "primary" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . | safeURL }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
+                        {{ range $items }}{{ if eq .level "primary" }}<span class="skill-badge" style="--badge-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . | safeURL }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/white" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
                         {{ end }}{{ end }}
                         </div>
                     </td>
@@ -38,7 +38,7 @@
                     {{/* secondary */}}
                     <td data-level="가끔씩 써요">
                         <div class="skill-badges">
-                        {{ range $items }}{{ if eq .level "secondary" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . | safeURL }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
+                        {{ range $items }}{{ if eq .level "secondary" }}<span class="skill-badge" style="--badge-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . | safeURL }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/white" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
                         {{ end }}{{ end }}
                         </div>
                     </td>
@@ -46,7 +46,7 @@
                     {{/* familiar */}}
                     <td data-level="할 줄은 알아요">
                         <div class="skill-badges">
-                        {{ range $items }}{{ if eq .level "familiar" }}{{ $logoColor := .logo_color | default "white" }}<span class="skill-badge" style="background-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . | safeURL }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/{{ $logoColor }}" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
+                        {{ range $items }}{{ if eq .level "familiar" }}<span class="skill-badge" style="--badge-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . | safeURL }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/white" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
                         {{ end }}{{ end }}
                         </div>
                     </td>
