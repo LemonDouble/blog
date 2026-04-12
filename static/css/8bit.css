@@ -705,23 +705,22 @@ a:hover {
     gap: 6px;
     font-family: var(--font-body);
     font-size: 13px;
-    color: var(--text-secondary);
-    padding: 6px 10px;
-    margin-bottom: 16px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    background: var(--surface);
-    transition: color 0.2s, border-color 0.2s, background 0.2s;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    transition: color 0.2s;
 }
 
 .toc-back-btn:hover {
     color: var(--primary);
-    border-color: var(--primary);
-    background: var(--primary-dim);
 }
 
 .toc-back-btn svg {
     flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.toc-back-btn:hover svg {
+    transform: translateX(-3px);
 }
 
 .toc-sidebar-nav {
