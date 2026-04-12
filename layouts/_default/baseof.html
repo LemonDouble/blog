@@ -146,7 +146,7 @@
             searchResults.innerHTML = matched.map(function(item) {
                 var cats = (item.categories || []).map(function(c) {
                     return '<span class="search-cat">' + c + '</span>';
-                }).join('');
+                }).join('<span class="search-cat-sep">/</span>');
                 return '<a href="' + item.url + '" class="search-result-item">' +
                     '<div class="search-result-title">' + item.title + '</div>' +
                     '<div class="search-result-meta">' + item.date + (cats ? ' &middot; ' + cats : '') + '</div>' +

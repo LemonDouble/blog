@@ -297,6 +297,13 @@ a:hover {
     color: var(--secondary);
 }
 
+.search-cat-sep {
+    display: inline-block;
+    margin: 0 6px;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
 .search-empty {
     padding: 24px 16px;
     text-align: center;
