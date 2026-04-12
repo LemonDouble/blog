@@ -699,6 +699,31 @@ a:hover {
     display: none;
 }
 
+.toc-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-secondary);
+    padding: 6px 10px;
+    margin-bottom: 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface);
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.toc-back-btn:hover {
+    color: var(--primary);
+    border-color: var(--primary);
+    background: var(--primary-dim);
+}
+
+.toc-back-btn svg {
+    flex-shrink: 0;
+}
+
 .toc-sidebar-nav {
     border-left: 1px solid var(--border);
     padding-left: 16px;
