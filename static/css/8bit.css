@@ -218,6 +218,41 @@ a:hover {
     transition: border-color 0.2s;
 }
 
+.search-close-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.search-close-btn:hover {
+    color: var(--text-primary);
+}
+
+.mobile-search-btn {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.mobile-search-btn:hover {
+    color: var(--primary);
+    border-color: var(--primary-dim-border);
+}
+
 .search-wrapper:focus-within {
     border-color: var(--primary-dim-border);
 }
@@ -1341,6 +1376,52 @@ a:hover {
 
     .search-wrapper {
         display: none;
+    }
+
+    .mobile-search-btn {
+        display: flex;
+    }
+
+    body.mobile-search-active .search-wrapper {
+        display: flex;
+        position: fixed;
+        top: 12px;
+        left: 20px;
+        right: 20px;
+        height: 44px;
+        border-radius: 10px;
+        z-index: 1100;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    body.mobile-search-active .search-wrapper .search-input {
+        flex: 1;
+        width: auto;
+        font-size: 15px;
+    }
+
+    body.mobile-search-active .search-wrapper .search-close-btn {
+        display: flex;
+    }
+
+    body.mobile-search-active .search-wrapper .search-results {
+        position: fixed;
+        top: 68px;
+        left: 20px;
+        right: 20px;
+        width: auto;
+        max-height: calc(100vh - 88px);
+    }
+
+    body.mobile-search-active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1050;
     }
 
     .site-footer {

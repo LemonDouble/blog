@@ -56,13 +56,19 @@
                 <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link">About</a>
             </div>
             <div class="nav-actions">
-                <div class="search-wrapper">
+                <div class="search-wrapper" id="searchWrapper">
                     <span class="search-icon">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                     </span>
                     <input type="text" class="search-input" id="searchInput" placeholder="검색..." autocomplete="off">
+                    <button class="search-close-btn" onclick="closeMobileSearch()" aria-label="Close search">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
                     <div class="search-results" id="searchResults"></div>
                 </div>
+                <button class="mobile-search-btn" onclick="openMobileSearch()" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                </button>
                 <button class="nav-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
                     <svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                 </button>
@@ -108,6 +114,32 @@
     function closeMobileMenu() {
         document.getElementById('mobileMenu').classList.remove('active');
     }
+    function openMobileSearch() {
+        document.body.classList.add('mobile-search-active');
+        closeMobileMenu();
+        setTimeout(function() {
+            var input = document.getElementById('searchInput');
+            if (input) input.focus();
+        }, 50);
+    }
+    function closeMobileSearch() {
+        document.body.classList.remove('mobile-search-active');
+        var input = document.getElementById('searchInput');
+        if (input) {
+            input.value = '';
+            input.blur();
+        }
+        var results = document.getElementById('searchResults');
+        if (results) {
+            results.classList.remove('active');
+            results.innerHTML = '';
+        }
+    }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && document.body.classList.contains('mobile-search-active')) {
+            closeMobileSearch();
+        }
+    });
     </script>
 
     {{/* Search */}}
@@ -158,6 +190,10 @@
         document.addEventListener('click', function(e) {
             if (!e.target.closest('.search-wrapper')) {
                 searchResults.classList.remove('active');
+                if (document.body.classList.contains('mobile-search-active') &&
+                    !e.target.closest('.mobile-search-btn')) {
+                    closeMobileSearch();
+                }
             }
         });
 
