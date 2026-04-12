@@ -152,8 +152,15 @@
         window.location.href = url;
         return false;
     }
+    function pageJumpFocus(input) {
+        input.value = '';
+    }
     function pageJumpReset(input) {
         input.value = input.defaultValue;
+    }
+    function pageJumpSanitize(input) {
+        var cleaned = input.value.replace(/\D/g, '');
+        if (cleaned !== input.value) input.value = cleaned;
     }
     </script>
 

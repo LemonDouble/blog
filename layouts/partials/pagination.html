@@ -25,9 +25,11 @@
             {{ end }}
             {{ if eq $p $cur }}
             <div class="page-jump-wrap">
-                <input class="page-jump-input" type="text" inputmode="numeric" value="{{ $p }}"
+                <input class="page-jump-input" type="text" inputmode="numeric" pattern="[0-9]*" value="{{ $p }}"
                     data-total="{{ $total }}" data-base="{{ $firstURL }}"
                     aria-label="현재 페이지 — 숫자를 입력하여 이동"
+                    onfocus="pageJumpFocus(this);"
+                    oninput="pageJumpSanitize(this);"
                     onkeydown="return pageJump(event, this);"
                     onblur="pageJumpReset(this);">
                 <span class="page-jump-icon" aria-hidden="true">&#9998;</span>
