@@ -632,13 +632,25 @@ a:hover {
 /* =========================
    SINGLE POST
    ========================= */
-.post-single {
+.post-layout {
     max-width: 800px;
     margin: 0 auto;
+    padding-top: 32px;
+}
+
+.post-layout.has-toc {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 200px;
+    gap: 24px;
+    align-items: start;
+}
+
+.post-single {
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 24px;
-    padding-top: 32px;
 }
 
 /* --- Post Header --- */
@@ -673,51 +685,67 @@ a:hover {
     margin: 12px 0;
 }
 
-/* --- Table of Contents --- */
-.toc {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 20px 24px;
+/* --- TOC Sidebar (VitePress style) --- */
+.toc-sidebar {
+    position: sticky;
+    top: 72px;
+    max-height: calc(100vh - 88px);
+    overflow-y: auto;
+    padding-top: 32px;
+    scrollbar-width: none;
 }
 
-.toc-title {
+.toc-sidebar::-webkit-scrollbar {
+    display: none;
+}
+
+.toc-sidebar-nav {
+    border-left: 1px solid var(--border);
+    padding-left: 16px;
+}
+
+.toc-sidebar-title {
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 16px;
+    font-size: 13px;
     color: var(--text-primary);
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
+    margin: 0 0 12px 0;
+    letter-spacing: 0.02em;
 }
 
-.toc ul {
+.toc-sidebar-nav ul {
     list-style: none;
     padding-left: 0;
+    margin: 0;
 }
 
-.toc ul ul {
-    padding-left: 20px;
+.toc-sidebar-nav ul ul {
+    padding-left: 12px;
 }
 
-.toc li {
-    margin: 2px 0;
+.toc-sidebar-nav li {
+    margin: 0;
 }
 
-.toc a {
+.toc-sidebar-nav a {
     font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--text-muted);
     display: block;
-    padding: 6px 12px;
-    border-radius: 6px;
+    padding: 4px 0;
     border-left: 2px solid transparent;
-    transition: all 0.2s;
+    margin-left: -17px;
+    padding-left: 15px;
+    transition: color 0.2s, border-color 0.2s;
 }
 
-.toc a:hover {
+.toc-sidebar-nav a:hover {
+    color: var(--text-primary);
+}
+
+.toc-sidebar-nav a.active {
     color: var(--primary);
-    background: var(--primary-dim);
     border-left-color: var(--primary);
 }
 
@@ -1193,6 +1221,15 @@ a:hover {
 @media (max-width: 1024px) {
     .home-layout {
         grid-template-columns: 1fr 240px;
+    }
+
+    .post-layout.has-toc {
+        display: block;
+        max-width: 800px;
+    }
+
+    .toc-sidebar {
+        display: none;
     }
 
     .hero-title {

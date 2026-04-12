@@ -1,5 +1,8 @@
 {{ define "main" }}
 {{ $page := . }}
+{{ $hasToc := and (.Fragments.Headings) (.TableOfContents) }}
+
+<div class="post-layout{{ if $hasToc }} has-toc{{ end }}">
 <article class="post-single">
     {{/* Post Header */}}
     <header class="post-header">
@@ -28,14 +31,6 @@
             </div>
         </div>
     </header>
-
-    {{/* Table of Contents */}}
-    {{ if .TableOfContents }}
-    <nav class="toc">
-        <h3 class="toc-title">Table of Contents</h3>
-        {{ .TableOfContents }}
-    </nav>
-    {{ end }}
 
     {{/* Content */}}
     <div class="post-content">
@@ -76,4 +71,117 @@
     {{ end }}
 
 </article>
+
+{{/* Right-side TOC Sidebar */}}
+{{ if $hasToc }}
+<aside class="toc-sidebar">
+    <nav class="toc-sidebar-nav">
+        <h4 class="toc-sidebar-title">On this page</h4>
+        {{ .TableOfContents }}
+    </nav>
+</aside>
+{{ end }}
+</div>
+
+{{/* TOC active heading script */}}
+{{ if $hasToc }}
+<script>
+(function() {
+    var sidebar = document.querySelector('.toc-sidebar-nav');
+    if (!sidebar) return;
+
+    var links = sidebar.querySelectorAll('a');
+    if (!links.length) return;
+
+    // Build heading-to-link map
+    var headingMap = [];
+    links.forEach(function(link) {
+        var id = decodeURIComponent(link.getAttribute('href').slice(1));
+        var heading = document.getElementById(id);
+        if (heading) {
+            headingMap.push({ el: heading, link: link });
+        }
+    });
+
+    if (!headingMap.length) return;
+
+    var activeLink = null;
+
+    function setActive(link) {
+        if (activeLink === link) return;
+        if (activeLink) activeLink.classList.remove('active');
+        link.classList.add('active');
+        activeLink = link;
+
+        // Scroll the active link into view within the TOC sidebar
+        var nav = sidebar;
+        var linkRect = link.getBoundingClientRect();
+        var navRect = nav.getBoundingClientRect();
+        if (linkRect.top < navRect.top || linkRect.bottom > navRect.bottom) {
+            link.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+    }
+
+    // Use Intersection Observer
+    var observer = new IntersectionObserver(function(entries) {
+        // Find the topmost visible heading
+        var visibleHeadings = [];
+        entries.forEach(function(entry) {
+            var item = headingMap.find(function(h) { return h.el === entry.target; });
+            if (item) item.isIntersecting = entry.isIntersecting;
+        });
+
+        // Find first intersecting heading from top
+        for (var i = 0; i < headingMap.length; i++) {
+            if (headingMap[i].isIntersecting) {
+                setActive(headingMap[i].link);
+                return;
+            }
+        }
+
+        // If none intersecting, find the last heading above viewport
+        var scrollY = window.scrollY || window.pageYOffset;
+        var offset = 100;
+        var lastAbove = null;
+        for (var j = 0; j < headingMap.length; j++) {
+            var rect = headingMap[j].el.getBoundingClientRect();
+            if (rect.top < offset) {
+                lastAbove = headingMap[j];
+            }
+        }
+        if (lastAbove) {
+            setActive(lastAbove.link);
+        }
+    }, {
+        rootMargin: '-80px 0px -60% 0px',
+        threshold: 0
+    });
+
+    headingMap.forEach(function(item) {
+        item.isIntersecting = false;
+        observer.observe(item.el);
+    });
+
+    // Set initial active on load
+    setTimeout(function() {
+        var scrollY = window.scrollY || window.pageYOffset;
+        if (scrollY < 100) {
+            setActive(headingMap[0].link);
+        } else {
+            var offset = 100;
+            var lastAbove = null;
+            for (var i = 0; i < headingMap.length; i++) {
+                var rect = headingMap[i].el.getBoundingClientRect();
+                if (rect.top < offset) {
+                    lastAbove = headingMap[i];
+                }
+            }
+            if (lastAbove) setActive(lastAbove.link);
+            else setActive(headingMap[0].link);
+        }
+    }, 100);
+})();
+</script>
+{{ end }}
+
 {{ end }}
