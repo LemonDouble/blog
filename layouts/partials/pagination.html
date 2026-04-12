@@ -1,0 +1,48 @@
+{{/* Pagination partial — expects . to be a Paginator */}}
+{{ $paginator := . }}
+{{ if gt $paginator.TotalPages 1 }}
+{{ $cur := $paginator.PageNumber }}
+{{ $total := $paginator.TotalPages }}
+{{ $firstURL := (index $paginator.Pagers 0).URL }}
+<nav class="pagination" aria-label="Pagination">
+    {{ if $paginator.HasPrev }}
+    <a href="{{ $paginator.Prev.URL }}" class="pagination-item" aria-label="이전 페이지">&larr;</a>
+    {{ else }}
+    <span class="pagination-item disabled" aria-hidden="true">&larr;</span>
+    {{ end }}
+
+    {{ $scratch := newScratch }}
+    {{ $scratch.Set "prev" 0 }}
+    {{ range $paginator.Pagers }}
+        {{ $p := .PageNumber }}
+        {{ $show := false }}
+        {{ if or (eq $p 1) (eq $p $total) }}{{ $show = true }}{{ end }}
+        {{ if and (ge $p (sub $cur 1)) (le $p (add $cur 1)) }}{{ $show = true }}{{ end }}
+        {{ if $show }}
+            {{ $prev := $scratch.Get "prev" }}
+            {{ if and (gt $prev 0) (gt $p (add $prev 1)) }}
+            <span class="pagination-ellipsis">&hellip;</span>
+            {{ end }}
+            {{ if eq $p $cur }}
+            <div class="page-jump-wrap">
+                <input class="page-jump-input" type="text" inputmode="numeric" value="{{ $p }}"
+                    data-total="{{ $total }}" data-base="{{ $firstURL }}"
+                    aria-label="현재 페이지 — 숫자를 입력하여 이동"
+                    onkeydown="return pageJump(event, this);"
+                    onblur="pageJumpReset(this);">
+                <span class="page-jump-icon" aria-hidden="true">&#9998;</span>
+            </div>
+            {{ else }}
+            <a href="{{ .URL }}" class="pagination-item">{{ $p }}</a>
+            {{ end }}
+            {{ $scratch.Set "prev" $p }}
+        {{ end }}
+    {{ end }}
+
+    {{ if $paginator.HasNext }}
+    <a href="{{ $paginator.Next.URL }}" class="pagination-item" aria-label="다음 페이지">&rarr;</a>
+    {{ else }}
+    <span class="pagination-item disabled" aria-hidden="true">&rarr;</span>
+    {{ end }}
+</nav>
+{{ end }}

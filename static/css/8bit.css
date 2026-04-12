@@ -642,33 +642,102 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
-    margin-top: 32px;
-    padding: 16px;
+    gap: 4px;
+    margin-top: 40px;
+    padding: 16px 8px;
+    flex-wrap: wrap;
 }
 
-.page-btn {
+.pagination-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 8px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: transparent;
+    border: 1px solid transparent;
+    text-decoration: none;
+    transition: all 0.15s;
+}
+
+.pagination-item:hover {
+    background: var(--surface);
+    border-color: var(--border);
+    color: var(--text-primary);
+}
+
+.pagination-item.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.pagination-ellipsis {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    color: var(--text-muted);
+    font-size: 14px;
+}
+
+.page-jump-wrap {
+    position: relative;
+    display: inline-flex;
+}
+
+.page-jump-input {
+    min-width: 36px;
+    width: 44px;
+    height: 36px;
+    background: var(--primary);
+    border: 2px solid var(--primary);
+    border-radius: 8px;
+    color: var(--bg);
     font-family: var(--font-body);
     font-size: 14px;
     font-weight: 600;
-    padding: 10px 20px;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text-secondary);
-    transition: all 0.2s;
+    text-align: center;
+    outline: none;
+    cursor: text;
+    padding: 0;
+    -moz-appearance: textfield;
 }
 
-.page-btn:hover {
-    border-color: var(--primary-dim-border);
+.page-jump-input::-webkit-outer-spin-button,
+.page-jump-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.page-jump-input:focus {
+    background: var(--surface);
     color: var(--primary);
-    background: var(--primary-dim);
+    border-color: var(--primary-dim-border);
 }
 
-.page-info {
-    font-family: var(--font-body);
-    font-size: 14px;
-    color: var(--text-muted);
+.page-jump-icon {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 16px;
+    height: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: var(--text-secondary);
+    pointer-events: none;
 }
 
 /* =========================

@@ -140,6 +140,21 @@
             closeMobileSearch();
         }
     });
+    function pageJump(e, input) {
+        if (e.key === 'Escape') { input.blur(); return false; }
+        if (e.key !== 'Enter') return true;
+        e.preventDefault();
+        var n = parseInt(input.value, 10);
+        var total = parseInt(input.dataset.total, 10);
+        if (!n || n < 1 || n > total) { input.value = input.defaultValue; return false; }
+        var base = input.dataset.base || '/';
+        var url = n === 1 ? base : (base.replace(/\/$/, '') + '/page/' + n + '/');
+        window.location.href = url;
+        return false;
+    }
+    function pageJumpReset(input) {
+        input.value = input.defaultValue;
+    }
     </script>
 
     {{/* Search */}}

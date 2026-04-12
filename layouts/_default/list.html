@@ -40,16 +40,6 @@
         {{ end }}
     </div>
 
-    {{ if gt $paginator.TotalPages 1 }}
-    <nav class="pagination">
-        {{ if $paginator.HasPrev }}
-        <a href="{{ $paginator.Prev.URL }}" class="page-btn">&larr; Prev</a>
-        {{ end }}
-        <span class="page-info">{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
-        {{ if $paginator.HasNext }}
-        <a href="{{ $paginator.Next.URL }}" class="page-btn">Next &rarr;</a>
-        {{ end }}
-    </nav>
-    {{ end }}
+    {{ partial "pagination.html" $paginator }}
 </section>
 {{ end }}
