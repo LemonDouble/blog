@@ -324,6 +324,71 @@ projects:
         url: "https://github.com/LemonDoubleHQ/lemon-pyopenjtalk-prebuilt"
         fork_of: null
 
+      - name: "lemon-protocol"
+        slug: "lemon-protocol"
+        private: true
+        tagline: "Cloudflare R2 기반 개인용 파일 공유 서비스"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          예전에 만들다 드랍했던 RabbitProtocol의 후속작입니다.
+
+          대용량 파일 공유할 때 마땅한 서비스가 없어서 직접 만들었습니다.
+
+          - S3 multipart upload로 대용량 파일 업로드 (청크 10MB~500MB 적응형)
+          - 비밀번호 보호, 다운로드 횟수 제한, IP 필터링(CIDR)
+          - TTL 1~90일 만료 설정
+          - Drop Link: 상대방이 나에게 파일을 올릴 수 있는 1회용 수신 링크 (24시간 만료)
+          - 다운로드 로그 추적 및 Web Push 알림
+          - lemon-auth 연동
+        url: null
+
+      - name: "lemon-vitepress-theme"
+        slug: "lemon-vitepress-theme"
+        private: false
+        tagline: "LemonDouble 디자인 시스템이 적용된 VitePress 테마 패키지"
+        languages: ["CSS"]
+        status: "완료"
+        description: |
+          이런저런 라이브러리를 만들어서 공개하려다 보니, docs 페이지도 톤앤매너를 맞추고 싶어서 만들었습니다.
+
+          lemon-design-system의 컬러/타이포그래피를 VitePress에 적용한 테마 패키지입니다.
+
+          [hayakoe docs](https://lemondouble.github.io/hayakoe/)가 이 테마를 사용해서 만들어졌습니다.
+        url: "https://github.com/LemonDouble/lemon-vitepress-theme"
+
+      - name: "lemon-auth"
+        slug: "lemon-auth"
+        private: false
+        tagline: "auth-server 연동용 Next.js 인증 라이브러리"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          auth-server에 기능이 점점 많아지면서 (프로필 설정, 패스키, TOTP 2FA, 감사 로그, 기기 관리 등등...) 연동 플로우가 상당히 복잡해졌습니다.
+
+          매번 새 서비스마다 인증 연동을 처음부터 짜기 싫어서, 표준화된 방식으로 연동할 수 있게 만든 Next.js 전용 라이브러리입니다.
+        url: "https://github.com/LemonDouble/lemon-auth"
+
+      - name: "hass-kakao-map-changer"
+        slug: "hass-kakao-map-changer"
+        private: false
+        tagline: "Home Assistant 지도를 카카오맵으로 교체하는 HACS 통합"
+        languages: ["JavaScript"]
+        status: "완료"
+        description: |
+          Home Assistant의 기본 Leaflet 지도를 카카오맵으로 교체하는 HACS 커스텀 통합입니다.
+        url: "https://github.com/Lemon-HACS/hass-kakao-map-changer"
+
+      - name: "openrouter_monitor"
+        slug: "openrouter-monitor"
+        private: false
+        tagline: "OpenRouter 크레딧 모니터링 Home Assistant 통합"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          OpenRouter 크레딧 잔액과 API Key별 사용량을 Home Assistant에서 모니터링할 수 있는 HACS 커스텀 통합입니다.
+        url: "https://github.com/Lemon-HACS/openrouter_monitor"
+
   - year: 2025
     items:
       - name: "skopeo-setup-action"
@@ -395,6 +460,20 @@ projects:
 
   - year: 2023
     items:
+      - name: "misskey-geeknews-webhooks"
+        slug: "misskey-geeknews-webhooks"
+        private: true
+        tagline: "GeekNews → Misskey 자동 포스팅 봇"
+        languages: ["TypeScript"]
+        status: "운영중"
+        description: |
+          GeekNews에서 제공하는 Google Chat 웹훅을 받아서, Misskey 봇 계정으로 자동 포스팅하는 Cloudflare Workers입니다.
+
+          2023년 7월부터 약 3년째 운영중입니다.
+
+          2개월 전쯤에 GeekNews 측에서 도메인 검사를 추가하면서 연동이 끊겼었는데, 지푸라기라도 붙잡는 심정으로.. GeekNews 측에 문의했더니 정말 감사하게도 예외처리를 해 주셔서, 다시 복구되어서 운영되고 있습니다.
+        url: null
+
       - name: "lemon-k8s-cluster"
         slug: "lemon-k8s-cluster"
         private: true
