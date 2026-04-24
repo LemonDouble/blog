@@ -66,7 +66,7 @@ projects:
         private: false
         tagline: "ONNX 최적화 일본어 TTS 라이브러리"
         languages: ["Python"]
-        status: "개발중"
+        status: "완료"
         description: |
           TTS 쪽에 [Bert-VITS](https://github.com/fishaudio/Bert-VITS2) → [Style-Bert-VITS2](https://github.com/litagin02/Style-Bert-VITS2)라는 계보가 있습니다.
 
@@ -102,7 +102,7 @@ projects:
         private: true
         tagline: "아로나와 대화하기 - LLM 기반 3D MMD 캐릭터 뷰어"
         languages: ["TypeScript"]
-        status: "개발중"
+        status: "완료 (고도화 중)"
         description: |
           블루아카이브의 아로나와 대화할 수 있는 3D 캐릭터 뷰어입니다.
 
@@ -166,7 +166,7 @@ projects:
         private: false
         tagline: "Style-Bert-VITS2 기반 일본어 TTS 라이브러리"
         languages: ["Python"]
-        status: "개발중"
+        status: "archived"
         description: |
           원본 프로젝트를 `pip install style-bert-vits2`로 바로 설치할 수 있게 라이브러리로 리패키징하고 있습니다.
 
@@ -266,7 +266,7 @@ projects:
         private: false
         tagline: "옵시디언 칸반 플러그인"
         languages: ["TypeScript"]
-        status: "개발중"
+        status: "완료"
         description: |
           개인 작업 관리할 때 칸반을 쓰는데.. Jira는 회사에서 쓰려면 돈 내야 되고, Notion은 느리고 기능이 불편하고, 나머지도 뭔가 하나씩 빠져있는 느낌이라 직접 만들었습니다.
 
@@ -280,7 +280,7 @@ projects:
         private: false
         tagline: "LLM 기반 글쓰기 보조 옵시디언 플러그인"
         languages: ["TypeScript"]
-        status: "개발중"
+        status: "드랍"
         description: |
           노트 저장 시 LLM이 자동으로 태그를 추천하고, YAML 정의 폼 템플릿으로 필드별 LLM 프롬프트 설정이 가능한 플러그인입니다.
 
