@@ -9,6 +9,7 @@
     {{- with .url -}}{{- $proj = merge $proj (dict "url" .) -}}{{- end -}}
     {{- with .fork_of -}}{{- $proj = merge $proj (dict "fork_of" .) -}}{{- end -}}
     {{- with .retrospective -}}{{- $proj = merge $proj (dict "retrospective" .) -}}{{- end -}}
+    {{- with .image -}}{{- $proj = merge $proj (dict "image" .) -}}{{- end -}}
     {{- $allProjects = $allProjects | append $proj -}}
   {{- end -}}
 {{- end -}}

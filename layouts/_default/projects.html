@@ -1,56 +1,137 @@
 {{ define "main" }}
+{{ $data := hugo.Data.projects }}
+{{ $statusClass := dict "개발중" "dev" "완료" "done" "운영중" "running" "archived" "archived" "드랍" "dropped" "완료 (개인용)" "done" }}
+
 <article class="projects-page">
     <header class="projects-header">
         <h1 class="page-title">{{ .Title }}</h1>
     </header>
 
-    <div class="post-content">
-        {{ $data := hugo.Data.projects }}
+    <div class="projects-content">
+        <p class="projects-intro">{{ $data.intro }}</p>
 
-        <p>{{ $data.intro }}</p>
-
-        <h2 id="오픈소스-기여">오픈소스 기여</h2>
-        <p>{{ $data.opensource.description }}</p>
-
-        {{ range $data.opensource.contributions }}
-        <h3 id="{{ .year }}">{{ .year }}</h3>
-        <ul>
-            {{ range .items }}
-            <li><a href="https://github.com/{{ .repo }}" target="_blank" rel="noopener noreferrer">{{ .repo }}</a> <a href="{{ .pr }}" target="_blank" rel="noopener noreferrer">#{{ .pr_number }}</a> — {{ .description }}</li>
+        <section class="projects-section">
+            <h2>오픈소스 기여</h2>
+            <p class="projects-section-desc">{{ $data.opensource.description }}</p>
+            {{ range $data.opensource.contributions }}
+            <h3>{{ .year }}</h3>
+            <ul class="oss-list">
+                {{ range .items }}
+                <li>
+                    <a href="https://github.com/{{ .repo }}" target="_blank" rel="noopener noreferrer">{{ .repo }}</a>
+                    <a href="{{ .pr }}" target="_blank" rel="noopener noreferrer">#{{ .pr_number }}</a> — {{ .description }}
+                </li>
+                {{ end }}
+            </ul>
             {{ end }}
-        </ul>
-        {{ end }}
+        </section>
 
         {{ range $data.projects }}
-        <h2 id="{{ .year }}">{{ .year }}</h2>
-
-        {{ range .items }}
-        {{ if .url }}
-        <h3 id="{{ .slug }}"><a href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>{{ with .suffix }} {{ . }}{{ end }}{{ with .fork_of }} (Fork){{ end }}</h3>
-        {{ else if .private }}
-        <h3 id="{{ .slug }}">{{ .name }} <code>비공개</code></h3>
-        {{ else }}
-        <h3 id="{{ .slug }}">{{ .name }}</h3>
-        {{ end }}
-        <blockquote>
-        <p>{{ .tagline }}</p>
-        </blockquote>
-        <ul>
-        {{ if .languages }}
-        <li><strong>언어</strong>: {{ range $i, $lang := .languages }}{{ if $i }}, {{ end }}{{ partial "lang-icon" $lang }} {{ $lang }}{{ end }}</li>
-        {{ end }}
-        <li><strong>상태</strong>: {{ .status }}</li>
-        {{ with .fork_of }}
-        <li><strong>원본</strong>: <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">{{ . }}</a></li>
-        {{ end }}
-        {{ with .retrospective }}
-        <li><strong>회고</strong>: <a href="{{ . }}">{{ . }}</a></li>
-        {{ end }}
-        </ul>
-        {{ .description | markdownify }}
-        {{ end }}
-
+        <section class="projects-section">
+            <h2>{{ .year }}</h2>
+            <div class="projects-grid">
+                {{ range .items }}
+                {{ $sc := index $statusClass .status | default "default" }}
+                <button class="project-card" data-project="{{ .slug }}" type="button">
+                    {{ with .image }}
+                    <div class="project-card-image">
+                        <img src="/images/projects/{{ . }}" alt="" loading="lazy" />
+                    </div>
+                    {{ end }}
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">{{ .name }}{{ with .suffix }} {{ . }}{{ end }}</h3>
+                        <p class="project-card-tagline">{{ .tagline }}</p>
+                        <div class="project-card-meta">
+                            <span class="project-badge project-badge--{{ $sc }}">{{ .status }}</span>
+                            {{ if .private }}<span class="project-badge project-badge--private">비공개</span>{{ end }}
+                            {{ with .fork_of }}<span class="project-badge project-badge--fork">Fork</span>{{ end }}
+                        </div>
+                    </div>
+                </button>
+                {{ end }}
+            </div>
+        </section>
         {{ end }}
     </div>
+
+    <div class="project-modal" id="projectModal">
+        <div class="project-modal-backdrop"></div>
+        <div class="project-modal-dialog">
+            <button class="project-modal-close" type="button" aria-label="닫기">&times;</button>
+            <div class="project-modal-body" id="projectModalBody"></div>
+        </div>
+    </div>
+
+    {{ range $data.projects }}
+    {{ range .items }}
+    {{ $sc := index $statusClass .status | default "default" }}
+    <div id="modal-{{ .slug }}" hidden>
+        {{ with .image }}
+        <div class="project-modal-image">
+            <img src="/images/projects/{{ . }}" alt="" loading="lazy" />
+        </div>
+        {{ end }}
+        <div class="project-modal-header">
+            <h2 class="project-modal-title">{{ .name }}{{ with .suffix }} {{ . }}{{ end }}</h2>
+            {{ with .url }}
+            <a href="{{ . }}" target="_blank" rel="noopener noreferrer" class="project-modal-link">GitHub ↗</a>
+            {{ end }}
+        </div>
+        <p class="project-modal-tagline">{{ .tagline }}</p>
+        <div class="project-modal-meta">
+            <span class="project-badge project-badge--{{ $sc }}">{{ .status }}</span>
+            {{ if .private }}<span class="project-badge project-badge--private">비공개</span>{{ end }}
+            {{ range .languages }}
+            <span class="project-lang-badge">{{ partial "lang-icon" . }} {{ . }}</span>
+            {{ end }}
+            {{ with .fork_of }}
+            <span class="project-modal-meta-item">원본: <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">{{ . }}</a></span>
+            {{ end }}
+            {{ with .retrospective }}
+            <span class="project-modal-meta-item">회고: <a href="{{ . }}">{{ . }}</a></span>
+            {{ end }}
+        </div>
+        <div class="project-modal-desc">
+            {{ .description | markdownify }}
+        </div>
+    </div>
+    {{ end }}
+    {{ end }}
 </article>
+
+<script>
+(function() {
+    var modal = document.getElementById('projectModal');
+    var body = document.getElementById('projectModalBody');
+    var backdrop = modal.querySelector('.project-modal-backdrop');
+    var closeBtn = modal.querySelector('.project-modal-close');
+
+    function open(slug) {
+        var src = document.getElementById('modal-' + slug);
+        if (!src) return;
+        body.innerHTML = src.innerHTML;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.project-card').forEach(function(card) {
+        card.addEventListener('click', function() { open(card.dataset.project); });
+    });
+
+    backdrop.addEventListener('click', close);
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) close();
+    });
+
+    body.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') e.stopPropagation();
+    });
+})();
+</script>
 {{ end }}
