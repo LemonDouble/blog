@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}">
+<html lang="{{ .Site.Language.Lang }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,6 +7,18 @@
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
     <link rel="icon" href="{{ .Site.Params.favicon }}">
     <link rel="canonical" href="{{ .Permalink }}">
+
+    {{/* hreflang — 같은 페이지의 다른 언어 버전 + x-default(한국어) */}}
+    {{ if .IsTranslated }}
+        {{ range .AllTranslations }}
+    <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+        {{ end }}
+        {{ range .AllTranslations }}
+            {{ if eq .Language.Lang "ko" }}
+    <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+            {{ end }}
+        {{ end }}
+    {{ end }}
 
     {{/* Fonts */}}
     <link href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css" rel="stylesheet">
@@ -29,7 +41,12 @@
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
     <meta property="og:url" content="{{ .Permalink }}">
     <meta property="og:site_name" content="{{ .Site.Title }}">
-    <meta property="og:locale" content="{{ .Site.LanguageCode }}">
+    <meta property="og:locale" content="{{ .Site.Params.ogLocale }}">
+    {{ range .AllTranslations }}
+        {{ if ne .Language.Lang $.Site.Language.Lang }}
+    <meta property="og:locale:alternate" content="{{ .Language.Params.ogLocale }}">
+        {{ end }}
+    {{ end }}
     <meta property="og:image" content="{{ $ogImage }}">
 
     <meta name="twitter:card" content="summary_large_image">
@@ -61,31 +78,34 @@
     {{/* Navigation */}}
     <nav class="site-nav">
         <div class="nav-inner">
-            <a href="/" class="nav-logo">
+            <a href="{{ "/" | relLangURL }}" class="nav-logo">
                 <img src="/img/brand/lemon-logo.webp" alt="Logo">
                 <span>{{ .Site.Title }}</span>
             </a>
             <div class="nav-links">
-                <a href="/" class="nav-link{{ if .IsHome }} active{{ end }}">Home</a>
-                <a href="/projects/" class="nav-link{{ if eq .RelPermalink "/projects/" }} active{{ end }}">Projects</a>
-                <a href="/skills/" class="nav-link{{ if eq .RelPermalink "/skills/" }} active{{ end }}">Skills</a>
-                <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link">About</a>
+                <a href="{{ "/" | relLangURL }}" class="nav-link{{ if .IsHome }} active{{ end }}">{{ T "nav_home" }}</a>
+                {{ if eq .Site.Language.Lang "ko" }}
+                <a href="/projects/" class="nav-link{{ if eq .RelPermalink "/projects/" }} active{{ end }}">{{ T "nav_projects" }}</a>
+                <a href="/skills/" class="nav-link{{ if eq .RelPermalink "/skills/" }} active{{ end }}">{{ T "nav_skills" }}</a>
+                {{ end }}
+                <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link">{{ T "nav_about" }}</a>
             </div>
             <div class="nav-actions">
                 <div class="search-wrapper" id="searchWrapper">
                     <span class="search-icon">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                     </span>
-                    <input type="text" class="search-input" id="searchInput" placeholder="검색..." autocomplete="off">
-                    <button class="search-close-btn" onclick="closeMobileSearch()" aria-label="Close search">
+                    <input type="text" class="search-input" id="searchInput" placeholder="{{ T "search_placeholder" }}" autocomplete="off">
+                    <button class="search-close-btn" onclick="closeMobileSearch()" aria-label="{{ T "search_close" }}">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                     </button>
                     <div class="search-results" id="searchResults"></div>
                 </div>
-                <button class="mobile-search-btn" onclick="openMobileSearch()" aria-label="Search">
+                <button class="mobile-search-btn" onclick="openMobileSearch()" aria-label="{{ T "search_open" }}">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
                 </button>
-                <button class="nav-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                {{ partial "lang-switcher.html" . }}
+                <button class="nav-menu-btn" onclick="toggleMobileMenu()" aria-label="{{ T "menu_open" }}">
                     <svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                 </button>
             </div>
@@ -94,10 +114,38 @@
 
     {{/* Mobile Menu */}}
     <div class="mobile-menu" id="mobileMenu">
-        <a href="/" class="nav-link{{ if .IsHome }} active{{ end }}" onclick="closeMobileMenu()">Home</a>
-        <a href="/projects/" class="nav-link{{ if eq .RelPermalink "/projects/" }} active{{ end }}" onclick="closeMobileMenu()">Projects</a>
-        <a href="/skills/" class="nav-link{{ if eq .RelPermalink "/skills/" }} active{{ end }}" onclick="closeMobileMenu()">Skills</a>
-        <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link" onclick="closeMobileMenu()">About</a>
+        <a href="{{ "/" | relLangURL }}" class="nav-link{{ if .IsHome }} active{{ end }}" onclick="closeMobileMenu()">{{ T "nav_home" }}</a>
+        {{ if eq .Site.Language.Lang "ko" }}
+        <a href="/projects/" class="nav-link{{ if eq .RelPermalink "/projects/" }} active{{ end }}" onclick="closeMobileMenu()">{{ T "nav_projects" }}</a>
+        <a href="/skills/" class="nav-link{{ if eq .RelPermalink "/skills/" }} active{{ end }}" onclick="closeMobileMenu()">{{ T "nav_skills" }}</a>
+        {{ end }}
+        <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link" onclick="closeMobileMenu()">{{ T "nav_about" }}</a>
+
+        {{/* Language section in mobile menu */}}
+        <div class="mobile-menu-lang">
+            <span class="mobile-menu-lang-label">{{ T "language_switcher_label" }}</span>
+            {{ $current := .Site.Language.Lang }}
+            {{ $page := . }}
+            <div class="mobile-menu-lang-items">
+                {{ range hugo.Sites }}
+                    {{ $lang := .Language.Lang }}
+                    {{ $href := "" }}
+                    {{ if eq $lang $current }}
+                        {{ $href = $page.RelPermalink }}
+                    {{ else }}
+                        {{ range $page.AllTranslations }}
+                            {{ if eq .Language.Lang $lang }}
+                                {{ $href = .RelPermalink }}
+                            {{ end }}
+                        {{ end }}
+                        {{ if eq $href "" }}
+                            {{ $href = .Home.RelPermalink }}
+                        {{ end }}
+                    {{ end }}
+                    <a href="{{ $href }}" class="mobile-menu-lang-item{{ if eq $lang $current }} active{{ end }}" lang="{{ $lang }}" onclick="closeMobileMenu()">{{ .Language.Label }}</a>
+                {{ end }}
+            </div>
+        </div>
     </div>
 
     {{/* Main */}}
@@ -178,13 +226,38 @@
         var cleaned = input.value.replace(/\D/g, '');
         if (cleaned !== input.value) input.value = cleaned;
     }
+    function toggleLangSwitcher(e) {
+        if (e) e.stopPropagation();
+        var sw = document.getElementById('langSwitcher');
+        var btn = sw && sw.querySelector('.lang-switcher-btn');
+        if (!sw || !btn) return;
+        var isOpen = sw.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+    document.addEventListener('click', function(e) {
+        var sw = document.getElementById('langSwitcher');
+        if (sw && sw.classList.contains('open') && !e.target.closest('#langSwitcher')) {
+            sw.classList.remove('open');
+            var btn = sw.querySelector('.lang-switcher-btn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key !== 'Escape') return;
+        var sw = document.getElementById('langSwitcher');
+        if (sw && sw.classList.contains('open')) {
+            sw.classList.remove('open');
+            var btn = sw.querySelector('.lang-switcher-btn');
+            if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+    });
     </script>
 
     {{/* Search */}}
     <script>
     var searchIndex = null;
     (function() {
-        fetch('/index.json')
+        fetch('{{ "/index.json" | relLangURL }}')
             .then(function(r) { return r.json(); })
             .then(function(data) { searchIndex = data; })
             .catch(function() {});
@@ -209,7 +282,7 @@
             }).slice(0, 10);
 
             if (matched.length === 0) {
-                searchResults.innerHTML = '<div class="search-empty">검색 결과가 없습니다.</div>';
+                searchResults.innerHTML = '<div class="search-empty">{{ T "search_empty" }}</div>';
                 searchResults.classList.add('active');
                 return;
             }

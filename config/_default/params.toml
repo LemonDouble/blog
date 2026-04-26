@@ -1,7 +1,6 @@
 mainSections = ["post"]
 rssFullContent = true
 favicon = "https://cdn.lemondouble.com/homepage/favicon.ico"
-description = "이런저런 걸 합니다. 블로그 기고는 보통 제가 했던 일을 까먹지 않기 위해 합니다(..)"
 
 [footer]
 since = 2022

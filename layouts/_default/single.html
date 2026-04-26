@@ -20,14 +20,14 @@
         <div class="post-header-content">
             <div class="post-categories">
                 {{ range .Params.categories }}
-                <a href="{{ "categories/" | absURL }}{{ . | urlize }}/" class="category-tag">{{ . }}</a>
+                <a href="{{ (printf "categories/%s/" (urlize .)) | relLangURL }}" class="category-tag">{{ . }}</a>
                 {{ end }}
             </div>
             <h1 class="post-title">{{ .Title }}</h1>
             <div class="post-meta">
                 <time>{{ .Date.Format (.Site.Params.dateFormat.published | default "2006.01.02") }}</time>
                 <span class="meta-sep">&#8226;</span>
-                <span>{{ .ReadingTime }} min read</span>
+                <span>{{ T "reading_time_long" (dict "Count" .ReadingTime) }}</span>
             </div>
         </div>
     </header>
@@ -41,20 +41,20 @@
     {{ with .Params.tags }}
     <div class="post-tags">
         {{ range . }}
-        <a href="{{ "tags/" | absURL }}{{ . | urlize }}/" class="tag-link">#{{ . }}</a>
+        <a href="{{ (printf "tags/%s/" (urlize .)) | relLangURL }}" class="tag-link">#{{ . }}</a>
         {{ end }}
     </div>
     {{ end }}
 
     {{/* License */}}
     <div class="post-license">
-        <p>&copy; Licensed under CC BY-NC-SA 4.0</p>
+        <p>&copy; {{ T "license_notice" }}</p>
     </div>
 
     {{/* Comments */}}
     {{ if .Site.Params.comments.enabled }}
     <section class="post-comments">
-        <h3 class="comments-title">Comments</h3>
+        <h3 class="comments-title">{{ T "comments_title" }}</h3>
         <script src="https://giscus.app/client.js"
             data-repo="{{ .Site.Params.comments.giscus.repo }}"
             data-repo-id="{{ .Site.Params.comments.giscus.repoID }}"
@@ -75,12 +75,12 @@
 {{/* Right-side TOC Sidebar */}}
 {{ if $hasToc }}
 <aside class="toc-sidebar">
-    <a href="/" class="toc-back-btn" onclick="return tocGoBack(event);">
+    <a href="{{ "/" | relLangURL }}" class="toc-back-btn" onclick="return tocGoBack(event);">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        <span>이전 페이지</span>
+        <span>{{ T "toc_back" }}</span>
     </a>
     <nav class="toc-sidebar-nav">
-        <h4 class="toc-sidebar-title">On this page</h4>
+        <h4 class="toc-sidebar-title">{{ T "toc_on_this_page" }}</h4>
         {{ .TableOfContents }}
     </nav>
 </aside>

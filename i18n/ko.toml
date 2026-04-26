@@ -1,0 +1,74 @@
+[nav_home]
+other = "홈"
+
+[nav_projects]
+other = "프로젝트"
+
+[nav_skills]
+other = "스킬"
+
+[nav_about]
+other = "프로필"
+
+[search_placeholder]
+other = "검색..."
+
+[search_empty]
+other = "검색 결과가 없습니다."
+
+[search_close]
+other = "검색 닫기"
+
+[search_open]
+other = "검색 열기"
+
+[menu_open]
+other = "메뉴 열기"
+
+[hero_welcome]
+other = "Welcome"
+
+[hero_stat_posts]
+other = "Posts"
+
+[hero_stat_categories]
+other = "Categories"
+
+[section_blog]
+other = "Blog"
+
+[section_recent_posts]
+other = "Recent Posts"
+
+[sidebar_categories]
+other = "Categories"
+
+[reading_time]
+other = "{{ .Count }} min"
+
+[reading_time_long]
+other = "{{ .Count }} min read"
+
+[comments_title]
+other = "Comments"
+
+[toc_back]
+other = "이전 페이지"
+
+[toc_on_this_page]
+other = "On this page"
+
+[pagination_prev]
+other = "이전 페이지"
+
+[pagination_next]
+other = "다음 페이지"
+
+[pagination_jump_label]
+other = "현재 페이지 — 숫자를 입력하여 이동"
+
+[license_notice]
+other = "Licensed under CC BY-NC-SA 4.0"
+
+[language_switcher_label]
+other = "언어 선택"

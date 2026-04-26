@@ -1,0 +1,74 @@
+[nav_home]
+other = "Home"
+
+[nav_projects]
+other = "Projects"
+
+[nav_skills]
+other = "Skills"
+
+[nav_about]
+other = "About"
+
+[search_placeholder]
+other = "Search..."
+
+[search_empty]
+other = "No results found."
+
+[search_close]
+other = "Close search"
+
+[search_open]
+other = "Open search"
+
+[menu_open]
+other = "Open menu"
+
+[hero_welcome]
+other = "Welcome"
+
+[hero_stat_posts]
+other = "Posts"
+
+[hero_stat_categories]
+other = "Categories"
+
+[section_blog]
+other = "Blog"
+
+[section_recent_posts]
+other = "Recent Posts"
+
+[sidebar_categories]
+other = "Categories"
+
+[reading_time]
+other = "{{ .Count }} min"
+
+[reading_time_long]
+other = "{{ .Count }} min read"
+
+[comments_title]
+other = "Comments"
+
+[toc_back]
+other = "Back"
+
+[toc_on_this_page]
+other = "On this page"
+
+[pagination_prev]
+other = "Previous page"
+
+[pagination_next]
+other = "Next page"
+
+[pagination_jump_label]
+other = "Current page — enter a number to jump"
+
+[license_notice]
+other = "Licensed under CC BY-NC-SA 4.0"
+
+[language_switcher_label]
+other = "Select language"

@@ -2072,3 +2072,131 @@ a:hover {
         display: none;
     }
 }
+
+/* =========================
+   LANGUAGE SWITCHER
+   ========================= */
+.lang-switcher {
+    position: relative;
+}
+
+.lang-switcher-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0 10px;
+    height: 36px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 13px;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.lang-switcher-btn:hover {
+    border-color: var(--primary-dim-border);
+    color: var(--primary);
+}
+
+.lang-switcher-current {
+    white-space: nowrap;
+}
+
+.lang-switcher-chev {
+    transition: transform 0.2s;
+}
+
+.lang-switcher.open .lang-switcher-chev {
+    transform: rotate(180deg);
+}
+
+.lang-switcher-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 140px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px;
+    z-index: 1000;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.lang-switcher.open .lang-switcher-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.lang-switcher-item {
+    display: block;
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.lang-switcher-item:hover {
+    background: var(--bg);
+    color: var(--text-primary);
+}
+
+.lang-switcher-item.active {
+    background: var(--primary-dim);
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .lang-switcher {
+        display: none;
+    }
+}
+
+/* Mobile menu language section */
+.mobile-menu-lang {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.mobile-menu-lang-label {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    padding: 0 16px;
+}
+
+.mobile-menu-lang-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mobile-menu-lang-item {
+    display: block;
+    padding: 10px 16px;
+    border-radius: 6px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.mobile-menu-lang-item:hover {
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+.mobile-menu-lang-item.active {
+    background: var(--primary-dim);
+    color: var(--primary);
+}

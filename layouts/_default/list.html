@@ -30,9 +30,9 @@
                         <a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a>
                     </h3>
                     <div class="post-meta">
-                        <time>{{ $post.Date.Format "2006.01.02" }}</time>
+                        <time>{{ $post.Date.Format ($post.Site.Params.dateFormat.published | default "2006.01.02") }}</time>
                         <span class="meta-sep">&#8226;</span>
-                        <span>{{ $post.ReadingTime }} min</span>
+                        <span>{{ T "reading_time" (dict "Count" $post.ReadingTime) }}</span>
                     </div>
                 </div>
             </div>

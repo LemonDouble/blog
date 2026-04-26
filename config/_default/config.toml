@@ -1,7 +1,7 @@
 baseurl = "https://blog.lemondouble.com"
-languageCode = "ko"
 title = "Lemon Blog"
-DefaultContentLanguage = "ko"
+defaultContentLanguage = "ko"
+defaultContentLanguageInSubdir = false
 hasCJKLanguage = true
 
 [pagination]
