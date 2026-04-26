@@ -14,12 +14,28 @@
     {{/* Devicon */}}
     <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" rel="stylesheet">
 
-    {{/* OG Tags */}}
-    <meta property="og:title" content="{{ .Title }}">
-    <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    {{/* OG / Twitter Card */}}
+    {{ $ogTitle := cond .IsHome .Site.Title .Title }}
+    {{ $ogDesc := cond (ne .Description "") .Description .Site.Params.description }}
+    {{ $ogImage := "" }}
+    {{ with .Resources.GetMatch (.Params.image | default "") }}
+        {{ $ogImage = .Permalink }}
+    {{ end }}
+    {{ if not $ogImage }}
+        {{ $ogImage = "/img/brand/lemon-logo.webp" | absURL }}
+    {{ end }}
+    <meta property="og:title" content="{{ $ogTitle }}">
+    <meta property="og:description" content="{{ $ogDesc }}">
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
     <meta property="og:url" content="{{ .Permalink }}">
-    {{ with .Params.image }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta property="og:locale" content="{{ .Site.LanguageCode }}">
+    <meta property="og:image" content="{{ $ogImage }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $ogTitle }}">
+    <meta name="twitter:description" content="{{ $ogDesc }}">
+    <meta name="twitter:image" content="{{ $ogImage }}">
 
     {{/* Styles */}}
     <link rel="stylesheet" href="/css/8bit.css">
