@@ -1,0 +1,74 @@
+[nav_home]
+other = "首頁"
+
+[nav_projects]
+other = "專案"
+
+[nav_skills]
+other = "技能"
+
+[nav_about]
+other = "關於"
+
+[search_placeholder]
+other = "搜尋..."
+
+[search_empty]
+other = "未找到搜尋結果。"
+
+[search_close]
+other = "關閉搜尋"
+
+[search_open]
+other = "開啟搜尋"
+
+[menu_open]
+other = "開啟選單"
+
+[hero_welcome]
+other = "Welcome"
+
+[hero_stat_posts]
+other = "Posts"
+
+[hero_stat_categories]
+other = "Categories"
+
+[section_blog]
+other = "Blog"
+
+[section_recent_posts]
+other = "Recent Posts"
+
+[sidebar_categories]
+other = "Categories"
+
+[reading_time]
+other = "{{ .Count }} min"
+
+[reading_time_long]
+other = "{{ .Count }} min read"
+
+[comments_title]
+other = "Comments"
+
+[toc_back]
+other = "返回上一頁"
+
+[toc_on_this_page]
+other = "本頁目錄"
+
+[pagination_prev]
+other = "上一頁"
+
+[pagination_next]
+other = "下一頁"
+
+[pagination_jump_label]
+other = "當前頁 — 輸入數字跳轉"
+
+[license_notice]
+other = "本文以 CC BY-NC-SA 4.0 授權條款發佈。"
+
+[language_switcher_label]
+other = "選擇語言"

@@ -1,0 +1,54 @@
+[ko]
+languageName = "한국어"
+languageCode = "ko"
+contentDir = "content"
+weight = 1
+title = "Lemon Blog"
+
+[ko.params]
+description = "이런저런 걸 합니다. 블로그 기고는 보통 제가 했던 일을 까먹지 않기 위해 합니다(..)"
+ogLocale = "ko_KR"
+
+[en]
+languageName = "English"
+languageCode = "en"
+contentDir = "content"
+weight = 2
+title = "Lemon Blog"
+
+[en.params]
+description = "I tinker with various things. Most blog posts are notes I jot down so I don't forget what I've worked on(..)"
+ogLocale = "en_US"
+
+[ja]
+languageName = "日本語"
+languageCode = "ja"
+contentDir = "content"
+weight = 3
+title = "Lemon Blog"
+
+[ja.params]
+description = "色々なことをやっています。ブログ記事は、自分がやったことを忘れないために書くことが多いです(..)"
+ogLocale = "ja_JP"
+
+[zh-cn]
+languageName = "简体中文"
+languageCode = "zh-CN"
+contentDir = "content"
+weight = 4
+title = "Lemon Blog"
+
+[zh-cn.params]
+description = "我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"
+ogLocale = "zh_CN"
+
+[zh-tw]
+languageName = "繁體中文"
+languageCode = "zh-TW"
+contentDir = "content"
+weight = 5
+title = "Lemon Blog"
+
+[zh-tw.params]
+description = "我做各種各樣的事情。部落格文章大多是為了不忘記自己做過的事而寫的(..)"
+ogLocale = "zh_TW"

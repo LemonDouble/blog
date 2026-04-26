@@ -1,0 +1,74 @@
+[nav_home]
+other = "首页"
+
+[nav_projects]
+other = "项目"
+
+[nav_skills]
+other = "技能"
+
+[nav_about]
+other = "关于"
+
+[search_placeholder]
+other = "搜索..."
+
+[search_empty]
+other = "未找到搜索结果。"
+
+[search_close]
+other = "关闭搜索"
+
+[search_open]
+other = "打开搜索"
+
+[menu_open]
+other = "打开菜单"
+
+[hero_welcome]
+other = "Welcome"
+
+[hero_stat_posts]
+other = "Posts"
+
+[hero_stat_categories]
+other = "Categories"
+
+[section_blog]
+other = "Blog"
+
+[section_recent_posts]
+other = "Recent Posts"
+
+[sidebar_categories]
+other = "Categories"
+
+[reading_time]
+other = "{{ .Count }} min"
+
+[reading_time_long]
+other = "{{ .Count }} min read"
+
+[comments_title]
+other = "Comments"
+
+[toc_back]
+other = "返回上一页"
+
+[toc_on_this_page]
+other = "本页目录"
+
+[pagination_prev]
+other = "上一页"
+
+[pagination_next]
+other = "下一页"
+
+[pagination_jump_label]
+other = "当前页 — 输入数字跳转"
+
+[license_notice]
+other = "本文采用 CC BY-NC-SA 4.0 许可协议发布。"
+
+[language_switcher_label]
+other = "选择语言"

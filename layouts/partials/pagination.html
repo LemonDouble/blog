@@ -6,7 +6,7 @@
 {{ $firstURL := (index $paginator.Pagers 0).URL }}
 <nav class="pagination" aria-label="Pagination">
     {{ if $paginator.HasPrev }}
-    <a href="{{ $paginator.Prev.URL }}" class="pagination-item" aria-label="이전 페이지">&larr;</a>
+    <a href="{{ $paginator.Prev.URL }}" class="pagination-item" aria-label="{{ T "pagination_prev" }}">&larr;</a>
     {{ else }}
     <span class="pagination-item disabled" aria-hidden="true">&larr;</span>
     {{ end }}
@@ -27,7 +27,7 @@
             <div class="page-jump-wrap">
                 <input class="page-jump-input" type="text" inputmode="numeric" pattern="[0-9]*" value="{{ $p }}"
                     data-total="{{ $total }}" data-base="{{ $firstURL }}"
-                    aria-label="현재 페이지 — 숫자를 입력하여 이동"
+                    aria-label="{{ T "pagination_jump_label" }}"
                     onfocus="pageJumpFocus(this);"
                     oninput="pageJumpSanitize(this);"
                     onkeydown="return pageJump(event, this);"
@@ -42,7 +42,7 @@
     {{ end }}
 
     {{ if $paginator.HasNext }}
-    <a href="{{ $paginator.Next.URL }}" class="pagination-item" aria-label="다음 페이지">&rarr;</a>
+    <a href="{{ $paginator.Next.URL }}" class="pagination-item" aria-label="{{ T "pagination_next" }}">&rarr;</a>
     {{ else }}
     <span class="pagination-item disabled" aria-hidden="true">&rarr;</span>
     {{ end }}
