@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kubeseal on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/kubeseal/</link><description>Recent content in Kubeseal on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 10 Dec 2023 00:41:05 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/kubeseal/index.xml" rel="self" type="application/rss+xml"/><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 7-1. Easily Creating Sealed Secrets via Web UI</title><link>https://blog.lemondouble.com/en/p/567b4c177bdb8401/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/567b4c177bdb8401/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-introduction"&gt;1. Introduction&lt;/h3&gt;
+&lt;p&gt;Sealed Secrets is great overall, but it has one annoying issue: every time I configure something, I have to create a Secrets.yaml, convert it to Sealed Secrets via the CLI, and then add it to Git. It&amp;rsquo;s incredibly tedious.&lt;/p&gt;
+&lt;p&gt;To make this a bit easier, I&amp;rsquo;m going to build a simple Web UI using &lt;a href="https://github.com/Jaydee94/kubeseal-webgui" target="_blank" rel="noopener noreferrer"
+&gt;kubeseal-webgui&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/567b4c177bdb8401/image.png" alt="Kubeseal webui — you can simply set up Secrets in the web and get Sealed Secrets back."&gt;&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 7. Secret Management with Sealed Secrets + Traefik Basic Auth Setup</title><link>https://blog.lemondouble.com/en/p/1379182f14a62e9b/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/1379182f14a62e9b/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-sealed-secrets"&gt;1. Sealed Secrets?&lt;/h3&gt;
+&lt;p&gt;We&amp;rsquo;re doing GitOps right now. That means we&amp;rsquo;re pushing all cluster-related configuration to Git.&lt;/p&gt;
+&lt;p&gt;But here&amp;rsquo;s the problem: Kubernetes Secrets have no encryption. Anyone can decode them with base64 and see the contents in plain text.&lt;/p&gt;
+&lt;p&gt;So we can&amp;rsquo;t push them to Git, right?&lt;/p&gt;
+&lt;p&gt;Sealed Secrets was created to solve exactly this problem.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The cluster holds an encryption/decryption key.&lt;/li&gt;
+&lt;li&gt;Before pushing a file to Git, the user encrypts it with the key the cluster holds.&lt;/li&gt;
+&lt;li&gt;The encrypted Secret is pushed to Git. Anyone can see it, but it can&amp;rsquo;t be decrypted, so it&amp;rsquo;s safe.&lt;/li&gt;
+&lt;li&gt;Later, when the Secret is loaded back into the cluster via something like ArgoCD, the Sealed Secret controller decrypts it automatically.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Sealed Secrets GitHub: &lt;a href="https://github.com/bitnami-labs/sealed-secrets" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+&lt;/p&gt;</description></item></channel></rss>

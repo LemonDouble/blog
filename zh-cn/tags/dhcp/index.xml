@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DHCP on Lemon Blog</title><link>https://blog.lemondouble.com/zh-cn/tags/dhcp/</link><description>Recent content in DHCP on Lemon Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sun, 03 Dec 2023 22:20:29 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-cn/tags/dhcp/index.xml" rel="self" type="application/rss+xml"/><item><title>在家用树莓派集群搭建数据中心 - 2. 集群初始化设置篇</title><link>https://blog.lemondouble.com/zh-cn/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/f4efced2e8d5b1d8/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="硬件"&gt;硬件&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="硬件构成示意图"&gt;&lt;/p&gt;
+&lt;p&gt;请参考上图来组装硬件。&lt;/p&gt;
+&lt;p&gt;如果你家里有在用电脑，那大概率已经有路由器和常用的台式机了，所以只需要在上图中加上绿色部分即可。&lt;/p&gt;</description></item></channel></rss>

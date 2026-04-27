@@ -1,0 +1,754 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>我自己留着看的 Kotlin 速查表 | Lemon Blog</title><meta name=description content="我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"><link rel=icon href=https://cdn.lemondouble.com/homepage/favicon.ico><link rel=canonical href=https://blog.lemondouble.com/zh-cn/p/f8a9d54607e901b4/><link rel=alternate hreflang=ko href=https://blog.lemondouble.com/p/f8a9d54607e901b4/><link rel=alternate hreflang=en href=https://blog.lemondouble.com/en/p/f8a9d54607e901b4/><link rel=alternate hreflang=ja href=https://blog.lemondouble.com/ja/p/f8a9d54607e901b4/><link rel=alternate hreflang=zh-cn href=https://blog.lemondouble.com/zh-cn/p/f8a9d54607e901b4/><link rel=alternate hreflang=zh-tw href=https://blog.lemondouble.com/zh-tw/p/f8a9d54607e901b4/><link rel=alternate hreflang=x-default href=https://blog.lemondouble.com/p/f8a9d54607e901b4/><link href=https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css rel=stylesheet><link href=https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css rel=stylesheet><meta property="og:title" content="我自己留着看的 Kotlin 速查表"><meta property="og:description" content="我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.lemondouble.com/zh-cn/p/f8a9d54607e901b4/"><meta property="og:site_name" content="Lemon Blog"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="ja_JP"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:image" content="https://blog.lemondouble.com/p/f8a9d54607e901b4/cover.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="我自己留着看的 Kotlin 速查表"><meta name=twitter:description content="我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"><meta name=twitter:image content="https://blog.lemondouble.com/p/f8a9d54607e901b4/cover.png"><link rel=stylesheet href=/css/8bit.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-dracula.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css><link rel=stylesheet href=/css/code-block.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-9C6YX68EBM"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9C6YX68EBM")</script><meta name=generator content="Hugo 0.159.2"></head><body><nav class=site-nav><div class=nav-inner><a href=/zh-cn/ class=nav-logo><img src=/img/brand/lemon-logo.webp alt=Logo>
+<span>Lemon Blog</span></a><div class=nav-links><a href=/zh-cn/ class=nav-link>首页</a>
+<a href=/zh-cn/projects/ class=nav-link>项目</a>
+<a href=/zh-cn/skills/ class=nav-link>技能</a>
+<a href=https://lemondouble.com/zh-cn target=_blank rel="noopener noreferrer" class=nav-link>关于</a></div><div class=nav-actions><div class=search-wrapper id=searchWrapper><span class=search-icon><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+</span><input type=text class=search-input id=searchInput placeholder=搜索... autocomplete=off>
+<button class=search-close-btn onclick=closeMobileSearch() aria-label=关闭搜索>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class=search-results id=searchResults></div></div><button class=mobile-search-btn onclick=openMobileSearch() aria-label=打开搜索>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><div class=lang-switcher id=langSwitcher><button type=button class=lang-switcher-btn onclick=toggleLangSwitcher(event) aria-label=选择语言 aria-haspopup=true aria-expanded=false>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3.0 014 10 15.3 15.3.0 01-4 10A15.3 15.3.0 018 12a15.3 15.3.0 014-10z"/></svg>
+<span class=lang-switcher-current>简体中文</span>
+<svg class="lang-switcher-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class=lang-switcher-menu id=langSwitcherMenu role=menu><a href=/p/f8a9d54607e901b4/ class=lang-switcher-item lang=ko role=menuitem>한국어
+</a><a href=/en/p/f8a9d54607e901b4/ class=lang-switcher-item lang=en role=menuitem>English
+</a><a href=/ja/p/f8a9d54607e901b4/ class=lang-switcher-item lang=ja role=menuitem>日本語
+</a><a href=/zh-cn/p/f8a9d54607e901b4/ class="lang-switcher-item active" lang=zh-cn role=menuitem>简体中文
+</a><a href=/zh-tw/p/f8a9d54607e901b4/ class=lang-switcher-item lang=zh-tw role=menuitem>繁體中文</a></div></div><button class=nav-menu-btn onclick=toggleMobileMenu() aria-label=打开菜单>
+<svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button></div></div></nav><div class=mobile-menu id=mobileMenu><a href=/zh-cn/ class=nav-link onclick=closeMobileMenu()>首页</a>
+<a href=/zh-cn/projects/ class=nav-link onclick=closeMobileMenu()>项目</a>
+<a href=/zh-cn/skills/ class=nav-link onclick=closeMobileMenu()>技能</a>
+<a href=https://lemondouble.com/zh-cn target=_blank rel="noopener noreferrer" class=nav-link onclick=closeMobileMenu()>关于</a><div class=mobile-menu-lang><span class=mobile-menu-lang-label>选择语言</span><div class=mobile-menu-lang-items><a href=/p/f8a9d54607e901b4/ class=mobile-menu-lang-item lang=ko onclick=closeMobileMenu()>한국어</a>
+<a href=/en/p/f8a9d54607e901b4/ class=mobile-menu-lang-item lang=en onclick=closeMobileMenu()>English</a>
+<a href=/ja/p/f8a9d54607e901b4/ class=mobile-menu-lang-item lang=ja onclick=closeMobileMenu()>日本語</a>
+<a href=/zh-cn/p/f8a9d54607e901b4/ class="mobile-menu-lang-item active" lang=zh-cn onclick=closeMobileMenu()>简体中文</a>
+<a href=/zh-tw/p/f8a9d54607e901b4/ class=mobile-menu-lang-item lang=zh-tw onclick=closeMobileMenu()>繁體中文</a></div></div></div><div class=container><main class=site-main><div class="post-layout has-toc"><article class=post-single><header class=post-header><div class=post-cover><img src=/p/f8a9d54607e901b4/cover_hu_2f6eff48073e0923.png alt="我自己留着看的 Kotlin 速查表"></div><div class=post-header-content><div class=post-categories><a href=/zh-cn/categories/kotlin/ class=category-tag>Kotlin</a></div><h1 class=post-title>我自己留着看的 Kotlin 速查表</h1><div class=post-meta><time>2023.01.17</time>
+<span class=meta-sep>&#8226;</span>
+<span>15 min read</span></div></div></header><div class=post-content><p><em>注：作者居住在韩国，部分内容包含韩国特有的背景。</em></p><ul><li>TIP：写数字时可以使用 <code>var number = 1_000L</code> 这种写法</li></ul><h3 id=1-变量>1. 变量</h3><ul><li>即使是 <code>val</code> 集合，也可以添加 element</li><li>不区分 primitive 和 reference type，但实际运算时会转换为 primitive type 进行运算</li></ul><h3 id=2-null-处理>2. Null 处理</h3><ul><li>Safe Call（<code>?.</code>）：不为 null 时执行，为 null 时不执行</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val str: String? = &#34;ABC&#34;
+str.length // ERROR
+str?.length // OK</code></pre></div><ul><li>Elvis 运算符（<code>?:</code>）：如果前面的运算结果为 null，则使用后面的值</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val str: String? = &#34;ABC&#34;
+str?.length ?: 0 // str.length 或 0 
+str?.length ?: throw IllegalArgumentException(&#34;null이 들어왔습니다.&#34;) // 或抛出异常
+str?.length ?: return 0 // 也可用于 Early return</code></pre></div><ul><li>平台类型：在 Kotlin 中引入 Java 代码时<ul><li>null、non-null 类型都可以使用</li><li>尽量直接确认 Java 代码，或用 Kotlin 进行包装后使用</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 有 @Nullable、@NonNull 时会被转换，没有时则是平台类型
+// 在 java 中 
+private final String name; &lt;&lt; 没有 Annotation 时
+
+val name : String? = javaPerson.name // OK
+val name : String = javaPerson.name  // OK</code></pre></div><h3 id=3-type>3. Type</h3><ul><li>基本 Type 转换：基本类型之间使用 <code>toXX</code> 之类的函数</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val number1 : Int = 4
+val number2 : Long = number1.toLong()
+
+val number1 : Int? = 3 
+val number2 : Long = number1?.toLong() ?: 0L // 如果是 nullable 变量则灵活处理</code></pre></div><ul><li>用户自定义 Type：利用智能转换（Smart Cast）</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>fun printAgeIfPerson(obj: Any){
+	// is = Java 的 instanceof
+	if(obj is Person){
+			// 经过智能转换，obj 的 type 变为 Person
+			println(obj.age)
+	}
+}
+
+// 或者
+// 等同于 java 的 (Person) obj
+val person = obj as Person
+
+// !is、as? 等也可以使用
+// as?：整体为 null</code></pre></div><ul><li>Any：相当于 Java 的 Object + 还包括 Primitive Type 的最顶层<ul><li>不包含 null，如果想包含 null 请使用 <code>Any?</code></li><li>拥有 equals、hashCode、toString</li></ul></li><li>Unit：类似 void，但 Unit 本身可以作为泛型的类型实参</li><li>Nothing：表示函数不会正常结束</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>fun fail(message : String): Nothing{
+	throw IllegalArgumentException(message)
+}</code></pre></div><ul><li>String interpolation</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val person = Person(name = &#34;lemon&#34;, age = 20)
+val log = &#34;이름 : ${person.name}, 나이 : ${person.age}&#34;</code></pre></div><ul><li>String indexing</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val str = &#34;ABC&#34;
+// 取代 Java 中的 str.get(0)
+str[1] //ok</code></pre></div><h3 id=4-运算符>4. 运算符</h3><ul><li><p>Kotlin 中使用 <code>></code>, <code>&lt;</code>, <code>≥</code>, <code>≤</code> 时会自动调用 <code>compareTo</code></p></li><li><p><code>==</code>（值比较，等价性：自动调用 equals），<code>===</code>（地址比较，同一性：相同的 0x101 地址）</p></li><li><p><code>in</code>、<code>!in</code>：是否包含在集合 / 范围内？</p></li><li><p><code>a..b</code>：创建从 a 到 b 的范围对象</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val numbers = 1..100 // 创建从 1 到 100 的 IntRange 对象
+println(1 in numbers) // true
+println(0 in numbers) // false
+
+// 以下两个表达式相同
+if(0 &lt;= score &amp;&amp; score &lt;= 100) {..}
+if(score in 0..100)</code></pre></div><ul><li>运算符重载</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>data class Money(val amount : Long){
+	
+	operator fun plus(other : Money): Money{
+		return Money(this.amount &#43; other.amount)
+	}
+}
+
+// 可以像下面这样使用
+val sumMoney = money1 &#43; money2</code></pre></div><h3 id=5-条件语句>5. 条件语句</h3><ul><li>if 语句在 Kotlin 中是 expression（在 Java 中是 statement）<ul><li>expression：可以求值为一个值的语句</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 在 Java 中不可行，但在 Kotlin 中 if 是 expression 所以 OK 
+fun getPassOrFail(score : Int): String{
+	return if (score &gt;= 50){ &#34;P&#34; } else { &#34;F&#34; }
+}</code></pre></div><ul><li><p>在 Java 中三元运算符是 expression，但在 Kotlin 中 if 语句就是 expression，因此不需要三元运算符</p><ul><li>因此 Kotlin 没有三元运算符</li></ul></li><li><p>when 语句</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 基础用法，代替 Switch
+fun getGradeWithSwitch(score: Int): String{
+	return when(score / 10){
+		9 -&gt; &#34;A&#34;
+		8 -&gt; &#34;B&#34;
+		7 -&gt; &#34;C&#34;
+		else -&gt; &#34;D&#34;
+	}
+}
+
+// 左侧也可以使用 expression，is Type 等也可以使用
+when(score){
+in 90..99 -&gt; &#34;A&#34;
+in 80..89 -&gt; &#34;B&#34;
+...
+
+// 同时检查多个条件
+when (number){
+1,0,-1 -&gt; println(&#34;1,0,-1입니다&#34;)
+else -&gt; println(&#34;아닙니다&#34;)
+}
+
+// 像条件语句一样使用
+fun printOdd(score: Int): Int{
+	when{
+		score % 2 == 1 -&gt; println(&#34;홀수&#34;)
+		score % 2 == 0 -&gt; println(&#34;짝수&#34;)
+		else -&gt; println(&#34;넌머임&#34;)
+	}
+	return 1
+}</code></pre></div><h3 id=6-循环语句>6. 循环语句</h3><ul><li>forEach</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val numbers = listOf(1L, 2L, 3L)
+for (number in numbers){
+	println(number)
+}</code></pre></div><ul><li>Progression：等差数列、Range（Range 继承自 Progression）</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val intRange = 1..100</code></pre></div><h3 id=7-异常>7. 异常</h3><ul><li>try-catch-finally：照常使用（但在 Kotlin 中是 expression，可以使用 return 等）</li><li>在 Kotlin 中所有错误都是 Unchecked Exception<ul><li>Checked：必须处理的 Exception</li><li>Unchecked Exception：不一定要处理的..</li></ul></li><li>try with resources</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// JAVA 的 try with resources
+// try 结束后会自动关闭。但必须是 AutoCloseable 接口的实现类。 
+public void readFile(String path) throws IOException{
+	try(BufferedReader reader = new BufferedReader(new FileReader(path))){
+		System.out.println(reader.readLine());
+	}
+}
+
+// 在 Kotlin 中使用，use 的工作方式类似于 try with resources
+fun readFile(path: String){
+	BufferedReader(FileReader(path)).use { reader -&gt;
+		println(reader.readLine())
+	}
+}</code></pre></div><h3 id=8-函数>8. 函数</h3><ul><li>基础</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 如果函数体仅由表达式（Expression）组成，可以使用 =
+fun max(a: Int, b: Int) : Int = if(a &gt; b) {a} else {b}</code></pre></div><ul><li>默认参数</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>fun repeat(
+	str : String,
+	num : Int = 3,
+	useNewLine : Boolean = true
+){
+	for(i in 1..num){
+	if(useNewLine) { println(str)} else{ print(str) }
+	}
+}</code></pre></div><ul><li>命名参数（可以明确指定参数名，类似 builder 一样使用）</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>repeat(str = &#34;Hello, World&#34;, useNewLine = true)
+// 这种情况下未指定 num，因此使用默认值（3）
+// 不用创建 builder 也可以像 builder 一样使用</code></pre></div><ul><li>可变参数（vararg）</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java
+public void printAll(String... strings){
+	for(String str : strings){
+		System.out.println(str);	
+	}
+}
+String[] array = new String[]{&#34;Hello&#34;, &#34;World&#34;, &#34;!!&#34;};
+printAll(array)
+printAll(&#34;Hello&#34;, &#34;World&#34;, &#34;!!&#34;)
+
+// Kotlin
+printAll(vararg strings : String){
+	for (str in strings){
+		println(str)
+	}
+}
+
+val array = arrayOf(&#34;Hello&#34;, &#34;World&#34;, &#34;!!&#34;)
+printAll(*array) // spread 运算符
+printAll(&#34;Hello&#34;, &#34;World&#34;, &#34;!!&#34;)</code></pre></div><h3 id=9-类>9. 类</h3><ul><li>类与属性</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>class Person(
+	val name:String,
+	var age:Int
+)
+
+// 像访问属性一样访问 getter、setter
+person.age = 10
+println(person.age)</code></pre></div><ul><li>构造函数校验、init</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>class Person(
+	val name:String = &#34;Patrick&#34;,
+	var age:Int = 1
+){
+	init{
+		if(age &lt;= 0){
+			throw IllegalArgumentException(&#34;나이는 ${age}일 수 없습니다.&#34;)
+		}
+	}
+}</code></pre></div><ul><li>自定义 getter、Setter</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>class Person(
+	val name:String,
+	var age:Int
+){
+	
+	// 像 Property 一样使用，可以用单个 Expression 表示的内容用 = 表示
+	val isAdult: Boolean
+		get() = this.age &gt;= 20
+	
+	// 与上面是相同的表达式
+	fun isAdult(): Boolean{
+		return this.age &gt;= 20
+	}
+}</code></pre></div><h3 id=10-继承>10. 继承</h3><ul><li>抽象类</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 默认是 public class 
+abstract class Animal(
+	protected val species:String,
+	protected val legCount:Int
+){
+	abstract fun move()
+}</code></pre></div><ul><li>继承的子类</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+public class JavaPenguin extends JavaAnimal{
+	
+	// 子对象中新增的字段
+	private final int wingCount;
+	
+	public JavaPenguin(String species){
+		super(species, 2)
+		this.wingCount = 2;
+	}
+
+	@Override
+	public void move(){
+		System.out.println(&#34;penguin is moving&#34;);
+	}
+
+	// 重写父类方法的 getter
+	@Override
+	public int getLegCount(){
+		return super.legCount &#43; this.wingCount;
+	}
+}
+
+//Kotlin
+class penguin(
+	species : String // 主构造函数
+) : Animal(species, 2) // 继承 Animal 并直接调用 Animal 的构造函数 {
+
+	private val wingCount: Int = 2
+	
+	// 使用关键字代替 Annotation
+	override fun move(){
+		println(&#34;cat is moving&#34;)
+	}
+
+	override val legCount: Int
+		get() = super.legCount &#43; this.wingCount
+}
+
+// 但 Kotlin 默认所有类都加了 final 关键字，因此要 override 必须加 open
+abstract class Animal(
+	protected val species:String,
+	protected open val legCount: Int
+){
+	abstract fun move()
+}</code></pre></div><ul><li>接口</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java
+public interface JavaSwimable{
+	default void act(){System.out.println(&#34;swim!&#34;); }
+}
+public interface JavaFlyable{
+	default void act(){System.out.println(&#34;swim!&#34;); }
+}
+
+// Kotlin
+interface Swimable{
+	// 不需要 default 关键字也可以实现
+	fun act(){ println(&#34;swim!&#34;) } 
+}
+interface Flyable{
+	fun act(){ println(&#34;fly!&#34;) }
+}</code></pre></div><ul><li>实现接口的类</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java
+public final class JavaPenguin extends JavaAnimal implements JavaFlyable, JavaSwimable{
+	
+	// 构造函数实现..（省略）
+	
+	@Override
+	public void act(){
+		JavaSwimable.super.act();
+		JavaFlyable.super.act();
+	}
+}
+
+// Kotlin
+class Penguin(): Animal(species, 2), Swimable, Flyable{
+	override fun act(){
+		super&lt;Swimable&gt;.act()
+		super&lt;Flyable&gt;.act()
+	}
+}</code></pre></div><ul><li>可以在 Interface 中声明抽象 Property（但 Interface 不能拥有 Backing Field）</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+interface Swimable{
+	// 期望子类实现的 property
+	val swimAbility: Int 
+}
+
+class Penguin(): Swimable{
+	// 像下面这样实现
+	override val swimAbility: Int
+		get() = 3
+}</code></pre></div><ul><li>类继承时的注意事项（初始化执行顺序）<ul><li>父类的 Constructor、Init 块中不要访问子类的 Field！</li><li>父类的 Constructor、Init 块中使用的 Property 不要使用 open！</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>open class Base(
+	open val number : Int = 100
+){
+	init{
+		println(&#34;Base Class&#34;)
+		println(number)
+	}
+}
+
+class Derived(
+	override val number: Int
+): Base(number){
+	init{
+		println(&#34;Derived class&#34;)
+	}
+}
+
+// 实例化 Derived 类时的输出
+/*
+	Output : 
+	Base Class
+	0
+	Derived Class 
+*/
+
+// 原因：在父类（Base）调用 number 时，会取子类的 Number。
+// 但此时父类（Base）的 constructor 正在执行，子类（Derived）尚未初始化
+// 因此输出 0</code></pre></div><ul><li>关键字整理<ul><li>final（默认，可省略）：阻止 override</li><li>open：开放 override</li><li>abstract：必须 override</li><li>override：重写父类型（在 Java 中是 Annotation，在 Kotlin 中是关键字）</li></ul></li></ul><h3 id=11-访问控制>11. 访问控制</h3><ul><li><p>Java、Kotlin 的访问控制</p><ul><li>Public<ul><li>Java/Kotlin：随处可访问</li></ul></li><li>Protected<ul><li>Java：同包或子类可访问</li><li>Kotlin：仅<strong>声明该类</strong>或子类可访问</li></ul></li><li>default（Java）／ internal（Kotlin）<ul><li>Java：仅同包可访问</li><li>Kotlin：仅同 Module 可访问<ul><li>Module：一次编译的 Kotlin 代码（同一个 Gradle 项目等）</li></ul></li></ul></li><li>private<ul><li>Java/Kotlin：仅在声明它的类内部可访问</li></ul></li></ul></li><li><p>Property 访问修饰符</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>class Car(
+	// 将 name 的 getter 设为 internal
+	internal val name : String,
+	var owner : String,
+	_price : Int
+){
+	// 仅 Setter 设为 private
+	var price = _price
+		private set
+}</code></pre></div><ul><li>Java/Kotlin 混用时的注意事项<ul><li>Internal 关键字在字节码转换（转为 Java 时）会被转换为 public</li><li>因此在 Java 代码中可以访问 Kotlin 中的 Internal 关键字</li><li>Kotlin 的 Protected 也是如此（Java 中同包也可访问）</li></ul></li></ul><h3 id=12-object>12. object</h3><ul><li>static 函数和变量<ul><li>static：静态地在实例间共享值</li><li>companion object：与类相伴的唯一 object</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+public class JavaPerson{
+    private static final int MIN_AGE = 1;
+
+    // 静态工厂方法
+    public static JavaPerson newBaby(String name){
+        return new JavaPerson(name, MIN_AGE);
+    }
+
+    private String name;
+    private int age;
+
+    private JavaPerson(String name, int age){ this.name = name; this.age = age}
+}
+
+//Kotlin
+class Person private constructor(
+    var name : String,
+    var age : Int,
+){
+		// 用 companion object 代替 Static
+    companion object{
+				// 有 const 时编译时分配，没有时运行时分配
+				// 仅可分配于基本类型 &#43; String
+        const val MIN_AGE = 1
+        fun newBaby(name: String): Person{
+            return Person(name, MIN_AGE)
+        }
+    }
+}
+
+// 可通过 Person.Companion.newBaby(&#34;ABC&#34;) 调用，
+// 或通过 @JvmStatic 注解像 Java Static 一样直接访问
+
+/*
+	@JvmStatic
+	fun newBaby(name: String) : Person{...}
+
+	之后
+	可以使用 Person.newBaby(&#34;ABC&#34;)
+*/</code></pre></div><ul><li>Companion Object 的运用（与 Java 的不同点）<ul><li>被视为一个对象</li><li>因此可以命名或实现 Interface</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+interface Log{ fun log() }
+
+class Person private constructor(
+    var name : String,
+    var age : Int,
+){
+		// 可以设置名称
+    companion object Factory{
+        const val MIN_AGE = 1
+        fun newBaby(name: String): Person{
+            return Person(name, MIN_AGE)
+        }
+				override fun log(){ println(&#34;I am companion object!&#34;) }
+    }
+}
+
+// 如果有名称，可以基于名称访问
+// Person.Factory.newBaby(&#34;ABC&#34;);</code></pre></div><ul><li>Singleton<ul><li>使用 object 关键字</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+public class JavaSingleton{
+	private static final JavaSingleton INSTANCE = new JavaSingleton();
+	private JavaSingleton(){}
+
+	public static Javasingleton getInstance(){ return INSTANCE; }
+}
+
+//Kotlin
+object Singleton{
+	var a: Int = 0
+}
+
+// 之后可以像 Singleton.a 这样使用</code></pre></div><ul><li>匿名类（Anonymous class）<ul><li>一次性使用某个 Interface、Class 的实现时</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java
+private static void moveSomething(Movable movable){ movable.move(); movable.fly(); }
+
+// 匿名类实现
+moveSomething(new Movable(){
+	@Override
+	public void move(){System.out.println(&#34;move~&#34;);}
+	@Override
+	public void fly(){System.out.println(&#34;fly~&#34;);}
+}
+
+// Kotlin
+private fun moveSomething(movable:Movable){ movable.move(); movable.fly();}
+
+// 使用 Object 关键字实现匿名类
+moveSomething(object : Movable{
+	override fun move(){ println(&#34;move~&#34;) }
+	override fun fly(){println(&#34;fly~&#34;)}
+})</code></pre></div><h3 id=13-嵌套类nested-class>13. 嵌套类（nested class）</h3><ul><li>感觉用得不多就略过..</li></ul><h3 id=14-data-classenum-classsealed-classinterface>14. Data class、Enum class、Sealed Class/Interface</h3><ul><li>Data class<ul><li>可以方便地使用 DTO</li><li>默认提供 field、constructor、getter、equals、hashCode、toString</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Kotlin
+data class PersonDto(val name: String, val age: Int)
+
+// 使用命名参数效果等同于使用 Builder 模式
+PersonDto(name=&#34;Patrick&#34;, age=20)</code></pre></div><ul><li>Enum class</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+public enum JavaCountry{
+	KOREA(&#34;KO&#34;),
+	AMERICA(&#34;US&#34;);
+
+	private final String code;
+	JavaCountry(String code) { this.code=code; }
+	public String getCode() { return this.code; }
+}
+
+// Kotlin（等效代码）
+enum class Country(
+	private val code: String
+){
+	KOREA(&#34;KO&#34;),
+	AMERICA(&#34;US&#34;);
+}
+
+// 利用 When 子句方便地处理
+// 此外，这样使用时如果 ENUM CLASS 增加新值，编译器会提醒
+fun handleCountry(country: Country){
+	when(country){
+		Country.KOREA -&gt; LOGIC()
+		Country.AMERICA -&gt; LOGIC()
+		// 不写 ELSE 也能用！
+	}
+}</code></pre></div><ul><li>Sealed Class/Interface<ul><li>想创建一个可继承的抽象类，但不希望外部继承</li><li>编译期记住所有子类类型，运行时无法添加其他类类型</li><li>子类必须在同一包中</li><li>与 Enum 的区别<ul><li>可以继承类</li><li>Enum 的实例是单例，但 Sealed Class 可以有多个实例</li></ul></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Kotlin
+sealed class Car(
+	val name:String,
+	val price:Long
+)
+
+class Avante: Car(&#34;Avante&#34;,1_000L)
+class Sonata: Car(&#34;Sonata&#34;,2_000L)
+class Grandeur: Car(&#34;Grandeur&#34;,3_000L)
+// 像上面的 Enum class 一样可以使用 when 子句</code></pre></div><h3 id=15-collections集合>15. Collections（集合）</h3><ul><li><p>Collections</p><ul><li>需要设置集合是不可变还是可变</li><li>Mutable（可变）集合：可添加、删除 element</li><li>Immutable（不可变）集合：不可添加、删除 element<ul><li>但即使是不可变集合，也可以修改 Reference Type 元素的字段</li><li>例如，访问 Index 1 的数据并将 Price 字段从 1000 改为 2000 韩元是可行的</li></ul></li></ul></li><li><p>List</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>/* 默认实现：ArrayList */
+// 创建不可变 List
+val numbers = listOf(100,200)
+// 创建可变 List
+val mutableNumbers = mutableListOf(100,200)
+// 创建空 List
+val emptyList = emptyList&lt;Int&gt;()
+
+// 等同于 numbers.get(0)
+numbers[0]
+
+for(number in numbers){println(number)}
+// 需要同时取得 Index 时
+for((idx, number) in numbers.withIndex()){println(&#34;${idx}, ${number}&#34;)}</code></pre></div><ul><li>Set</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>/* 默认实现：LinkedHashSet */
+val numbers = setOf(100,200)</code></pre></div><ul><li>Map</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val weekMap= mutableMapOf&lt;Int, String&gt;()
+// 可以像数组一样访问
+weekMap[1] = &#34;MONDAY&#34;
+weekMap[2] = &#34;TUESDAY&#34;
+
+// 也可使用 to 进行初始化
+mapOf(1 to &#34;MONDAY&#34;, 2 to &#34;TUESDAY&#34;)
+
+for(key in weekMap.keys){println(key) println(weekMap[key]) }
+for((key, value) in weekMap.entries){println(key) println(value)} </code></pre></div><ul><li><p>集合的 null 可能性</p><ul><li><code>List&lt;Int?></code>：List 本身非 null，列表中可为 null</li><li><code>List&lt;Int>?</code>：List 本身可为 null，列表中非 null</li><li><code>List&lt;Int?>?</code>：List 本身和列表中都可为 null</li></ul></li><li><p>与 Java 混用时的注意事项</p><ul><li>Java 不区分不可变 / 可变 List<ul><li>Kotlin 的不可变 List 在 Java 中可被当作可变 List 使用</li><li>Kotlin 的 Non-null List 在 Java 中可被添加 null</li><li>在 Kotlin 中使用 <code>Collections.unmodifiable</code> 或编写防御性逻辑</li></ul></li><li>Platform Type 可能引起类型问题</li></ul></li></ul><h3 id=16-extension扩展infix中缀inlinelocal局部函数>16. Extension（扩展）、Infix（中缀）、inline、Local（局部）函数</h3><ul><li>扩展函数<ul><li>Kotlin：以与 Java 100% 兼容为目标<ul><li>因此希望可以在用 Java 编写的库上添加 Kotlin 代码</li><li>像类内部方法一样使用，但代码可以写在外部！</li></ul></li><li>限制：<ul><li>扩展函数是 public 的，如果取用 private、protected 成员则破坏封装..<ul><li>为了维持封装性，无法取用 private、protected 成员</li></ul></li><li>成员函数 / 扩展函数的签名（名称）相同时<ul><li>优先调用成员函数</li><li>因此之后增加成员函数时可能会出错</li></ul></li></ul></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+
+// 扩展 String 类
+fun String.lastChar(){ return this[this.length - 1] }
+
+// 之后在 Kotlin 中可像下面这样使用
+val str = &#34;ABC&#34;
+println(str.lastChar());</code></pre></div><ul><li>中缀函数<ul><li>仅有一个变量、一个参数时</li><li>用 <code>var functionName argument</code> 替代 <code>var.functionName(argument)</code></li><li>即可调用</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>infix fun Int.add(other: Int): Int{
+	return this &#43; other
+}
+
+// 可以像下面这样调用
+3 add 4</code></pre></div><ul><li>内联函数<ul><li>我们熟知的那个内联函数..</li><li>可以减少将函数作为参数传递的开销</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>inline fun Int.add(other: Int): Int{</code></pre></div><ul><li>局部函数<ul><li>函数中的函数</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+fun createPerson(firstName: String, lastName:String): Person{
+	if(firstName.isEmpty()){ throw IllegalArgumentException(&#34;에러!!&#34;)}
+	if(lastName:String.isEmpty()){ throw IllegalArgumentException(&#34;에러!!&#34;)}
+	return Person(firstName, lastName)
+}
+
+// 使用 Local 函数
+fun createPerson(firstName: String, lastName:String): Person{
+	// 函数中的函数
+	fun validateName(name: String){if(name.isEmpty()){throw IllegalArgumentException(&#34;에러!!&#34;)}
+	
+	validateName(firstName)
+	validateName(lastName)
+	return Person(firstName, lastName)
+}</code></pre></div><h3 id=17-lambda>17. lambda</h3><ul><li><p>Java 中无法将函数赋值给变量、作为参数传递（不是一等公民）</p><ul><li>看起来 <code>Fruit::isApple</code> 之类是可行的，但实际上传递的是 Predicate 接口</li></ul></li><li><p>Kotlin 中可以将函数赋值给变量、作为参数传递（是一等公民）</p></li><li><p>lambda 的创建与调用</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+
+// 函数的 Type 也可以这样设置
+val isApple : (Fruit) -&gt; Boolean 
+= fun(fruit: Fruit): Boolean {
+	return fruit.name == &#34;사과&#34;
+}
+
+// 与上面完全相同的代码
+val isApple2 = {fruit: Fruit -&gt; fruit.name == &#34;사과&#34; }
+
+val isApple3 = { fruit -&gt;
+println(&#34;사과만 받는 함수입니다.&#34;)
+fruit.name == &#34;사과&#34; // 多行 lambda 中省略 return 时，最后一行会自动作为返回值
+}
+
+// 调用 lambda，相同代码
+isApple(Fruit(&#34;사과&#34;, 1000))
+// 显式调用
+isApple.invoke(Fruit(&#34;사과&#34;, 1000))</code></pre></div><ul><li>将函数作为参数接收</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 写出函数 Type 即可接收函数
+fun filterFruits(fruits: List&lt;Fruit&gt;, filterFunc : (Fruit) -&gt; Boolean) : List&lt;Fruit&gt;{
+	val results = mutableListOf&lt;Fruit&gt;()
+	for(fruit in fruits){
+		if(filterFunc(fruit)){ results.add(fruit)}
+	}
+	return results
+}
+
+// 调用时可像下面这样传递 lambda
+filterFruits(fruit, {fruit -&gt; fruit.name ==&#34;사과&#34;} )
+
+// 当 lambda 是最后一个参数时，可以像下面这样使用（与上面代码功能相同）
+filterFruits(fruit) {fruit -&gt; fruit.name ==&#34;사과&#34;}
+
+// 当只有一个参数时，可用 it 替代箭头前的部分
+filterFruits(fruit) {it.name ==&#34;사과&#34;}</code></pre></div><ul><li>Closure<ul><li>Kotlin 在 lambda 执行时，会捕获所引用的所有变量并持有其值</li><li>下方代码捕获了 <code>targetFruitName = "수박"</code> 这个时点</li><li>这种数据结构称为 Closure，正是这种结构使得 lambda 能够成为一等公民</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+String targetFruitName = &#34;바나나&#34;
+targetFruitName = &#34;수박&#34;
+
+// 在 Java 中 Lambda 中使用的变量必须是 final 变量， 
+// 或虽未加 final 关键字但实际未变更（Effectively final）的变量
+filterFruits(fruits, (fruit) -&gt; targetFruitName.equals(fruit.getName())); // ERROR!
+
+//Kotlin
+var targetFruitName = &#34;바나나&#34;
+targetFruitName = &#34;수박&#34;
+filterFruits(fruits) { it.name == targetFruitName } // It Works!</code></pre></div><h3 id=18-collection-内置函数--fp>18. Collection 内置函数 + FP</h3><ul><li><strong>filter</strong></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 仅取苹果
+val apples = fruits.filter { fruit -&gt; fruit.name == &#34;사과&#34; }</code></pre></div><ul><li><strong>filterIndexed</strong>：filter 时需要 index</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val apples = fruits.filterIndexed { idx, fruit -&gt; 
+println(idx)
+fruit.name == &#34;사과&#34;
+} </code></pre></div><ul><li><p><strong>map、mapIndex</strong>：对每个元素执行 lambda 函数</p></li><li><p><strong>mapNotNull</strong>：仅取出 mapping 结果不为 null 的元素</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val values = fruits.filter { it.name == &#34;사과&#34; }
+	.mapNotNull { it.nullOrValue() } // 只取非 null 的值</code></pre></div><ul><li><strong>all</strong>：全部满足条件返回 true，否则 false</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 检查是否全部为苹果
+val isAllApple = fruits.all { it.name == &#34;사과&#34; }</code></pre></div><ul><li><strong>none</strong>：全部不满足条件返回 true，否则 false</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 检查是否一个苹果都没有
+val isNoApple = fruits.none { it.name ==&#34;사과&#34; }</code></pre></div><ul><li><strong>any</strong>：只要有一个满足就返回 true，否则 false</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 检查是否有任意一个超过一万韩元的水果
+val hasExpensiveFruit = fruits.any { it.price &gt; 10_000 }</code></pre></div><ul><li><strong>count</strong>：数量</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 等同于 Java 的 list.size()
+val fruitCount = fruits.count()</code></pre></div><ul><li><strong>sortedBy、sortedByDescending</strong>：升序、降序排序</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val sortedFruit = fruit.sortedBy{it.price} // 升序
+val desendSortedFruit = fruit.sortedByDescending{it.price} // 降序</code></pre></div><ul><li><strong>distinctBy</strong>：基于变换后的值去重</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 检查存在哪些种类的水果
+val distinctFruitNames = fruits.distinctBy{ it.name } // 按名称去重
+	.map{it.name}</code></pre></div><ul><li><strong>first、firstOrNull、last、lastOrNull</strong>：第一个、最后一个值<ul><li>列表为空时 first、last 没有值可取，会抛出 Exception</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>fruits.first()
+fruits.lastOrNull()</code></pre></div><ul><li><strong>groupBy</strong>：基于某个 Key 进行分组（List → Map）</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 以水果名称为 key 对列表内容分组
+// key：사과（苹果），value：{사과1, 사과2, 사과3...}
+val map: Map&lt;String, List&lt;Fruit&gt;&gt; = fruits.groupBy{fruit -&gt; fruit.name } 
+
+// 也可同时处理 key、value
+// 以名称为 Key、价格 List 为 value 的示例
+val map2 : Map&lt;String, List&lt;Long&gt;&gt; = fruits
+	.groupBy({it.name}, {it.price})</code></pre></div><ul><li><strong>associateBy</strong>：基于不重复的 Key 转换为 Map（List→ Map）<ul><li><strong>但若 id 有重复值，可能丢失数据。</strong></li><li><strong>若 id 重复，最后一个值会成为 value。</strong></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val map: Map&lt;Long, Fruit&gt; = fruits.associateBy { fruit -&gt; fruit.id }
+
+val fruitList = listOf&lt;Fruit&gt;(
+			// id 相同
+      Fruit(1,&#34;1&#34;),
+      Fruit(1,&#34;2&#34;),
+      Fruit(1,&#34;3&#34;),
+    )
+
+  val associateBy = fruitList.associateBy { it.id }
+
+  println(associateBy.count()) // 1
+  for (entry in associateBy) {
+      println(entry) // 1=Fruit(id=1, name=3)
+  }
+
+// 同样可以同时处理 key、value
+val map: Map&lt;Long, Long&gt; = fruits
+	.associateBy({it.id}, {it.price})</code></pre></div><ul><li>在 Map 中也可以使用上面的大部分函数</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val map: Map&lt;String, List&lt;Fruit&gt;&gt; = fruits.groupBy{fruit -&gt; fruit.name } 
+	.filter { (key, value) -&gt; key == &#34;사과&#34; } </code></pre></div><ul><li>嵌套 Collections 的处理<ul><li>flatMap、flatten</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>var fruitsInList: List&lt;List&lt;Fruit&gt;&gt; = listOf(
+	listOf(Fruit(1,&#34;사과&#34;), Fruit(2,&#34;수박&#34;), Fruit(3,&#34;사과&#34;)),
+	listOf(Fruit(4,&#34;바나나&#34;), Fruit(5,&#34;사과&#34;), Fruit(6,&#34;바나나&#34;)),
+)
+
+// 不论列表结构，将所有苹果取出来
+// output：listOf(Fruit(1,&#34;사과&#34;), Fruit(3,&#34;사과&#34;), Fruit(5,&#34;사과&#34;))
+val appleList : List&lt;Fruit&gt;
+	= fruitsInList.flatMap { list -&gt; list.filter{it.name == &#34;사과&#34;}
+
+// 将二维列表展平为一维
+val flattenList : List&lt;Fruit&gt;
+	= fruitsInList.flatten();</code></pre></div><h3 id=19-takeifscope-function>19. TakeIf、scope Function</h3><ul><li><strong>TakeIf</strong>：满足给定条件时返回该值，否则返回 null</li><li><strong>TakeUnless</strong>：不满足给定条件时返回该值，否则返回 null</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 这个函数
+fun getFruitOrNull(fruit: Fruit): Fruit?{
+	return if(fruit.name == &#34;사과&#34;){fruit} else {null}
+}
+// 可以这样使用
+val getfruit = fruit.takeIf { it.name == &#34;사과&#34; }
+Fruit(1L, &#34;사과&#34;) // 这种情况返回 fruit
+Fruit(1L, &#34;바나나&#34;) // 这种情况返回 null</code></pre></div><ul><li>Scope function：构造临时作用域的函数<ul><li>即利用 lambda 形成临时作用域<ul><li>让代码更简洁</li><li>或用于 method chaining 的函数</li></ul></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 以下两个函数相同
+fun printPerson(person: Person?){
+	if(person != null){
+		println(person.name)
+		println(person.age)
+	}
+}
+
+fun printPerson(person: Person?){
+	person?.let{
+		println(person.name)
+		println(person.age)
+	}
+}</code></pre></div><ul><li>Scope function 的种类<ul><li><strong>let、run</strong>：返回 lambda 的结果<ul><li>let：使用 it（不能省略，但可以另起名称）</li><li>run：使用 this（可以省略，但不能另起名称）</li></ul></li><li><strong>also、apply</strong>：返回对象本身<ul><li>also：使用 it</li><li>apply：使用 this</li></ul></li><li><strong>with</strong>：唯一不是扩展函数的。使用 this，返回 lambda 的结果</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val value1 = person.let{ it.age }  // value1 的值：person.age
+// 可以像 person.let{ person -&gt; person.age } 一样另起名称
+val value2 = person.run{ this.age } // value2 的值：person.age
+// 可以像 person.run{ age } 一样省略 this
+
+val value3 = person.also{ it.age } // value3 的值：person
+val value4 = person.apply{ this.age } // value4 的值：person 
+
+with(person){
+	println(name)
+	println(age)
+}
+
+/* 
+使用 it 的情况：以普通函数为参数 block : (T) -&gt; R : R
+使用 this 的情况：以扩展函数为参数 block: T.() -&gt; R : R
+有兴趣的话直接看实现吧....
+*/</code></pre></div></div><div class=post-tags><a href=/zh-cn/tags/kotlin/ class=tag-link>#Kotlin</a>
+<a href=/zh-cn/tags/jvm/ class=tag-link>#JVM</a>
+<a href=/zh-cn/tags/%E9%80%9F%E6%9F%A5%E8%A1%A8/ class=tag-link>#速查表</a></div><div class=post-license><p>&copy; 本文采用 CC BY-NC-SA 4.0 许可协议发布。</p></div><section class=post-comments><h3 class=comments-title>Comments</h3><script src=https://giscus.app/client.js data-repo=LemonDouble/LemonDouble.github.io-comments data-repo-id=R_kgDOI0UkDA data-category=Comments data-category-id=DIC_kwDOI0UkDM4CcIeY data-mapping=pathname data-reactions-enabled=1 data-emit-metadata=0 data-theme=dark crossorigin=anonymous async></script></section></article><aside class=toc-sidebar><a href=/zh-cn/ class=toc-back-btn onclick="return tocGoBack(event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+<span>返回上一页</span></a><nav class=toc-sidebar-nav><h4 class=toc-sidebar-title>本页目录</h4><nav id=TableOfContents><ul><li><ul><li><a href=#1-变量>1. 变量</a></li><li><a href=#2-null-处理>2. Null 处理</a></li><li><a href=#3-type>3. Type</a></li><li><a href=#4-运算符>4. 运算符</a></li><li><a href=#5-条件语句>5. 条件语句</a></li><li><a href=#6-循环语句>6. 循环语句</a></li><li><a href=#7-异常>7. 异常</a></li><li><a href=#8-函数>8. 函数</a></li><li><a href=#9-类>9. 类</a></li><li><a href=#10-继承>10. 继承</a></li><li><a href=#11-访问控制>11. 访问控制</a></li><li><a href=#12-object>12. object</a></li><li><a href=#13-嵌套类nested-class>13. 嵌套类（nested class）</a></li><li><a href=#14-data-classenum-classsealed-classinterface>14. Data class、Enum class、Sealed Class/Interface</a></li><li><a href=#15-collections集合>15. Collections（集合）</a></li><li><a href=#16-extension扩展infix中缀inlinelocal局部函数>16. Extension（扩展）、Infix（中缀）、inline、Local（局部）函数</a></li><li><a href=#17-lambda>17. lambda</a></li><li><a href=#18-collection-内置函数--fp>18. Collection 内置函数 + FP</a></li><li><a href=#19-takeifscope-function>19. TakeIf、scope Function</a></li></ul></li></ul></nav></nav></aside></div><script>function tocGoBack(e){var t=document.referrer&&document.referrer.indexOf(window.location.origin)===0;return!(t&&window.history.length>1)||(e.preventDefault(),window.history.back(),!1)}(function(){var e,t,o,i,s=document.querySelector(".toc-sidebar-nav");if(!s)return;if(o=s.querySelectorAll("a"),!o.length)return;if(e=[],o.forEach(function(t){var s=decodeURIComponent(t.getAttribute("href").slice(1)),n=document.getElementById(s);n&&e.push({el:n,link:t})}),!e.length)return;t=null;function n(e){if(t===e)return;t&&t.classList.remove("active"),e.classList.add("active"),t=e;var i=s,n=e.getBoundingClientRect(),o=i.getBoundingClientRect();(n.top<o.top||n.bottom>o.bottom)&&e.scrollIntoView({block:"nearest",behavior:"smooth"})}i=new IntersectionObserver(function(t){var s,o,i,a,r,c,l=[];t.forEach(function(t){var n=e.find(function(e){return e.el===t.target});n&&(n.isIntersecting=t.isIntersecting)});for(s=0;s<e.length;s++)if(e[s].isIntersecting){n(e[s].link);return}for(c=window.scrollY||window.pageYOffset,a=100,i=null,o=0;o<e.length;o++)r=e[o].el.getBoundingClientRect(),r.top<a&&(i=e[o]);i&&n(i.link)},{rootMargin:"-80px 0px -60% 0px",threshold:0}),e.forEach(function(e){e.isIntersecting=!1,i.observe(e.el)}),setTimeout(function(){var t,s,o,i,a=window.scrollY||window.pageYOffset;if(a<100)n(e[0].link);else{for(o=100,s=null,t=0;t<e.length;t++)i=e[t].el.getBoundingClientRect(),i.top<o&&(s=e[t]);n(s?s.link:e[0].link)}},100)})()</script></main></div><footer class=site-footer><div class=footer-content><div class=footer-links><a href=https://github.com/LemonDouble target=_blank rel=noopener>GitHub</a>
+<a href=https://twitter.com/_lemon_berry_ target=_blank rel=noopener>Twitter</a>
+<a href=mailto:contact@lemondouble.com>Email</a>
+<a href=https://sns.lemondouble.com/@lemondouble target=_blank rel=noopener>Misskey</a></div><p class=footer-copy>&copy; 2022-2026 LemonDouble &bull; Powered by Hugo</p><p class=footer-brand>LEMON BLOG</p></div></footer><script>function toggleMobileMenu(){var e=document.getElementById("mobileMenu");e.classList.toggle("active")}function closeMobileMenu(){document.getElementById("mobileMenu").classList.remove("active")}function openMobileSearch(){document.body.classList.add("mobile-search-active"),closeMobileMenu(),setTimeout(function(){var e=document.getElementById("searchInput");e&&e.focus()},50)}function closeMobileSearch(){document.body.classList.remove("mobile-search-active");var e,t=document.getElementById("searchInput");t&&(t.value="",t.blur()),e=document.getElementById("searchResults"),e&&(e.classList.remove("active"),e.innerHTML="")}document.addEventListener("keydown",function(e){e.key==="Escape"&&document.body.classList.contains("mobile-search-active")&&closeMobileSearch()});function pageJump(e,t){if(e.key==="Escape")return t.blur(),!1;if(e.key!=="Enter")return!0;e.preventDefault();var s,o,n=parseInt(t.value,10),i=parseInt(t.dataset.total,10);return!n||n<1||n>i?(t.value=t.defaultValue,!1):(s=t.dataset.base||"/",o=n===1?s:s.replace(/\/$/,"")+"/page/"+n+"/",window.location.href=o,!1)}function pageJumpFocus(e){e.value=""}function pageJumpReset(e){e.value=e.defaultValue}function pageJumpSanitize(e){var t=e.value.replace(/\D/g,"");t!==e.value&&(e.value=t)}function toggleLangSwitcher(e){e&&e.stopPropagation();var s,t=document.getElementById("langSwitcher"),n=t&&t.querySelector(".lang-switcher-btn");if(!t||!n)return;s=t.classList.toggle("open"),n.setAttribute("aria-expanded",s?"true":"false")}document.addEventListener("click",function(e){var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&!e.target.closest("#langSwitcher")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))}),document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))})</script><script>var searchInput,searchResults,searchIndex=null;(function(){fetch("/zh-cn/index.json").then(function(e){return e.json()}).then(function(e){searchIndex=e}).catch(function(){})})(),searchInput=document.getElementById("searchInput"),searchResults=document.getElementById("searchResults"),searchInput&&(searchInput.addEventListener("input",function(e){var n,t=e.target.value.trim().toLowerCase();if(!t||!searchIndex){searchResults.classList.remove("active"),searchResults.innerHTML="";return}if(n=searchIndex.filter(function(e){return e.title.toLowerCase().includes(t)||e.summary.toLowerCase().includes(t)||(e.categories||[]).some(function(e){return e.toLowerCase().includes(t)})||(e.tags||[]).some(function(e){return e.toLowerCase().includes(t)})}).slice(0,10),n.length===0){searchResults.innerHTML='<div class="search-empty">未找到搜索结果。</div>',searchResults.classList.add("active");return}searchResults.innerHTML=n.map(function(e){var t=(e.categories||[]).map(function(e){return'<span class="search-cat">'+e+"</span>"}).join('<span class="search-cat-sep">/</span>');return'<a href="'+e.url+'" class="search-result-item"><div class="search-result-title">'+e.title+'</div><div class="search-result-meta">'+e.date+(t?" &middot; "+t:"")+"</div></a>"}).join(""),searchResults.classList.add("active")}),document.addEventListener("click",function(e){e.target.closest(".search-wrapper")||(searchResults.classList.remove("active"),document.body.classList.contains("mobile-search-active")&&!e.target.closest(".mobile-search-btn")&&closeMobileSearch())}),searchInput.addEventListener("focus",function(){searchInput.value.trim()&&searchResults.classList.add("active")}))</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js></script></body></html>

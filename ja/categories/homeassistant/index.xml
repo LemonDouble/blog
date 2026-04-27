@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HomeAssistant on Lemon Blog</title><link>https://blog.lemondouble.com/ja/categories/homeassistant/</link><description>Recent content in HomeAssistant on Lemon Blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 05 Apr 2026 18:07:00 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/ja/categories/homeassistant/index.xml" rel="self" type="application/rss+xml"/><item><title>AliExpressで買ったTVバックライトをHome Assistantで使いたくてBluetoothプロトコルを解析した話</title><link>https://blog.lemondouble.com/ja/p/ble-controller-dev-story/</link><pubDate>Sun, 05 Apr 2026 18:07:00 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/ble-controller-dev-story/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/ble-controller-dev-story/backlight.webp" alt="AliExpress商品画像"&gt;&lt;/p&gt;
+&lt;p&gt;AliExpressでTVバックライトを一つ買いました。&lt;/p&gt;
+&lt;p&gt;実は最初は連動するかどうかなんて気にしていなくて..とりあえずTVの後ろが光ってわずか2万5千ウォン&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;？買わない理由がないでしょう？&lt;/p&gt;</description></item><item><title>音声でコントロールするAIスマートホーム自慢の記事</title><link>https://blog.lemondouble.com/ja/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/30f1bf25ad8b594a/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="作ったスマートホームのプレビュー日本語音声注意"&gt;作ったスマートホームのプレビュー（日本語音声注意）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistantとは"&gt;1. HomeAssistantとは？&lt;/h3&gt;
+&lt;p&gt;以前にも&lt;a href="https://blog.lemondouble.com/ja/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/"
+&gt;記事を書いたことがある&lt;/a&gt;
+、HomeAssistantというプラットフォームから始まります。&lt;/p&gt;</description></item><item><title>HomeAssistantでIoT、一緒にやってみませんか?</title><link>https://blog.lemondouble.com/ja/p/107dcfce6eca0dd7/</link><pubDate>Sun, 21 May 2023 09:40:47 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/107dcfce6eca0dd7/</guid><description>&lt;p&gt;&lt;em&gt;注:筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;IoTはなかなか面白いトピックなのですが、&lt;/p&gt;
+&lt;p&gt;入門の難易度が高く、あまり知られていないテーマなので、これで何ができるのかも広く知られていない気がします。&lt;/p&gt;</description></item></channel></rss>

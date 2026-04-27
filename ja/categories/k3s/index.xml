@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>K3S on Lemon Blog</title><link>https://blog.lemondouble.com/ja/categories/k3s/</link><description>Recent content in K3S on Lemon Blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 07 Jan 2024 16:05:04 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/ja/categories/k3s/index.xml" rel="self" type="application/rss+xml"/><item><title>自宅でラズベリーパイクラスタを使ってデータセンターを構築する - 10-2. Forward AuthとOAuth2を利用したSSO実装</title><link>https://blog.lemondouble.com/ja/p/a63eb8199e2089b6/</link><pubDate>Sun, 07 Jan 2024 16:05:04 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/a63eb8199e2089b6/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-forward-auth"&gt;1. Forward Auth?&lt;/h3&gt;
+&lt;p&gt;認証ロジックが必要なとき、私たちはどこで認証ロジックを実装できるでしょうか？&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 10-1. Basic Authで内部用サービスを保護する</title><link>https://blog.lemondouble.com/ja/p/771435ba12d3f38c/</link><pubDate>Sun, 07 Jan 2024 12:41:24 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/771435ba12d3f38c/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;以下の内容は、Sealed Secretsの&lt;a href="https://lemondouble.github.io/ja/p/%EC%A7%91%EC%97%90%EC%84%9C-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0-%EC%B0%A8%EB%A6%AC%EA%B8%B0-7.-sealed-secrets%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%B0%80-%EA%B4%80%EB%A6%AC--traefik-basic-auth-%EC%84%A4%EC%A0%95/#3-sealed-secrets-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-basic-auth-%EB%93%B1%EB%A1%9D%ED%95%B4%EB%B3%B4%EA%B8%B0" target="_blank" rel="noopener noreferrer"
+&gt;セクション3&lt;/a&gt;
+と重なる部分が多いです。すでにそのセクションを進めており、Basic Authについてよくご存じであればスキップしても構いません。&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 9. CloudNativePGでKubernetes上のデータベースを運用する</title><link>https://blog.lemondouble.com/ja/p/a4ded8cced5f045c/</link><pubDate>Tue, 12 Dec 2023 22:09:10 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/a4ded8cced5f045c/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="序論"&gt;序論&lt;/h3&gt;
+&lt;p&gt;データベースは管理が難しいです。&lt;/p&gt;
+&lt;p&gt;他のPodと違って、データの保管・バックアップ・管理にも気を使わなければなりませんし、フェイルオーバーやパフォーマンスにも注意を払う必要があります。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスターでデータセンターを構築する - 8-1. Docker Registry UIの設定とRegistry GCの使い方</title><link>https://blog.lemondouble.com/ja/p/a68cc3e1f5e8a95b/</link><pubDate>Sun, 10 Dec 2023 11:39:46 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/a68cc3e1f5e8a95b/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-private-registryは便利だけど管理がとても面倒です"&gt;1. Private Registryは便利だけど、管理がとても面倒です！&lt;/h3&gt;
+&lt;p&gt;CLIが大好きな方もいらっしゃいますが、私はコマンドを覚えるのが本当に苦手なので、GUIと記録を好みます。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 8. Private Docker RegistryとID/PWの設定</title><link>https://blog.lemondouble.com/ja/p/be354d4b5f50a3ee/</link><pubDate>Sun, 10 Dec 2023 10:08:50 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/be354d4b5f50a3ee/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-はじめに"&gt;1. はじめに&lt;/h3&gt;
+&lt;p&gt;せっかくインフラを整えたので、Private Docker Registryも自前で作ってみましょう。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスタによるデータセンター構築 - 7-1. Web UIを使って簡単にSealed Secretsを作成する</title><link>https://blog.lemondouble.com/ja/p/567b4c177bdb8401/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/567b4c177bdb8401/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-はじめに"&gt;1. はじめに&lt;/h3&gt;
+&lt;p&gt;Sealed Secretsは全体的に良いのですが、一つ問題があります。毎回設定するたびにSecrets.yamlを作成し、CLIでSealed Secretsに変換してから、Gitに追加するのが非常に面倒だという点です。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスタによるデータセンター構築 - 7. Sealed Secretsによる秘密管理 + Traefik Basic Auth設定</title><link>https://blog.lemondouble.com/ja/p/1379182f14a62e9b/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/1379182f14a62e9b/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-sealed-secretsとは"&gt;1. Sealed Secretsとは?&lt;/h3&gt;
+&lt;p&gt;私たちは今GitOpsを行っています。つまり、Gitにクラスタに関連するすべての設定をアップロードしています。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 6. 分散ストレージの追加とLonghornでの提供</title><link>https://blog.lemondouble.com/ja/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/615befc538a81902/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-新規ディスクの追加とマウント"&gt;1. 新規ディスクの追加とマウント&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;この内容は一般的なSSD / HDDのマウントと同じです！うまくいかない場合は、&lt;code&gt;Ubuntu ハードディスク マウント&lt;/code&gt;などで検索して進めても問題ありません。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;SSDまたはHDDをRaspberry Piに接続します。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスターを使ってデータセンターを作ってみる - 5. ArgoCD GitOps設定とLonghornインストール</title><link>https://blog.lemondouble.com/ja/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/107eed6a453d6238/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-gitopsを始める"&gt;1. GitOpsを始める&lt;/h3&gt;
+&lt;p&gt;ArgoCDをインストールしましたので、リポジトリ構造を整理してみましょう。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタによるデータセンター構築 - 4. Traefik HTTPS認証とArgoCD設定</title><link>https://blog.lemondouble.com/ja/p/f10efbc0bcc4c537/</link><pubDate>Wed, 06 Dec 2023 05:21:00 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/f10efbc0bcc4c537/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;もし、システムをGitを通じて管理できたらどうでしょうか？
+必要なコンテナの種類、数などをすべてGitに宣言し、Gitに宣言されたとおりにクラスタが運用されたら、とても便利ではないでしょうか？&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを作る - 3. Helmのインストールと MetalLB によるロードバランサーの設定</title><link>https://blog.lemondouble.com/ja/p/06a98c88458a5fb7/</link><pubDate>Wed, 06 Dec 2023 05:20:00 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/06a98c88458a5fb7/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="helmのインストール"&gt;Helmのインストール&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;参考記事：&lt;a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer"
+&gt;Installing Helm&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;次のコマンドを順番に入力してHelmをインストールします。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスタによるデータセンター構築 - 2. クラスタ初期設定編</title><link>https://blog.lemondouble.com/ja/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/f4efced2e8d5b1d8/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="ハードウェア"&gt;ハードウェア&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="ハードウェア構成図"&gt;&lt;/p&gt;
+&lt;p&gt;上の図を参考にハードウェアを構成します。&lt;/p&gt;
+&lt;p&gt;普段からPCを使っているご家庭なら、ルーターと普段使いのデスクトップはすでにあると思いますので、図のうち緑色の部分だけを追加すれば大丈夫です。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスターを使ってデータセンターを構築する - 1. ハードウェア編</title><link>https://blog.lemondouble.com/ja/p/20ae99fa945edf10/</link><pubDate>Sun, 03 Dec 2023 14:54:33 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/20ae99fa945edf10/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最初の時間はハードウェアの時間です！簡単なものから少し複雑な話まで、サクサク始めていきましょう！&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスタを使ってデータセンターを構築する - 序論</title><link>https://blog.lemondouble.com/ja/p/d42387934c57aa25/</link><pubDate>Sun, 03 Dec 2023 13:24:05 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/d42387934c57aa25/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="初めてラズベリーパイクラスタを構築してからおおよそ300日が経ちました"&gt;初めてラズベリーパイクラスタを構築してから、おおよそ300日が経ちました。&lt;/h3&gt;
+&lt;p&gt;きっかけはそれほど大きなものではありませんでした。&lt;/p&gt;
+&lt;p&gt;私は毎朝&lt;a href="https://news.hada.io/" target="_blank" rel="noopener noreferrer"
+&gt;GeekNews&lt;/a&gt;
+&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;というニュースキュレーションサービスを見ながら出勤しているのですが、その中で&lt;a href="https://news.hada.io/topic?id=8306" target="_blank" rel="noopener noreferrer"
+&gt;Chick-Fil-A の Edge Computing 技術アーキテクチャ：Enterprise Restaurant Compute&lt;/a&gt;
+という記事が目に留まりました。&lt;/p&gt;</description></item><item><title>Raspberry Pi + Ubuntu 22.04にK3Sをインストールして使う</title><link>https://blog.lemondouble.com/ja/p/fe0cac9de367fc18/</link><pubDate>Wed, 18 Jan 2023 11:56:02 +0000</pubDate><guid>https://blog.lemondouble.com/ja/p/fe0cac9de367fc18/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最近とてもホットでありながら難しい技術がKubernetesだと思います。&lt;/p&gt;</description></item></channel></rss>

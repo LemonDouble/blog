@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lemon Blog</title><link>https://blog.lemondouble.com/</link><description>Recent content on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sun, 26 Apr 2026 23:23:19 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/index.xml" rel="self" type="application/rss+xml"/><item><title>라이브러리로 패키징하면서 고민한 것들 - hayakoe Part 4</title><link>https://blog.lemondouble.com/p/b7791b4f6c0818da/</link><pubDate>Sun, 26 Apr 2026 23:23:19 +0900</pubDate><guid>https://blog.lemondouble.com/p/b7791b4f6c0818da/</guid><description>&lt;p&gt;hayakoe 시리즈의 네 번째이자 마지막 본편입니다. 이전 글은 &lt;a href="https://blog.lemondouble.com/p/9a99dd816456c397/"
+&gt;마지막 1% 까지 — torch.compile, 배치 추론, Pause 복원, ARM64 - hayakoe Part 3&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.lemondouble.com/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+ 부터 &lt;a href="https://blog.lemondouble.com/p/9a99dd816456c397/"
+&gt;Part 3&lt;/a&gt;
+ 까지는 모델·추론 측면의 작업이었다면, Part 4 는 &lt;strong&gt;그 결과물을 다른 사람도 (그리고 미래의 내가도) 쉽게 가져다 쓸 수 있게 패키징하는 과정&lt;/strong&gt; 에서 했던 고민들을 정리합니다.&lt;/p&gt;</description></item><item><title>마지막 1% 까지 — torch.compile, 배치 추론, Pause 복원, ARM64 - hayakoe Part 3</title><link>https://blog.lemondouble.com/p/9a99dd816456c397/</link><pubDate>Sun, 26 Apr 2026 19:29:25 +0900</pubDate><guid>https://blog.lemondouble.com/p/9a99dd816456c397/</guid><description>&lt;p&gt;hayakoe 시리즈의 세 번째 본편입니다. 이전 글은 &lt;a href="https://blog.lemondouble.com/p/137243ede98030f1/"
+&gt;메모리는 절반으로, 속도는 1.5배 빠르게 한 이야기 - hayakoe Part 2&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.lemondouble.com/p/137243ede98030f1/"
+&gt;Part 2&lt;/a&gt;
+ 에서 큰 줄기 — BERT Q8 양자화 + Synthesizer ONNX 변환 — 로 메모리·속도를 꽤 개선했습니다. 다만 이 모델을 직접 운영해 보니, 큰 줄기와는 별개로 아쉽게 느껴졌던 부분들이 슬슬 눈에 들어왔습니다. 좀 더 쓰기 편한 형태로 다듬어 보면 좋겠다 싶은 작업들이었습니다.&lt;/p&gt;</description></item><item><title>메모리는 절반으로, 속도는 1.5배 빠르게 한 이야기 - hayakoe Part 2</title><link>https://blog.lemondouble.com/p/137243ede98030f1/</link><pubDate>Sun, 26 Apr 2026 17:40:46 +0900</pubDate><guid>https://blog.lemondouble.com/p/137243ede98030f1/</guid><description>&lt;p&gt;hayakoe 시리즈의 두 번째 본편입니다. 이전 글은 &lt;a href="https://blog.lemondouble.com/p/4c2a6225a737f531/"
+&gt;hayakoe - 2년만에 다시 TTS 모델 이것저것 보다 또 다시 VITS로 정착한 이야기 - Part 1&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.lemondouble.com/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+ 에서 학습된 모델까지 손에 쥐었지만, 시리즈 &lt;a href="https://blog.lemondouble.com/p/ea78fbb9b78c38ac/"
+&gt;서론&lt;/a&gt;
+ 에서 짚었듯 그 모델을 그대로 쓰기엔 여러 가지 불편이 있었습니다 — &lt;code&gt;openjtalk&lt;/code&gt; 가 외부에서 사전 데이터를 받아와 그 서버가 죽으면 같이 죽는 SPOF 문제, 그 의존성 때문에 막혀 있던 Python 버전업, 영어 합성이 안 돼 번역 레이어로 우회 중이던 점, 그리고 본 글에서 다룰 메모리·속도 부담까지.&lt;/p&gt;</description></item><item><title>hayakoe - 2년만에 다시 TTS 모델 이것저것 보다 또 다시 VITS로 정착한 이야기 - Part 1</title><link>https://blog.lemondouble.com/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/p/4c2a6225a737f531/</guid><description>&lt;p&gt;hayakoe 시리즈의 첫 번째 본편입니다. 서론 격 글은 &lt;a href="https://blog.lemondouble.com/p/ea78fbb9b78c38ac/"
+&gt;hayakoe - 쓰기 편하고 빠른 TTS 라이브러리 만들기 - 서론&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;서론에서 잠깐 다뤘던 부분 중 하나가 &amp;ldquo;모델부터 다시 골랐다&amp;rdquo; 는 이야기였습니다. Part 1 에서는 그 과정을 좀 더 풀어 보려 합니다.&lt;/p&gt;</description></item><item><title>hayakoe - 쓰기 편하고 빠른 TTS 라이브러리 만들기 - 서론</title><link>https://blog.lemondouble.com/p/ea78fbb9b78c38ac/</link><pubDate>Sun, 26 Apr 2026 11:31:45 +0900</pubDate><guid>https://blog.lemondouble.com/p/ea78fbb9b78c38ac/</guid><description>&lt;p&gt;2년 전쯤 Bert-VITS2 라는 일본어 TTS 라이브러리를 알게 돼서, 학습 방법을 한번 정리한 글을 적은 적이 있습니다.&lt;/p&gt;
+&lt;p&gt;그 후로는 학습한 모델을 홈 클러스터 서버에 올려 평소에 쓰고 있었습니다. 원본 코드는 Fork 한 뒤, 음성 합성에 필요한 path 만 따로 추려내 정리해서 쓰고 있었습니다.&lt;/p&gt;</description></item><item><title>스킬</title><link>https://blog.lemondouble.com/skills/</link><pubDate>Sat, 11 Apr 2026 00:00:00 +0000</pubDate><guid>https://blog.lemondouble.com/skills/</guid><description/></item><item><title>개인 서버 파이썬 버전 올리고 싶은데 업뎃이 멈춰서 prebuilt wheel 패키지 포크떠서 파이썬 추가 버전 지원하게 한 이야기 (Pyopenjtalk)</title><link>https://blog.lemondouble.com/p/pyopenjtalk-prebuilt/</link><pubDate>Sun, 05 Apr 2026 21:22:00 +0900</pubDate><guid>https://blog.lemondouble.com/p/pyopenjtalk-prebuilt/</guid><description>&lt;p&gt;예전에 &lt;a href="../make-vits2-tts/"
+&gt;Bert-VITS2로 TTS 만드는 글&lt;/a&gt;
+을 올린 적이 있었는데요. 그때 만들어 둔 TTS를 꽤 잘 쓰고 있었습니다. 근데.. Bert-VITS2 레포가 개발이 멈춰버렸어요.&lt;/p&gt;
+&lt;p&gt;레포가 멈추면 뭐가 문제냐면.. 파이썬 버전 올리기가 힘들고 의존성 관리가 힘듭니다.&lt;/p&gt;</description></item><item><title>알리에서 산 TV 백라이트를 Home Assistant에서 쓰고 싶어서 블루투스 프로토콜 뜯어본 이야기</title><link>https://blog.lemondouble.com/p/ble-controller-dev-story/</link><pubDate>Sun, 05 Apr 2026 18:07:00 +0900</pubDate><guid>https://blog.lemondouble.com/p/ble-controller-dev-story/</guid><description>&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/ble-controller-dev-story/backlight.webp" alt="알리 상품 이미지"&gt;&lt;/p&gt;
+&lt;p&gt;AliExpress에서 TV 백라이트를 하나 샀습니다.&lt;/p&gt;
+&lt;p&gt;사실 처음에는 연동이 되는건 별로 신경쓰지 않았고.. 대충 TV 뒤에 빛 나는데 단돈 2만5천원? 안 살 이유가 없잖아요?&lt;/p&gt;</description></item><item><title>프로젝트</title><link>https://blog.lemondouble.com/projects/</link><pubDate>Sat, 04 Apr 2026 00:00:00 +0000</pubDate><guid>https://blog.lemondouble.com/projects/</guid><description/></item><item><title>AWS SAA 당일 시험 합격 후기글</title><link>https://blog.lemondouble.com/p/d3c7a9de0a536286/</link><pubDate>Sun, 04 Aug 2024 20:11:48 +0900</pubDate><guid>https://blog.lemondouble.com/p/d3c7a9de0a536286/</guid><description>&lt;p&gt;AWS에는 활용 자격증이 있습니다. (&lt;a href="https://aws.amazon.com/ko/certification/exams/" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+)&lt;/p&gt;
+&lt;p&gt;언젠간 따야지.. 따야지.. 하고 벼르고만 있다, 이러다간 평생 못 딸 것 같아서, 오늘 약속도 없겠다 당일에 시험 신청하고 온라인 시험으로 한번 봤습니다.&lt;/p&gt;</description></item><item><title>음성으로 컨트롤되는 인공지능 스마트홈 자랑하는 글</title><link>https://blog.lemondouble.com/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/p/30f1bf25ad8b594a/</guid><description>&lt;h2 id="만든-스마트홈-미리보기-일본어-주의"&gt;만든 스마트홈 미리보기 (일본어 주의)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistant"&gt;1. HomeAssistant?&lt;/h3&gt;
+&lt;p&gt;이전에 한번 &lt;a href="https://lemondouble.github.io/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/" target="_blank" rel="noopener noreferrer"
+&gt;글을 쓴 적이 있는&lt;/a&gt;
+ HomeAssistant라는 플랫폼에서 출발합니다.&lt;/p&gt;
+&lt;p&gt;2023년은 HomeAssistant에겐 &lt;a href="https://www.home-assistant.io/blog/2022/12/20/year-of-voice/" target="_blank" rel="noopener noreferrer"
+&gt;음성의 해&lt;/a&gt;
+ 였습니다.&lt;/p&gt;</description></item><item><title>Bert-VITS2로 나만의 TTS 만들기</title><link>https://blog.lemondouble.com/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/p/9c06f7dc324b5986/</guid><description>&lt;h2 id="우리가-만들-오디오-한번-들어보기-일본어"&gt;우리가 만들 오디오 한번 들어보기 (일본어)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-tts"&gt;1. TTS?&lt;/h3&gt;
+&lt;p&gt;Text-To-Speech는 문자 그대로, 텍스트를 음성 데이터로 변경해 주는 소프트웨어를 말합니다.&lt;/p&gt;
+&lt;p&gt;한번 만들어 놓으면, 호출량 걱정 없이 많은 Automation에서 사용할 수 있기에, 직접 한번 만들어 보는 것이 목표입니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 10-2. Forward Auth와 OAuth2를 이용한 SSO 구현</title><link>https://blog.lemondouble.com/p/a63eb8199e2089b6/</link><pubDate>Sun, 07 Jan 2024 16:05:04 +0900</pubDate><guid>https://blog.lemondouble.com/p/a63eb8199e2089b6/</guid><description>&lt;h3 id="1-forward-auth"&gt;1. Forward Auth?&lt;/h3&gt;
+&lt;p&gt;인증 로직이 필요할 떄, 우리는 인증 로직을 어디서 구현할 수 있을까요?&lt;/p&gt;
+&lt;p&gt;바로 드는 생각은, 어플리케이션에서 직접 구현하는 방법일 것입니다.&lt;/p&gt;
+&lt;p&gt;하지만 어플리케이션이 많아지면 어떨까요? 혹은, 일부 어플리케이션은 내가 만든 것이 아니라 다른 사람이 만든 어플리케이션이라, 내가 맘대로 인증 로직을 구현할 수 없다면 어떨까요?&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 10-1. Basic Auth로 내부용 서비스 보호하기</title><link>https://blog.lemondouble.com/p/771435ba12d3f38c/</link><pubDate>Sun, 07 Jan 2024 12:41:24 +0900</pubDate><guid>https://blog.lemondouble.com/p/771435ba12d3f38c/</guid><description>&lt;p&gt;&lt;strong&gt;아래 내용은 Sealed Secrets &lt;a href="https://lemondouble.github.io/p/%EC%A7%91%EC%97%90%EC%84%9C-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0-%EC%B0%A8%EB%A6%AC%EA%B8%B0-7.-sealed-secrets%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%B0%80-%EA%B4%80%EB%A6%AC--traefik-basic-auth-%EC%84%A4%EC%A0%95/#3-sealed-secrets-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-basic-auth-%EB%93%B1%EB%A1%9D%ED%95%B4%EB%B3%B4%EA%B8%B0" target="_blank" rel="noopener noreferrer"
+&gt;섹션 3&lt;/a&gt;
+과 겹치는 부분이 많습니다. 해당 섹션을 진행하셨고, Basic Auth에 대해 잘 아신다면 스킵해도 무방합니다.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id="1-서론"&gt;1. 서론&lt;/h3&gt;
+&lt;p&gt;쿠버네티스를 하다 보면, 이런저런 서비스를 많이 올리게 됩니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 9. CloudNativePG로 쿠버네티스에서 데이터베이스 운용하기</title><link>https://blog.lemondouble.com/p/a4ded8cced5f045c/</link><pubDate>Tue, 12 Dec 2023 22:09:10 +0900</pubDate><guid>https://blog.lemondouble.com/p/a4ded8cced5f045c/</guid><description>&lt;h3 id="서론"&gt;서론&lt;/h3&gt;
+&lt;p&gt;데이터베이스는 관리하기 까다롭습니다.&lt;/p&gt;
+&lt;p&gt;다른 Pod과 다르게 데이터 보관, 백업, 관리에도 신경써야 하고, Failover 및 성능에도 관심을 가져야 합니다.&lt;/p&gt;
+&lt;p&gt;그래서 다른 워크로드는 쿠버네티스 클러스터에서 돌리더라도, DB만큼은 AWS RDS등의 관리형 시스템이나 별도 인스턴스를 사용하는 경우도 흔한 것으로 알고 있습니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 8-1. Docker Registry UI 설정 및 Registry GC 사용법</title><link>https://blog.lemondouble.com/p/a68cc3e1f5e8a95b/</link><pubDate>Sun, 10 Dec 2023 11:39:46 +0900</pubDate><guid>https://blog.lemondouble.com/p/a68cc3e1f5e8a95b/</guid><description>&lt;h3 id="1-private-registry는-좋은데-관리하기가-너무-까다로워요"&gt;1. Private Registry는 좋은데, 관리하기가 너무 까다로워요!&lt;/h3&gt;
+&lt;p&gt;CLI를 엄청 좋아하는 사람도 있지만.. 저는 커맨드 외우는걸 정말 못 하는 고로.. GUI와 기록을 선호합니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 8. Private Docker Registry 및 접속 ID/PW 설정하기</title><link>https://blog.lemondouble.com/p/be354d4b5f50a3ee/</link><pubDate>Sun, 10 Dec 2023 10:08:50 +0900</pubDate><guid>https://blog.lemondouble.com/p/be354d4b5f50a3ee/</guid><description>&lt;h3 id="1-서론"&gt;1. 서론&lt;/h3&gt;
+&lt;p&gt;이왕 인프라 갖춘거 Private Docker Registry도 직접 만들어 봅시다.&lt;/p&gt;
+&lt;p&gt;저의 경우는, 이후 이 클러스터에 별도로 개인 서버들을 올려 사용하고 있어 해당 컨테이너를 관리하기 위해 Private Registry를 사용하고 있습니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 7-1. Web UI를 통해 간편하게 Sealed Secrets 만들기</title><link>https://blog.lemondouble.com/p/567b4c177bdb8401/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/p/567b4c177bdb8401/</guid><description>&lt;h3 id="1-서론"&gt;1. 서론&lt;/h3&gt;
+&lt;p&gt;Sealed Secrets 다 괜찮은데, 문제가 하나 있다면 매번 설정할 떄마다 Secrets.yaml 만들고&amp;hellip; CLI로 Sealed Secrets로 변경한 뒤에.. Git에 추가하는게 끝내주게 귀찮다는 점입니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 7. Sealed Secrets를 통한 비밀 관리 + Traefik Basic Auth 설정</title><link>https://blog.lemondouble.com/p/1379182f14a62e9b/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/p/1379182f14a62e9b/</guid><description>&lt;h3 id="1-sealed-secrets"&gt;1. Sealed Secrets?&lt;/h3&gt;
+&lt;p&gt;저희는 지금 GitOps를 하고 있습니다. 즉 Git에 클러스터와 관련된 모든 설정을 올리고 있습니다.&lt;/p&gt;
+&lt;p&gt;그런?데? 쿠버네티스 Secret은? 암호화 기능이 없습니다. base64로 디코딩하면 누구나 평문으로 내용을 볼 수 있습니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 6. 분산 스토리지 추가 및 Longhorn을 통한 제공하기</title><link>https://blog.lemondouble.com/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/p/615befc538a81902/</guid><description>&lt;h3 id="1-신규-디스크-추가-및-마운트"&gt;1. 신규 디스크 추가 및 마운트&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;해당 내용은 일반적인 SSD / HDD 마운트와 동일합니다! 뭔가 잘 안 된다면, &lt;code&gt;우분투 하드디스크 마운트&lt;/code&gt; 등을 검색하셔서 따라해도 무방합니다!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;SSD, HDD를 라즈베리 파이에 연결합니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 5. ArgoCD GitOps 설정 및 Longhorn 설치</title><link>https://blog.lemondouble.com/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/p/107eed6a453d6238/</guid><description>&lt;h3 id="1-gitops-시작"&gt;1. GitOps 시작&lt;/h3&gt;
+&lt;p&gt;이제 ArgoCD를 설치하였으니, 리포지토리 구조를 정리해 봅시다.&lt;/p&gt;
+&lt;p&gt;저희는 App On Apps 패턴을 이용하여 간결한 배포 방법을 만들어 볼 것입니다.&lt;/p&gt;
+&lt;p&gt;이해가 되지 않더라도 일단 따라와 주세요.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 4. Traefik https 인증 및 ArgoCD 설정</title><link>https://blog.lemondouble.com/p/f10efbc0bcc4c537/</link><pubDate>Wed, 06 Dec 2023 05:21:00 +0900</pubDate><guid>https://blog.lemondouble.com/p/f10efbc0bcc4c537/</guid><description>&lt;p&gt;만약, 시스템을 Git을 통해 관리하면 어떨까요?
+내가 필요한 컨테이너 종류, 개수 등을 전부 Git에 선언하고 Git에 선언되어 있는 그대로 클러스터가 운영된다면, 굉장히 편하지 않을까요?&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 3. Helm 설치 및 MetalLB로 로드 밸런서 설정하기</title><link>https://blog.lemondouble.com/p/06a98c88458a5fb7/</link><pubDate>Wed, 06 Dec 2023 05:20:00 +0900</pubDate><guid>https://blog.lemondouble.com/p/06a98c88458a5fb7/</guid><description>&lt;h3 id="helm-설치"&gt;Helm 설치&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;참고한 글 : &lt;a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer"
+&gt;Installing Helm&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;다음 커맨드를 차례로 입력하여 Helm을 설치합니다.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;이후, kubeconfig 파일을 설정해 줍니다.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+chmod 600 ~/.kube/config&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;이후 bashrc 제일 밑에 다음 한 줄을 추가한 후, &lt;code&gt;source ~/.bashrc&lt;/code&gt; 로 Shell 설정을 즉시 적용시킵니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 2. 클러스터 초기 설정 편</title><link>https://blog.lemondouble.com/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/p/f4efced2e8d5b1d8/</guid><description>&lt;h3 id="하드웨어"&gt;하드웨어&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="하드웨어 구성 도식"&gt;&lt;/p&gt;
+&lt;p&gt;위 그림을 참고하여, 하드웨어 구성을 시켜 줍니다.&lt;/p&gt;
+&lt;p&gt;컴퓨터를 사용하는 집이라면 아마 높은 확률로 라우터와 기본 데스크탑은 설정되어 있을테니, 위 도식에서 초록색 부분만 추가하시면 됩니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 1. 하드웨어 편</title><link>https://blog.lemondouble.com/p/20ae99fa945edf10/</link><pubDate>Sun, 03 Dec 2023 14:54:33 +0900</pubDate><guid>https://blog.lemondouble.com/p/20ae99fa945edf10/</guid><description>&lt;p&gt;첫 시간은 하드웨어 시간입니다! 간단한 것부터 조금 복잡한 이야기부터, 빠르게 시작해 봅시다!&lt;/p&gt;
+&lt;h3 id="1-sbc-single-board-computer"&gt;1. SBC (Single Board Computer)&lt;/h3&gt;
+&lt;p&gt;역시 제일 중요한건 SBC겠죠?&lt;/p&gt;
+&lt;p&gt;개인적으로는 당X마켓에 알림 걸어놓고, &lt;strong&gt;Raspberry PI 4B 4GB 모델 or 8GB&lt;/strong&gt; 모델이 올라올 때마다 하나씩 맞추시는걸 추천합니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 서론</title><link>https://blog.lemondouble.com/p/d42387934c57aa25/</link><pubDate>Sun, 03 Dec 2023 13:24:05 +0900</pubDate><guid>https://blog.lemondouble.com/p/d42387934c57aa25/</guid><description>&lt;h3 id="처음-라즈베리-파이-클러스터를-구축한-지-대략-300일이-지났습니다"&gt;처음 라즈베리 파이 클러스터를 구축한 지 대략 300일이 지났습니다.&lt;/h3&gt;
+&lt;p&gt;계기는 사실 그렇게 크진 않았습니다.&lt;/p&gt;
+&lt;p&gt;저는 매일 아침 &lt;a href="https://news.hada.io/" target="_blank" rel="noopener noreferrer"
+&gt;GeekNews&lt;/a&gt;
+ 라는 뉴스 큐레이팅 서비스를 보며 출근하는데, 그 중 &lt;a href="https://news.hada.io/topic?id=8306" target="_blank" rel="noopener noreferrer"
+&gt;Chick-Fil-A 의 Edge Computing 기술 아키텍처 : Enterprise Restaurant Compute&lt;/a&gt;
+ 라는 글이 눈에 보였습니다.&lt;/p&gt;</description></item><item><title>HomeAssistant로 IoT 한번 해 보지 않을래요?</title><link>https://blog.lemondouble.com/p/107dcfce6eca0dd7/</link><pubDate>Sun, 21 May 2023 09:40:47 +0900</pubDate><guid>https://blog.lemondouble.com/p/107dcfce6eca0dd7/</guid><description>&lt;p&gt;IoT는 꽤 재밌는 주제인데도,&lt;/p&gt;
+&lt;p&gt;입문 난이도가 높음 + 잘 알려지지 않은 주제라 이걸로 뭘 할 수 있는지도 잘 알려지지 않은 것 같습니다.&lt;/p&gt;
+&lt;p&gt;저는 여러 플랫폼 중 HomeAssistant(이하 HASS)라는 플랫폼을 직접 설치해서 사용 중인데요, 왜 이런 플랫폼이 필요하고, 우리의 삶에서 뭘 개선시킬 수 있는지 이야기를 하려고 합니다!&lt;/p&gt;</description></item><item><title>ChatGPT는 상식 문제를 잘 풀 수 있을까? (논문)</title><link>https://blog.lemondouble.com/p/dedda5393e239315/</link><pubDate>Thu, 30 Mar 2023 19:15:11 +0900</pubDate><guid>https://blog.lemondouble.com/p/dedda5393e239315/</guid><description>&lt;p&gt;요즘 심심할 때 논문을 하나씩 읽는 취미가 생겼습니다.
+그 중, arxiv에서 재밌는 논문을 하나 읽게 되어서, 정리하고 공유해 보려고 합니다.&lt;/p&gt;
+&lt;p&gt;논문 제목은 &lt;code&gt;ChatGPT is a Knowledgeable but Inexperienced Solver: An Investigation of Commonsense Problem in Large Language Models&lt;/code&gt; (&lt;a href="https://arxiv.org/abs/2303.16421" target="_blank" rel="noopener noreferrer"
+&gt;Arxiv Link&lt;/a&gt;
+) 입니다.&lt;/p&gt;</description></item><item><title>SD카드 세개 날려먹고 화나서 쓰는 라즈베리파이 USB Boot 세팅 방법</title><link>https://blog.lemondouble.com/p/977ba9d70a2a7029/</link><pubDate>Sun, 29 Jan 2023 17:31:39 +0900</pubDate><guid>https://blog.lemondouble.com/p/977ba9d70a2a7029/</guid><description>&lt;p&gt;라즈베리 파이는 다 좋은데 SD 카드 부팅이 굉장히 화가 날 때가 많습니다..&lt;/p&gt;
+&lt;p&gt;삽질한다고 SD카드 빼다가 어디 긁어먹어서 인식이 안 되면 굉장히.. 심란한 경우가 많습니다.&lt;/p&gt;</description></item><item><title>내가 보려고 쓰는 K8S 리소스 정리</title><link>https://blog.lemondouble.com/p/f13e7c85c56b2c7c/</link><pubDate>Thu, 26 Jan 2023 23:15:42 +0900</pubDate><guid>https://blog.lemondouble.com/p/f13e7c85c56b2c7c/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; -o&lt;/code&gt; 또는 &lt;code&gt;k describe pod &amp;lt;podname&amp;gt;&lt;/code&gt;: 상태 정보 자세히 확인&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k logs -f &amp;lt;podname&amp;gt; -c &amp;lt;container-name&amp;gt;&lt;/code&gt; : 로그 확인&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; --show-lables&lt;/code&gt; : Label 정보 확인&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-pod"&gt;1. Pod&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;하나 이상의 Container의 집합&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;실행의 최소 단위&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;특징&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;여러 Container로 구성되었다면, 항상 동일 Node에 할당&lt;/li&gt;
+&lt;li&gt;고유 Pod IP 할당 (Pod당 하나)&lt;/li&gt;
+&lt;li&gt;Pod 내의 Container들은 네트워크 공유, 따라서 Localhost로 접근 가능&lt;/li&gt;
+&lt;li&gt;Volume 공유&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pod이 가질 수 있는 State&lt;/p&gt;</description></item><item><title>Fly.io에 올리기 좋은 서비스 (Uptime Kuma)</title><link>https://blog.lemondouble.com/p/7da6be543113ac58/</link><pubDate>Sun, 22 Jan 2023 20:41:31 +0900</pubDate><guid>https://blog.lemondouble.com/p/7da6be543113ac58/</guid><description>&lt;p&gt;이번에 소개할 프로젝트는 서버의 Uptime을 기록해 주는 Uptime Kuma라는 서비스입니다.&lt;/p&gt;
+&lt;p&gt;내 클러스터/서버 등을 모니터링하고, 문제가 생긴 경우 Telegram, Slack, Discord, E-mail&amp;hellip; 등의 여러 방법을 통해 서버가 죽었음을 알려줄 수 있습니다.&lt;/p&gt;</description></item><item><title>Private DNS와 ALB를 이용해 VPC 외부에선 접속이 불가능한 API 만들기</title><link>https://blog.lemondouble.com/p/acf607c351652785/</link><pubDate>Sun, 22 Jan 2023 17:12:43 +0900</pubDate><guid>https://blog.lemondouble.com/p/acf607c351652785/</guid><description>&lt;p&gt;MSA 서비스를 만들면 서버 간 굉장히 잦은 통신이 일어납니다.&lt;/p&gt;
+&lt;p&gt;예를 들어 (아주 간략화한) 송금 서비스가 있다고 가정해 봅시다.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/acf607c351652785/2023-01-22-17-22-23.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;지갑 서버와 유저정보 서버가 있다면, 송금 API를 호출하면 위와 같은 일이 일어날 겁니다.&lt;/p&gt;</description></item><item><title>Github OIDC를 이용해 Github Actions에 AWS Key 넣지 않고 AWS 리소스 사용하기 (무료)</title><link>https://blog.lemondouble.com/p/github-oidc%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-github-actions%EC%97%90-aws-key-%EB%84%A3%EC%A7%80-%EC%95%8A%EA%B3%A0-aws-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EB%AC%B4%EB%A3%8C/</link><pubDate>Sun, 22 Jan 2023 11:18:50 +0900</pubDate><guid>https://blog.lemondouble.com/p/github-oidc%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-github-actions%EC%97%90-aws-key-%EB%84%A3%EC%A7%80-%EC%95%8A%EA%B3%A0-aws-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EB%AC%B4%EB%A3%8C/</guid><description>&lt;p&gt;Github Actions에서 AWS를 사용하려면 보통 다음과 같은 과정을 거칩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;IAM 창에 들어가서 새로운 유저를 발급합니다.&lt;/li&gt;
+&lt;li&gt;Github Actions에서 IAM Role을 추가하고, Programmatic access 방식을 추가해 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt;, &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt; 를 발급받습니다.&lt;/li&gt;
+&lt;li&gt;레포지토리에 설정에서, Github Secrets에 방금 발급받은 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt;, &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt;를 추가합니다.&lt;/li&gt;
+&lt;li&gt;이후 github actions에서 다음과 같은 워크플로우를 추가한 뒤 AWS 리소스에 접근합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;yaml&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-yaml"&gt;- name: Configure AWS Credentials
+ uses: aws-actions/configure-aws-credentials@v1
+ with:
+ aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+ aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ aws-region: us-east-2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;프로젝트가 하나라면, 이런 식으로 관리해도 큰 문제가 없습니다.&lt;/p&gt;</description></item><item><title>AWS SSO로 회사에서 보던 그 화면 집에서도 쓰기 (무료)</title><link>https://blog.lemondouble.com/p/1c9eaebbdee2ac98/</link><pubDate>Sat, 21 Jan 2023 16:17:06 +0900</pubDate><guid>https://blog.lemondouble.com/p/1c9eaebbdee2ac98/</guid><description>&lt;p&gt;회사나 조직에서 AWS를 사용하다 보면, 다음과 같은 SSO (Single Sign On) 페이지를 통해 로그인 하는 아래와 같은 페이지를 본 적이 있으실 겁니다.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/1c9eaebbdee2ac98/2023-01-21-23-57-37.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;한번 설정해 보면 세션이 유지되는 동안 매번 id/password를 입력해 주지 않아도 되어서 사용하기도 편하고,&lt;/p&gt;</description></item><item><title>라즈베리 파이 + Ubuntu 22.04에 K3S 설치해서 쓰기</title><link>https://blog.lemondouble.com/p/fe0cac9de367fc18/</link><pubDate>Wed, 18 Jan 2023 11:56:02 +0000</pubDate><guid>https://blog.lemondouble.com/p/fe0cac9de367fc18/</guid><description>&lt;p&gt;요즘 되게 핫하면서도 어려운 기술이 쿠버네티스인 것 같습니다.&lt;/p&gt;
+&lt;p&gt;저는 학생때부터 나름 꽤 오래(?) 홈 서버를 운영했었는데, 운영을 하면서 꽤 많은 힘든 일을 마주했습니다.&lt;/p&gt;</description></item><item><title>내가 보려고 올리는 라즈베리 파이 초기 세팅</title><link>https://blog.lemondouble.com/p/088bdb572b7dc509/</link><pubDate>Wed, 18 Jan 2023 11:13:14 +0000</pubDate><guid>https://blog.lemondouble.com/p/088bdb572b7dc509/</guid><description>&lt;p&gt;라즈베리 파이나, 홈 서버를 굴리다 보면 의외로(?) 서버를 초기화해야 하는 경우가 많습니다.&lt;/p&gt;
+&lt;p&gt;세팅을 잘못 해서 뭔가 잘 안 된다거나, 뭘 깔았는지도 모르게 뭐가 잔뜩 설치되어 있는 경우 같이요.&lt;/p&gt;</description></item><item><title>내가 볼려고 올리는 Kotlin Cheat Sheet</title><link>https://blog.lemondouble.com/p/f8a9d54607e901b4/</link><pubDate>Tue, 17 Jan 2023 14:24:20 +0000</pubDate><guid>https://blog.lemondouble.com/p/f8a9d54607e901b4/</guid><description>&lt;ul&gt;
+&lt;li&gt;TIP : 숫자 작성할 때 var number = 1_000L 과 같이 작성 가능&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-변수"&gt;1. 변수&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;val collections에도 element는 추가할 수 있음&lt;/li&gt;
+&lt;li&gt;primitive, reference type 구분 없지만, 실제 연산할떈 primitive type으로 변환되어 연산됨&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="2-null-처리"&gt;2. Null 처리&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Safe Call ( ?. ) : null이 아니면 실행, null이면 실행하지 않음&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str: String? = &amp;#34;ABC&amp;#34;
+str.length // ERROR
+str?.length // OK&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Elvis 연산자 ( ?: ) : 앞의 연산 결과가 null이면 뒤의 값을 사용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str: String? = &amp;#34;ABC&amp;#34;
+str?.length ?: 0 // str.length 혹은 0 
+str?.length ?: throw IllegalArgumentException(&amp;#34;null이 들어왔습니다.&amp;#34;) // 혹은 예외 발생
+str?.length ?: return 0 // Early return에도 사용 가능&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;플랫폼 타입 : Kotlin에서 Java 코드를 가져왔을 때
+&lt;ul&gt;
+&lt;li&gt;null, nonnull 타입 둘 다 사용 가능&lt;/li&gt;
+&lt;li&gt;가능하면 Java 코드 직접 확인하거나, Kotlin으로 wrapping하여 사용하자.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;// @Nullable, @NonNull 있으면 변환됨, 하지만 없으면 플랫폼 타입
+// java 에서 
+private final String name; &amp;lt;&amp;lt; Annotation 없을 때
+
+val name : String? = javaPerson.name // OK
+val name : String = javaPerson.name // OK&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id="3-type"&gt;3. Type&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;기본 Type 변환 : 기본 타입끼리는 toXX 같은 함수를 사용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val number1 : Int = 4
+val number2 : Long = number1.toLong()
+
+val number1 : Int? = 3 
+val number2 : Long = number1?.toLong() ?: 0L // nullable 변수면 재주껏 처리&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;사용자 정의 Type : 스마트 캐스트 (Smart Cast) 활용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;fun printAgeIfPerson(obj: Any){
+	// is = Java의 instanceof
+	if(obj is Person){
+			// 스마트 캐스트 되어서 obj 의 type은 Person
+			println(obj.age)
+	}
+}
+
+// OR
+// java의 (Person) obj와 같음
+val person = obj as Person
+
+// !is, as? 등도 사용 가능
+// as? : 전체가 null&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Any : Java의 Object 역할 + Primitive Type의 최상위도 포함
+&lt;ul&gt;
+&lt;li&gt;null은 포함 X, null도 포함하고 싶다면 Any?로 사용&lt;/li&gt;
+&lt;li&gt;equals, hashCode, toString 존재&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Unit : void 비슷, 하지만 Unit은 그 자체로 제네릭에서 타입 인자로 사용 가능&lt;/li&gt;
+&lt;li&gt;Nothing : 함수가 정상적으로 끝나지 않았음을 표시&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;fun fail(message : String): Nothing{
+	throw IllegalArgumentException(message)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;String interpolation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val person = Person(name = &amp;#34;lemon&amp;#34;, age = 20)
+val log = &amp;#34;이름 : ${person.name}, 나이 : ${person.age}&amp;#34;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;String indexing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str = &amp;#34;ABC&amp;#34;
+// Java에서의 str.get(0) 대신
+str[1] //ok&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id="4-연산자"&gt;4. 연산자&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Kotlin에선 &amp;gt;, &amp;lt; , ≥, ≤ 사용하면 자동으로 compateTo 호출해줌&lt;/p&gt;</description></item><item><title>Fly.io 소개 및 Fly.io에 올리기 좋은 서비스 추천 (VaultWarden)</title><link>https://blog.lemondouble.com/p/740c42a214d8ce6b/</link><pubDate>Tue, 17 Jan 2023 14:03:50 +0000</pubDate><guid>https://blog.lemondouble.com/p/740c42a214d8ce6b/</guid><description>&lt;p&gt;Fly.io 라는 회사에선 도커 이미지만 준비하면 간단히 도커 이미지를 특정 국가 등에 배포할 수 있는 기능을 제공합니다.&lt;/p&gt;
+&lt;p&gt;(가입 완료 후) fly.toml 이란 파일을 적절히 작성 후&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;bash&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-bash"&gt;flyctl deploy&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;만 입력하면, 잘 지지고 볶아서 이미지를 서버에 올려 주고, DNS, https 설정, IP 발급, 모니터링 (Grafana) 설정 등을 해 줍니다.&lt;/p&gt;</description></item><item><title>3색 LED는 내부가 어떤 식으로 구성되어 있을까?</title><link>https://blog.lemondouble.com/p/141eb2dfe7f486bf/</link><pubDate>Tue, 17 Jan 2023 13:45:21 +0000</pubDate><guid>https://blog.lemondouble.com/p/141eb2dfe7f486bf/</guid><description>&lt;p&gt;Arduino를 만지다 보면, 단순히 LED를 껐다 키는&lt;/p&gt;
+&lt;p&gt;행위가 생각보다 큰 원초적 희열을 가져다 준 다는 점을 알게 됩니다.&lt;/p&gt;
+&lt;p&gt;하지만.. 곧 위와 같은 단색 LED로는 한 가지 색깔밖에 낼 수 없단걸 깨닫고, 몬가몬가 &amp;ldquo;어떤 색깔이든 낼 수 있는 LED&amp;quot;를 찾게 되는데요..&lt;/p&gt;</description></item><item><title>프로필 (🔗)</title><link>https://blog.lemondouble.com/about/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://blog.lemondouble.com/about/</guid><description/></item><item><title>Lemon Toolbox 첫 런칭 회고</title><link>https://blog.lemondouble.com/p/8b50460f83230126/</link><pubDate>Sun, 27 Feb 2022 15:39:07 +0900</pubDate><guid>https://blog.lemondouble.com/p/8b50460f83230126/</guid><description>&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/8b50460f83230126/image-18.png" alt="Lemon Toolbox 챗봇"&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;이런 서비스를 만든 이야기를 합니다!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2024.06.30 추가 : 당시는 ChatGPT가 나오기 전이라, 이런 챗봇 서비스가 흔하지 않던 때였습니다!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/8b50460f83230126/image.png" alt="오픈 첫날 트위터 캡쳐"&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;으아아 도대체 무슨 일이 일어나고 있는 거에요!!&lt;/p&gt;</description></item></channel></rss>

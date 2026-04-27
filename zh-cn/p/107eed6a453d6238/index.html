@@ -1,0 +1,136 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>在家用 Raspberry Pi 集群搭建数据中心 - 5. ArgoCD GitOps 配置与 Longhorn 安装 | Lemon Blog</title><meta name=description content="我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"><link rel=icon href=https://cdn.lemondouble.com/homepage/favicon.ico><link rel=canonical href=https://blog.lemondouble.com/zh-cn/p/107eed6a453d6238/><link rel=alternate hreflang=ko href=https://blog.lemondouble.com/p/107eed6a453d6238/><link rel=alternate hreflang=en href=https://blog.lemondouble.com/en/p/107eed6a453d6238/><link rel=alternate hreflang=ja href=https://blog.lemondouble.com/ja/p/107eed6a453d6238/><link rel=alternate hreflang=zh-cn href=https://blog.lemondouble.com/zh-cn/p/107eed6a453d6238/><link rel=alternate hreflang=zh-tw href=https://blog.lemondouble.com/zh-tw/p/107eed6a453d6238/><link rel=alternate hreflang=x-default href=https://blog.lemondouble.com/p/107eed6a453d6238/><link href=https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css rel=stylesheet><link href=https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css rel=stylesheet><meta property="og:title" content="在家用 Raspberry Pi 集群搭建数据中心 - 5. ArgoCD GitOps 配置与 Longhorn 安装"><meta property="og:description" content="我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.lemondouble.com/zh-cn/p/107eed6a453d6238/"><meta property="og:site_name" content="Lemon Blog"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="ja_JP"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:image" content="https://blog.lemondouble.com/p/107eed6a453d6238/cover.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="在家用 Raspberry Pi 集群搭建数据中心 - 5. ArgoCD GitOps 配置与 Longhorn 安装"><meta name=twitter:description content="我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"><meta name=twitter:image content="https://blog.lemondouble.com/p/107eed6a453d6238/cover.png"><link rel=stylesheet href=/css/8bit.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-dracula.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css><link rel=stylesheet href=/css/code-block.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-9C6YX68EBM"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9C6YX68EBM")</script><meta name=generator content="Hugo 0.159.2"></head><body><nav class=site-nav><div class=nav-inner><a href=/zh-cn/ class=nav-logo><img src=/img/brand/lemon-logo.webp alt=Logo>
+<span>Lemon Blog</span></a><div class=nav-links><a href=/zh-cn/ class=nav-link>首页</a>
+<a href=/zh-cn/projects/ class=nav-link>项目</a>
+<a href=/zh-cn/skills/ class=nav-link>技能</a>
+<a href=https://lemondouble.com/zh-cn target=_blank rel="noopener noreferrer" class=nav-link>关于</a></div><div class=nav-actions><div class=search-wrapper id=searchWrapper><span class=search-icon><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+</span><input type=text class=search-input id=searchInput placeholder=搜索... autocomplete=off>
+<button class=search-close-btn onclick=closeMobileSearch() aria-label=关闭搜索>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class=search-results id=searchResults></div></div><button class=mobile-search-btn onclick=openMobileSearch() aria-label=打开搜索>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><div class=lang-switcher id=langSwitcher><button type=button class=lang-switcher-btn onclick=toggleLangSwitcher(event) aria-label=选择语言 aria-haspopup=true aria-expanded=false>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3.0 014 10 15.3 15.3.0 01-4 10A15.3 15.3.0 018 12a15.3 15.3.0 014-10z"/></svg>
+<span class=lang-switcher-current>简体中文</span>
+<svg class="lang-switcher-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class=lang-switcher-menu id=langSwitcherMenu role=menu><a href=/p/107eed6a453d6238/ class=lang-switcher-item lang=ko role=menuitem>한국어
+</a><a href=/en/p/107eed6a453d6238/ class=lang-switcher-item lang=en role=menuitem>English
+</a><a href=/ja/p/107eed6a453d6238/ class=lang-switcher-item lang=ja role=menuitem>日本語
+</a><a href=/zh-cn/p/107eed6a453d6238/ class="lang-switcher-item active" lang=zh-cn role=menuitem>简体中文
+</a><a href=/zh-tw/p/107eed6a453d6238/ class=lang-switcher-item lang=zh-tw role=menuitem>繁體中文</a></div></div><button class=nav-menu-btn onclick=toggleMobileMenu() aria-label=打开菜单>
+<svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button></div></div></nav><div class=mobile-menu id=mobileMenu><a href=/zh-cn/ class=nav-link onclick=closeMobileMenu()>首页</a>
+<a href=/zh-cn/projects/ class=nav-link onclick=closeMobileMenu()>项目</a>
+<a href=/zh-cn/skills/ class=nav-link onclick=closeMobileMenu()>技能</a>
+<a href=https://lemondouble.com/zh-cn target=_blank rel="noopener noreferrer" class=nav-link onclick=closeMobileMenu()>关于</a><div class=mobile-menu-lang><span class=mobile-menu-lang-label>选择语言</span><div class=mobile-menu-lang-items><a href=/p/107eed6a453d6238/ class=mobile-menu-lang-item lang=ko onclick=closeMobileMenu()>한국어</a>
+<a href=/en/p/107eed6a453d6238/ class=mobile-menu-lang-item lang=en onclick=closeMobileMenu()>English</a>
+<a href=/ja/p/107eed6a453d6238/ class=mobile-menu-lang-item lang=ja onclick=closeMobileMenu()>日本語</a>
+<a href=/zh-cn/p/107eed6a453d6238/ class="mobile-menu-lang-item active" lang=zh-cn onclick=closeMobileMenu()>简体中文</a>
+<a href=/zh-tw/p/107eed6a453d6238/ class=mobile-menu-lang-item lang=zh-tw onclick=closeMobileMenu()>繁體中文</a></div></div></div><div class=container><main class=site-main><div class="post-layout has-toc"><article class=post-single><header class=post-header><div class=post-cover><img src=/p/107eed6a453d6238/cover_hu_6ab4c78ecb654980.png alt="在家用 Raspberry Pi 集群搭建数据中心 - 5. ArgoCD GitOps 配置与 Longhorn 安装"></div><div class=post-header-content><div class=post-categories><a href=/zh-cn/categories/k8s/ class=category-tag>K8S</a>
+<a href=/zh-cn/categories/k3s/ class=category-tag>K3S</a>
+<a href=/zh-cn/categories/raspberry-pi/ class=category-tag>Raspberry Pi</a></div><h1 class=post-title>在家用 Raspberry Pi 集群搭建数据中心 - 5. ArgoCD GitOps 配置与 Longhorn 安装</h1><div class=post-meta><time>2023.12.09</time>
+<span class=meta-sep>&#8226;</span>
+<span>4 min read</span></div></div></header><div class=post-content><p><em>注：作者居住在韩国，部分内容包含韩国特有的背景。</em></p><h3 id=1-开始-gitops>1. 开始 GitOps</h3><p>ArgoCD 已经安装好了，接下来整理一下仓库结构。</p><p>我们会使用 App On Apps 模式来构建一种简洁的部署方式。</p><p>即使现在不太理解，先跟着做就行。</p><p>把上次创建的空仓库整理成下面这样的结构：</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>sh</span></div><pre class=line-numbers><code class=language-sh>/apps
+    ㄴ/disabled
+    ㄴ/enabled
+/init
+/modules</code></pre></div><p>然后，把之前操作过的 ip_address_pool.yaml、(ArgoCD 的) ingress.yaml、traefik-update.yaml、values.yaml 全部加到 init 文件夹里。</p><p>把最初设置时的文件保存在 Git 里，是为了在以后需要恢复集群时，能够通过 <code>kubectl -f 文件名</code> 快速重新应用这些配置文件。</p><p>像下面这样添加文件，再写一份 README.md 记录到目前为止做了哪些工作，集群出问题时对恢复非常有帮助。README.md 请自己写！</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>sh</span></div><pre class=line-numbers><code class=language-sh>/init
+    ㄴ ip_address_pool.yaml
+    ㄴ ingress.yaml
+    ㄴ traefik-update.yaml
+    ㄴ values.yaml</code></pre></div><p>接着，在 init 文件夹中参考下面的 yaml 添加 root-app.yaml。</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: &lt;随便起一个喜欢的名字 (我这里是 lemon-k8s-apps)&gt;
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: &#39;https://kubernetes.default.svc&#39;
+  source:
+    repoURL: &#39;git@github.com:&lt;YourOrganizationName&gt;/&lt;YourRepositoryName&gt;.git&#39;
+    targetRevision: HEAD
+    path: apps/enabled
+  project: default
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true</code></pre></div><p>逐项拆解：</p><ol><li>添加一个由 ArgoCD 管理的应用</li><li>该应用引用 GitHub 上的我自己的仓库</li><li>Path 会执行上面配置的 apps/enabled 中所有 yaml 文件</li></ol><p>然后执行 <code>kubectl apply -f root-app.yaml</code> 安装 root app。</p><p>之后回到 ArgoCD，确认我的第一个应用是否正常显示。如果 Sync 失败，并提示仓库中没有该 Path，说明已经正常连接了。</p><h3 id=2-安装-longhorn>2. 安装 Longhorn</h3><ul><li>假设除了主 USB(装有操作系统的 USB)之外，至少还插了一块用于存储的 USB、SSD 或 HDD。</li></ul><p><strong>截至 2023 年 12 月，使用 ArgoCD 首次安装时，Longhorn 的初始 Batch Job 会因为一个 bug 失败，所以我们先手动安装一次，再迁移到 ArgoCD。</strong></p><p>Longhorn 是一个分布式存储管理器，提供以下功能。(懒得读的话，可以简单理解为它提供了类似 S3 的功能！)</p><ol><li><strong>分布式存储</strong></li></ol><p>按照配置，将文件分散保存到 N 个存储设备上。</p><p>如果某次故障导致一台存储被破坏，原先存放在它上面的数据会自动迁移到其他存储，确保至少保持 N 个副本。</p><p>这样即使一块 SSD 挂掉，其他存储上仍有相同的数据，程序和系统就能继续正常运行。</p><ol start=2><li><strong>Storage Tiering</strong></li></ol><p>有些系统是 I/O 非常重的工作负载，需要很高的存储性能；</p><p>而有些系统则是不常读取的文件特别多，比起性能更需要容量。</p><p>Longhorn 支持 StorageClass，可以据此把存储分层使用。</p><p>例如，对 I/O 要求高的场景，可以分配只由 NVMe SSD 组成的 storage class；对单纯需要大量文件存储的场景，则分配只由 HDD 组成的 storage class。</p><p>那么！通过下面的命令安装 Longhorn。</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>sh</span></div><pre class=line-numbers><code class=language-sh>helm repo add longhorn https://charts.longhorn.io
+helm repo update
+helm install longhorn longhorn/longhorn --namespace longhorn-system --create-namespace --set service.ui.loadBalancerIP=&#34;192.168.0.201&#34; --set service.ui.type=&#34;LoadBalancer&#34;</code></pre></div><p>如果安装成功，在浏览器中访问 <code>http://192.168.0.201</code>，确认能看到 Longhorn UI。</p><h3 id=3-1-用-argocd-来安装---添加配置文件>3-1. 用 ArgoCD 来安装 - 添加配置文件</h3><p>既然手动安装已经完成一次，我们就把已经安装好的 Longhorn 迁移到 ArgoCD。</p><p>文件夹结构和部署策略如下。按照下面的结构，部署 root-app 后，下层应用会自动启动。</p><p><img src=/p/107eed6a453d6238/image.png alt="文件夹结构，Root App 部署 enabled 文件夹，enabled 文件夹下的 yaml 文件部署 modules/文件名"></p><p>这一步同样先照做。添加下面的文件。</p><ul><li><code>apps/enabled/longhorn-system.yaml</code></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: longhorn-system
+  namespace: argocd
+spec:
+  destination:
+    namespace: longhorn-system
+    server: &#39;https://kubernetes.default.svc&#39;
+  source:
+    path: modules/longhorn-system
+    repoURL: &#39;git@github.com:&lt;YourOrganizationName&gt;/&lt;YourRepositoryName&gt;.git&#39;
+    targetRevision: HEAD
+  project: default</code></pre></div><p>添加一个自动部署 modules/longhorn-system 的应用。</p><ul><li><code>modules/longhorn-system/longhorn.yaml</code></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: longhorn
+  namespace: argocd
+spec:
+  destination:
+    namespace: longhorn-system
+    server: &#39;https://kubernetes.default.svc&#39;
+  source:
+    repoURL: &#39;https://charts.longhorn.io&#39;
+    targetRevision: 1.5.3
+    chart: longhorn
+    helm:
+      parameters:
+        - name: service.ui.loadBalancerIP
+          value: 192.168.0.201
+        - name: service.ui.type
+          value: LoadBalancer
+  project: default</code></pre></div><p>通过 <code>helm.parameters</code>，可以像上面这样添加要写入 values.yaml 的值。</p><ul><li><code>modules/longhorn-system/storage-class.yaml</code></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: longhorn-ssd
+provisioner: driver.longhorn.io
+allowVolumeExpansion: true
+reclaimPolicy: &#34;Delete&#34;
+volumeBindingMode: Immediate
+parameters:
+  numberOfReplicas: &#34;2&#34;
+  fsType: &#34;ext4&#34;
+  diskSelector: &#34;ssd&#34;
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: longhorn-hdd
+provisioner: driver.longhorn.io
+allowVolumeExpansion: true
+reclaimPolicy: &#34;Delete&#34;
+volumeBindingMode: Immediate
+parameters:
+  numberOfReplicas: &#34;1&#34;
+  fsType: &#34;ext4&#34;
+  diskSelector: &#34;hdd&#34;</code></pre></div><p>添加 ssd、hdd 存储。如果你用的是 USB，也可以把名称改成 longhorn-usb 等。</p><p><code>numberOfReplicas</code>：副本数量。我这里 SSD 用于存放应用所需的数据，为了稳定性至少设为 2 个；HDD 只是单纯文件存储，所以设为 1 个。
+<code>fsType</code>：文件系统类型。这里使用 ext4。如果你按照本指南操作，保持一致即可。
+<code>diskSelector</code>：稍后注册磁盘时会用到。请记住它。</p><p>完成后，提交 Git 然后 Push！</p><h3 id=3-2-用-argocd-来安装---实际部署>3-2. 用 ArgoCD 来安装 - 实际部署</h3><p>现在进入最初配置的 ArgoCD，亲自进行部署。</p><p><img src=/p/107eed6a453d6238/image-1.png alt="ArgoCD Root App 截图"></p><p>我们要关注的是 <code>Sync</code>、<code>Refresh</code> 按钮。</p><ul><li><code>Sync</code>：从 Git 拉取新的集群状态，然后将实际集群状态与 Git 同步。</li><li><code>Refresh</code>：从 Git 拉取新的集群状态，但不会同步集群。</li></ul><p>所以点击 Sync 后，ArgoCD 就会开始部署。</p><p>接着按 Longhorn-system -> Longhorn 的顺序逐层进入，依次点击 Sync 进行部署。</p><h3 id=结束语>结束语</h3><p>辛苦了！终于把之前散落各处的 YAML 文件整理好，向 GitOps 迈出了第一步。</p><p>下次我们将通过 Longhorn 真正注册 SSD 和 HDD。</p></div><div class=post-tags><a href=/zh-cn/tags/k8s/ class=tag-link>#K8S</a>
+<a href=/zh-cn/tags/k3s/ class=tag-link>#K3S</a>
+<a href=/zh-cn/tags/raspberry-pi/ class=tag-link>#Raspberry Pi</a>
+<a href=/zh-cn/tags/argocd/ class=tag-link>#ArgoCD</a>
+<a href=/zh-cn/tags/gitops/ class=tag-link>#GitOps</a>
+<a href=/zh-cn/tags/longhorn/ class=tag-link>#Longhorn</a>
+<a href=/zh-cn/tags/%E5%AD%98%E5%82%A8/ class=tag-link>#存储</a></div><div class=post-license><p>&copy; 本文采用 CC BY-NC-SA 4.0 许可协议发布。</p></div><section class=post-comments><h3 class=comments-title>Comments</h3><script src=https://giscus.app/client.js data-repo=LemonDouble/LemonDouble.github.io-comments data-repo-id=R_kgDOI0UkDA data-category=Comments data-category-id=DIC_kwDOI0UkDM4CcIeY data-mapping=pathname data-reactions-enabled=1 data-emit-metadata=0 data-theme=dark crossorigin=anonymous async></script></section></article><aside class=toc-sidebar><a href=/zh-cn/ class=toc-back-btn onclick="return tocGoBack(event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+<span>返回上一页</span></a><nav class=toc-sidebar-nav><h4 class=toc-sidebar-title>本页目录</h4><nav id=TableOfContents><ul><li><ul><li><a href=#1-开始-gitops>1. 开始 GitOps</a></li><li><a href=#2-安装-longhorn>2. 安装 Longhorn</a></li><li><a href=#3-1-用-argocd-来安装---添加配置文件>3-1. 用 ArgoCD 来安装 - 添加配置文件</a></li><li><a href=#3-2-用-argocd-来安装---实际部署>3-2. 用 ArgoCD 来安装 - 实际部署</a></li><li><a href=#结束语>结束语</a></li></ul></li></ul></nav></nav></aside></div><script>function tocGoBack(e){var t=document.referrer&&document.referrer.indexOf(window.location.origin)===0;return!(t&&window.history.length>1)||(e.preventDefault(),window.history.back(),!1)}(function(){var e,t,o,i,s=document.querySelector(".toc-sidebar-nav");if(!s)return;if(o=s.querySelectorAll("a"),!o.length)return;if(e=[],o.forEach(function(t){var s=decodeURIComponent(t.getAttribute("href").slice(1)),n=document.getElementById(s);n&&e.push({el:n,link:t})}),!e.length)return;t=null;function n(e){if(t===e)return;t&&t.classList.remove("active"),e.classList.add("active"),t=e;var i=s,n=e.getBoundingClientRect(),o=i.getBoundingClientRect();(n.top<o.top||n.bottom>o.bottom)&&e.scrollIntoView({block:"nearest",behavior:"smooth"})}i=new IntersectionObserver(function(t){var s,o,i,a,r,c,l=[];t.forEach(function(t){var n=e.find(function(e){return e.el===t.target});n&&(n.isIntersecting=t.isIntersecting)});for(s=0;s<e.length;s++)if(e[s].isIntersecting){n(e[s].link);return}for(c=window.scrollY||window.pageYOffset,a=100,i=null,o=0;o<e.length;o++)r=e[o].el.getBoundingClientRect(),r.top<a&&(i=e[o]);i&&n(i.link)},{rootMargin:"-80px 0px -60% 0px",threshold:0}),e.forEach(function(e){e.isIntersecting=!1,i.observe(e.el)}),setTimeout(function(){var t,s,o,i,a=window.scrollY||window.pageYOffset;if(a<100)n(e[0].link);else{for(o=100,s=null,t=0;t<e.length;t++)i=e[t].el.getBoundingClientRect(),i.top<o&&(s=e[t]);n(s?s.link:e[0].link)}},100)})()</script></main></div><footer class=site-footer><div class=footer-content><div class=footer-links><a href=https://github.com/LemonDouble target=_blank rel=noopener>GitHub</a>
+<a href=https://twitter.com/_lemon_berry_ target=_blank rel=noopener>Twitter</a>
+<a href=mailto:contact@lemondouble.com>Email</a>
+<a href=https://sns.lemondouble.com/@lemondouble target=_blank rel=noopener>Misskey</a></div><p class=footer-copy>&copy; 2022-2026 LemonDouble &bull; Powered by Hugo</p><p class=footer-brand>LEMON BLOG</p></div></footer><script>function toggleMobileMenu(){var e=document.getElementById("mobileMenu");e.classList.toggle("active")}function closeMobileMenu(){document.getElementById("mobileMenu").classList.remove("active")}function openMobileSearch(){document.body.classList.add("mobile-search-active"),closeMobileMenu(),setTimeout(function(){var e=document.getElementById("searchInput");e&&e.focus()},50)}function closeMobileSearch(){document.body.classList.remove("mobile-search-active");var e,t=document.getElementById("searchInput");t&&(t.value="",t.blur()),e=document.getElementById("searchResults"),e&&(e.classList.remove("active"),e.innerHTML="")}document.addEventListener("keydown",function(e){e.key==="Escape"&&document.body.classList.contains("mobile-search-active")&&closeMobileSearch()});function pageJump(e,t){if(e.key==="Escape")return t.blur(),!1;if(e.key!=="Enter")return!0;e.preventDefault();var s,o,n=parseInt(t.value,10),i=parseInt(t.dataset.total,10);return!n||n<1||n>i?(t.value=t.defaultValue,!1):(s=t.dataset.base||"/",o=n===1?s:s.replace(/\/$/,"")+"/page/"+n+"/",window.location.href=o,!1)}function pageJumpFocus(e){e.value=""}function pageJumpReset(e){e.value=e.defaultValue}function pageJumpSanitize(e){var t=e.value.replace(/\D/g,"");t!==e.value&&(e.value=t)}function toggleLangSwitcher(e){e&&e.stopPropagation();var s,t=document.getElementById("langSwitcher"),n=t&&t.querySelector(".lang-switcher-btn");if(!t||!n)return;s=t.classList.toggle("open"),n.setAttribute("aria-expanded",s?"true":"false")}document.addEventListener("click",function(e){var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&!e.target.closest("#langSwitcher")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))}),document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))})</script><script>var searchInput,searchResults,searchIndex=null;(function(){fetch("/zh-cn/index.json").then(function(e){return e.json()}).then(function(e){searchIndex=e}).catch(function(){})})(),searchInput=document.getElementById("searchInput"),searchResults=document.getElementById("searchResults"),searchInput&&(searchInput.addEventListener("input",function(e){var n,t=e.target.value.trim().toLowerCase();if(!t||!searchIndex){searchResults.classList.remove("active"),searchResults.innerHTML="";return}if(n=searchIndex.filter(function(e){return e.title.toLowerCase().includes(t)||e.summary.toLowerCase().includes(t)||(e.categories||[]).some(function(e){return e.toLowerCase().includes(t)})||(e.tags||[]).some(function(e){return e.toLowerCase().includes(t)})}).slice(0,10),n.length===0){searchResults.innerHTML='<div class="search-empty">未找到搜索结果。</div>',searchResults.classList.add("active");return}searchResults.innerHTML=n.map(function(e){var t=(e.categories||[]).map(function(e){return'<span class="search-cat">'+e+"</span>"}).join('<span class="search-cat-sep">/</span>');return'<a href="'+e.url+'" class="search-result-item"><div class="search-result-title">'+e.title+'</div><div class="search-result-meta">'+e.date+(t?" &middot; "+t:"")+"</div></a>"}).join(""),searchResults.classList.add("active")}),document.addEventListener("click",function(e){e.target.closest(".search-wrapper")||(searchResults.classList.remove("active"),document.body.classList.contains("mobile-search-active")&&!e.target.closest(".mobile-search-btn")&&closeMobileSearch())}),searchInput.addEventListener("focus",function(){searchInput.value.trim()&&searchResults.classList.add("active")}))</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js></script></body></html>

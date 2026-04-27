@@ -1,0 +1,754 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Kotlin Cheat Sheet (For My Own Reference) | Lemon Blog</title><meta name=description content="I tinker with various things. Most blog posts are notes I jot down so I don't forget what I've worked on(..)"><link rel=icon href=https://cdn.lemondouble.com/homepage/favicon.ico><link rel=canonical href=https://blog.lemondouble.com/en/p/f8a9d54607e901b4/><link rel=alternate hreflang=ko href=https://blog.lemondouble.com/p/f8a9d54607e901b4/><link rel=alternate hreflang=en href=https://blog.lemondouble.com/en/p/f8a9d54607e901b4/><link rel=alternate hreflang=ja href=https://blog.lemondouble.com/ja/p/f8a9d54607e901b4/><link rel=alternate hreflang=zh-cn href=https://blog.lemondouble.com/zh-cn/p/f8a9d54607e901b4/><link rel=alternate hreflang=zh-tw href=https://blog.lemondouble.com/zh-tw/p/f8a9d54607e901b4/><link rel=alternate hreflang=x-default href=https://blog.lemondouble.com/p/f8a9d54607e901b4/><link href=https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css rel=stylesheet><link href=https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css rel=stylesheet><meta property="og:title" content="Kotlin Cheat Sheet (For My Own Reference)"><meta property="og:description" content="I tinker with various things. Most blog posts are notes I jot down so I don't forget what I've worked on(..)"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.lemondouble.com/en/p/f8a9d54607e901b4/"><meta property="og:site_name" content="Lemon Blog"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:locale:alternate" content="ja_JP"><meta property="og:locale:alternate" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:image" content="https://blog.lemondouble.com/p/f8a9d54607e901b4/cover.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Kotlin Cheat Sheet (For My Own Reference)"><meta name=twitter:description content="I tinker with various things. Most blog posts are notes I jot down so I don't forget what I've worked on(..)"><meta name=twitter:image content="https://blog.lemondouble.com/p/f8a9d54607e901b4/cover.png"><link rel=stylesheet href=/css/8bit.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-dracula.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css><link rel=stylesheet href=/css/code-block.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-9C6YX68EBM"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9C6YX68EBM")</script><meta name=generator content="Hugo 0.159.2"></head><body><nav class=site-nav><div class=nav-inner><a href=/en/ class=nav-logo><img src=/img/brand/lemon-logo.webp alt=Logo>
+<span>Lemon Blog</span></a><div class=nav-links><a href=/en/ class=nav-link>Home</a>
+<a href=/en/projects/ class=nav-link>Projects</a>
+<a href=/en/skills/ class=nav-link>Skills</a>
+<a href=https://lemondouble.com/en target=_blank rel="noopener noreferrer" class=nav-link>About</a></div><div class=nav-actions><div class=search-wrapper id=searchWrapper><span class=search-icon><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+</span><input type=text class=search-input id=searchInput placeholder=Search... autocomplete=off>
+<button class=search-close-btn onclick=closeMobileSearch() aria-label="Close search">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class=search-results id=searchResults></div></div><button class=mobile-search-btn onclick=openMobileSearch() aria-label="Open search">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><div class=lang-switcher id=langSwitcher><button type=button class=lang-switcher-btn onclick=toggleLangSwitcher(event) aria-label="Select language" aria-haspopup=true aria-expanded=false>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3.0 014 10 15.3 15.3.0 01-4 10A15.3 15.3.0 018 12a15.3 15.3.0 014-10z"/></svg>
+<span class=lang-switcher-current>English</span>
+<svg class="lang-switcher-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class=lang-switcher-menu id=langSwitcherMenu role=menu><a href=/p/f8a9d54607e901b4/ class=lang-switcher-item lang=ko role=menuitem>한국어
+</a><a href=/en/p/f8a9d54607e901b4/ class="lang-switcher-item active" lang=en role=menuitem>English
+</a><a href=/ja/p/f8a9d54607e901b4/ class=lang-switcher-item lang=ja role=menuitem>日本語
+</a><a href=/zh-cn/p/f8a9d54607e901b4/ class=lang-switcher-item lang=zh-cn role=menuitem>简体中文
+</a><a href=/zh-tw/p/f8a9d54607e901b4/ class=lang-switcher-item lang=zh-tw role=menuitem>繁體中文</a></div></div><button class=nav-menu-btn onclick=toggleMobileMenu() aria-label="Open menu">
+<svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button></div></div></nav><div class=mobile-menu id=mobileMenu><a href=/en/ class=nav-link onclick=closeMobileMenu()>Home</a>
+<a href=/en/projects/ class=nav-link onclick=closeMobileMenu()>Projects</a>
+<a href=/en/skills/ class=nav-link onclick=closeMobileMenu()>Skills</a>
+<a href=https://lemondouble.com/en target=_blank rel="noopener noreferrer" class=nav-link onclick=closeMobileMenu()>About</a><div class=mobile-menu-lang><span class=mobile-menu-lang-label>Select language</span><div class=mobile-menu-lang-items><a href=/p/f8a9d54607e901b4/ class=mobile-menu-lang-item lang=ko onclick=closeMobileMenu()>한국어</a>
+<a href=/en/p/f8a9d54607e901b4/ class="mobile-menu-lang-item active" lang=en onclick=closeMobileMenu()>English</a>
+<a href=/ja/p/f8a9d54607e901b4/ class=mobile-menu-lang-item lang=ja onclick=closeMobileMenu()>日本語</a>
+<a href=/zh-cn/p/f8a9d54607e901b4/ class=mobile-menu-lang-item lang=zh-cn onclick=closeMobileMenu()>简体中文</a>
+<a href=/zh-tw/p/f8a9d54607e901b4/ class=mobile-menu-lang-item lang=zh-tw onclick=closeMobileMenu()>繁體中文</a></div></div></div><div class=container><main class=site-main><div class="post-layout has-toc"><article class=post-single><header class=post-header><div class=post-cover><img src=/p/f8a9d54607e901b4/cover_hu_2f6eff48073e0923.png alt="Kotlin Cheat Sheet (For My Own Reference)"></div><div class=post-header-content><div class=post-categories><a href=/en/categories/kotlin/ class=category-tag>Kotlin</a></div><h1 class=post-title>Kotlin Cheat Sheet (For My Own Reference)</h1><div class=post-meta><time>2023.01.17</time>
+<span class=meta-sep>&#8226;</span>
+<span>10 min read</span></div></div></header><div class=post-content><p><em>Note: I&rsquo;m based in Korea, so some context here is Korea-specific.</em></p><ul><li>TIP: When writing numbers, you can use formats like <code>var number = 1_000L</code></li></ul><h3 id=1-variables>1. Variables</h3><ul><li>You can still add elements to a <code>val</code> collection</li><li>There&rsquo;s no distinction between primitive and reference types, but during actual computation, values are converted to primitive types</li></ul><h3 id=2-null-handling>2. Null Handling</h3><ul><li>Safe Call (<code>?.</code>): executes if not null, skips if null</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val str: String? = &#34;ABC&#34;
+str.length // ERROR
+str?.length // OK</code></pre></div><ul><li>Elvis operator (<code>?:</code>): if the expression on the left is null, use the value on the right</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val str: String? = &#34;ABC&#34;
+str?.length ?: 0 // either str.length or 0 
+str?.length ?: throw IllegalArgumentException(&#34;null이 들어왔습니다.&#34;) // or throw exception
+str?.length ?: return 0 // can also be used for early return</code></pre></div><ul><li>Platform Type: When pulling Java code into Kotlin<ul><li>Both null and non-null types are usable</li><li>When possible, check the Java code directly or wrap it in Kotlin</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// If @Nullable, @NonNull are present they get converted, otherwise platform type
+// In Java 
+private final String name; &lt;&lt; When no annotation
+
+val name : String? = javaPerson.name // OK
+val name : String = javaPerson.name  // OK</code></pre></div><h3 id=3-type>3. Type</h3><ul><li>Basic type conversion: use functions like <code>toXX</code> between primitive types</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val number1 : Int = 4
+val number2 : Long = number1.toLong()
+
+val number1 : Int? = 3 
+val number2 : Long = number1?.toLong() ?: 0L // for nullable variables, handle as needed</code></pre></div><ul><li>User-defined types: leverage Smart Cast</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>fun printAgeIfPerson(obj: Any){
+	// is = Java&#39;s instanceof
+	if(obj is Person){
+			// Smart cast makes obj&#39;s type Person
+			println(obj.age)
+	}
+}
+
+// OR
+// Same as Java&#39;s (Person) obj
+val person = obj as Person
+
+// !is, as? are also usable
+// as? : the whole expression becomes null</code></pre></div><ul><li>Any: plays the role of Java&rsquo;s Object + also includes the top of primitive types<ul><li>Doesn&rsquo;t include null; use <code>Any?</code> if you want null too</li><li>Has equals, hashCode, toString</li></ul></li><li>Unit: similar to void, but Unit can itself be used as a type argument in generics</li><li>Nothing: indicates that the function does not return normally</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>fun fail(message : String): Nothing{
+	throw IllegalArgumentException(message)
+}</code></pre></div><ul><li>String interpolation</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val person = Person(name = &#34;lemon&#34;, age = 20)
+val log = &#34;이름 : ${person.name}, 나이 : ${person.age}&#34;</code></pre></div><ul><li>String indexing</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val str = &#34;ABC&#34;
+// Instead of Java&#39;s str.get(0)
+str[1] //ok</code></pre></div><h3 id=4-operators>4. Operators</h3><ul><li><p>In Kotlin, using <code>></code>, <code>&lt;</code>, <code>≥</code>, <code>≤</code> automatically calls <code>compareTo</code></p></li><li><p><code>==</code> (value comparison, equality: auto-calls equals), <code>===</code> (address comparison, identity: same 0x101 address)</p></li><li><p><code>in</code>, <code>!in</code>: is this in a collection / range?</p></li><li><p><code>a..b</code>: creates a range object from a to b</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val numbers = 1..100 // creates an IntRange object from 1 to 100
+println(1 in numbers) // true
+println(0 in numbers) // false
+
+// These two are equivalent
+if(0 &lt;= score &amp;&amp; score &lt;= 100) {..}
+if(score in 0..100)</code></pre></div><ul><li>Operator overloading</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>data class Money(val amount : Long){
+	
+	operator fun plus(other : Money): Money{
+		return Money(this.amount &#43; other.amount)
+	}
+}
+
+// Can be used as below
+val sumMoney = money1 &#43; money2</code></pre></div><h3 id=5-conditionals>5. Conditionals</h3><ul><li>In Kotlin, <code>if</code> is an expression (statement in Java)<ul><li>Expression: a statement that evaluates to a single value</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Not possible in Java, but works in Kotlin since if is an expression
+fun getPassOrFail(score : Int): String{
+	return if (score &gt;= 50){ &#34;P&#34; } else { &#34;F&#34; }
+}</code></pre></div><ul><li><p>In Java, the ternary operator is an expression, but in Kotlin since <code>if</code> is already an expression, no ternary is needed</p><ul><li>Therefore Kotlin has no ternary operator</li></ul></li><li><p><code>when</code></p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Basic usage, in place of Switch
+fun getGradeWithSwitch(score: Int): String{
+	return when(score / 10){
+		9 -&gt; &#34;A&#34;
+		8 -&gt; &#34;B&#34;
+		7 -&gt; &#34;C&#34;
+		else -&gt; &#34;D&#34;
+	}
+}
+
+// Expressions on the left side are also fine, including is Type, etc.
+when(score){
+in 90..99 -&gt; &#34;A&#34;
+in 80..89 -&gt; &#34;B&#34;
+...
+
+// Multiple conditions at once
+when (number){
+1,0,-1 -&gt; println(&#34;1,0,-1입니다&#34;)
+else -&gt; println(&#34;아닙니다&#34;)
+}
+
+// Can be used like an if-chain
+fun printOdd(score: Int): Int{
+	when{
+		score % 2 == 1 -&gt; println(&#34;홀수&#34;)
+		score % 2 == 0 -&gt; println(&#34;짝수&#34;)
+		else -&gt; println(&#34;넌머임&#34;)
+	}
+	return 1
+}</code></pre></div><h3 id=6-loops>6. Loops</h3><ul><li>forEach</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val numbers = listOf(1L, 2L, 3L)
+for (number in numbers){
+	println(number)
+}</code></pre></div><ul><li>Progression: arithmetic sequence; Range (Range inherits from Progression)</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val intRange = 1..100</code></pre></div><h3 id=7-exceptions>7. Exceptions</h3><ul><li>try-catch-finally: same as Java (but in Kotlin, it&rsquo;s an expression and supports return, etc.)</li><li>In Kotlin, all errors are Unchecked Exceptions<ul><li>Checked: exceptions that must be handled</li><li>Unchecked: exceptions that don&rsquo;t have to be handled</li></ul></li><li>try-with-resources</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java&#39;s try-with-resources
+// Auto-closes when try block ends. Must implement AutoCloseable. 
+public void readFile(String path) throws IOException{
+	try(BufferedReader reader = new BufferedReader(new FileReader(path))){
+		System.out.println(reader.readLine());
+	}
+}
+
+// In Kotlin, use behaves similarly to try-with-resources
+fun readFile(path: String){
+	BufferedReader(FileReader(path)).use { reader -&gt;
+		println(reader.readLine())
+	}
+}</code></pre></div><h3 id=8-functions>8. Functions</h3><ul><li>Basics</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// If a function body is just a single expression, you can use =
+fun max(a: Int, b: Int) : Int = if(a &gt; b) {a} else {b}</code></pre></div><ul><li>Default parameters</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>fun repeat(
+	str : String,
+	num : Int = 3,
+	useNewLine : Boolean = true
+){
+	for(i in 1..num){
+	if(useNewLine) { println(str)} else{ print(str) }
+	}
+}</code></pre></div><ul><li>Named arguments (you can specify parameter names, kind of like a builder)</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>repeat(str = &#34;Hello, World&#34;, useNewLine = true)
+// Here, num isn&#39;t specified so its default (3) is used
+// Acts like a builder without writing one</code></pre></div><ul><li>Varargs</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java
+public void printAll(String... strings){
+	for(String str : strings){
+		System.out.println(str);	
+	}
+}
+String[] array = new String[]{&#34;Hello&#34;, &#34;World&#34;, &#34;!!&#34;};
+printAll(array)
+printAll(&#34;Hello&#34;, &#34;World&#34;, &#34;!!&#34;)
+
+// Kotlin
+printAll(vararg strings : String){
+	for (str in strings){
+		println(str)
+	}
+}
+
+val array = arrayOf(&#34;Hello&#34;, &#34;World&#34;, &#34;!!&#34;)
+printAll(*array) // spread operator
+printAll(&#34;Hello&#34;, &#34;World&#34;, &#34;!!&#34;)</code></pre></div><h3 id=9-classes>9. Classes</h3><ul><li>Classes and properties</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>class Person(
+	val name:String,
+	var age:Int
+)
+
+// Access getter/setter as if accessing a property
+person.age = 10
+println(person.age)</code></pre></div><ul><li>Constructor validation, init</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>class Person(
+	val name:String = &#34;Patrick&#34;,
+	var age:Int = 1
+){
+	init{
+		if(age &lt;= 0){
+			throw IllegalArgumentException(&#34;나이는 ${age}일 수 없습니다.&#34;)
+		}
+	}
+}</code></pre></div><ul><li>Custom getter, setter</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>class Person(
+	val name:String,
+	var age:Int
+){
+	
+	// Used like a property; single expression form uses =
+	val isAdult: Boolean
+		get() = this.age &gt;= 20
+	
+	// Same expression as above
+	fun isAdult(): Boolean{
+		return this.age &gt;= 20
+	}
+}</code></pre></div><h3 id=10-inheritance>10. Inheritance</h3><ul><li>Abstract class</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// public class by default
+abstract class Animal(
+	protected val species:String,
+	protected val legCount:Int
+){
+	abstract fun move()
+}</code></pre></div><ul><li>Subclass</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+public class JavaPenguin extends JavaAnimal{
+	
+	// Field added in subclass
+	private final int wingCount;
+	
+	public JavaPenguin(String species){
+		super(species, 2)
+		this.wingCount = 2;
+	}
+
+	@Override
+	public void move(){
+		System.out.println(&#34;penguin is moving&#34;);
+	}
+
+	// Override the parent&#39;s getter
+	@Override
+	public int getLegCount(){
+		return super.legCount &#43; this.wingCount;
+	}
+}
+
+//Kotlin
+class penguin(
+	species : String // primary constructor
+) : Animal(species, 2) // Inherit Animal and call its constructor directly {
+
+	private val wingCount: Int = 2
+	
+	// Use a keyword instead of an annotation
+	override fun move(){
+		println(&#34;cat is moving&#34;)
+	}
+
+	override val legCount: Int
+		get() = super.legCount &#43; this.wingCount
+}
+
+// Note: Kotlin classes are final by default, so you need open to override
+abstract class Animal(
+	protected val species:String,
+	protected open val legCount: Int
+){
+	abstract fun move()
+}</code></pre></div><ul><li>Interface</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java
+public interface JavaSwimable{
+	default void act(){System.out.println(&#34;swim!&#34;); }
+}
+public interface JavaFlyable{
+	default void act(){System.out.println(&#34;swim!&#34;); }
+}
+
+// Kotlin
+interface Swimable{
+	// No default keyword needed
+	fun act(){ println(&#34;swim!&#34;) } 
+}
+interface Flyable{
+	fun act(){ println(&#34;fly!&#34;) }
+}</code></pre></div><ul><li>Class implementing interfaces</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java
+public final class JavaPenguin extends JavaAnimal implements JavaFlyable, JavaSwimable{
+	
+	// Constructor implementation.. (omitted)
+	
+	@Override
+	public void act(){
+		JavaSwimable.super.act();
+		JavaFlyable.super.act();
+	}
+}
+
+// Kotlin
+class Penguin(): Animal(species, 2), Swimable, Flyable{
+	override fun act(){
+		super&lt;Swimable&gt;.act()
+		super&lt;Flyable&gt;.act()
+	}
+}</code></pre></div><ul><li>You can declare abstract properties on interfaces (but interfaces can&rsquo;t have backing fields)</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+interface Swimable{
+	// Property expected to be implemented by subclasses
+	val swimAbility: Int 
+}
+
+class Penguin(): Swimable{
+	// Implement like this
+	override val swimAbility: Int
+		get() = 3
+}</code></pre></div><ul><li>Caveats when inheriting (initialization order)<ul><li>In a superclass&rsquo;s constructor or init block, don&rsquo;t access subclass fields!</li><li>Don&rsquo;t use <code>open</code> on properties that are used in the superclass&rsquo;s constructor or init block!</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>open class Base(
+	open val number : Int = 100
+){
+	init{
+		println(&#34;Base Class&#34;)
+		println(number)
+	}
+}
+
+class Derived(
+	override val number: Int
+): Base(number){
+	init{
+		println(&#34;Derived class&#34;)
+	}
+}
+
+// Output when instantiating Derived
+/*
+	Output : 
+	Base Class
+	0
+	Derived Class 
+*/
+
+// Reason: when the superclass (Base) accesses number, it pulls the subclass&#39;s number.
+// But the superclass (Base) constructor is still running, so the subclass (Derived) hasn&#39;t been initialized yet.
+// So 0 is printed.</code></pre></div><ul><li>Keyword summary<ul><li>final (default, can be omitted): blocks overriding</li><li>open: allows overriding</li><li>abstract: must be overridden</li><li>override: overrides the parent type (annotation in Java, keyword in Kotlin)</li></ul></li></ul><h3 id=11-access-control>11. Access Control</h3><ul><li><p>Java vs. Kotlin access modifiers</p><ul><li>Public<ul><li>Java/Kotlin: accessible from everywhere</li></ul></li><li>Protected<ul><li>Java: same package or subclass</li><li>Kotlin: only the <strong>declaring class</strong> or subclass</li></ul></li><li>default (Java) / internal (Kotlin)<ul><li>Java: same package only</li><li>Kotlin: same module only<ul><li>Module: a unit of Kotlin code compiled together (a single Gradle project, etc.)</li></ul></li></ul></li><li>private<ul><li>Java/Kotlin: only inside the declaring class</li></ul></li></ul></li><li><p>Property access modifiers</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>class Car(
+	// internal getter for name
+	internal val name : String,
+	var owner : String,
+	_price : Int
+){
+	// Only the setter is private
+	var price = _price
+		private set
+}</code></pre></div><ul><li>Caveats when mixing Java/Kotlin<ul><li>The <code>internal</code> keyword becomes <code>public</code> in bytecode (when interoperating with Java)</li><li>So Java code can access Kotlin&rsquo;s <code>internal</code> members</li><li>Kotlin&rsquo;s <code>protected</code> is similar (in Java, you can access from the same package)</li></ul></li></ul><h3 id=12-object>12. object</h3><ul><li>Static functions and variables<ul><li>static: shares values across instances statically</li><li>companion object: a unique object that accompanies the class</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+public class JavaPerson{
+    private static final int MIN_AGE = 1;
+
+    // Static factory method
+    public static JavaPerson newBaby(String name){
+        return new JavaPerson(name, MIN_AGE);
+    }
+
+    private String name;
+    private int age;
+
+    private JavaPerson(String name, int age){ this.name = name; this.age = age}
+}
+
+//Kotlin
+class Person private constructor(
+    var name : String,
+    var age : Int,
+){
+		// companion object instead of static
+    companion object{
+				// const = assigned at compile time, otherwise at runtime
+				// Only allowed for primitive types &#43; String
+        const val MIN_AGE = 1
+        fun newBaby(name: String): Person{
+            return Person(name, MIN_AGE)
+        }
+    }
+}
+
+// Callable as Person.Companion.newBaby(&#34;ABC&#34;),
+// or via @JvmStatic annotation to access like a Java static directly
+
+/*
+	@JvmStatic
+	fun newBaby(name: String) : Person{...}
+
+	After this, you can call:
+	Person.newBaby(&#34;ABC&#34;)
+*/</code></pre></div><ul><li>Companion object usage (differences from Java)<ul><li>Treated as a single object</li><li>So you can name it or implement an interface</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+interface Log{ fun log() }
+
+class Person private constructor(
+    var name : String,
+    var age : Int,
+){
+		// You can name it
+    companion object Factory{
+        const val MIN_AGE = 1
+        fun newBaby(name: String): Person{
+            return Person(name, MIN_AGE)
+        }
+				override fun log(){ println(&#34;I am companion object!&#34;) }
+    }
+}
+
+// If named, you can access via the name
+// Person.Factory.newBaby(&#34;ABC&#34;);</code></pre></div><ul><li>Singleton<ul><li>Use the <code>object</code> keyword</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+public class JavaSingleton{
+	private static final JavaSingleton INSTANCE = new JavaSingleton();
+	private JavaSingleton(){}
+
+	public static Javasingleton getInstance(){ return INSTANCE; }
+}
+
+//Kotlin
+object Singleton{
+	var a: Int = 0
+}
+
+// Use as Singleton.a</code></pre></div><ul><li>Anonymous class<ul><li>For one-off implementations of an interface or class</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java
+private static void moveSomething(Movable movable){ movable.move(); movable.fly(); }
+
+// Anonymous class
+moveSomething(new Movable(){
+	@Override
+	public void move(){System.out.println(&#34;move~&#34;);}
+	@Override
+	public void fly(){System.out.println(&#34;fly~&#34;);}
+}
+
+// Kotlin
+private fun moveSomething(movable:Movable){ movable.move(); movable.fly();}
+
+// Use the object keyword for an anonymous class
+moveSomething(object : Movable{
+	override fun move(){ println(&#34;move~&#34;) }
+	override fun fly(){println(&#34;fly~&#34;)}
+})</code></pre></div><h3 id=13-nested-classes>13. Nested classes</h3><ul><li>Skipping; I don&rsquo;t expect to use these often..</li></ul><h3 id=14-data-class-enum-class-sealed-classinterface>14. Data class, Enum class, Sealed Class/Interface</h3><ul><li>Data class<ul><li>Convenient for DTOs</li><li>Provides field, constructor, getter, equals, hashCode, toString out of the box</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Kotlin
+data class PersonDto(val name: String, val age: Int)
+
+// With named arguments, it&#39;s like using a builder
+PersonDto(name=&#34;Patrick&#34;, age=20)</code></pre></div><ul><li>Enum class</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+public enum JavaCountry{
+	KOREA(&#34;KO&#34;),
+	AMERICA(&#34;US&#34;);
+
+	private final String code;
+	JavaCountry(String code) { this.code=code; }
+	public String getCode() { return this.code; }
+}
+
+// Kotlin (equivalent)
+enum class Country(
+	private val code: String
+){
+	KOREA(&#34;KO&#34;),
+	AMERICA(&#34;US&#34;);
+}
+
+// Handle easily with when
+// Bonus: when adding a new value, the compiler will tell you about non-exhaustive when
+fun handleCountry(country: Country){
+	when(country){
+		Country.KOREA -&gt; LOGIC()
+		Country.AMERICA -&gt; LOGIC()
+		// works without an else!
+	}
+}</code></pre></div><ul><li>Sealed Class/Interface<ul><li>You want an inheritable abstract class, but you don&rsquo;t want external code to inherit it</li><li>All subclass types are remembered at compile time, so no new types can be added at runtime</li><li>Subclasses must be in the same package</li><li>Differences from Enum<ul><li>Class can be inherited</li><li>Enum instances are singletons; sealed classes can have multiple instances</li></ul></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Kotlin
+sealed class Car(
+	val name:String,
+	val price:Long
+)
+
+class Avante: Car(&#34;Avante&#34;,1_000L)
+class Sonata: Car(&#34;Sonata&#34;,2_000L)
+class Grandeur: Car(&#34;Grandeur&#34;,3_000L)
+// Like enum class above, you can use when</code></pre></div><h3 id=15-collections>15. Collections</h3><ul><li><p>Collections</p><ul><li>Need to specify whether the collection is mutable or immutable</li><li>Mutable: can add/remove elements</li><li>Immutable: can&rsquo;t add/remove elements<ul><li>Even an immutable collection lets you mutate fields of reference-type elements</li><li>For example, accessing index 1 and changing the price field from 1000 to 2000 is fine</li></ul></li></ul></li><li><p>List</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>/* Default implementation: ArrayList */
+// Immutable list
+val numbers = listOf(100,200)
+// Mutable list
+val mutableNumbers = mutableListOf(100,200)
+// Empty list
+val emptyList = emptyList&lt;Int&gt;()
+
+// Same as numbers.get(0)
+numbers[0]
+
+for(number in numbers){println(number)}
+// When you also need the index
+for((idx, number) in numbers.withIndex()){println(&#34;${idx}, ${number}&#34;)}</code></pre></div><ul><li>Set</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>/* Default implementation: LinkedHashSet */
+val numbers = setOf(100,200)</code></pre></div><ul><li>Map</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val weekMap= mutableMapOf&lt;Int, String&gt;()
+// Access like an array
+weekMap[1] = &#34;MONDAY&#34;
+weekMap[2] = &#34;TUESDAY&#34;
+
+// Initialize with `to`
+mapOf(1 to &#34;MONDAY&#34;, 2 to &#34;TUESDAY&#34;)
+
+for(key in weekMap.keys){println(key) println(weekMap[key]) }
+for((key, value) in weekMap.entries){println(key) println(value)} </code></pre></div><ul><li><p>Nullability with collections</p><ul><li><code>List&lt;Int?></code>: list itself is non-null, elements can be null</li><li><code>List&lt;Int>?</code>: list itself can be null, elements non-null</li><li><code>List&lt;Int?>?</code>: both can be null</li></ul></li><li><p>Caveats when mixing with Java</p><ul><li>Java doesn&rsquo;t distinguish immutable vs. mutable lists<ul><li>Java code can treat a Kotlin immutable list as mutable</li><li>Java code can add nulls to a Kotlin non-null list</li><li>Use <code>Collections.unmodifiable</code> in Kotlin or add defensive logic</li></ul></li><li>Platform types may cause type issues</li></ul></li></ul><h3 id=16-extension-infix-inline-local-functions>16. Extension, Infix, inline, Local functions</h3><ul><li>Extension functions<ul><li>Kotlin: aiming for 100% Java compatibility<ul><li>It would be nice to add Kotlin code to libraries written in Java</li><li>Use them like member methods, but write the code outside the class!</li></ul></li><li>Restrictions:<ul><li>If an extension function is public but accesses private/protected members, encapsulation breaks..<ul><li>To preserve encapsulation, you can&rsquo;t access private/protected members</li></ul></li><li>When member function and extension function have the same signature<ul><li>The member function is called first</li><li>So if a member function is added later, you might get errors</li></ul></li></ul></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+
+// Extending the String class
+fun String.lastChar(){ return this[this.length - 1] }
+
+// Use it in Kotlin like this
+val str = &#34;ABC&#34;
+println(str.lastChar());</code></pre></div><ul><li>Infix functions<ul><li>When you have one variable and one argument</li><li>Instead of <code>var.functionName(argument)</code></li><li>You can call as <code>var functionName argument</code></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>infix fun Int.add(other: Int): Int{
+	return this &#43; other
+}
+
+// Callable like this
+3 add 4</code></pre></div><ul><li>Inline functions<ul><li>The inline function we all know..</li><li>Can reduce the overhead of passing functions as parameters</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>inline fun Int.add(other: Int): Int{</code></pre></div><ul><li>Local functions<ul><li>Functions inside functions</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+fun createPerson(firstName: String, lastName:String): Person{
+	if(firstName.isEmpty()){ throw IllegalArgumentException(&#34;에러!!&#34;)}
+	if(lastName:String.isEmpty()){ throw IllegalArgumentException(&#34;에러!!&#34;)}
+	return Person(firstName, lastName)
+}
+
+// With local functions
+fun createPerson(firstName: String, lastName:String): Person{
+	// Function inside function
+	fun validateName(name: String){if(name.isEmpty()){throw IllegalArgumentException(&#34;에러!!&#34;)}
+	
+	validateName(firstName)
+	validateName(lastName)
+	return Person(firstName, lastName)
+}</code></pre></div><h3 id=17-lambda>17. Lambda</h3><ul><li><p>In Java, you can&rsquo;t assign functions to variables or pass them as parameters (not first-class)</p><ul><li>Things like <code>Fruit::isApple</code> look possible, but you&rsquo;re really passing a Predicate interface</li></ul></li><li><p>In Kotlin, functions can be assigned to variables and passed as parameters (first-class)</p></li><li><p>Creating and calling lambdas</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+
+// You can specify the function type
+val isApple : (Fruit) -&gt; Boolean 
+= fun(fruit: Fruit): Boolean {
+	return fruit.name == &#34;사과&#34;
+}
+
+// Same as above
+val isApple2 = {fruit: Fruit -&gt; fruit.name == &#34;사과&#34; }
+
+val isApple3 = { fruit -&gt;
+println(&#34;사과만 받는 함수입니다.&#34;)
+fruit.name == &#34;사과&#34; // In multi-line lambdas, omitting return makes the last line the return value
+}
+
+// Calling the lambda, equivalent
+isApple(Fruit(&#34;사과&#34;, 1000))
+// Explicit invoke
+isApple.invoke(Fruit(&#34;사과&#34;, 1000))</code></pre></div><ul><li>Receiving functions as parameters</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// You can write the function type to accept functions as parameters
+fun filterFruits(fruits: List&lt;Fruit&gt;, filterFunc : (Fruit) -&gt; Boolean) : List&lt;Fruit&gt;{
+	val results = mutableListOf&lt;Fruit&gt;()
+	for(fruit in fruits){
+		if(filterFunc(fruit)){ results.add(fruit)}
+	}
+	return results
+}
+
+// Call by passing a lambda
+filterFruits(fruit, {fruit -&gt; fruit.name ==&#34;사과&#34;} )
+
+// If the lambda is the last parameter, you can write it like this (same behavior as above)
+filterFruits(fruit) {fruit -&gt; fruit.name ==&#34;사과&#34;}
+
+// With a single parameter, you can replace the part before the arrow with `it`
+filterFruits(fruit) {it.name ==&#34;사과&#34;}</code></pre></div><ul><li>Closure<ul><li>In Kotlin, when a lambda runs, it captures all the variables it references along with their values</li><li>In the code below, the value <code>targetFruitName = "수박"</code> is captured</li><li>This data structure is called a closure, and it&rsquo;s what allows lambdas to be first-class</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+String targetFruitName = &#34;바나나&#34;
+targetFruitName = &#34;수박&#34;
+
+// In Java, variables used in a lambda must be final, 
+// or effectively final (not changed after assignment, even without the final keyword)
+filterFruits(fruits, (fruit) -&gt; targetFruitName.equals(fruit.getName())); // ERROR!
+
+//Kotlin
+var targetFruitName = &#34;바나나&#34;
+targetFruitName = &#34;수박&#34;
+filterFruits(fruits) { it.name == targetFruitName } // It Works!</code></pre></div><h3 id=18-built-in-collection-functions--fp>18. Built-in Collection Functions + FP</h3><ul><li><strong>filter</strong></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Take only apples
+val apples = fruits.filter { fruit -&gt; fruit.name == &#34;사과&#34; }</code></pre></div><ul><li><strong>filterIndexed</strong>: filter when you also need the index</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val apples = fruits.filterIndexed { idx, fruit -&gt; 
+println(idx)
+fruit.name == &#34;사과&#34;
+} </code></pre></div><ul><li><p><strong>map, mapIndexed</strong>: run a lambda on each element</p></li><li><p><strong>mapNotNull</strong>: extract only non-null mapping results</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val values = fruits.filter { it.name == &#34;사과&#34; }
+	.mapNotNull { it.nullOrValue() } // only non-null values</code></pre></div><ul><li><strong>all</strong>: true if all match, otherwise false</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Check whether all are apples
+val isAllApple = fruits.all { it.name == &#34;사과&#34; }</code></pre></div><ul><li><strong>none</strong>: true if none match, otherwise false</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Check whether there are no apples
+val isNoApple = fruits.none { it.name ==&#34;사과&#34; }</code></pre></div><ul><li><strong>any</strong>: true if any match, otherwise false</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Check whether there&#39;s any fruit over 10,000 won
+val hasExpensiveFruit = fruits.any { it.price &gt; 10_000 }</code></pre></div><ul><li><strong>count</strong>: count</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Same as Java&#39;s list.size()
+val fruitCount = fruits.count()</code></pre></div><ul><li><strong>sortedBy, sortedByDescending</strong>: ascending, descending sort</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val sortedFruit = fruit.sortedBy{it.price} // ascending
+val desendSortedFruit = fruit.sortedByDescending{it.price} // descending</code></pre></div><ul><li><strong>distinctBy</strong>: deduplicate based on a transformed value</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// See what kinds of fruits exist
+val distinctFruitNames = fruits.distinctBy{ it.name } // dedupe by name
+	.map{it.name}</code></pre></div><ul><li><strong>first, firstOrNull, last, lastOrNull</strong>: first/last value<ul><li>For an empty list, first/last throw an exception</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>fruits.first()
+fruits.lastOrNull()</code></pre></div><ul><li><strong>groupBy</strong>: group by some key (List → Map)</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Group items by fruit name
+// key: 사과, value: {사과1, 사과2, 사과3...}
+val map: Map&lt;String, List&lt;Fruit&gt;&gt; = fruits.groupBy{fruit -&gt; fruit.name } 
+
+// You can also process key and value at once
+// Example: name as key, list of prices as value
+val map2 : Map&lt;String, List&lt;Long&gt;&gt; = fruits
+	.groupBy({it.name}, {it.price})</code></pre></div><ul><li><strong>associateBy</strong>: convert a list to a Map keyed by a unique key (List → Map)<ul><li><strong>If the id has duplicates, values can be lost.</strong></li><li><strong>If duplicates exist, the last value wins.</strong></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val map: Map&lt;Long, Fruit&gt; = fruits.associateBy { fruit -&gt; fruit.id }
+
+val fruitList = listOf&lt;Fruit&gt;(
+			// id is the same
+      Fruit(1,&#34;1&#34;),
+      Fruit(1,&#34;2&#34;),
+      Fruit(1,&#34;3&#34;),
+    )
+
+  val associateBy = fruitList.associateBy { it.id }
+
+  println(associateBy.count()) // 1
+  for (entry in associateBy) {
+      println(entry) // 1=Fruit(id=1, name=3)
+  }
+
+// Likewise can process key and value together
+val map: Map&lt;Long, Long&gt; = fruits
+	.associateBy({it.id}, {it.price})</code></pre></div><ul><li>Most of these functions also work on Maps</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val map: Map&lt;String, List&lt;Fruit&gt;&gt; = fruits.groupBy{fruit -&gt; fruit.name } 
+	.filter { (key, value) -&gt; key == &#34;사과&#34; } </code></pre></div><ul><li>Working with nested collections<ul><li>flatMap, flatten</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>var fruitsInList: List&lt;List&lt;Fruit&gt;&gt; = listOf(
+	listOf(Fruit(1,&#34;사과&#34;), Fruit(2,&#34;수박&#34;), Fruit(3,&#34;사과&#34;)),
+	listOf(Fruit(4,&#34;바나나&#34;), Fruit(5,&#34;사과&#34;), Fruit(6,&#34;바나나&#34;)),
+)
+
+// Pull all apples regardless of the list structure
+// output: listOf(Fruit(1,&#34;사과&#34;), Fruit(3,&#34;사과&#34;), Fruit(5,&#34;사과&#34;))
+val appleList : List&lt;Fruit&gt;
+	= fruitsInList.flatMap { list -&gt; list.filter{it.name == &#34;사과&#34;}
+
+// Flatten 2D list to 1D
+val flattenList : List&lt;Fruit&gt;
+	= fruitsInList.flatten();</code></pre></div><h3 id=19-takeif-scope-functions>19. takeIf, Scope Functions</h3><ul><li><strong>takeIf</strong>: returns the value if the condition is met, otherwise null</li><li><strong>takeUnless</strong>: returns the value if the condition is NOT met, otherwise null</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// This function
+fun getFruitOrNull(fruit: Fruit): Fruit?{
+	return if(fruit.name == &#34;사과&#34;){fruit} else {null}
+}
+// Can be written as
+val getfruit = fruit.takeIf { it.name == &#34;사과&#34; }
+Fruit(1L, &#34;사과&#34;) // returns the fruit in this case
+Fruit(1L, &#34;바나나&#34;) // returns null in this case</code></pre></div><ul><li>Scope functions: functions that create a temporary scope<ul><li>In other words, use lambdas to form a temporary scope<ul><li>to make code more concise, or</li><li>to use in method chaining</li></ul></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// These two are equivalent
+fun printPerson(person: Person?){
+	if(person != null){
+		println(person.name)
+		println(person.age)
+	}
+}
+
+fun printPerson(person: Person?){
+	person?.let{
+		println(person.name)
+		println(person.age)
+	}
+}</code></pre></div><ul><li>Types of scope functions<ul><li><strong>let, run</strong>: return the result of the lambda<ul><li>let: uses <code>it</code> (can&rsquo;t omit, but can rename)</li><li>run: uses <code>this</code> (can omit, but can&rsquo;t rename)</li></ul></li><li><strong>also, apply</strong>: return the object itself<ul><li>also: uses <code>it</code></li><li>apply: uses <code>this</code></li></ul></li><li><strong>with</strong>: the only one that&rsquo;s not an extension function. Uses <code>this</code>, returns the lambda&rsquo;s result</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val value1 = person.let{ it.age }  // value1: person.age
+// You can rename it: person.let{ person -&gt; person.age }
+val value2 = person.run{ this.age } // value2: person.age
+// You can omit this: person.run{ age }
+
+val value3 = person.also{ it.age } // value3: person
+val value4 = person.apply{ this.age } // value4: person 
+
+with(person){
+	println(name)
+	println(age)
+}
+
+/* 
+Using `it`: takes a regular function as a parameter, block: (T) -&gt; R : R
+Using `this`: takes an extension function as a parameter, block: T.() -&gt; R : R
+If you&#39;re curious, check the actual implementation....
+*/</code></pre></div></div><div class=post-tags><a href=/en/tags/kotlin/ class=tag-link>#Kotlin</a>
+<a href=/en/tags/jvm/ class=tag-link>#JVM</a>
+<a href=/en/tags/cheat-sheet/ class=tag-link>#Cheat Sheet</a></div><div class=post-license><p>&copy; Licensed under CC BY-NC-SA 4.0</p></div><section class=post-comments><h3 class=comments-title>Comments</h3><script src=https://giscus.app/client.js data-repo=LemonDouble/LemonDouble.github.io-comments data-repo-id=R_kgDOI0UkDA data-category=Comments data-category-id=DIC_kwDOI0UkDM4CcIeY data-mapping=pathname data-reactions-enabled=1 data-emit-metadata=0 data-theme=dark crossorigin=anonymous async></script></section></article><aside class=toc-sidebar><a href=/en/ class=toc-back-btn onclick="return tocGoBack(event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+<span>Back</span></a><nav class=toc-sidebar-nav><h4 class=toc-sidebar-title>On this page</h4><nav id=TableOfContents><ul><li><ul><li><a href=#1-variables>1. Variables</a></li><li><a href=#2-null-handling>2. Null Handling</a></li><li><a href=#3-type>3. Type</a></li><li><a href=#4-operators>4. Operators</a></li><li><a href=#5-conditionals>5. Conditionals</a></li><li><a href=#6-loops>6. Loops</a></li><li><a href=#7-exceptions>7. Exceptions</a></li><li><a href=#8-functions>8. Functions</a></li><li><a href=#9-classes>9. Classes</a></li><li><a href=#10-inheritance>10. Inheritance</a></li><li><a href=#11-access-control>11. Access Control</a></li><li><a href=#12-object>12. object</a></li><li><a href=#13-nested-classes>13. Nested classes</a></li><li><a href=#14-data-class-enum-class-sealed-classinterface>14. Data class, Enum class, Sealed Class/Interface</a></li><li><a href=#15-collections>15. Collections</a></li><li><a href=#16-extension-infix-inline-local-functions>16. Extension, Infix, inline, Local functions</a></li><li><a href=#17-lambda>17. Lambda</a></li><li><a href=#18-built-in-collection-functions--fp>18. Built-in Collection Functions + FP</a></li><li><a href=#19-takeif-scope-functions>19. takeIf, Scope Functions</a></li></ul></li></ul></nav></nav></aside></div><script>function tocGoBack(e){var t=document.referrer&&document.referrer.indexOf(window.location.origin)===0;return!(t&&window.history.length>1)||(e.preventDefault(),window.history.back(),!1)}(function(){var e,t,o,i,s=document.querySelector(".toc-sidebar-nav");if(!s)return;if(o=s.querySelectorAll("a"),!o.length)return;if(e=[],o.forEach(function(t){var s=decodeURIComponent(t.getAttribute("href").slice(1)),n=document.getElementById(s);n&&e.push({el:n,link:t})}),!e.length)return;t=null;function n(e){if(t===e)return;t&&t.classList.remove("active"),e.classList.add("active"),t=e;var i=s,n=e.getBoundingClientRect(),o=i.getBoundingClientRect();(n.top<o.top||n.bottom>o.bottom)&&e.scrollIntoView({block:"nearest",behavior:"smooth"})}i=new IntersectionObserver(function(t){var s,o,i,a,r,c,l=[];t.forEach(function(t){var n=e.find(function(e){return e.el===t.target});n&&(n.isIntersecting=t.isIntersecting)});for(s=0;s<e.length;s++)if(e[s].isIntersecting){n(e[s].link);return}for(c=window.scrollY||window.pageYOffset,a=100,i=null,o=0;o<e.length;o++)r=e[o].el.getBoundingClientRect(),r.top<a&&(i=e[o]);i&&n(i.link)},{rootMargin:"-80px 0px -60% 0px",threshold:0}),e.forEach(function(e){e.isIntersecting=!1,i.observe(e.el)}),setTimeout(function(){var t,s,o,i,a=window.scrollY||window.pageYOffset;if(a<100)n(e[0].link);else{for(o=100,s=null,t=0;t<e.length;t++)i=e[t].el.getBoundingClientRect(),i.top<o&&(s=e[t]);n(s?s.link:e[0].link)}},100)})()</script></main></div><footer class=site-footer><div class=footer-content><div class=footer-links><a href=https://github.com/LemonDouble target=_blank rel=noopener>GitHub</a>
+<a href=https://twitter.com/_lemon_berry_ target=_blank rel=noopener>Twitter</a>
+<a href=mailto:contact@lemondouble.com>Email</a>
+<a href=https://sns.lemondouble.com/@lemondouble target=_blank rel=noopener>Misskey</a></div><p class=footer-copy>&copy; 2022-2026 LemonDouble &bull; Powered by Hugo</p><p class=footer-brand>LEMON BLOG</p></div></footer><script>function toggleMobileMenu(){var e=document.getElementById("mobileMenu");e.classList.toggle("active")}function closeMobileMenu(){document.getElementById("mobileMenu").classList.remove("active")}function openMobileSearch(){document.body.classList.add("mobile-search-active"),closeMobileMenu(),setTimeout(function(){var e=document.getElementById("searchInput");e&&e.focus()},50)}function closeMobileSearch(){document.body.classList.remove("mobile-search-active");var e,t=document.getElementById("searchInput");t&&(t.value="",t.blur()),e=document.getElementById("searchResults"),e&&(e.classList.remove("active"),e.innerHTML="")}document.addEventListener("keydown",function(e){e.key==="Escape"&&document.body.classList.contains("mobile-search-active")&&closeMobileSearch()});function pageJump(e,t){if(e.key==="Escape")return t.blur(),!1;if(e.key!=="Enter")return!0;e.preventDefault();var s,o,n=parseInt(t.value,10),i=parseInt(t.dataset.total,10);return!n||n<1||n>i?(t.value=t.defaultValue,!1):(s=t.dataset.base||"/",o=n===1?s:s.replace(/\/$/,"")+"/page/"+n+"/",window.location.href=o,!1)}function pageJumpFocus(e){e.value=""}function pageJumpReset(e){e.value=e.defaultValue}function pageJumpSanitize(e){var t=e.value.replace(/\D/g,"");t!==e.value&&(e.value=t)}function toggleLangSwitcher(e){e&&e.stopPropagation();var s,t=document.getElementById("langSwitcher"),n=t&&t.querySelector(".lang-switcher-btn");if(!t||!n)return;s=t.classList.toggle("open"),n.setAttribute("aria-expanded",s?"true":"false")}document.addEventListener("click",function(e){var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&!e.target.closest("#langSwitcher")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))}),document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))})</script><script>var searchInput,searchResults,searchIndex=null;(function(){fetch("/en/index.json").then(function(e){return e.json()}).then(function(e){searchIndex=e}).catch(function(){})})(),searchInput=document.getElementById("searchInput"),searchResults=document.getElementById("searchResults"),searchInput&&(searchInput.addEventListener("input",function(e){var n,t=e.target.value.trim().toLowerCase();if(!t||!searchIndex){searchResults.classList.remove("active"),searchResults.innerHTML="";return}if(n=searchIndex.filter(function(e){return e.title.toLowerCase().includes(t)||e.summary.toLowerCase().includes(t)||(e.categories||[]).some(function(e){return e.toLowerCase().includes(t)})||(e.tags||[]).some(function(e){return e.toLowerCase().includes(t)})}).slice(0,10),n.length===0){searchResults.innerHTML='<div class="search-empty">No results found.</div>',searchResults.classList.add("active");return}searchResults.innerHTML=n.map(function(e){var t=(e.categories||[]).map(function(e){return'<span class="search-cat">'+e+"</span>"}).join('<span class="search-cat-sep">/</span>');return'<a href="'+e.url+'" class="search-result-item"><div class="search-result-title">'+e.title+'</div><div class="search-result-meta">'+e.date+(t?" &middot; "+t:"")+"</div></a>"}).join(""),searchResults.classList.add("active")}),document.addEventListener("click",function(e){e.target.closest(".search-wrapper")||(searchResults.classList.remove("active"),document.body.classList.contains("mobile-search-active")&&!e.target.closest(".mobile-search-btn")&&closeMobileSearch())}),searchInput.addEventListener("focus",function(){searchInput.value.trim()&&searchResults.classList.add("active")}))</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js></script></body></html>

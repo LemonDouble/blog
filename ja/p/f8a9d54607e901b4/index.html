@@ -1,0 +1,754 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>自分用の Kotlin チートシート | Lemon Blog</title><meta name=description content="色々なことをやっています。ブログ記事は、自分がやったことを忘れないために書くことが多いです(..)"><link rel=icon href=https://cdn.lemondouble.com/homepage/favicon.ico><link rel=canonical href=https://blog.lemondouble.com/ja/p/f8a9d54607e901b4/><link rel=alternate hreflang=ko href=https://blog.lemondouble.com/p/f8a9d54607e901b4/><link rel=alternate hreflang=en href=https://blog.lemondouble.com/en/p/f8a9d54607e901b4/><link rel=alternate hreflang=ja href=https://blog.lemondouble.com/ja/p/f8a9d54607e901b4/><link rel=alternate hreflang=zh-cn href=https://blog.lemondouble.com/zh-cn/p/f8a9d54607e901b4/><link rel=alternate hreflang=zh-tw href=https://blog.lemondouble.com/zh-tw/p/f8a9d54607e901b4/><link rel=alternate hreflang=x-default href=https://blog.lemondouble.com/p/f8a9d54607e901b4/><link href=https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css rel=stylesheet><link href=https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css rel=stylesheet><meta property="og:title" content="自分用の Kotlin チートシート"><meta property="og:description" content="色々なことをやっています。ブログ記事は、自分がやったことを忘れないために書くことが多いです(..)"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.lemondouble.com/ja/p/f8a9d54607e901b4/"><meta property="og:site_name" content="Lemon Blog"><meta property="og:locale" content="ja_JP"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:image" content="https://blog.lemondouble.com/p/f8a9d54607e901b4/cover.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="自分用の Kotlin チートシート"><meta name=twitter:description content="色々なことをやっています。ブログ記事は、自分がやったことを忘れないために書くことが多いです(..)"><meta name=twitter:image content="https://blog.lemondouble.com/p/f8a9d54607e901b4/cover.png"><link rel=stylesheet href=/css/8bit.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-dracula.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css><link rel=stylesheet href=/css/code-block.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-9C6YX68EBM"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9C6YX68EBM")</script><meta name=generator content="Hugo 0.159.2"></head><body><nav class=site-nav><div class=nav-inner><a href=/ja/ class=nav-logo><img src=/img/brand/lemon-logo.webp alt=Logo>
+<span>Lemon Blog</span></a><div class=nav-links><a href=/ja/ class=nav-link>ホーム</a>
+<a href=/ja/projects/ class=nav-link>プロジェクト</a>
+<a href=/ja/skills/ class=nav-link>スキル</a>
+<a href=https://lemondouble.com/ja target=_blank rel="noopener noreferrer" class=nav-link>プロフィール</a></div><div class=nav-actions><div class=search-wrapper id=searchWrapper><span class=search-icon><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+</span><input type=text class=search-input id=searchInput placeholder=検索... autocomplete=off>
+<button class=search-close-btn onclick=closeMobileSearch() aria-label=検索を閉じる>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class=search-results id=searchResults></div></div><button class=mobile-search-btn onclick=openMobileSearch() aria-label=検索を開く>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><div class=lang-switcher id=langSwitcher><button type=button class=lang-switcher-btn onclick=toggleLangSwitcher(event) aria-label=言語を選択 aria-haspopup=true aria-expanded=false>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3.0 014 10 15.3 15.3.0 01-4 10A15.3 15.3.0 018 12a15.3 15.3.0 014-10z"/></svg>
+<span class=lang-switcher-current>日本語</span>
+<svg class="lang-switcher-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class=lang-switcher-menu id=langSwitcherMenu role=menu><a href=/p/f8a9d54607e901b4/ class=lang-switcher-item lang=ko role=menuitem>한국어
+</a><a href=/en/p/f8a9d54607e901b4/ class=lang-switcher-item lang=en role=menuitem>English
+</a><a href=/ja/p/f8a9d54607e901b4/ class="lang-switcher-item active" lang=ja role=menuitem>日本語
+</a><a href=/zh-cn/p/f8a9d54607e901b4/ class=lang-switcher-item lang=zh-cn role=menuitem>简体中文
+</a><a href=/zh-tw/p/f8a9d54607e901b4/ class=lang-switcher-item lang=zh-tw role=menuitem>繁體中文</a></div></div><button class=nav-menu-btn onclick=toggleMobileMenu() aria-label=メニューを開く>
+<svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button></div></div></nav><div class=mobile-menu id=mobileMenu><a href=/ja/ class=nav-link onclick=closeMobileMenu()>ホーム</a>
+<a href=/ja/projects/ class=nav-link onclick=closeMobileMenu()>プロジェクト</a>
+<a href=/ja/skills/ class=nav-link onclick=closeMobileMenu()>スキル</a>
+<a href=https://lemondouble.com/ja target=_blank rel="noopener noreferrer" class=nav-link onclick=closeMobileMenu()>プロフィール</a><div class=mobile-menu-lang><span class=mobile-menu-lang-label>言語を選択</span><div class=mobile-menu-lang-items><a href=/p/f8a9d54607e901b4/ class=mobile-menu-lang-item lang=ko onclick=closeMobileMenu()>한국어</a>
+<a href=/en/p/f8a9d54607e901b4/ class=mobile-menu-lang-item lang=en onclick=closeMobileMenu()>English</a>
+<a href=/ja/p/f8a9d54607e901b4/ class="mobile-menu-lang-item active" lang=ja onclick=closeMobileMenu()>日本語</a>
+<a href=/zh-cn/p/f8a9d54607e901b4/ class=mobile-menu-lang-item lang=zh-cn onclick=closeMobileMenu()>简体中文</a>
+<a href=/zh-tw/p/f8a9d54607e901b4/ class=mobile-menu-lang-item lang=zh-tw onclick=closeMobileMenu()>繁體中文</a></div></div></div><div class=container><main class=site-main><div class="post-layout has-toc"><article class=post-single><header class=post-header><div class=post-cover><img src=/p/f8a9d54607e901b4/cover_hu_2f6eff48073e0923.png alt="自分用の Kotlin チートシート"></div><div class=post-header-content><div class=post-categories><a href=/ja/categories/kotlin/ class=category-tag>Kotlin</a></div><h1 class=post-title>自分用の Kotlin チートシート</h1><div class=post-meta><time>2023.01.17</time>
+<span class=meta-sep>&#8226;</span>
+<span>17 min read</span></div></div></header><div class=post-content><p><em>注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。</em></p><ul><li>TIP：数値を書くとき <code>var number = 1_000L</code> のように書けます</li></ul><h3 id=1-変数>1. 変数</h3><ul><li><code>val</code> のコレクションでも要素は追加できます</li><li>primitive と reference type の区別はありませんが、実際の演算時には primitive type に変換されて演算されます</li></ul><h3 id=2-null-処理>2. Null 処理</h3><ul><li>Safe Call（<code>?.</code>）：null でなければ実行、null なら実行しない</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val str: String? = &#34;ABC&#34;
+str.length // ERROR
+str?.length // OK</code></pre></div><ul><li>Elvis 演算子（<code>?:</code>）：左側の式が null なら右側の値を使う</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val str: String? = &#34;ABC&#34;
+str?.length ?: 0 // str.length または 0 
+str?.length ?: throw IllegalArgumentException(&#34;null이 들어왔습니다.&#34;) // または例外を投げる
+str?.length ?: return 0 // Early return にも使えます</code></pre></div><ul><li>プラットフォーム型：Kotlin で Java コードを取り込んだとき<ul><li>null、non-null どちらの型でも使えてしまう</li><li>可能な限り Java コードを直接確認するか、Kotlin でラップして使いましょう</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// @Nullable, @NonNull があれば変換されますが、なければプラットフォーム型
+// java で 
+private final String name; &lt;&lt; アノテーションがない場合
+
+val name : String? = javaPerson.name // OK
+val name : String = javaPerson.name  // OK</code></pre></div><h3 id=3-type>3. Type</h3><ul><li>基本型変換：基本型同士は <code>toXX</code> のような関数を使う</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val number1 : Int = 4
+val number2 : Long = number1.toLong()
+
+val number1 : Int? = 3 
+val number2 : Long = number1?.toLong() ?: 0L // nullable な変数は適宜処理</code></pre></div><ul><li>ユーザー定義型：スマートキャスト（Smart Cast）の活用</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>fun printAgeIfPerson(obj: Any){
+	// is = Java の instanceof
+	if(obj is Person){
+			// スマートキャストされて obj の型は Person
+			println(obj.age)
+	}
+}
+
+// または
+// java の (Person) obj と同じ
+val person = obj as Person
+
+// !is, as? なども使えます
+// as? : 全体が null</code></pre></div><ul><li>Any：Java の Object の役割 + Primitive Type の最上位も含む<ul><li>null は含まれません。null も含めたい場合は <code>Any?</code> を使う</li><li>equals, hashCode, toString が存在</li></ul></li><li>Unit：void に近いですが、Unit はそれ自体でジェネリクスの型引数として使えます</li><li>Nothing：関数が正常に終了しないことを示す</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>fun fail(message : String): Nothing{
+	throw IllegalArgumentException(message)
+}</code></pre></div><ul><li>String interpolation</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val person = Person(name = &#34;lemon&#34;, age = 20)
+val log = &#34;이름 : ${person.name}, 나이 : ${person.age}&#34;</code></pre></div><ul><li>String indexing</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val str = &#34;ABC&#34;
+// Java の str.get(0) の代わりに
+str[1] //ok</code></pre></div><h3 id=4-演算子>4. 演算子</h3><ul><li><p>Kotlin では <code>></code>, <code>&lt;</code>, <code>≥</code>, <code>≤</code> を使うと自動的に <code>compareTo</code> が呼ばれます</p></li><li><p><code>==</code>（値比較、等価性：equals 自動呼び出し）、<code>===</code>（アドレス比較、同一性：同じ 0x101 アドレス）</p></li><li><p><code>in</code>, <code>!in</code>：コレクション／範囲に含まれているか？</p></li><li><p><code>a..b</code>：a から b までの範囲オブジェクトを生成</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val numbers = 1..100 // 1～100 までの IntRange オブジェクトを生成
+println(1 in numbers) // true
+println(0 in numbers) // false
+
+// 次の 2 つは同じ
+if(0 &lt;= score &amp;&amp; score &lt;= 100) {..}
+if(score in 0..100)</code></pre></div><ul><li>演算子オーバーロード</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>data class Money(val amount : Long){
+	
+	operator fun plus(other : Money): Money{
+		return Money(this.amount &#43; other.amount)
+	}
+}
+
+// 次のように使えます
+val sumMoney = money1 &#43; money2</code></pre></div><h3 id=5-条件文>5. 条件文</h3><ul><li>if 文は Kotlin では expression（Java では statement）<ul><li>expression：1 つの値に評価できる文</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java では不可能ですが Kotlin では if が expression なので OK 
+fun getPassOrFail(score : Int): String{
+	return if (score &gt;= 50){ &#34;P&#34; } else { &#34;F&#34; }
+}</code></pre></div><ul><li><p>Java では三項演算子が expression ですが、Kotlin では if 文が expression なので三項演算子は不要</p><ul><li>したがって三項演算子はありません</li></ul></li><li><p>when 文</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 基本の使い方、switch の代わりに
+fun getGradeWithSwitch(score: Int): String{
+	return when(score / 10){
+		9 -&gt; &#34;A&#34;
+		8 -&gt; &#34;B&#34;
+		7 -&gt; &#34;C&#34;
+		else -&gt; &#34;D&#34;
+	}
+}
+
+// 左辺に expression を使うことも可能、is Type なども OK
+when(score){
+in 90..99 -&gt; &#34;A&#34;
+in 80..89 -&gt; &#34;B&#34;
+...
+
+// 複数条件を同時にチェック
+when (number){
+1,0,-1 -&gt; println(&#34;1,0,-1입니다&#34;)
+else -&gt; println(&#34;아닙니다&#34;)
+}
+
+// 条件文のように使う
+fun printOdd(score: Int): Int{
+	when{
+		score % 2 == 1 -&gt; println(&#34;홀수&#34;)
+		score % 2 == 0 -&gt; println(&#34;짝수&#34;)
+		else -&gt; println(&#34;넌머임&#34;)
+	}
+	return 1
+}</code></pre></div><h3 id=6-繰り返し文>6. 繰り返し文</h3><ul><li>forEach</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val numbers = listOf(1L, 2L, 3L)
+for (number in numbers){
+	println(number)
+}</code></pre></div><ul><li>Progression：等差数列。Range（Range は Progression を継承）</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val intRange = 1..100</code></pre></div><h3 id=7-例外>7. 例外</h3><ul><li>try-catch-finally：そのまま使えます（ただし Kotlin では expression、return 等も使用可）</li><li>Kotlin ではすべてのエラーが Unchecked Exception<ul><li>Checked：必ず処理しなければならない例外</li><li>Unchecked Exception：必ず処理する必要はない例外</li></ul></li><li>try with resources</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// JAVA の try with resources
+// try が終わると自動でクローズ。ただし AutoCloseable インタフェースの実装である必要あり。 
+public void readFile(String path) throws IOException{
+	try(BufferedReader reader = new BufferedReader(new FileReader(path))){
+		System.out.println(reader.readLine());
+	}
+}
+
+// Kotlin では use が try with resources のように動作
+fun readFile(path: String){
+	BufferedReader(FileReader(path)).use { reader -&gt;
+		println(reader.readLine())
+	}
+}</code></pre></div><h3 id=8-関数>8. 関数</h3><ul><li>基本</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 関数本体が式（Expression）だけで構成されていれば = が使える
+fun max(a: Int, b: Int) : Int = if(a &gt; b) {a} else {b}</code></pre></div><ul><li>デフォルトパラメータ</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>fun repeat(
+	str : String,
+	num : Int = 3,
+	useNewLine : Boolean = true
+){
+	for(i in 1..num){
+	if(useNewLine) { println(str)} else{ print(str) }
+	}
+}</code></pre></div><ul><li>名前付き引数（パラメータ名を明示できる、builder のように使える）</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>repeat(str = &#34;Hello, World&#34;, useNewLine = true)
+// この場合、num は指定されていないのでデフォルト値（3）が使われる
+// builder を作らずに builder のように使える</code></pre></div><ul><li>可変長引数（vararg）</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java
+public void printAll(String... strings){
+	for(String str : strings){
+		System.out.println(str);	
+	}
+}
+String[] array = new String[]{&#34;Hello&#34;, &#34;World&#34;, &#34;!!&#34;};
+printAll(array)
+printAll(&#34;Hello&#34;, &#34;World&#34;, &#34;!!&#34;)
+
+// Kotlin
+printAll(vararg strings : String){
+	for (str in strings){
+		println(str)
+	}
+}
+
+val array = arrayOf(&#34;Hello&#34;, &#34;World&#34;, &#34;!!&#34;)
+printAll(*array) // spread 演算子
+printAll(&#34;Hello&#34;, &#34;World&#34;, &#34;!!&#34;)</code></pre></div><h3 id=9-クラス>9. クラス</h3><ul><li>クラスとプロパティ</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>class Person(
+	val name:String,
+	var age:Int
+)
+
+// プロパティアクセスのように getter, setter にアクセス
+person.age = 10
+println(person.age)</code></pre></div><ul><li>コンストラクタ検証、init</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>class Person(
+	val name:String = &#34;Patrick&#34;,
+	var age:Int = 1
+){
+	init{
+		if(age &lt;= 0){
+			throw IllegalArgumentException(&#34;나이는 ${age}일 수 없습니다.&#34;)
+		}
+	}
+}</code></pre></div><ul><li>カスタム getter、setter</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>class Person(
+	val name:String,
+	var age:Int
+){
+	
+	// プロパティのように使える、1 つの式で表現できるものは = で表記
+	val isAdult: Boolean
+		get() = this.age &gt;= 20
+	
+	// 上と同じ表現
+	fun isAdult(): Boolean{
+		return this.age &gt;= 20
+	}
+}</code></pre></div><h3 id=10-継承>10. 継承</h3><ul><li>抽象クラス</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// デフォルトで public class 
+abstract class Animal(
+	protected val species:String,
+	protected val legCount:Int
+){
+	abstract fun move()
+}</code></pre></div><ul><li>継承するクラス</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+public class JavaPenguin extends JavaAnimal{
+	
+	// 子オブジェクトで追加されたフィールド
+	private final int wingCount;
+	
+	public JavaPenguin(String species){
+		super(species, 2)
+		this.wingCount = 2;
+	}
+
+	@Override
+	public void move(){
+		System.out.println(&#34;penguin is moving&#34;);
+	}
+
+	// 親メソッドの getter をオーバーライド
+	@Override
+	public int getLegCount(){
+		return super.legCount &#43; this.wingCount;
+	}
+}
+
+//Kotlin
+class penguin(
+	species : String // プライマリコンストラクタ
+) : Animal(species, 2) // Animal を継承して Animal のコンストラクタを直接呼び出す {
+
+	private val wingCount: Int = 2
+	
+	// アノテーションの代わりに予約語を使用
+	override fun move(){
+		println(&#34;cat is moving&#34;)
+	}
+
+	override val legCount: Int
+		get() = super.legCount &#43; this.wingCount
+}
+
+// ただし Kotlin では基本的にすべて final が付いているので、override するには open が必要
+abstract class Animal(
+	protected val species:String,
+	protected open val legCount: Int
+){
+	abstract fun move()
+}</code></pre></div><ul><li>インタフェース</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java
+public interface JavaSwimable{
+	default void act(){System.out.println(&#34;swim!&#34;); }
+}
+public interface JavaFlyable{
+	default void act(){System.out.println(&#34;swim!&#34;); }
+}
+
+// Kotlin
+interface Swimable{
+	// default キーワードなしで実装可能
+	fun act(){ println(&#34;swim!&#34;) } 
+}
+interface Flyable{
+	fun act(){ println(&#34;fly!&#34;) }
+}</code></pre></div><ul><li>インタフェースを実装するクラス</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java
+public final class JavaPenguin extends JavaAnimal implements JavaFlyable, JavaSwimable{
+	
+	// コンストラクタ実装..（省略）
+	
+	@Override
+	public void act(){
+		JavaSwimable.super.act();
+		JavaFlyable.super.act();
+	}
+}
+
+// Kotlin
+class Penguin(): Animal(species, 2), Swimable, Flyable{
+	override fun act(){
+		super&lt;Swimable&gt;.act()
+		super&lt;Flyable&gt;.act()
+	}
+}</code></pre></div><ul><li>抽象プロパティをインタフェースに宣言できる（ただしインタフェースは Backing Field を持てない）</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+interface Swimable{
+	// 子クラスで実装が期待されるプロパティ
+	val swimAbility: Int 
+}
+
+class Penguin(): Swimable{
+	// 次のように実装
+	override val swimAbility: Int
+		get() = 3
+}</code></pre></div><ul><li>クラス継承時の注意点（初期化の実行順序）<ul><li>親クラスのコンストラクタや init ブロックでは、子クラスのフィールドにアクセスしないこと！</li><li>親クラスのコンストラクタや init ブロックで使われるプロパティには open を使わないこと！</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>open class Base(
+	open val number : Int = 100
+){
+	init{
+		println(&#34;Base Class&#34;)
+		println(number)
+	}
+}
+
+class Derived(
+	override val number: Int
+): Base(number){
+	init{
+		println(&#34;Derived class&#34;)
+	}
+}
+
+// Derived クラスをインスタンス化したときの出力
+/*
+	Output : 
+	Base Class
+	0
+	Derived Class 
+*/
+
+// 理由：親クラス（Base）で number を呼び出すと、子クラスの number が呼ばれる。
+// しかし親クラス（Base）のコンストラクタ実行段階では、子クラス（Derived）はまだ初期化されていない
+// したがって 0 が出力される</code></pre></div><ul><li>キーワード整理<ul><li>final（デフォルト、省略可）：override できないようにする</li><li>open：override を許可する</li><li>abstract：必ず override する必要がある</li><li>override：親型をオーバーライドする（Java ではアノテーションだが Kotlin ではキーワード）</li></ul></li></ul><h3 id=11-アクセス制御>11. アクセス制御</h3><ul><li><p>Java、Kotlin のアクセス制御</p><ul><li>Public<ul><li>Java/Kotlin：どこからでもアクセス可能</li></ul></li><li>Protected<ul><li>Java：同じパッケージ、または子クラスからアクセス可能</li><li>Kotlin：<strong>宣言されたクラス</strong>、または子クラスのみアクセス可能</li></ul></li><li>default（Java）／ internal（Kotlin）<ul><li>Java：同じパッケージのみアクセス可能</li><li>Kotlin：同じモジュール内のみアクセス可能<ul><li>モジュール：一度にコンパイルされる Kotlin コード（同じ Gradle プロジェクトなど）</li></ul></li></ul></li><li>private<ul><li>Java/Kotlin：宣言されたクラス内のみアクセス可能</li></ul></li></ul></li><li><p>プロパティのアクセス指示子</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>class Car(
+	// name の getter を internal に
+	internal val name : String,
+	var owner : String,
+	_price : Int
+){
+	// setter のみ private に
+	var price = _price
+		private set
+}</code></pre></div><ul><li>Java/Kotlin 混在使用時の注意点<ul><li>internal キーワードはバイトコード変換時（Java 変換時）に public に変換される</li><li>したがって Java コードからは、Kotlin の internal キーワードを取得できる</li><li>Kotlin の protected も同様（Java では同じパッケージからもアクセス可能）</li></ul></li></ul><h3 id=12-object>12. object</h3><ul><li>static 関数と変数<ul><li>static：インスタンス間で値を静的に共有</li><li>companion object：クラスに付随する唯一の object</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+public class JavaPerson{
+    private static final int MIN_AGE = 1;
+
+    // 静的ファクトリメソッド
+    public static JavaPerson newBaby(String name){
+        return new JavaPerson(name, MIN_AGE);
+    }
+
+    private String name;
+    private int age;
+
+    private JavaPerson(String name, int age){ this.name = name; this.age = age}
+}
+
+//Kotlin
+class Person private constructor(
+    var name : String,
+    var age : Int,
+){
+		// static の代わりに companion object を使用
+    companion object{
+				// const があればコンパイル時に割り当て、なければランタイムに割り当て
+				// 基本型 &#43; String にのみ割り当て可能
+        const val MIN_AGE = 1
+        fun newBaby(name: String): Person{
+            return Person(name, MIN_AGE)
+        }
+    }
+}
+
+// Person.Companion.newBaby(&#34;ABC&#34;) として呼び出し可能、
+// あるいは @JvmStatic アノテーションを通じて Java の static のように直接アクセス可能
+
+/*
+	@JvmStatic
+	fun newBaby(name: String) : Person{...}
+
+	その後
+	Person.newBaby(&#34;ABC&#34;) として使用可能
+*/</code></pre></div><ul><li>Companion object の活用（Java との違い）<ul><li>1 つのオブジェクトとして扱われる</li><li>したがって名前を付けたりインタフェースを実装したりできる</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+interface Log{ fun log() }
+
+class Person private constructor(
+    var name : String,
+    var age : Int,
+){
+		// 名前を付けられる
+    companion object Factory{
+        const val MIN_AGE = 1
+        fun newBaby(name: String): Person{
+            return Person(name, MIN_AGE)
+        }
+				override fun log(){ println(&#34;I am companion object!&#34;) }
+    }
+}
+
+// 名前があれば名前を介してアクセス可能
+// Person.Factory.newBaby(&#34;ABC&#34;);</code></pre></div><ul><li>Singleton<ul><li>object キーワードを使用</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+public class JavaSingleton{
+	private static final JavaSingleton INSTANCE = new JavaSingleton();
+	private JavaSingleton(){}
+
+	public static Javasingleton getInstance(){ return INSTANCE; }
+}
+
+//Kotlin
+object Singleton{
+	var a: Int = 0
+}
+
+// その後 Singleton.a のように使用可能</code></pre></div><ul><li>匿名クラス（Anonymous class）<ul><li>特定のインタフェースやクラスを継承した実装を一回限り使うとき</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java
+private static void moveSomething(Movable movable){ movable.move(); movable.fly(); }
+
+// 匿名クラス実装
+moveSomething(new Movable(){
+	@Override
+	public void move(){System.out.println(&#34;move~&#34;);}
+	@Override
+	public void fly(){System.out.println(&#34;fly~&#34;);}
+}
+
+// Kotlin
+private fun moveSomething(movable:Movable){ movable.move(); movable.fly();}
+
+// object キーワードを使って匿名クラスを実装
+moveSomething(object : Movable{
+	override fun move(){ println(&#34;move~&#34;) }
+	override fun fly(){println(&#34;fly~&#34;)}
+})</code></pre></div><h3 id=13-入れ子クラスnested-class>13. 入れ子クラス（nested class）</h3><ul><li>あまり使わなさそうなので省略..</li></ul><h3 id=14-data-classenum-classsealed-classinterface>14. Data class、Enum class、Sealed Class/Interface</h3><ul><li>Data class<ul><li>DTO を簡単に使える</li><li>field, constructor, getter, equals, hashCode, toString が標準で提供される</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Kotlin
+data class PersonDto(val name: String, val age: Int)
+
+// 名前付き引数を使うと Builder パターンを使うのと同じ効果
+PersonDto(name=&#34;Patrick&#34;, age=20)</code></pre></div><ul><li>Enum class</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+public enum JavaCountry{
+	KOREA(&#34;KO&#34;),
+	AMERICA(&#34;US&#34;);
+
+	private final String code;
+	JavaCountry(String code) { this.code=code; }
+	public String getCode() { return this.code; }
+}
+
+// Kotlin（同等のコード）
+enum class Country(
+	private val code: String
+){
+	KOREA(&#34;KO&#34;),
+	AMERICA(&#34;US&#34;);
+}
+
+// when 節を活用して簡単に処理
+// またこのように使うと、ENUM CLASS に値が増えるとコンパイラが教えてくれる
+fun handleCountry(country: Country){
+	when(country){
+		Country.KOREA -&gt; LOGIC()
+		Country.AMERICA -&gt; LOGIC()
+		// ELSE なしでも使える！
+	}
+}</code></pre></div><ul><li>Sealed Class/Interface<ul><li>継承可能な抽象クラスを作りたいけれど、外部からは継承できないようにしたい</li><li>コンパイル時にすべての子クラスの型を覚えておき、ランタイムに別のクラス型を追加できない</li><li>子クラスは同じパッケージにある必要がある</li><li>Enum との違い<ul><li>クラスの継承が可能</li><li>Enum はインスタンスがシングルトンだが、Sealed Class は複数のインスタンスを持てる</li></ul></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Kotlin
+sealed class Car(
+	val name:String,
+	val price:Long
+)
+
+class Avante: Car(&#34;Avante&#34;,1_000L)
+class Sonata: Car(&#34;Sonata&#34;,2_000L)
+class Grandeur: Car(&#34;Grandeur&#34;,3_000L)
+// 上の Enum class のように when 節が使える</code></pre></div><h3 id=15-collectionsコレクション>15. Collections（コレクション）</h3><ul><li><p>Collections</p><ul><li>コレクションが不変か可変かを設定する必要がある</li><li>Mutable（可変）コレクション：要素の追加・削除が可能</li><li>Immutable（不変）コレクション：要素の追加・削除が不可<ul><li>ただし不変コレクションでも、Reference Type の要素のフィールドは変更可能</li><li>例えば、Index 1 のデータにアクセスして Price フィールドを 1000 → 2000 ウォンに変更することは可能</li></ul></li></ul></li><li><p>List</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>/* デフォルト実装：ArrayList */
+// 不変リストの生成
+val numbers = listOf(100,200)
+// 可変リストの生成
+val mutableNumbers = mutableListOf(100,200)
+// 空のリストの生成
+val emptyList = emptyList&lt;Int&gt;()
+
+// numbers.get(0) と同じ
+numbers[0]
+
+for(number in numbers){println(number)}
+// インデックスも一緒に取得したいとき
+for((idx, number) in numbers.withIndex()){println(&#34;${idx}, ${number}&#34;)}</code></pre></div><ul><li>Set</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>/* デフォルト実装：LinkedHashSet */
+val numbers = setOf(100,200)</code></pre></div><ul><li>Map</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val weekMap= mutableMapOf&lt;Int, String&gt;()
+// 配列のようにアクセス可能
+weekMap[1] = &#34;MONDAY&#34;
+weekMap[2] = &#34;TUESDAY&#34;
+
+// to を使って初期化も可能
+mapOf(1 to &#34;MONDAY&#34;, 2 to &#34;TUESDAY&#34;)
+
+for(key in weekMap.keys){println(key) println(weekMap[key]) }
+for((key, value) in weekMap.entries){println(key) println(value)} </code></pre></div><ul><li><p>コレクションの null 可能性</p><ul><li><code>List&lt;Int?></code>：List 自体は null X、リストの中は nullable</li><li><code>List&lt;Int>?</code>：List 自体は nullable、リストの中は null X</li><li><code>List&lt;Int?>?</code>：List 自体も nullable、リストの中も nullable</li></ul></li><li><p>Java と併用するときの注意点</p><ul><li>Java は不変・可変リストを区別しない<ul><li>Kotlin の不変リストを Java では可変リストのように扱える</li><li>Kotlin の non-null リストに、Java から null を追加できる</li><li>Kotlin で <code>Collections.unmodifiable</code> を使うか、防御的ロジックを使う</li></ul></li><li>Platform Type で型の問題が生じることがある</li></ul></li></ul><h3 id=16-extension拡張infix中置inlinelocalローカル関数>16. Extension（拡張）、Infix（中置）、inline、Local（ローカル）関数</h3><ul><li>拡張関数<ul><li>Kotlin：Java との 100% 互換性を目指している<ul><li>そこで Java で作られたライブラリに Kotlin コードを追加できると嬉しい</li><li>クラス内部のメソッドのように使うが、コードは外部に書けるようにしよう！</li></ul></li><li>制限：<ul><li>拡張関数が public で、private、protected メンバを取得すると、カプセル化が破られるので..<ul><li>カプセル化を維持するために、private、protected メンバを取得できない</li></ul></li><li>メンバ関数と拡張関数のシグネチャ（名前）が同じ場合<ul><li>メンバ関数が優先的に呼ばれる</li><li>したがってメンバ関数があとから追加されると、エラーが起きる可能性がある</li></ul></li></ul></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+
+// String クラスを拡張
+fun String.lastChar(){ return this[this.length - 1] }
+
+// その後 Kotlin では次のように使える
+val str = &#34;ABC&#34;
+println(str.lastChar());</code></pre></div><ul><li>中置関数<ul><li>変数と引数がそれぞれ 1 つずつしかない場合</li><li><code>var.functionName(argument)</code> の代わりに</li><li><code>var functionName argument</code> で呼び出せる</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>infix fun Int.add(other: Int): Int{
+	return this &#43; other
+}
+
+// 次のように呼び出せる
+3 add 4</code></pre></div><ul><li>インライン関数<ul><li>我々が知っているあのインライン関数..</li><li>関数をパラメータとして渡すオーバーヘッドを減らせる</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>inline fun Int.add(other: Int): Int{</code></pre></div><ul><li>ローカル関数<ul><li>関数の中の関数</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+fun createPerson(firstName: String, lastName:String): Person{
+	if(firstName.isEmpty()){ throw IllegalArgumentException(&#34;에러!!&#34;)}
+	if(lastName:String.isEmpty()){ throw IllegalArgumentException(&#34;에러!!&#34;)}
+	return Person(firstName, lastName)
+}
+
+// ローカル関数を使用
+fun createPerson(firstName: String, lastName:String): Person{
+	// 関数の中の関数
+	fun validateName(name: String){if(name.isEmpty()){throw IllegalArgumentException(&#34;에러!!&#34;)}
+	
+	validateName(firstName)
+	validateName(lastName)
+	return Person(firstName, lastName)
+}</code></pre></div><h3 id=17-lambda>17. lambda</h3><ul><li><p>Java では関数を変数に代入したりパラメータとして渡したりできない（第一級オブジェクト X）</p><ul><li><code>Fruit::isApple</code> のように可能なように見えるが、実際には Predicate というインタフェースを渡している</li></ul></li><li><p>Kotlin では関数を変数に代入したりパラメータとして渡したりできる（第一級オブジェクト O）</p></li><li><p>lambda の生成と呼び出し</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Kotlin
+
+// 関数の Type も次のように設定可能
+val isApple : (Fruit) -&gt; Boolean 
+= fun(fruit: Fruit): Boolean {
+	return fruit.name == &#34;사과&#34;
+}
+
+// 上とまったく同じコード
+val isApple2 = {fruit: Fruit -&gt; fruit.name == &#34;사과&#34; }
+
+val isApple3 = { fruit -&gt;
+println(&#34;사과만 받는 함수입니다.&#34;)
+fruit.name == &#34;사과&#34; // 複数行 lambda で return を省略すると、最後の行が自動的に return される
+}
+
+// lambda の呼び出し、同じコード
+isApple(Fruit(&#34;사과&#34;, 1000))
+// 明示的に呼び出し
+isApple.invoke(Fruit(&#34;사과&#34;, 1000))</code></pre></div><ul><li>パラメータとして関数を受け取る</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 関数の Type を書けば、関数を受け取れる
+fun filterFruits(fruits: List&lt;Fruit&gt;, filterFunc : (Fruit) -&gt; Boolean) : List&lt;Fruit&gt;{
+	val results = mutableListOf&lt;Fruit&gt;()
+	for(fruit in fruits){
+		if(filterFunc(fruit)){ results.add(fruit)}
+	}
+	return results
+}
+
+// 呼び出し時に次のように lambda を渡して使える
+filterFruits(fruit, {fruit -&gt; fruit.name ==&#34;사과&#34;} )
+
+// このとき lambda が最後のパラメータなら次のように使える（上のコードと機能は同じ）
+filterFruits(fruit) {fruit -&gt; fruit.name ==&#34;사과&#34;}
+
+// パラメータが 1 つの場合は、it で矢印の前の部分を置き換え可能
+filterFruits(fruit) {it.name ==&#34;사과&#34;}</code></pre></div><ul><li>Closure<ul><li>Kotlin は lambda が実行される時点で、参照している変数をすべて捕捉して値を持つ</li><li>下のコードでは <code>targetFruitName = "수박"</code> の時点を捕捉して持っている</li><li>このようなデータ構造を Closure と呼び、こうした構造があってこそ lambda が第一級オブジェクトになれる</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>//Java
+String targetFruitName = &#34;바나나&#34;
+targetFruitName = &#34;수박&#34;
+
+// Java では lambda で使われる変数は、final 変数か、 
+// final キーワードが付いていなくても値が実際には変更されない（Effectively final）変数のみ使用可能
+filterFruits(fruits, (fruit) -&gt; targetFruitName.equals(fruit.getName())); // ERROR!
+
+//Kotlin
+var targetFruitName = &#34;바나나&#34;
+targetFruitName = &#34;수박&#34;
+filterFruits(fruits) { it.name == targetFruitName } // It Works!</code></pre></div><h3 id=18-collection-組み込み関数--fp>18. Collection 組み込み関数 + FP</h3><ul><li><strong>filter</strong></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 사과（リンゴ）だけを取得
+val apples = fruits.filter { fruit -&gt; fruit.name == &#34;사과&#34; }</code></pre></div><ul><li><strong>filterIndexed</strong>：filter で index が必要な場合</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val apples = fruits.filterIndexed { idx, fruit -&gt; 
+println(idx)
+fruit.name == &#34;사과&#34;
+} </code></pre></div><ul><li><p><strong>map, mapIndex</strong>：それぞれの要素に対して lambda 関数を実行</p></li><li><p><strong>mapNotNull</strong>：mapping の結果が null でないものだけを抽出</p></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val values = fruits.filter { it.name == &#34;사과&#34; }
+	.mapNotNull { it.nullOrValue() } // null でない値だけ抽出</code></pre></div><ul><li><strong>all</strong>：条件をすべて満たせば true、そうでなければ false</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// すべてリンゴか確認
+val isAllApple = fruits.all { it.name == &#34;사과&#34; }</code></pre></div><ul><li><strong>none</strong>：条件をすべて満たさなければ true、そうでなければ false</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// リンゴが 1 つもないか確認
+val isNoApple = fruits.none { it.name ==&#34;사과&#34; }</code></pre></div><ul><li><strong>any</strong>：1 つでも満たせば true、そうでなければ false</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 1 つでも 1 万ウォン超の果物があるか確認
+val hasExpensiveFruit = fruits.any { it.price &gt; 10_000 }</code></pre></div><ul><li><strong>count</strong>：個数</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// Java の list.size() と同じ
+val fruitCount = fruits.count()</code></pre></div><ul><li><strong>sortedBy, sortedByDescending</strong>：昇順・降順ソート</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val sortedFruit = fruit.sortedBy{it.price} // 昇順
+val desendSortedFruit = fruit.sortedByDescending{it.price} // 降順</code></pre></div><ul><li><strong>distinctBy</strong>：変換した値を基準に重複排除</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 果物の種類を確認
+val distinctFruitNames = fruits.distinctBy{ it.name } // 名前を基準に重複排除
+	.map{it.name}</code></pre></div><ul><li><strong>first, firstOrNull, last, lastOrNull</strong>：最初・最後の値<ul><li>空のリストで first、last が取得できる値がない場合は Exception が発生</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>fruits.first()
+fruits.lastOrNull()</code></pre></div><ul><li><strong>groupBy</strong>：あるキーを基準にグループ化（List → Map）</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 果物の名前を key にリストの中身をグループ化
+// key：사과、value：{사과1, 사과2, 사과3...}
+val map: Map&lt;String, List&lt;Fruit&gt;&gt; = fruits.groupBy{fruit -&gt; fruit.name } 
+
+// 次のように key、value を同時に処理することも可能
+// 名前を Key に、価格 List を作る例
+val map2 : Map&lt;String, List&lt;Long&gt;&gt; = fruits
+	.groupBy({it.name}, {it.price})</code></pre></div><ul><li><strong>associateBy</strong>：重複しないキーを基準に Map に変換（List → Map）<ul><li><strong>ただし id に重複値があると値が失われる可能性がある。</strong></li><li><strong>id が重複している場合、最後の値が value になる。</strong></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val map: Map&lt;Long, Fruit&gt; = fruits.associateBy { fruit -&gt; fruit.id }
+
+val fruitList = listOf&lt;Fruit&gt;(
+			// id が同じ
+      Fruit(1,&#34;1&#34;),
+      Fruit(1,&#34;2&#34;),
+      Fruit(1,&#34;3&#34;),
+    )
+
+  val associateBy = fruitList.associateBy { it.id }
+
+  println(associateBy.count()) // 1
+  for (entry in associateBy) {
+      println(entry) // 1=Fruit(id=1, name=3)
+  }
+
+// 同様に key、value を同時に処理可能
+val map: Map&lt;Long, Long&gt; = fruits
+	.associateBy({it.id}, {it.price})</code></pre></div><ul><li>Map でも上記の関数のほとんどを使える</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val map: Map&lt;String, List&lt;Fruit&gt;&gt; = fruits.groupBy{fruit -&gt; fruit.name } 
+	.filter { (key, value) -&gt; key == &#34;사과&#34; } </code></pre></div><ul><li>ネストされた Collection の処理<ul><li>flatMap, flatten</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>var fruitsInList: List&lt;List&lt;Fruit&gt;&gt; = listOf(
+	listOf(Fruit(1,&#34;사과&#34;), Fruit(2,&#34;수박&#34;), Fruit(3,&#34;사과&#34;)),
+	listOf(Fruit(4,&#34;바나나&#34;), Fruit(5,&#34;사과&#34;), Fruit(6,&#34;바나나&#34;)),
+)
+
+// リスト構造に関係なく、リンゴをすべて取り出してください
+// output: listOf(Fruit(1,&#34;사과&#34;), Fruit(3,&#34;사과&#34;), Fruit(5,&#34;사과&#34;))
+val appleList : List&lt;Fruit&gt;
+	= fruitsInList.flatMap { list -&gt; list.filter{it.name == &#34;사과&#34;}
+
+// 2 次元リストを 1 次元に
+val flattenList : List&lt;Fruit&gt;
+	= fruitsInList.flatten();</code></pre></div><h3 id=19-takeifscope-function>19. TakeIf、scope Function</h3><ul><li><strong>TakeIf</strong>：与えられた条件を満たせばその値を、そうでなければ null を返す</li><li><strong>TakeUnless</strong>：与えられた条件を満たさなければその値を、そうでなければ null を返す</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// この関数を
+fun getFruitOrNull(fruit: Fruit): Fruit?{
+	return if(fruit.name == &#34;사과&#34;){fruit} else {null}
+}
+// 次のように使える
+val getfruit = fruit.takeIf { it.name == &#34;사과&#34; }
+Fruit(1L, &#34;사과&#34;) // この場合 fruit
+Fruit(1L, &#34;바나나&#34;) // この場合 null を返す</code></pre></div><ul><li>Scope function：一時的なスコープを形成する関数<ul><li>つまり lambda を使って一時的なスコープを作り<ul><li>コードをより簡潔にしたり</li><li>method chaining に活用したりする関数</li></ul></li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>// 次の 2 つの関数は同じ
+fun printPerson(person: Person?){
+	if(person != null){
+		println(person.name)
+		println(person.age)
+	}
+}
+
+fun printPerson(person: Person?){
+	person?.let{
+		println(person.name)
+		println(person.age)
+	}
+}</code></pre></div><ul><li>Scope function の種類<ul><li><strong>let, run</strong>：lambda の結果を返す<ul><li>let：it を使う（省略不可だが別の名前を付けられる）</li><li>run：this を使う（省略可能だが別の名前は付けられない）</li></ul></li><li><strong>also, apply</strong>：オブジェクト自体を返す<ul><li>also：it を使う</li><li>apply：this を使う</li></ul></li><li><strong>with</strong>：唯一拡張関数ではない。this を使う、lambda の結果を返す</li></ul></li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>kotlin</span></div><pre class=line-numbers><code class=language-kotlin>val value1 = person.let{ it.age }  // value1 の値：person.age
+// person.let{ person -&gt; person.age } のように、別の名前を付けられる
+val value2 = person.run{ this.age } // value2 の値：person.age
+// person.run{ age } のように、this を省略可能
+
+val value3 = person.also{ it.age } // value3 の値：person
+val value4 = person.apply{ this.age } // value4 の値：person 
+
+with(person){
+	println(name)
+	println(age)
+}
+
+/* 
+it を使う場合：通常関数をパラメータとして受け取る block : (T) -&gt; R : R
+this を使う場合：拡張関数をパラメータとして受け取る block: T.() -&gt; R : R
+気になれば実際の実装を確認してみよう....
+*/</code></pre></div></div><div class=post-tags><a href=/ja/tags/kotlin/ class=tag-link>#Kotlin</a>
+<a href=/ja/tags/jvm/ class=tag-link>#JVM</a>
+<a href=/ja/tags/%E3%83%81%E3%83%BC%E3%83%88%E3%82%B7%E3%83%BC%E3%83%88/ class=tag-link>#チートシート</a></div><div class=post-license><p>&copy; 本記事は CC BY-NC-SA 4.0 の下で公開されています。</p></div><section class=post-comments><h3 class=comments-title>Comments</h3><script src=https://giscus.app/client.js data-repo=LemonDouble/LemonDouble.github.io-comments data-repo-id=R_kgDOI0UkDA data-category=Comments data-category-id=DIC_kwDOI0UkDM4CcIeY data-mapping=pathname data-reactions-enabled=1 data-emit-metadata=0 data-theme=dark crossorigin=anonymous async></script></section></article><aside class=toc-sidebar><a href=/ja/ class=toc-back-btn onclick="return tocGoBack(event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+<span>前のページへ</span></a><nav class=toc-sidebar-nav><h4 class=toc-sidebar-title>目次</h4><nav id=TableOfContents><ul><li><ul><li><a href=#1-変数>1. 変数</a></li><li><a href=#2-null-処理>2. Null 処理</a></li><li><a href=#3-type>3. Type</a></li><li><a href=#4-演算子>4. 演算子</a></li><li><a href=#5-条件文>5. 条件文</a></li><li><a href=#6-繰り返し文>6. 繰り返し文</a></li><li><a href=#7-例外>7. 例外</a></li><li><a href=#8-関数>8. 関数</a></li><li><a href=#9-クラス>9. クラス</a></li><li><a href=#10-継承>10. 継承</a></li><li><a href=#11-アクセス制御>11. アクセス制御</a></li><li><a href=#12-object>12. object</a></li><li><a href=#13-入れ子クラスnested-class>13. 入れ子クラス（nested class）</a></li><li><a href=#14-data-classenum-classsealed-classinterface>14. Data class、Enum class、Sealed Class/Interface</a></li><li><a href=#15-collectionsコレクション>15. Collections（コレクション）</a></li><li><a href=#16-extension拡張infix中置inlinelocalローカル関数>16. Extension（拡張）、Infix（中置）、inline、Local（ローカル）関数</a></li><li><a href=#17-lambda>17. lambda</a></li><li><a href=#18-collection-組み込み関数--fp>18. Collection 組み込み関数 + FP</a></li><li><a href=#19-takeifscope-function>19. TakeIf、scope Function</a></li></ul></li></ul></nav></nav></aside></div><script>function tocGoBack(e){var t=document.referrer&&document.referrer.indexOf(window.location.origin)===0;return!(t&&window.history.length>1)||(e.preventDefault(),window.history.back(),!1)}(function(){var e,t,o,i,s=document.querySelector(".toc-sidebar-nav");if(!s)return;if(o=s.querySelectorAll("a"),!o.length)return;if(e=[],o.forEach(function(t){var s=decodeURIComponent(t.getAttribute("href").slice(1)),n=document.getElementById(s);n&&e.push({el:n,link:t})}),!e.length)return;t=null;function n(e){if(t===e)return;t&&t.classList.remove("active"),e.classList.add("active"),t=e;var i=s,n=e.getBoundingClientRect(),o=i.getBoundingClientRect();(n.top<o.top||n.bottom>o.bottom)&&e.scrollIntoView({block:"nearest",behavior:"smooth"})}i=new IntersectionObserver(function(t){var s,o,i,a,r,c,l=[];t.forEach(function(t){var n=e.find(function(e){return e.el===t.target});n&&(n.isIntersecting=t.isIntersecting)});for(s=0;s<e.length;s++)if(e[s].isIntersecting){n(e[s].link);return}for(c=window.scrollY||window.pageYOffset,a=100,i=null,o=0;o<e.length;o++)r=e[o].el.getBoundingClientRect(),r.top<a&&(i=e[o]);i&&n(i.link)},{rootMargin:"-80px 0px -60% 0px",threshold:0}),e.forEach(function(e){e.isIntersecting=!1,i.observe(e.el)}),setTimeout(function(){var t,s,o,i,a=window.scrollY||window.pageYOffset;if(a<100)n(e[0].link);else{for(o=100,s=null,t=0;t<e.length;t++)i=e[t].el.getBoundingClientRect(),i.top<o&&(s=e[t]);n(s?s.link:e[0].link)}},100)})()</script></main></div><footer class=site-footer><div class=footer-content><div class=footer-links><a href=https://github.com/LemonDouble target=_blank rel=noopener>GitHub</a>
+<a href=https://twitter.com/_lemon_berry_ target=_blank rel=noopener>Twitter</a>
+<a href=mailto:contact@lemondouble.com>Email</a>
+<a href=https://sns.lemondouble.com/@lemondouble target=_blank rel=noopener>Misskey</a></div><p class=footer-copy>&copy; 2022-2026 LemonDouble &bull; Powered by Hugo</p><p class=footer-brand>LEMON BLOG</p></div></footer><script>function toggleMobileMenu(){var e=document.getElementById("mobileMenu");e.classList.toggle("active")}function closeMobileMenu(){document.getElementById("mobileMenu").classList.remove("active")}function openMobileSearch(){document.body.classList.add("mobile-search-active"),closeMobileMenu(),setTimeout(function(){var e=document.getElementById("searchInput");e&&e.focus()},50)}function closeMobileSearch(){document.body.classList.remove("mobile-search-active");var e,t=document.getElementById("searchInput");t&&(t.value="",t.blur()),e=document.getElementById("searchResults"),e&&(e.classList.remove("active"),e.innerHTML="")}document.addEventListener("keydown",function(e){e.key==="Escape"&&document.body.classList.contains("mobile-search-active")&&closeMobileSearch()});function pageJump(e,t){if(e.key==="Escape")return t.blur(),!1;if(e.key!=="Enter")return!0;e.preventDefault();var s,o,n=parseInt(t.value,10),i=parseInt(t.dataset.total,10);return!n||n<1||n>i?(t.value=t.defaultValue,!1):(s=t.dataset.base||"/",o=n===1?s:s.replace(/\/$/,"")+"/page/"+n+"/",window.location.href=o,!1)}function pageJumpFocus(e){e.value=""}function pageJumpReset(e){e.value=e.defaultValue}function pageJumpSanitize(e){var t=e.value.replace(/\D/g,"");t!==e.value&&(e.value=t)}function toggleLangSwitcher(e){e&&e.stopPropagation();var s,t=document.getElementById("langSwitcher"),n=t&&t.querySelector(".lang-switcher-btn");if(!t||!n)return;s=t.classList.toggle("open"),n.setAttribute("aria-expanded",s?"true":"false")}document.addEventListener("click",function(e){var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&!e.target.closest("#langSwitcher")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))}),document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))})</script><script>var searchInput,searchResults,searchIndex=null;(function(){fetch("/ja/index.json").then(function(e){return e.json()}).then(function(e){searchIndex=e}).catch(function(){})})(),searchInput=document.getElementById("searchInput"),searchResults=document.getElementById("searchResults"),searchInput&&(searchInput.addEventListener("input",function(e){var n,t=e.target.value.trim().toLowerCase();if(!t||!searchIndex){searchResults.classList.remove("active"),searchResults.innerHTML="";return}if(n=searchIndex.filter(function(e){return e.title.toLowerCase().includes(t)||e.summary.toLowerCase().includes(t)||(e.categories||[]).some(function(e){return e.toLowerCase().includes(t)})||(e.tags||[]).some(function(e){return e.toLowerCase().includes(t)})}).slice(0,10),n.length===0){searchResults.innerHTML='<div class="search-empty">検索結果がありません。</div>',searchResults.classList.add("active");return}searchResults.innerHTML=n.map(function(e){var t=(e.categories||[]).map(function(e){return'<span class="search-cat">'+e+"</span>"}).join('<span class="search-cat-sep">/</span>');return'<a href="'+e.url+'" class="search-result-item"><div class="search-result-title">'+e.title+'</div><div class="search-result-meta">'+e.date+(t?" &middot; "+t:"")+"</div></a>"}).join(""),searchResults.classList.add("active")}),document.addEventListener("click",function(e){e.target.closest(".search-wrapper")||(searchResults.classList.remove("active"),document.body.classList.contains("mobile-search-active")&&!e.target.closest(".mobile-search-btn")&&closeMobileSearch())}),searchInput.addEventListener("focus",function(){searchInput.value.trim()&&searchResults.classList.add("active")}))</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js></script></body></html>

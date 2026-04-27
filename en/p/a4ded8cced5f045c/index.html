@@ -1,0 +1,227 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Setting Up a Home Datacenter with a Raspberry Pi Cluster - 9. Running Databases on Kubernetes with CloudNativePG | Lemon Blog</title><meta name=description content="I tinker with various things. Most blog posts are notes I jot down so I don't forget what I've worked on(..)"><link rel=icon href=https://cdn.lemondouble.com/homepage/favicon.ico><link rel=canonical href=https://blog.lemondouble.com/en/p/a4ded8cced5f045c/><link rel=alternate hreflang=ko href=https://blog.lemondouble.com/p/a4ded8cced5f045c/><link rel=alternate hreflang=en href=https://blog.lemondouble.com/en/p/a4ded8cced5f045c/><link rel=alternate hreflang=ja href=https://blog.lemondouble.com/ja/p/a4ded8cced5f045c/><link rel=alternate hreflang=zh-cn href=https://blog.lemondouble.com/zh-cn/p/a4ded8cced5f045c/><link rel=alternate hreflang=zh-tw href=https://blog.lemondouble.com/zh-tw/p/a4ded8cced5f045c/><link rel=alternate hreflang=x-default href=https://blog.lemondouble.com/p/a4ded8cced5f045c/><link href=https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css rel=stylesheet><link href=https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css rel=stylesheet><meta property="og:title" content="Setting Up a Home Datacenter with a Raspberry Pi Cluster - 9. Running Databases on Kubernetes with CloudNativePG"><meta property="og:description" content="I tinker with various things. Most blog posts are notes I jot down so I don't forget what I've worked on(..)"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.lemondouble.com/en/p/a4ded8cced5f045c/"><meta property="og:site_name" content="Lemon Blog"><meta property="og:locale" content="en_US"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:locale:alternate" content="ja_JP"><meta property="og:locale:alternate" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:image" content="https://blog.lemondouble.com/p/a4ded8cced5f045c/cover.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Setting Up a Home Datacenter with a Raspberry Pi Cluster - 9. Running Databases on Kubernetes with CloudNativePG"><meta name=twitter:description content="I tinker with various things. Most blog posts are notes I jot down so I don't forget what I've worked on(..)"><meta name=twitter:image content="https://blog.lemondouble.com/p/a4ded8cced5f045c/cover.png"><link rel=stylesheet href=/css/8bit.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-dracula.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css><link rel=stylesheet href=/css/code-block.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-9C6YX68EBM"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9C6YX68EBM")</script><meta name=generator content="Hugo 0.159.2"></head><body><nav class=site-nav><div class=nav-inner><a href=/en/ class=nav-logo><img src=/img/brand/lemon-logo.webp alt=Logo>
+<span>Lemon Blog</span></a><div class=nav-links><a href=/en/ class=nav-link>Home</a>
+<a href=/en/projects/ class=nav-link>Projects</a>
+<a href=/en/skills/ class=nav-link>Skills</a>
+<a href=https://lemondouble.com/en target=_blank rel="noopener noreferrer" class=nav-link>About</a></div><div class=nav-actions><div class=search-wrapper id=searchWrapper><span class=search-icon><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+</span><input type=text class=search-input id=searchInput placeholder=Search... autocomplete=off>
+<button class=search-close-btn onclick=closeMobileSearch() aria-label="Close search">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class=search-results id=searchResults></div></div><button class=mobile-search-btn onclick=openMobileSearch() aria-label="Open search">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><div class=lang-switcher id=langSwitcher><button type=button class=lang-switcher-btn onclick=toggleLangSwitcher(event) aria-label="Select language" aria-haspopup=true aria-expanded=false>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3.0 014 10 15.3 15.3.0 01-4 10A15.3 15.3.0 018 12a15.3 15.3.0 014-10z"/></svg>
+<span class=lang-switcher-current>English</span>
+<svg class="lang-switcher-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class=lang-switcher-menu id=langSwitcherMenu role=menu><a href=/p/a4ded8cced5f045c/ class=lang-switcher-item lang=ko role=menuitem>한국어
+</a><a href=/en/p/a4ded8cced5f045c/ class="lang-switcher-item active" lang=en role=menuitem>English
+</a><a href=/ja/p/a4ded8cced5f045c/ class=lang-switcher-item lang=ja role=menuitem>日本語
+</a><a href=/zh-cn/p/a4ded8cced5f045c/ class=lang-switcher-item lang=zh-cn role=menuitem>简体中文
+</a><a href=/zh-tw/p/a4ded8cced5f045c/ class=lang-switcher-item lang=zh-tw role=menuitem>繁體中文</a></div></div><button class=nav-menu-btn onclick=toggleMobileMenu() aria-label="Open menu">
+<svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button></div></div></nav><div class=mobile-menu id=mobileMenu><a href=/en/ class=nav-link onclick=closeMobileMenu()>Home</a>
+<a href=/en/projects/ class=nav-link onclick=closeMobileMenu()>Projects</a>
+<a href=/en/skills/ class=nav-link onclick=closeMobileMenu()>Skills</a>
+<a href=https://lemondouble.com/en target=_blank rel="noopener noreferrer" class=nav-link onclick=closeMobileMenu()>About</a><div class=mobile-menu-lang><span class=mobile-menu-lang-label>Select language</span><div class=mobile-menu-lang-items><a href=/p/a4ded8cced5f045c/ class=mobile-menu-lang-item lang=ko onclick=closeMobileMenu()>한국어</a>
+<a href=/en/p/a4ded8cced5f045c/ class="mobile-menu-lang-item active" lang=en onclick=closeMobileMenu()>English</a>
+<a href=/ja/p/a4ded8cced5f045c/ class=mobile-menu-lang-item lang=ja onclick=closeMobileMenu()>日本語</a>
+<a href=/zh-cn/p/a4ded8cced5f045c/ class=mobile-menu-lang-item lang=zh-cn onclick=closeMobileMenu()>简体中文</a>
+<a href=/zh-tw/p/a4ded8cced5f045c/ class=mobile-menu-lang-item lang=zh-tw onclick=closeMobileMenu()>繁體中文</a></div></div></div><div class=container><main class=site-main><div class="post-layout has-toc"><article class=post-single><header class=post-header><div class=post-cover><img src=/p/a4ded8cced5f045c/cover_hu_73668a7fc2afee02.png alt="Setting Up a Home Datacenter with a Raspberry Pi Cluster - 9. Running Databases on Kubernetes with CloudNativePG"></div><div class=post-header-content><div class=post-categories><a href=/en/categories/k8s/ class=category-tag>K8S</a>
+<a href=/en/categories/k3s/ class=category-tag>K3S</a>
+<a href=/en/categories/raspberry-pi/ class=category-tag>Raspberry Pi</a></div><h1 class=post-title>Setting Up a Home Datacenter with a Raspberry Pi Cluster - 9. Running Databases on Kubernetes with CloudNativePG</h1><div class=post-meta><time>2023.12.12</time>
+<span class=meta-sep>&#8226;</span>
+<span>7 min read</span></div></div></header><div class=post-content><p><em>Note: I&rsquo;m based in Korea, so some context here is Korea-specific.</em></p><h3 id=introduction>Introduction</h3><p>Databases are tricky to manage.</p><p>Unlike other Pods, you have to worry about data storage, backups, and management, and you also have to pay attention to failover and performance.</p><p>That&rsquo;s why I&rsquo;ve heard it&rsquo;s common to use a managed system like AWS RDS or a separate instance just for the DB, even if you run other workloads on a Kubernetes cluster.</p><p>But does that really matter? If you&rsquo;re setting up a datacenter at home, shouldn&rsquo;t you have at least one managed DBMS?</p><p>So let&rsquo;s build one. We&rsquo;ll use <a href=https://cloudnative-pg.io/ target=_blank rel="noopener noreferrer">CloudNativePG</a>
+, which leverages Kubernetes&rsquo; Operator Pattern, to deploy a cluster with one Primary and two Replicas, and configure it to be accessible from the internal network.</p><p>It&rsquo;s not a Postgres Operator, but if you read <a href=https://nangman14.tistory.com/79#5.%20Mysql%20Operator%20Failover%20%ED%85%8C%EC%8A%A4%ED%8A%B8-1 target=_blank rel="noopener noreferrer">Running MySQL DB on Kubernetes with the MySQL Operator</a>
+, it might help you follow along a bit better.</p><h3 id=2-installation>2. Installation</h3><p>I&rsquo;ll split the installation into two stages.</p><ol><li>Install the CNPG Operator</li><li>Install the CNPG Cluster</li></ol><p>The Operator&rsquo;s job is to monitor whether the Cluster stays in a healthy state.
+The actual database cluster you&rsquo;ll use is installed in step 2.</p><p>Let&rsquo;s get started step by step! Once again, we&rsquo;ll deploy quickly using ArgoCD.</p><p><strong>1. Installing the CNPG Operator</strong></p><p><code>apps/enabled/cnpg-system.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg-system
+  namespace: argocd
+spec:
+  destination:
+    namespace: cnpg-system
+    server: &#39;https://kubernetes.default.svc&#39;
+  source:
+    path: modules/cnpg-system
+    repoURL: &#39;git@github.com:&lt;YourOrganizationName&gt;/&lt;YourRepositoryName&gt;.git&#39;
+    targetRevision: HEAD
+  project: default</code></pre></div><p><code>modules/cnpg-system/cnpg.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml># https://github.com/cloudnative-pg/cloudnative-pg
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg
+  namespace: argocd
+spec:
+  destination:
+    namespace: cnpg-system
+    server: &#39;https://kubernetes.default.svc&#39;
+  source:
+    repoURL: &#39;https://cloudnative-pg.github.io/charts&#39;
+    targetRevision: 0.19.1
+    chart: cloudnative-pg
+  project: default</code></pre></div><p>Simple, right? After installation, deploy it to install the CNPG Operator.</p><p><strong>2. Installing the CNPG Cluster</strong></p><p>The cluster we&rsquo;re going to build looks like this:</p><ol><li>Daily Backups to S3 at UTC 00:00 (9 AM KST).</li><li>Made up of 3 Pods total. Each Pod is distributed across multiple nodes to prevent any unforeseen mishaps (?).</li><li>The DB is accessible from the internal network at the IP 192.168.0.x.</li></ol><p>Let&rsquo;s tackle these one by one!</p><p><code>apps/enabled/cnpg-cluster.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg-cluster
+  namespace: argocd
+spec:
+  destination:
+    namespace: cnpg-cluster
+    server: &#39;https://kubernetes.default.svc&#39;
+  source:
+    path: modules/cnpg-cluster-16
+    repoURL: &#39;git@github.com:&lt;YourOrganizationName&gt;/&lt;YourRepositoryName&gt;.git&#39;
+    targetRevision: HEAD
+  project: default</code></pre></div><p><code>modules/cnpg-cluster/cluster.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml># https://cloudnative-pg.io/documentation/1.21/quickstart/
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  namespace: cnpg-cluster
+  name: cnpg-cluster
+spec:
+  instances: 3
+
+  superuserSecret:
+    name: superuser-secrets
+  enableSuperuserAccess: true
+  primaryUpdateStrategy: unsupervised
+
+  # Persistent storage configuration
+  storage:
+    size: 10Gi
+    pvcTemplate:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: longhorn-ssd
+      volumeMode: Filesystem
+
+  # Backup properties
+  backup:
+    retentionPolicy: &#34;90d&#34;
+    barmanObjectStore:
+      destinationPath: s3://lemon-backup/cnpg-backup
+      s3Credentials:
+        accessKeyId:
+          name: aws-backup-secret
+          key: ACCESS_KEY_ID
+        secretAccessKey:
+          name: aws-backup-secret
+          key: ACCESS_SECRET_KEY
+      wal:
+        compression: gzip</code></pre></div><p>For ease of management, I allowed Superuser access, and
+set the DB capacity to 10GB. (You can expand it later.)</p><p>Beyond that, in case of an unexpected disaster (&mldr;), I configured backups to be saved on AWS S3 for easy backup, and set the retention to a maximum of 90 days.</p><p><code>modules/cnpg-cluster/daily-backup.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  namespace: cnpg-cluster
+  name: daily-backup
+spec:
+  schedule: &#34;0 0 0 * * *&#34; # Daily
+  backupOwnerReference: self
+  cluster:
+    name: cnpg-cluster</code></pre></div><p>A simple Daily Backup resource.</p><p><code>modules/cnpg-cluster/lb.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: v1
+kind: Service
+metadata:
+  name: cnpg-lb-rw
+  namespace: cnpg-cluster
+spec:
+  ports:
+    - name: postgres
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+  selector:
+    cnpg.io/cluster: cnpg-cluster
+    role: primary
+  type: LoadBalancer
+  loadBalancerIP: 192.168.0.206</code></pre></div><p>In my case, I allowed access via the address 192.168.0.206.
+Afterward, when querying or managing the database, you can manage it from the internal network by accessing <code>192.168.0.206</code>.</p><p><code>modules/cnpg-cluster/sealed-aws-secrets.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: aws-secrets
+  namespace: cnpg-cluster
+  annotations: {}
+spec:
+  encryptedData:
+    ACCESS_KEY_ID: adffd...
+    ACCESS_SECRET_KEY: Aadfads...</code></pre></div><p>Grant S3FullAccess on AWS, or access permissions to a specific bucket, then issue an ACCESS KEY and Secret. Then register them using the Sealed Secret you set up previously.</p><p><code>modules/cnpg-cluster/sealed-superuser-secrets.yaml</code></p><p>The creation process is a bit complex!</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: v1
+kind: Secret
+metadata:
+  name: superuser-secrets
+  namespace: cnpg-cluster
+type: kubernetes.io/basic-auth
+stringData:
+  username: &lt;The ID I&#39;ll use, raw without b64 encoding&gt;
+  password: &lt;The password I&#39;ll use, raw without b64 encoding&gt;</code></pre></div><p>First, create a Secret like the above with the name secret.yaml, then</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>sh</span></div><pre class=line-numbers><code class=language-sh>cat secret.yaml | kubeseal --controller-namespace=sealed-secrets-system --controller-name=sealed-secrets -oyaml &gt; sealed-superuser-secrets.yaml</code></pre></div><p>convert it to a Sealed Secret with the above command, and use the Sealed Secret!</p><p>After that, wait for provisioning (it takes some time), and you can log in via 192.168.0.206 with the ID/Password you just configured to use the DB!</p><p><strong>If everything is installed correctly, set a reminder for the next day and please MAKE SURE to verify that the backups are properly saved to that S3 folder!!!</strong></p><h3 id=3-recovery>3. Recovery</h3><p>After a day passes and the backup has been performed normally, <strong>please MAKE SURE to verify that recovery actually works</strong>.
+It&rsquo;s too late once you&rsquo;ve already lost everything&mldr;</p><p>I&rsquo;ll share my recovery configuration file.</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml># https://cloudnative-pg.io/documentation/1.17/quickstart/
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  namespace: cnpg-cluster
+  name: cnpg-cluster
+spec:
+  instances: 3
+
+  superuserSecret:
+    name: superuser-secrets
+  primaryUpdateStrategy: unsupervised
+
+  bootstrap: # added
+    recovery:
+      source: clusterBackup
+
+  storage:
+    size: 10Gi
+    pvcTemplate:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: longhorn-ssd
+      volumeMode: Filesystem
+
+  externalClusters: # added
+    - name: clusterBackup
+      barmanObjectStore:
+        serverName: cnpg-cluster
+        destinationPath: s3://lemon-backup/postgres-backup
+        s3Credentials:
+          accessKeyId:
+            name: aws-secrets
+            key: ACCESS_KEY_ID
+          secretAccessKey:
+            name: aws-secrets
+            key: ACCESS_SECRET_KEY
+        wal:
+          compression: gzip</code></pre></div><p>If you add the bootstrap and externalClusters options to a new cluster as shown above, it will automatically recover the data using the existing S3 files when the cluster first starts up.</p><p>Once you&rsquo;ve connected/verified and recovery is complete, remove the bootstrap and externalClusters options and add the original backup options back in.</p><p>A word of caution here:
+If the major version of Postgres differs, recovery might not work properly.</p><p>For example, if I was using a 1.16 Operator (Postgres 15) and updated the Operator to 1.21 (which uses Postgres 16 by default), the existing cluster would still be on PG 15 unless I manually upgrade it.</p><p>In this case, if you try to recover after a failure, since the Operator version is 1.21, PG16 will be provisioned, and since the data stored on the existing S3 is PG15 data, recovery may not work.</p><p>For situations like this, you can either downgrade the Operator to the version it was at install time and bring up the same version of PG, then recover -> update, or set the Image to use the same major version.</p><p><strong>If possible, I HIGHLY recommend creating a new cluster, verifying that recovery works properly, and only then proceeding with the next steps!!</strong></p><h3 id=4-cluster-updates>4. Cluster Updates</h3><p>Minor updates happen automatically, but for major version updates, doing the following will usually go without issue. (Tried 15 -> 16)</p><p>For online updates, refer to <a href=https://www.enterprisedb.com/blog/current-state-major-postgresql-upgrades-cloudnativepg-kubernetes target=_blank rel="noopener noreferrer">The Current State of Major PostgreSQL Upgrades with CloudNativePG</a>
+,</p><p>If you&rsquo;re doing offline updates (where downtime is acceptable):</p><ol><li>Dump data from the existing cluster with pg_dumpall</li><li>Create a new cluster</li><li>Pour the data dumped in step 1 into 2</li><li>Change applications that pointed to the old cluster to point to the new cluster</li><li>Test, then delete the old cluster</li></ol><h3 id=5-wrapping-up>5. Wrapping Up</h3><p>I&rsquo;ve been running my server with CNPG smoothly for about 7-8 months now.</p><p>Considering how often I accidentally unplug cables while cleaning(&mldr;), it&rsquo;s robust enough to be used as a reliable Postgres DB in normal situations, and even when I accidentally killed power to the entire cluster, I could easily recover the data from the existing S3, so I felt this is a fairly trustworthy system.</p><p>Of course, if you have the budget, using a managed RDB would be the best option. But as a proof of technology, I&rsquo;d appreciate it if you also know that systems like this exist!</p><p>At this point, you should have all the systems needed for your server, etc., set up so you can start development. Let&rsquo;s build things one at a time, starting simple.</p><p>And within Kubernetes, the DB can be accessed by the name cnpg-lb-rw.cnpg-cluster. For example, like <code>jdbc:postgresql://cnpg-lb-rw.cnpg-cluster:5432/my_app</code>.</p><p>Thanks for reading this long post! Next time, I&rsquo;ll cover how to use GPUs in K3S with the nvidia-device-plugin!</p></div><div class=post-tags><a href=/en/tags/k8s/ class=tag-link>#K8S</a>
+<a href=/en/tags/k3s/ class=tag-link>#K3S</a>
+<a href=/en/tags/raspberry-pi/ class=tag-link>#Raspberry Pi</a>
+<a href=/en/tags/cloudnativepg/ class=tag-link>#CloudNativePG</a>
+<a href=/en/tags/postgresql/ class=tag-link>#PostgreSQL</a>
+<a href=/en/tags/operator/ class=tag-link>#Operator</a>
+<a href=/en/tags/ha/ class=tag-link>#HA</a></div><div class=post-license><p>&copy; Licensed under CC BY-NC-SA 4.0</p></div><section class=post-comments><h3 class=comments-title>Comments</h3><script src=https://giscus.app/client.js data-repo=LemonDouble/LemonDouble.github.io-comments data-repo-id=R_kgDOI0UkDA data-category=Comments data-category-id=DIC_kwDOI0UkDM4CcIeY data-mapping=pathname data-reactions-enabled=1 data-emit-metadata=0 data-theme=dark crossorigin=anonymous async></script></section></article><aside class=toc-sidebar><a href=/en/ class=toc-back-btn onclick="return tocGoBack(event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+<span>Back</span></a><nav class=toc-sidebar-nav><h4 class=toc-sidebar-title>On this page</h4><nav id=TableOfContents><ul><li><ul><li><a href=#introduction>Introduction</a></li><li><a href=#2-installation>2. Installation</a></li><li><a href=#3-recovery>3. Recovery</a></li><li><a href=#4-cluster-updates>4. Cluster Updates</a></li><li><a href=#5-wrapping-up>5. Wrapping Up</a></li></ul></li></ul></nav></nav></aside></div><script>function tocGoBack(e){var t=document.referrer&&document.referrer.indexOf(window.location.origin)===0;return!(t&&window.history.length>1)||(e.preventDefault(),window.history.back(),!1)}(function(){var e,t,o,i,s=document.querySelector(".toc-sidebar-nav");if(!s)return;if(o=s.querySelectorAll("a"),!o.length)return;if(e=[],o.forEach(function(t){var s=decodeURIComponent(t.getAttribute("href").slice(1)),n=document.getElementById(s);n&&e.push({el:n,link:t})}),!e.length)return;t=null;function n(e){if(t===e)return;t&&t.classList.remove("active"),e.classList.add("active"),t=e;var i=s,n=e.getBoundingClientRect(),o=i.getBoundingClientRect();(n.top<o.top||n.bottom>o.bottom)&&e.scrollIntoView({block:"nearest",behavior:"smooth"})}i=new IntersectionObserver(function(t){var s,o,i,a,r,c,l=[];t.forEach(function(t){var n=e.find(function(e){return e.el===t.target});n&&(n.isIntersecting=t.isIntersecting)});for(s=0;s<e.length;s++)if(e[s].isIntersecting){n(e[s].link);return}for(c=window.scrollY||window.pageYOffset,a=100,i=null,o=0;o<e.length;o++)r=e[o].el.getBoundingClientRect(),r.top<a&&(i=e[o]);i&&n(i.link)},{rootMargin:"-80px 0px -60% 0px",threshold:0}),e.forEach(function(e){e.isIntersecting=!1,i.observe(e.el)}),setTimeout(function(){var t,s,o,i,a=window.scrollY||window.pageYOffset;if(a<100)n(e[0].link);else{for(o=100,s=null,t=0;t<e.length;t++)i=e[t].el.getBoundingClientRect(),i.top<o&&(s=e[t]);n(s?s.link:e[0].link)}},100)})()</script></main></div><footer class=site-footer><div class=footer-content><div class=footer-links><a href=https://github.com/LemonDouble target=_blank rel=noopener>GitHub</a>
+<a href=https://twitter.com/_lemon_berry_ target=_blank rel=noopener>Twitter</a>
+<a href=mailto:contact@lemondouble.com>Email</a>
+<a href=https://sns.lemondouble.com/@lemondouble target=_blank rel=noopener>Misskey</a></div><p class=footer-copy>&copy; 2022-2026 LemonDouble &bull; Powered by Hugo</p><p class=footer-brand>LEMON BLOG</p></div></footer><script>function toggleMobileMenu(){var e=document.getElementById("mobileMenu");e.classList.toggle("active")}function closeMobileMenu(){document.getElementById("mobileMenu").classList.remove("active")}function openMobileSearch(){document.body.classList.add("mobile-search-active"),closeMobileMenu(),setTimeout(function(){var e=document.getElementById("searchInput");e&&e.focus()},50)}function closeMobileSearch(){document.body.classList.remove("mobile-search-active");var e,t=document.getElementById("searchInput");t&&(t.value="",t.blur()),e=document.getElementById("searchResults"),e&&(e.classList.remove("active"),e.innerHTML="")}document.addEventListener("keydown",function(e){e.key==="Escape"&&document.body.classList.contains("mobile-search-active")&&closeMobileSearch()});function pageJump(e,t){if(e.key==="Escape")return t.blur(),!1;if(e.key!=="Enter")return!0;e.preventDefault();var s,o,n=parseInt(t.value,10),i=parseInt(t.dataset.total,10);return!n||n<1||n>i?(t.value=t.defaultValue,!1):(s=t.dataset.base||"/",o=n===1?s:s.replace(/\/$/,"")+"/page/"+n+"/",window.location.href=o,!1)}function pageJumpFocus(e){e.value=""}function pageJumpReset(e){e.value=e.defaultValue}function pageJumpSanitize(e){var t=e.value.replace(/\D/g,"");t!==e.value&&(e.value=t)}function toggleLangSwitcher(e){e&&e.stopPropagation();var s,t=document.getElementById("langSwitcher"),n=t&&t.querySelector(".lang-switcher-btn");if(!t||!n)return;s=t.classList.toggle("open"),n.setAttribute("aria-expanded",s?"true":"false")}document.addEventListener("click",function(e){var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&!e.target.closest("#langSwitcher")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))}),document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))})</script><script>var searchInput,searchResults,searchIndex=null;(function(){fetch("/en/index.json").then(function(e){return e.json()}).then(function(e){searchIndex=e}).catch(function(){})})(),searchInput=document.getElementById("searchInput"),searchResults=document.getElementById("searchResults"),searchInput&&(searchInput.addEventListener("input",function(e){var n,t=e.target.value.trim().toLowerCase();if(!t||!searchIndex){searchResults.classList.remove("active"),searchResults.innerHTML="";return}if(n=searchIndex.filter(function(e){return e.title.toLowerCase().includes(t)||e.summary.toLowerCase().includes(t)||(e.categories||[]).some(function(e){return e.toLowerCase().includes(t)})||(e.tags||[]).some(function(e){return e.toLowerCase().includes(t)})}).slice(0,10),n.length===0){searchResults.innerHTML='<div class="search-empty">No results found.</div>',searchResults.classList.add("active");return}searchResults.innerHTML=n.map(function(e){var t=(e.categories||[]).map(function(e){return'<span class="search-cat">'+e+"</span>"}).join('<span class="search-cat-sep">/</span>');return'<a href="'+e.url+'" class="search-result-item"><div class="search-result-title">'+e.title+'</div><div class="search-result-meta">'+e.date+(t?" &middot; "+t:"")+"</div></a>"}).join(""),searchResults.classList.add("active")}),document.addEventListener("click",function(e){e.target.closest(".search-wrapper")||(searchResults.classList.remove("active"),document.body.classList.contains("mobile-search-active")&&!e.target.closest(".mobile-search-btn")&&closeMobileSearch())}),searchInput.addEventListener("focus",function(){searchInput.value.trim()&&searchResults.classList.add("active")}))</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js></script></body></html>

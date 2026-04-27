@@ -1,0 +1,180 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 8. Private Docker RegistryとID/PWの設定 | Lemon Blog</title><meta name=description content="色々なことをやっています。ブログ記事は、自分がやったことを忘れないために書くことが多いです(..)"><link rel=icon href=https://cdn.lemondouble.com/homepage/favicon.ico><link rel=canonical href=https://blog.lemondouble.com/ja/p/be354d4b5f50a3ee/><link rel=alternate hreflang=ko href=https://blog.lemondouble.com/p/be354d4b5f50a3ee/><link rel=alternate hreflang=en href=https://blog.lemondouble.com/en/p/be354d4b5f50a3ee/><link rel=alternate hreflang=ja href=https://blog.lemondouble.com/ja/p/be354d4b5f50a3ee/><link rel=alternate hreflang=zh-cn href=https://blog.lemondouble.com/zh-cn/p/be354d4b5f50a3ee/><link rel=alternate hreflang=zh-tw href=https://blog.lemondouble.com/zh-tw/p/be354d4b5f50a3ee/><link rel=alternate hreflang=x-default href=https://blog.lemondouble.com/p/be354d4b5f50a3ee/><link href=https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css rel=stylesheet><link href=https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css rel=stylesheet><meta property="og:title" content="自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 8. Private Docker RegistryとID/PWの設定"><meta property="og:description" content="色々なことをやっています。ブログ記事は、自分がやったことを忘れないために書くことが多いです(..)"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.lemondouble.com/ja/p/be354d4b5f50a3ee/"><meta property="og:site_name" content="Lemon Blog"><meta property="og:locale" content="ja_JP"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:image" content="https://blog.lemondouble.com/p/be354d4b5f50a3ee/cover.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 8. Private Docker RegistryとID/PWの設定"><meta name=twitter:description content="色々なことをやっています。ブログ記事は、自分がやったことを忘れないために書くことが多いです(..)"><meta name=twitter:image content="https://blog.lemondouble.com/p/be354d4b5f50a3ee/cover.png"><link rel=stylesheet href=/css/8bit.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-dracula.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css><link rel=stylesheet href=/css/code-block.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-9C6YX68EBM"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9C6YX68EBM")</script><meta name=generator content="Hugo 0.159.2"></head><body><nav class=site-nav><div class=nav-inner><a href=/ja/ class=nav-logo><img src=/img/brand/lemon-logo.webp alt=Logo>
+<span>Lemon Blog</span></a><div class=nav-links><a href=/ja/ class=nav-link>ホーム</a>
+<a href=/ja/projects/ class=nav-link>プロジェクト</a>
+<a href=/ja/skills/ class=nav-link>スキル</a>
+<a href=https://lemondouble.com/ja target=_blank rel="noopener noreferrer" class=nav-link>プロフィール</a></div><div class=nav-actions><div class=search-wrapper id=searchWrapper><span class=search-icon><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+</span><input type=text class=search-input id=searchInput placeholder=検索... autocomplete=off>
+<button class=search-close-btn onclick=closeMobileSearch() aria-label=検索を閉じる>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class=search-results id=searchResults></div></div><button class=mobile-search-btn onclick=openMobileSearch() aria-label=検索を開く>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><div class=lang-switcher id=langSwitcher><button type=button class=lang-switcher-btn onclick=toggleLangSwitcher(event) aria-label=言語を選択 aria-haspopup=true aria-expanded=false>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3.0 014 10 15.3 15.3.0 01-4 10A15.3 15.3.0 018 12a15.3 15.3.0 014-10z"/></svg>
+<span class=lang-switcher-current>日本語</span>
+<svg class="lang-switcher-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class=lang-switcher-menu id=langSwitcherMenu role=menu><a href=/p/be354d4b5f50a3ee/ class=lang-switcher-item lang=ko role=menuitem>한국어
+</a><a href=/en/p/be354d4b5f50a3ee/ class=lang-switcher-item lang=en role=menuitem>English
+</a><a href=/ja/p/be354d4b5f50a3ee/ class="lang-switcher-item active" lang=ja role=menuitem>日本語
+</a><a href=/zh-cn/p/be354d4b5f50a3ee/ class=lang-switcher-item lang=zh-cn role=menuitem>简体中文
+</a><a href=/zh-tw/p/be354d4b5f50a3ee/ class=lang-switcher-item lang=zh-tw role=menuitem>繁體中文</a></div></div><button class=nav-menu-btn onclick=toggleMobileMenu() aria-label=メニューを開く>
+<svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button></div></div></nav><div class=mobile-menu id=mobileMenu><a href=/ja/ class=nav-link onclick=closeMobileMenu()>ホーム</a>
+<a href=/ja/projects/ class=nav-link onclick=closeMobileMenu()>プロジェクト</a>
+<a href=/ja/skills/ class=nav-link onclick=closeMobileMenu()>スキル</a>
+<a href=https://lemondouble.com/ja target=_blank rel="noopener noreferrer" class=nav-link onclick=closeMobileMenu()>プロフィール</a><div class=mobile-menu-lang><span class=mobile-menu-lang-label>言語を選択</span><div class=mobile-menu-lang-items><a href=/p/be354d4b5f50a3ee/ class=mobile-menu-lang-item lang=ko onclick=closeMobileMenu()>한국어</a>
+<a href=/en/p/be354d4b5f50a3ee/ class=mobile-menu-lang-item lang=en onclick=closeMobileMenu()>English</a>
+<a href=/ja/p/be354d4b5f50a3ee/ class="mobile-menu-lang-item active" lang=ja onclick=closeMobileMenu()>日本語</a>
+<a href=/zh-cn/p/be354d4b5f50a3ee/ class=mobile-menu-lang-item lang=zh-cn onclick=closeMobileMenu()>简体中文</a>
+<a href=/zh-tw/p/be354d4b5f50a3ee/ class=mobile-menu-lang-item lang=zh-tw onclick=closeMobileMenu()>繁體中文</a></div></div></div><div class=container><main class=site-main><div class="post-layout has-toc"><article class=post-single><header class=post-header><div class=post-cover><img src=/p/be354d4b5f50a3ee/cover_hu_be3ced555e93501e.png alt="自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 8. Private Docker RegistryとID/PWの設定"></div><div class=post-header-content><div class=post-categories><a href=/ja/categories/k8s/ class=category-tag>K8S</a>
+<a href=/ja/categories/k3s/ class=category-tag>K3S</a>
+<a href=/ja/categories/raspberry-pi/ class=category-tag>Raspberry Pi</a></div><h1 class=post-title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 8. Private Docker RegistryとID/PWの設定</h1><div class=post-meta><time>2023.12.10</time>
+<span class=meta-sep>&#8226;</span>
+<span>4 min read</span></div></div></header><div class=post-content><p><em>注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。</em></p><h3 id=1-はじめに>1. はじめに</h3><p>せっかくインフラを整えたので、Private Docker Registryも自前で作ってみましょう。</p><p>私の場合は、このクラスタ上に個人サーバーを別途立てて運用しているので、それらのコンテナを管理するためにPrivate Registryを利用しています。</p><p>Dockerhubに課金しても構わない方や、Public Imageで十分な方は、本ガイドに従う必要はありません。</p><p>Private Repoを使うので、ID/Passwordの設定も同時に進めていきます！</p><h3 id=2-インストール>2. インストール</h3><p>今回もArgoCDでサクッとインストールしましょう！</p><p><code>modules/docker-registry-system/pvc.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: longhorn-docker-registry-pvc
+  namespace: docker-registry-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn-ssd
+  resources:
+    requests:
+      storage: 300Gi</code></pre></div><p>私の場合はMLサーバーを運用していてイメージサイズが大きいので、余裕を持って300Gi程度割り当てていますが、必要に応じて調整してください。</p><p><code>modules/docker-registry-system/service.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: v1
+kind: Service
+metadata:
+  name: registry-service
+  namespace: docker-registry-system
+spec:
+  selector:
+    app: registry
+  type: LoadBalancer
+  ports:
+    - name: docker-port
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
+  loadBalancerIP: 192.168.0.202</code></pre></div><p><code>modules/docker-registry-system/deployment.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry
+  namespace: docker-registry-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry
+  template:
+    metadata:
+      labels:
+        app: registry
+        name: registry
+    spec:
+      nodeSelector:
+        node-type: worker
+      containers:
+      - name: registry
+        image: registry:2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: REGISTRY_HTTP_ADDR
+          value: 0.0.0.0:5000
+        - name: REGISTRY_AUTH
+          value: htpasswd
+        - name: REGISTRY_AUTH_HTPASSWD_REALM
+          value: docker-registry
+        - name: REGISTRY_AUTH_HTPASSWD_PATH
+          value: /auth/registry.password
+        - name: REGISTRY_STORAGE_DELETE_ENABLED
+          value: &#34;true&#34;
+        volumeMounts:
+        - name: lv-storage
+          mountPath: /var/lib/registry
+          subPath: registry
+        - name: docker-registry-account-htpasswd
+          mountPath: /auth
+          readOnly: true
+      volumes:
+        - name: lv-storage
+          persistentVolumeClaim:
+            claimName: longhorn-docker-registry-pvc
+        - name: docker-registry-account-htpasswd
+          secret:
+            secretName: docker-registry-account-htpasswd</code></pre></div><p>docker-registry-account-htpasswdというSecretを通じて、Registryで使用するID/Passwordを指定します。詳細は後述します。</p><p><code>modules/docker-registry-system/sealed-docker-registry-account-htpasswd.yaml</code></p><p>Secretsの設定は少々複雑です。Step By Stepで進めていきましょう！</p><ol><li>Control Nodeで<code>htpasswd -Bbn &lt;id> &lt;password></code>を実行し、Docker Registryで使うid/password文字列を取得します。</li><li>7-1で構築したkubeseal-webguiを使って、そのSecretを暗号化します。
+<img src=/p/be354d4b5f50a3ee/image.png alt=例></li><li>暗号化されたSecretをsealed-docker-registry-account-htpasswd.yamlに貼り付けます。</li></ol><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: docker-registry-account-htpasswd
+  namespace: docker-registry-system
+  annotations: {}
+spec:
+  encryptedData: 
+    registry.password: dfadf...</code></pre></div><p><code>modules/docker-registry-system/ingress.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: docker-registry-ingress
+  namespace: docker-registry-system
+spec:
+  tls:
+    certResolver: le
+  routes:
+    - kind: Rule
+      match: Host(`&lt;使用するsubdomain&gt;`)
+      services:
+        - name: registry-service
+          port: 5000</code></pre></div><h3 id=3-動作確認>3. 動作確認</h3><p>正常に動作することが確認できたらデプロイします！</p><p>デプロイが完了したら、id/passwordで正常にログインできるか確認します。</p><p>dockerがインストールされている環境のターミナルで、以下を実行します。</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>shell</span></div><pre class=line-numbers><code class=language-shell>docker login &lt;my-registry.lemon.com&gt;</code></pre></div><p>その後id/passwordを入力し、正常にログインできるか確認します。</p><h3 id=4-private-registryからイメージを取得する方法>4. Private Registryからイメージを取得する方法</h3><p>ID/Passwordが必要なPrivate Registryからイメージをpullする方法を知っておく必要がありますね。そうしないと、せっかくpushしたイメージが使えませんからね。</p><p>私が使っている方法を一旦共有します。もっとスマートなやり方がありそうなので、ご存知の方はぜひ教えてください！</p><p>例えばauth-server-systemというnamespaceで使う場合：</p><ol><li><code>kubectl create secret docker-registry regcred --docker-server=&lt;your-registry-server> --docker-username=&lt;your-name> --docker-password=&lt;your-pword> --docker-email=&lt;your-email></code>を使って、default Namespaceにregcredというsecretを作成します。</li><li><code>kubectl get secret regcred --output=yaml > secret.yaml</code>でsecret.yamlにsecret情報を保存します。このSecretはどこかにバックアップしておきます。</li><li><code>kubectl delete secret regcred</code>を実行して、default namespaceに作成したsecretを削除します。</li><li>その後、2で保存したSecretのNamespaceを、使用したいnamespaceに変更します（例：auth-server-system）。</li></ol><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: v1
+data:
+  .dockerconfigjson: ddfadf...
+kind: Secret
+metadata:
+  name: regcred
+  namespace: auth-server-system # 毎回ここを変更
+type: kubernetes.io/dockerconfigjson</code></pre></div><ol start=5><li>その後<code>cat secret.yaml | kubeseal --controller-namespace=sealed-secrets-system --controller-name=sealed-secrets -oyaml > sealed-regcred.yaml</code>コマンドでSealed Secretを生成します。</li><li>Sealed regcredをデプロイ時に一緒にデプロイし、Deploymentに以下のようにImagePullSecretを追加します。</li></ol><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-server
+  namespace: auth-server-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-server
+  template:
+    metadata:
+      labels:
+        app: auth-server
+        name: auth-server
+    spec:
+      nodeSelector:
+        node-type: worker
+      containers:
+        - name: auth-server
+          image: registry.lemon.com/auth_server_repository:2023.12.10.1
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+      imagePullSecrets:
+        - name: regcred # これを追加</code></pre></div><h3 id=5-おわりに>5. おわりに</h3><p>おめでとうございます！これでPrivate Docker Registryの構築が完了し、</p><p>Id/Passwordで自分のイメージを安全に守れるようになりました！</p><p>次回はWeb UIを通じてイメージを管理する方法と、Docker GCの方法についてご紹介します。</p></div><div class=post-tags><a href=/ja/tags/k8s/ class=tag-link>#K8S</a>
+<a href=/ja/tags/k3s/ class=tag-link>#K3S</a>
+<a href=/ja/tags/raspberry-pi/ class=tag-link>#Raspberry Pi</a>
+<a href=/ja/tags/docker-registry/ class=tag-link>#Docker Registry</a>
+<a href=/ja/tags/%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%83%AC%E3%82%B8%E3%82%B9%E3%83%88%E3%83%AA/ class=tag-link>#コンテナレジストリ</a>
+<a href=/ja/tags/longhorn/ class=tag-link>#Longhorn</a></div><div class=post-license><p>&copy; 本記事は CC BY-NC-SA 4.0 の下で公開されています。</p></div><section class=post-comments><h3 class=comments-title>Comments</h3><script src=https://giscus.app/client.js data-repo=LemonDouble/LemonDouble.github.io-comments data-repo-id=R_kgDOI0UkDA data-category=Comments data-category-id=DIC_kwDOI0UkDM4CcIeY data-mapping=pathname data-reactions-enabled=1 data-emit-metadata=0 data-theme=dark crossorigin=anonymous async></script></section></article><aside class=toc-sidebar><a href=/ja/ class=toc-back-btn onclick="return tocGoBack(event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+<span>前のページへ</span></a><nav class=toc-sidebar-nav><h4 class=toc-sidebar-title>目次</h4><nav id=TableOfContents><ul><li><ul><li><a href=#1-はじめに>1. はじめに</a></li><li><a href=#2-インストール>2. インストール</a></li><li><a href=#3-動作確認>3. 動作確認</a></li><li><a href=#4-private-registryからイメージを取得する方法>4. Private Registryからイメージを取得する方法</a></li><li><a href=#5-おわりに>5. おわりに</a></li></ul></li></ul></nav></nav></aside></div><script>function tocGoBack(e){var t=document.referrer&&document.referrer.indexOf(window.location.origin)===0;return!(t&&window.history.length>1)||(e.preventDefault(),window.history.back(),!1)}(function(){var e,t,o,i,s=document.querySelector(".toc-sidebar-nav");if(!s)return;if(o=s.querySelectorAll("a"),!o.length)return;if(e=[],o.forEach(function(t){var s=decodeURIComponent(t.getAttribute("href").slice(1)),n=document.getElementById(s);n&&e.push({el:n,link:t})}),!e.length)return;t=null;function n(e){if(t===e)return;t&&t.classList.remove("active"),e.classList.add("active"),t=e;var i=s,n=e.getBoundingClientRect(),o=i.getBoundingClientRect();(n.top<o.top||n.bottom>o.bottom)&&e.scrollIntoView({block:"nearest",behavior:"smooth"})}i=new IntersectionObserver(function(t){var s,o,i,a,r,c,l=[];t.forEach(function(t){var n=e.find(function(e){return e.el===t.target});n&&(n.isIntersecting=t.isIntersecting)});for(s=0;s<e.length;s++)if(e[s].isIntersecting){n(e[s].link);return}for(c=window.scrollY||window.pageYOffset,a=100,i=null,o=0;o<e.length;o++)r=e[o].el.getBoundingClientRect(),r.top<a&&(i=e[o]);i&&n(i.link)},{rootMargin:"-80px 0px -60% 0px",threshold:0}),e.forEach(function(e){e.isIntersecting=!1,i.observe(e.el)}),setTimeout(function(){var t,s,o,i,a=window.scrollY||window.pageYOffset;if(a<100)n(e[0].link);else{for(o=100,s=null,t=0;t<e.length;t++)i=e[t].el.getBoundingClientRect(),i.top<o&&(s=e[t]);n(s?s.link:e[0].link)}},100)})()</script></main></div><footer class=site-footer><div class=footer-content><div class=footer-links><a href=https://github.com/LemonDouble target=_blank rel=noopener>GitHub</a>
+<a href=https://twitter.com/_lemon_berry_ target=_blank rel=noopener>Twitter</a>
+<a href=mailto:contact@lemondouble.com>Email</a>
+<a href=https://sns.lemondouble.com/@lemondouble target=_blank rel=noopener>Misskey</a></div><p class=footer-copy>&copy; 2022-2026 LemonDouble &bull; Powered by Hugo</p><p class=footer-brand>LEMON BLOG</p></div></footer><script>function toggleMobileMenu(){var e=document.getElementById("mobileMenu");e.classList.toggle("active")}function closeMobileMenu(){document.getElementById("mobileMenu").classList.remove("active")}function openMobileSearch(){document.body.classList.add("mobile-search-active"),closeMobileMenu(),setTimeout(function(){var e=document.getElementById("searchInput");e&&e.focus()},50)}function closeMobileSearch(){document.body.classList.remove("mobile-search-active");var e,t=document.getElementById("searchInput");t&&(t.value="",t.blur()),e=document.getElementById("searchResults"),e&&(e.classList.remove("active"),e.innerHTML="")}document.addEventListener("keydown",function(e){e.key==="Escape"&&document.body.classList.contains("mobile-search-active")&&closeMobileSearch()});function pageJump(e,t){if(e.key==="Escape")return t.blur(),!1;if(e.key!=="Enter")return!0;e.preventDefault();var s,o,n=parseInt(t.value,10),i=parseInt(t.dataset.total,10);return!n||n<1||n>i?(t.value=t.defaultValue,!1):(s=t.dataset.base||"/",o=n===1?s:s.replace(/\/$/,"")+"/page/"+n+"/",window.location.href=o,!1)}function pageJumpFocus(e){e.value=""}function pageJumpReset(e){e.value=e.defaultValue}function pageJumpSanitize(e){var t=e.value.replace(/\D/g,"");t!==e.value&&(e.value=t)}function toggleLangSwitcher(e){e&&e.stopPropagation();var s,t=document.getElementById("langSwitcher"),n=t&&t.querySelector(".lang-switcher-btn");if(!t||!n)return;s=t.classList.toggle("open"),n.setAttribute("aria-expanded",s?"true":"false")}document.addEventListener("click",function(e){var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&!e.target.closest("#langSwitcher")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))}),document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))})</script><script>var searchInput,searchResults,searchIndex=null;(function(){fetch("/ja/index.json").then(function(e){return e.json()}).then(function(e){searchIndex=e}).catch(function(){})})(),searchInput=document.getElementById("searchInput"),searchResults=document.getElementById("searchResults"),searchInput&&(searchInput.addEventListener("input",function(e){var n,t=e.target.value.trim().toLowerCase();if(!t||!searchIndex){searchResults.classList.remove("active"),searchResults.innerHTML="";return}if(n=searchIndex.filter(function(e){return e.title.toLowerCase().includes(t)||e.summary.toLowerCase().includes(t)||(e.categories||[]).some(function(e){return e.toLowerCase().includes(t)})||(e.tags||[]).some(function(e){return e.toLowerCase().includes(t)})}).slice(0,10),n.length===0){searchResults.innerHTML='<div class="search-empty">検索結果がありません。</div>',searchResults.classList.add("active");return}searchResults.innerHTML=n.map(function(e){var t=(e.categories||[]).map(function(e){return'<span class="search-cat">'+e+"</span>"}).join('<span class="search-cat-sep">/</span>');return'<a href="'+e.url+'" class="search-result-item"><div class="search-result-title">'+e.title+'</div><div class="search-result-meta">'+e.date+(t?" &middot; "+t:"")+"</div></a>"}).join(""),searchResults.classList.add("active")}),document.addEventListener("click",function(e){e.target.closest(".search-wrapper")||(searchResults.classList.remove("active"),document.body.classList.contains("mobile-search-active")&&!e.target.closest(".mobile-search-btn")&&closeMobileSearch())}),searchInput.addEventListener("focus",function(){searchInput.value.trim()&&searchResults.classList.add("active")}))</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js></script></body></html>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Lemon Blog</title><link>https://blog.lemondouble.com/ja/</link><description>Recent content on Lemon Blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 26 Apr 2026 23:23:19 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/ja/index.xml" rel="self" type="application/rss+xml"/><item><title>ライブラリとしてパッケージングする際に考えたこと — hayakoe Part 4</title><link>https://blog.lemondouble.com/ja/p/b7791b4f6c0818da/</link><pubDate>Sun, 26 Apr 2026 23:23:19 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/b7791b4f6c0818da/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;hayakoe シリーズ 4 本目、最後の本編です。前回の記事は &lt;a href="https://blog.lemondouble.com/ja/p/9a99dd816456c397/"
+&gt;最後の 1% まで — torch.compile、バッチ推論、Pause 復元、ARM64 - hayakoe Part 3&lt;/a&gt;
+ でご覧いただけます。&lt;/p&gt;</description></item><item><title>最後の1%まで — torch.compile、バッチ推論、Pause復元、ARM64 - hayakoe Part 3</title><link>https://blog.lemondouble.com/ja/p/9a99dd816456c397/</link><pubDate>Sun, 26 Apr 2026 19:29:25 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/9a99dd816456c397/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;hayakoeシリーズの3本目の本編です。前回の記事は&lt;a href="https://blog.lemondouble.com/ja/p/137243ede98030f1/"
+&gt;メモリは半分に、速度は1.5倍速くした話 - hayakoe Part 2&lt;/a&gt;
+からご覧いただけます。&lt;/p&gt;</description></item><item><title>メモリは半分に、速度は1.5倍速く - hayakoe Part 2</title><link>https://blog.lemondouble.com/ja/p/137243ede98030f1/</link><pubDate>Sun, 26 Apr 2026 17:40:46 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/137243ede98030f1/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;hayakoeシリーズの2本目の本編です。前回の記事は&lt;a href="https://blog.lemondouble.com/ja/p/4c2a6225a737f531/"
+&gt;hayakoe - 2年ぶりにTTSモデルをいろいろ見てまたVITSに戻ってきた話 - Part 1&lt;/a&gt;
+でご覧いただけます。&lt;/p&gt;</description></item><item><title>hayakoe — 2年ぶりにTTSモデルをいろいろ見て、結局またVITSに落ち着いた話 - Part 1</title><link>https://blog.lemondouble.com/ja/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/4c2a6225a737f531/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;hayakoe シリーズの最初の本編です。導入記事は &lt;a href="https://blog.lemondouble.com/ja/p/ea78fbb9b78c38ac/"
+&gt;hayakoe — 使いやすくて速い TTS ライブラリを作る — 序論&lt;/a&gt;
+ からどうぞ。&lt;/p&gt;</description></item><item><title>hayakoe - 使いやすくて速いTTSライブラリを作る - 序論</title><link>https://blog.lemondouble.com/ja/p/ea78fbb9b78c38ac/</link><pubDate>Sun, 26 Apr 2026 11:31:45 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/ea78fbb9b78c38ac/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;2年ほど前にBert-VITS2という日本語TTSライブラリを知り、学習方法を一度まとめた記事を書いたことがあります。&lt;/p&gt;</description></item><item><title>スキル</title><link>https://blog.lemondouble.com/ja/skills/</link><pubDate>Sat, 11 Apr 2026 00:00:00 +0000</pubDate><guid>https://blog.lemondouble.com/ja/skills/</guid><description/></item><item><title>個人サーバーのPythonバージョンを上げたかったのに更新が止まったprebuilt wheelパッケージをフォークしてPython追加バージョンに対応させた話 (Pyopenjtalk)</title><link>https://blog.lemondouble.com/ja/p/pyopenjtalk-prebuilt/</link><pubDate>Sun, 05 Apr 2026 21:22:00 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/pyopenjtalk-prebuilt/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;以前 &lt;a href="../make-vits2-tts/"
+&gt;Bert-VITS2でTTSを作る記事&lt;/a&gt;
+ を書いたことがあるのですが、そのとき作っておいたTTSをかなり便利に使っていました。ところが…Bert-VITS2のリポジトリの開発が止まってしまいました。&lt;/p&gt;</description></item><item><title>AliExpressで買ったTVバックライトをHome Assistantで使いたくてBluetoothプロトコルを解析した話</title><link>https://blog.lemondouble.com/ja/p/ble-controller-dev-story/</link><pubDate>Sun, 05 Apr 2026 18:07:00 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/ble-controller-dev-story/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/ble-controller-dev-story/backlight.webp" alt="AliExpress商品画像"&gt;&lt;/p&gt;
+&lt;p&gt;AliExpressでTVバックライトを一つ買いました。&lt;/p&gt;
+&lt;p&gt;実は最初は連動するかどうかなんて気にしていなくて..とりあえずTVの後ろが光ってわずか2万5千ウォン&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;？買わない理由がないでしょう？&lt;/p&gt;</description></item><item><title>プロジェクト</title><link>https://blog.lemondouble.com/ja/projects/</link><pubDate>Sat, 04 Apr 2026 00:00:00 +0000</pubDate><guid>https://blog.lemondouble.com/ja/projects/</guid><description/></item><item><title>AWS SAA 当日申込み・受験合格レビュー</title><link>https://blog.lemondouble.com/ja/p/d3c7a9de0a536286/</link><pubDate>Sun, 04 Aug 2024 20:11:48 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/d3c7a9de0a536286/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;AWSには実践的な認定資格があります。(&lt;a href="https://aws.amazon.com/certification/exams/" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+)&lt;/p&gt;
+&lt;p&gt;「いつか取らなきゃ…取らなきゃ…」と先延ばしにしていましたが、このままだと一生取れない気がして、今日は予定もないし当日申込みでオンライン試験を受けてみました。&lt;/p&gt;</description></item><item><title>音声でコントロールするAIスマートホーム自慢の記事</title><link>https://blog.lemondouble.com/ja/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/30f1bf25ad8b594a/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="作ったスマートホームのプレビュー日本語音声注意"&gt;作ったスマートホームのプレビュー（日本語音声注意）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistantとは"&gt;1. HomeAssistantとは？&lt;/h3&gt;
+&lt;p&gt;以前にも&lt;a href="https://blog.lemondouble.com/ja/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/"
+&gt;記事を書いたことがある&lt;/a&gt;
+、HomeAssistantというプラットフォームから始まります。&lt;/p&gt;</description></item><item><title>Bert-VITS2で自分だけのTTSを作る</title><link>https://blog.lemondouble.com/ja/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/9c06f7dc324b5986/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="これから作るオーディオを聴いてみよう日本語"&gt;これから作るオーディオを聴いてみよう（日本語）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-ttsとは"&gt;1. TTSとは？&lt;/h3&gt;
+&lt;p&gt;Text-To-Speechは文字通り、テキストを音声データに変換するソフトウェアのことです。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスタを使ってデータセンターを構築する - 10-2. Forward AuthとOAuth2を利用したSSO実装</title><link>https://blog.lemondouble.com/ja/p/a63eb8199e2089b6/</link><pubDate>Sun, 07 Jan 2024 16:05:04 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/a63eb8199e2089b6/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-forward-auth"&gt;1. Forward Auth?&lt;/h3&gt;
+&lt;p&gt;認証ロジックが必要なとき、私たちはどこで認証ロジックを実装できるでしょうか？&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 10-1. Basic Authで内部用サービスを保護する</title><link>https://blog.lemondouble.com/ja/p/771435ba12d3f38c/</link><pubDate>Sun, 07 Jan 2024 12:41:24 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/771435ba12d3f38c/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;以下の内容は、Sealed Secretsの&lt;a href="https://lemondouble.github.io/ja/p/%EC%A7%91%EC%97%90%EC%84%9C-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0-%EC%B0%A8%EB%A6%AC%EA%B8%B0-7.-sealed-secrets%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%B0%80-%EA%B4%80%EB%A6%AC--traefik-basic-auth-%EC%84%A4%EC%A0%95/#3-sealed-secrets-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-basic-auth-%EB%93%B1%EB%A1%9D%ED%95%B4%EB%B3%B4%EA%B8%B0" target="_blank" rel="noopener noreferrer"
+&gt;セクション3&lt;/a&gt;
+と重なる部分が多いです。すでにそのセクションを進めており、Basic Authについてよくご存じであればスキップしても構いません。&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 9. CloudNativePGでKubernetes上のデータベースを運用する</title><link>https://blog.lemondouble.com/ja/p/a4ded8cced5f045c/</link><pubDate>Tue, 12 Dec 2023 22:09:10 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/a4ded8cced5f045c/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="序論"&gt;序論&lt;/h3&gt;
+&lt;p&gt;データベースは管理が難しいです。&lt;/p&gt;
+&lt;p&gt;他のPodと違って、データの保管・バックアップ・管理にも気を使わなければなりませんし、フェイルオーバーやパフォーマンスにも注意を払う必要があります。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスターでデータセンターを構築する - 8-1. Docker Registry UIの設定とRegistry GCの使い方</title><link>https://blog.lemondouble.com/ja/p/a68cc3e1f5e8a95b/</link><pubDate>Sun, 10 Dec 2023 11:39:46 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/a68cc3e1f5e8a95b/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-private-registryは便利だけど管理がとても面倒です"&gt;1. Private Registryは便利だけど、管理がとても面倒です！&lt;/h3&gt;
+&lt;p&gt;CLIが大好きな方もいらっしゃいますが、私はコマンドを覚えるのが本当に苦手なので、GUIと記録を好みます。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 8. Private Docker RegistryとID/PWの設定</title><link>https://blog.lemondouble.com/ja/p/be354d4b5f50a3ee/</link><pubDate>Sun, 10 Dec 2023 10:08:50 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/be354d4b5f50a3ee/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-はじめに"&gt;1. はじめに&lt;/h3&gt;
+&lt;p&gt;せっかくインフラを整えたので、Private Docker Registryも自前で作ってみましょう。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスタによるデータセンター構築 - 7-1. Web UIを使って簡単にSealed Secretsを作成する</title><link>https://blog.lemondouble.com/ja/p/567b4c177bdb8401/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/567b4c177bdb8401/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-はじめに"&gt;1. はじめに&lt;/h3&gt;
+&lt;p&gt;Sealed Secretsは全体的に良いのですが、一つ問題があります。毎回設定するたびにSecrets.yamlを作成し、CLIでSealed Secretsに変換してから、Gitに追加するのが非常に面倒だという点です。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスタによるデータセンター構築 - 7. Sealed Secretsによる秘密管理 + Traefik Basic Auth設定</title><link>https://blog.lemondouble.com/ja/p/1379182f14a62e9b/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/1379182f14a62e9b/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-sealed-secretsとは"&gt;1. Sealed Secretsとは?&lt;/h3&gt;
+&lt;p&gt;私たちは今GitOpsを行っています。つまり、Gitにクラスタに関連するすべての設定をアップロードしています。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 6. 分散ストレージの追加とLonghornでの提供</title><link>https://blog.lemondouble.com/ja/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/615befc538a81902/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-新規ディスクの追加とマウント"&gt;1. 新規ディスクの追加とマウント&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;この内容は一般的なSSD / HDDのマウントと同じです！うまくいかない場合は、&lt;code&gt;Ubuntu ハードディスク マウント&lt;/code&gt;などで検索して進めても問題ありません。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;SSDまたはHDDをRaspberry Piに接続します。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスターを使ってデータセンターを作ってみる - 5. ArgoCD GitOps設定とLonghornインストール</title><link>https://blog.lemondouble.com/ja/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/107eed6a453d6238/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-gitopsを始める"&gt;1. GitOpsを始める&lt;/h3&gt;
+&lt;p&gt;ArgoCDをインストールしましたので、リポジトリ構造を整理してみましょう。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタによるデータセンター構築 - 4. Traefik HTTPS認証とArgoCD設定</title><link>https://blog.lemondouble.com/ja/p/f10efbc0bcc4c537/</link><pubDate>Wed, 06 Dec 2023 05:21:00 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/f10efbc0bcc4c537/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;もし、システムをGitを通じて管理できたらどうでしょうか？
+必要なコンテナの種類、数などをすべてGitに宣言し、Gitに宣言されたとおりにクラスタが運用されたら、とても便利ではないでしょうか？&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを作る - 3. Helmのインストールと MetalLB によるロードバランサーの設定</title><link>https://blog.lemondouble.com/ja/p/06a98c88458a5fb7/</link><pubDate>Wed, 06 Dec 2023 05:20:00 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/06a98c88458a5fb7/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="helmのインストール"&gt;Helmのインストール&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;参考記事：&lt;a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer"
+&gt;Installing Helm&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;次のコマンドを順番に入力してHelmをインストールします。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスタによるデータセンター構築 - 2. クラスタ初期設定編</title><link>https://blog.lemondouble.com/ja/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/f4efced2e8d5b1d8/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="ハードウェア"&gt;ハードウェア&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="ハードウェア構成図"&gt;&lt;/p&gt;
+&lt;p&gt;上の図を参考にハードウェアを構成します。&lt;/p&gt;
+&lt;p&gt;普段からPCを使っているご家庭なら、ルーターと普段使いのデスクトップはすでにあると思いますので、図のうち緑色の部分だけを追加すれば大丈夫です。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスターを使ってデータセンターを構築する - 1. ハードウェア編</title><link>https://blog.lemondouble.com/ja/p/20ae99fa945edf10/</link><pubDate>Sun, 03 Dec 2023 14:54:33 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/20ae99fa945edf10/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最初の時間はハードウェアの時間です！簡単なものから少し複雑な話まで、サクサク始めていきましょう！&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスタを使ってデータセンターを構築する - 序論</title><link>https://blog.lemondouble.com/ja/p/d42387934c57aa25/</link><pubDate>Sun, 03 Dec 2023 13:24:05 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/d42387934c57aa25/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="初めてラズベリーパイクラスタを構築してからおおよそ300日が経ちました"&gt;初めてラズベリーパイクラスタを構築してから、おおよそ300日が経ちました。&lt;/h3&gt;
+&lt;p&gt;きっかけはそれほど大きなものではありませんでした。&lt;/p&gt;
+&lt;p&gt;私は毎朝&lt;a href="https://news.hada.io/" target="_blank" rel="noopener noreferrer"
+&gt;GeekNews&lt;/a&gt;
+&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;というニュースキュレーションサービスを見ながら出勤しているのですが、その中で&lt;a href="https://news.hada.io/topic?id=8306" target="_blank" rel="noopener noreferrer"
+&gt;Chick-Fil-A の Edge Computing 技術アーキテクチャ：Enterprise Restaurant Compute&lt;/a&gt;
+という記事が目に留まりました。&lt;/p&gt;</description></item><item><title>HomeAssistantでIoT、一緒にやってみませんか?</title><link>https://blog.lemondouble.com/ja/p/107dcfce6eca0dd7/</link><pubDate>Sun, 21 May 2023 09:40:47 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/107dcfce6eca0dd7/</guid><description>&lt;p&gt;&lt;em&gt;注:筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;IoTはなかなか面白いトピックなのですが、&lt;/p&gt;
+&lt;p&gt;入門の難易度が高く、あまり知られていないテーマなので、これで何ができるのかも広く知られていない気がします。&lt;/p&gt;</description></item><item><title>ChatGPTは常識問題をうまく解けるのか？（論文レビュー）</title><link>https://blog.lemondouble.com/ja/p/dedda5393e239315/</link><pubDate>Thu, 30 Mar 2023 19:15:11 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/dedda5393e239315/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最近、暇なときに論文を一つずつ読む趣味ができました。
+その中で、arxivで面白い論文を一つ読んだので、まとめて共有してみようと思います。&lt;/p&gt;</description></item><item><title>SDカードを3枚潰してブチギレた末に書く、Raspberry Pi USB Bootの設定方法</title><link>https://blog.lemondouble.com/ja/p/977ba9d70a2a7029/</link><pubDate>Sun, 29 Jan 2023 17:31:39 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/977ba9d70a2a7029/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Raspberry Piはすべてが素晴らしいのですが、SDカードからのブートが本当にイライラさせられることが多いです。&lt;/p&gt;</description></item><item><title>自分用にまとめるK8Sリソースまとめ</title><link>https://blog.lemondouble.com/ja/p/f13e7c85c56b2c7c/</link><pubDate>Thu, 26 Jan 2023 23:15:42 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/f13e7c85c56b2c7c/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; -o&lt;/code&gt; または &lt;code&gt;k describe pod &amp;lt;podname&amp;gt;&lt;/code&gt;：状態情報を詳細に確認&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k logs -f &amp;lt;podname&amp;gt; -c &amp;lt;container-name&amp;gt;&lt;/code&gt;：ログを確認&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; --show-lables&lt;/code&gt;：Label情報を確認&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-pod"&gt;1. Pod&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;1つ以上のContainerの集合&lt;/p&gt;</description></item><item><title>Fly.ioに載せやすいサービス (Uptime Kuma)</title><link>https://blog.lemondouble.com/ja/p/7da6be543113ac58/</link><pubDate>Sun, 22 Jan 2023 20:41:31 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/7da6be543113ac58/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;今回紹介するプロジェクトは、サーバーのUptimeを記録してくれるUptime Kumaというサービスです。&lt;/p&gt;</description></item><item><title>Private DNSとALBを使ってVPC外部からはアクセスできないAPIを作る</title><link>https://blog.lemondouble.com/ja/p/acf607c351652785/</link><pubDate>Sun, 22 Jan 2023 17:12:43 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/acf607c351652785/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;MSAサービスを作ると、サーバー間で非常に頻繁な通信が発生します。&lt;/p&gt;
+&lt;p&gt;例えば、(かなり簡略化した) 送金サービスがあると仮定してみましょう。&lt;/p&gt;</description></item><item><title>GitHub OIDCを使ってGitHub ActionsにAWS Keyを入れずにAWSリソースを利用する(無料)</title><link>https://blog.lemondouble.com/ja/p/github-oidc%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6github-actions%E3%81%ABaws-key%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9A%E3%81%ABaws%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E7%84%A1%E6%96%99/</link><pubDate>Sun, 22 Jan 2023 11:18:50 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/github-oidc%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6github-actions%E3%81%ABaws-key%E3%82%92%E5%85%A5%E3%82%8C%E3%81%9A%E3%81%ABaws%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E7%84%A1%E6%96%99/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;GitHub ActionsからAWSを利用する場合、通常は次のような手順を踏みます。&lt;/p&gt;</description></item><item><title>AWS SSOで会社で見ていたあの画面を自宅でも使う（無料）</title><link>https://blog.lemondouble.com/ja/p/1c9eaebbdee2ac98/</link><pubDate>Sat, 21 Jan 2023 16:17:06 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/1c9eaebbdee2ac98/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;会社や組織でAWSを使っていると、次のようなSSO（Single Sign On）ページからログインする画面を見たことがあると思います。&lt;/p&gt;</description></item><item><title>Raspberry Pi + Ubuntu 22.04にK3Sをインストールして使う</title><link>https://blog.lemondouble.com/ja/p/fe0cac9de367fc18/</link><pubDate>Wed, 18 Jan 2023 11:56:02 +0000</pubDate><guid>https://blog.lemondouble.com/ja/p/fe0cac9de367fc18/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最近とてもホットでありながら難しい技術がKubernetesだと思います。&lt;/p&gt;</description></item><item><title>自分用に残しておくRaspberry Piの初期セットアップ</title><link>https://blog.lemondouble.com/ja/p/088bdb572b7dc509/</link><pubDate>Wed, 18 Jan 2023 11:13:14 +0000</pubDate><guid>https://blog.lemondouble.com/ja/p/088bdb572b7dc509/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Raspberry Piや自宅サーバーを運用していると、意外と(?)サーバーを初期化しなければならない場面が多くあります。&lt;/p&gt;</description></item><item><title>自分用の Kotlin チートシート</title><link>https://blog.lemondouble.com/ja/p/f8a9d54607e901b4/</link><pubDate>Tue, 17 Jan 2023 14:24:20 +0000</pubDate><guid>https://blog.lemondouble.com/ja/p/f8a9d54607e901b4/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TIP：数値を書くとき &lt;code&gt;var number = 1_000L&lt;/code&gt; のように書けます&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-変数"&gt;1. 変数&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;val&lt;/code&gt; のコレクションでも要素は追加できます&lt;/li&gt;
+&lt;li&gt;primitive と reference type の区別はありませんが、実際の演算時には primitive type に変換されて演算されます&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="2-null-処理"&gt;2. Null 処理&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Safe Call（&lt;code&gt;?.&lt;/code&gt;）：null でなければ実行、null なら実行しない&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str: String? = &amp;#34;ABC&amp;#34;
+str.length // ERROR
+str?.length // OK&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Elvis 演算子（&lt;code&gt;?:&lt;/code&gt;）：左側の式が null なら右側の値を使う&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str: String? = &amp;#34;ABC&amp;#34;
+str?.length ?: 0 // str.length または 0 
+str?.length ?: throw IllegalArgumentException(&amp;#34;null이 들어왔습니다.&amp;#34;) // または例外を投げる
+str?.length ?: return 0 // Early return にも使えます&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;プラットフォーム型：Kotlin で Java コードを取り込んだとき
+&lt;ul&gt;
+&lt;li&gt;null、non-null どちらの型でも使えてしまう&lt;/li&gt;
+&lt;li&gt;可能な限り Java コードを直接確認するか、Kotlin でラップして使いましょう&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;// @Nullable, @NonNull があれば変換されますが、なければプラットフォーム型
+// java で 
+private final String name; &amp;lt;&amp;lt; アノテーションがない場合
+
+val name : String? = javaPerson.name // OK
+val name : String = javaPerson.name // OK&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id="3-type"&gt;3. Type&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;基本型変換：基本型同士は &lt;code&gt;toXX&lt;/code&gt; のような関数を使う&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val number1 : Int = 4
+val number2 : Long = number1.toLong()
+
+val number1 : Int? = 3 
+val number2 : Long = number1?.toLong() ?: 0L // nullable な変数は適宜処理&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;ユーザー定義型：スマートキャスト（Smart Cast）の活用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;fun printAgeIfPerson(obj: Any){
+	// is = Java の instanceof
+	if(obj is Person){
+			// スマートキャストされて obj の型は Person
+			println(obj.age)
+	}
+}
+
+// または
+// java の (Person) obj と同じ
+val person = obj as Person
+
+// !is, as? なども使えます
+// as? : 全体が null&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Any：Java の Object の役割 + Primitive Type の最上位も含む
+&lt;ul&gt;
+&lt;li&gt;null は含まれません。null も含めたい場合は &lt;code&gt;Any?&lt;/code&gt; を使う&lt;/li&gt;
+&lt;li&gt;equals, hashCode, toString が存在&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Unit：void に近いですが、Unit はそれ自体でジェネリクスの型引数として使えます&lt;/li&gt;
+&lt;li&gt;Nothing：関数が正常に終了しないことを示す&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;fun fail(message : String): Nothing{
+	throw IllegalArgumentException(message)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;String interpolation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val person = Person(name = &amp;#34;lemon&amp;#34;, age = 20)
+val log = &amp;#34;이름 : ${person.name}, 나이 : ${person.age}&amp;#34;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;String indexing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str = &amp;#34;ABC&amp;#34;
+// Java の str.get(0) の代わりに
+str[1] //ok&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id="4-演算子"&gt;4. 演算子&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Kotlin では &lt;code&gt;&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt;, &lt;code&gt;≥&lt;/code&gt;, &lt;code&gt;≤&lt;/code&gt; を使うと自動的に &lt;code&gt;compareTo&lt;/code&gt; が呼ばれます&lt;/p&gt;</description></item><item><title>Fly.ioの紹介とFly.ioにアップロードするのに適したサービスのおすすめ（VaultWarden）</title><link>https://blog.lemondouble.com/ja/p/740c42a214d8ce6b/</link><pubDate>Tue, 17 Jan 2023 14:03:50 +0000</pubDate><guid>https://blog.lemondouble.com/ja/p/740c42a214d8ce6b/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Fly.ioという会社は、Dockerイメージさえ用意すれば、簡単にDockerイメージを特定の国などにデプロイできる機能を提供しています。&lt;/p&gt;</description></item><item><title>3色LEDは内部がどのように構成されているのか？</title><link>https://blog.lemondouble.com/ja/p/141eb2dfe7f486bf/</link><pubDate>Tue, 17 Jan 2023 13:45:21 +0000</pubDate><guid>https://blog.lemondouble.com/ja/p/141eb2dfe7f486bf/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Arduinoをいじっていると、単純にLEDを点けたり消したりする&lt;/p&gt;
+&lt;p&gt;行為が思った以上に大きな原始的な喜びをもたらしてくれることに気づきます。&lt;/p&gt;</description></item><item><title>Lemon Toolbox 初ローンチの振り返り</title><link>https://blog.lemondouble.com/ja/p/8b50460f83230126/</link><pubDate>Sun, 27 Feb 2022 15:39:07 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/8b50460f83230126/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/8b50460f83230126/image-18.png" alt="Lemon Toolbox チャットボット"&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;こんなサービスを作った話です！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2024.06.30 追記：当時はまだ ChatGPT が登場する前で、こういったチャットボットサービスは珍しかったんです！&lt;/p&gt;</description></item></channel></rss>

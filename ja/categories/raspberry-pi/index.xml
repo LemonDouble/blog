@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Raspberry Pi on Lemon Blog</title><link>https://blog.lemondouble.com/ja/categories/raspberry-pi/</link><description>Recent content in Raspberry Pi on Lemon Blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Fri, 26 Jul 2024 22:07:33 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/ja/categories/raspberry-pi/index.xml" rel="self" type="application/rss+xml"/><item><title>音声でコントロールするAIスマートホーム自慢の記事</title><link>https://blog.lemondouble.com/ja/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/30f1bf25ad8b594a/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="作ったスマートホームのプレビュー日本語音声注意"&gt;作ったスマートホームのプレビュー（日本語音声注意）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistantとは"&gt;1. HomeAssistantとは？&lt;/h3&gt;
+&lt;p&gt;以前にも&lt;a href="https://blog.lemondouble.com/ja/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/"
+&gt;記事を書いたことがある&lt;/a&gt;
+、HomeAssistantというプラットフォームから始まります。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 10-1. Basic Authで内部用サービスを保護する</title><link>https://blog.lemondouble.com/ja/p/771435ba12d3f38c/</link><pubDate>Sun, 07 Jan 2024 12:41:24 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/771435ba12d3f38c/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;以下の内容は、Sealed Secretsの&lt;a href="https://lemondouble.github.io/ja/p/%EC%A7%91%EC%97%90%EC%84%9C-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0-%EC%B0%A8%EB%A6%AC%EA%B8%B0-7.-sealed-secrets%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%B0%80-%EA%B4%80%EB%A6%AC--traefik-basic-auth-%EC%84%A4%EC%A0%95/#3-sealed-secrets-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-basic-auth-%EB%93%B1%EB%A1%9D%ED%95%B4%EB%B3%B4%EA%B8%B0" target="_blank" rel="noopener noreferrer"
+&gt;セクション3&lt;/a&gt;
+と重なる部分が多いです。すでにそのセクションを進めており、Basic Authについてよくご存じであればスキップしても構いません。&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 9. CloudNativePGでKubernetes上のデータベースを運用する</title><link>https://blog.lemondouble.com/ja/p/a4ded8cced5f045c/</link><pubDate>Tue, 12 Dec 2023 22:09:10 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/a4ded8cced5f045c/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="序論"&gt;序論&lt;/h3&gt;
+&lt;p&gt;データベースは管理が難しいです。&lt;/p&gt;
+&lt;p&gt;他のPodと違って、データの保管・バックアップ・管理にも気を使わなければなりませんし、フェイルオーバーやパフォーマンスにも注意を払う必要があります。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 8. Private Docker RegistryとID/PWの設定</title><link>https://blog.lemondouble.com/ja/p/be354d4b5f50a3ee/</link><pubDate>Sun, 10 Dec 2023 10:08:50 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/be354d4b5f50a3ee/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-はじめに"&gt;1. はじめに&lt;/h3&gt;
+&lt;p&gt;せっかくインフラを整えたので、Private Docker Registryも自前で作ってみましょう。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 6. 分散ストレージの追加とLonghornでの提供</title><link>https://blog.lemondouble.com/ja/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/615befc538a81902/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-新規ディスクの追加とマウント"&gt;1. 新規ディスクの追加とマウント&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;この内容は一般的なSSD / HDDのマウントと同じです！うまくいかない場合は、&lt;code&gt;Ubuntu ハードディスク マウント&lt;/code&gt;などで検索して進めても問題ありません。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;SSDまたはHDDをRaspberry Piに接続します。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスターを使ってデータセンターを作ってみる - 5. ArgoCD GitOps設定とLonghornインストール</title><link>https://blog.lemondouble.com/ja/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/107eed6a453d6238/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-gitopsを始める"&gt;1. GitOpsを始める&lt;/h3&gt;
+&lt;p&gt;ArgoCDをインストールしましたので、リポジトリ構造を整理してみましょう。&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタによるデータセンター構築 - 4. Traefik HTTPS認証とArgoCD設定</title><link>https://blog.lemondouble.com/ja/p/f10efbc0bcc4c537/</link><pubDate>Wed, 06 Dec 2023 05:21:00 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/f10efbc0bcc4c537/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;もし、システムをGitを通じて管理できたらどうでしょうか？
+必要なコンテナの種類、数などをすべてGitに宣言し、Gitに宣言されたとおりにクラスタが運用されたら、とても便利ではないでしょうか？&lt;/p&gt;</description></item><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを作る - 3. Helmのインストールと MetalLB によるロードバランサーの設定</title><link>https://blog.lemondouble.com/ja/p/06a98c88458a5fb7/</link><pubDate>Wed, 06 Dec 2023 05:20:00 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/06a98c88458a5fb7/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="helmのインストール"&gt;Helmのインストール&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;参考記事：&lt;a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer"
+&gt;Installing Helm&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;次のコマンドを順番に入力してHelmをインストールします。&lt;/p&gt;</description></item><item><title>HomeAssistantでIoT、一緒にやってみませんか?</title><link>https://blog.lemondouble.com/ja/p/107dcfce6eca0dd7/</link><pubDate>Sun, 21 May 2023 09:40:47 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/107dcfce6eca0dd7/</guid><description>&lt;p&gt;&lt;em&gt;注:筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;IoTはなかなか面白いトピックなのですが、&lt;/p&gt;
+&lt;p&gt;入門の難易度が高く、あまり知られていないテーマなので、これで何ができるのかも広く知られていない気がします。&lt;/p&gt;</description></item><item><title>SDカードを3枚潰してブチギレた末に書く、Raspberry Pi USB Bootの設定方法</title><link>https://blog.lemondouble.com/ja/p/977ba9d70a2a7029/</link><pubDate>Sun, 29 Jan 2023 17:31:39 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/977ba9d70a2a7029/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Raspberry Piはすべてが素晴らしいのですが、SDカードからのブートが本当にイライラさせられることが多いです。&lt;/p&gt;</description></item><item><title>Raspberry Pi + Ubuntu 22.04にK3Sをインストールして使う</title><link>https://blog.lemondouble.com/ja/p/fe0cac9de367fc18/</link><pubDate>Wed, 18 Jan 2023 11:56:02 +0000</pubDate><guid>https://blog.lemondouble.com/ja/p/fe0cac9de367fc18/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最近とてもホットでありながら難しい技術がKubernetesだと思います。&lt;/p&gt;</description></item><item><title>自分用に残しておくRaspberry Piの初期セットアップ</title><link>https://blog.lemondouble.com/ja/p/088bdb572b7dc509/</link><pubDate>Wed, 18 Jan 2023 11:13:14 +0000</pubDate><guid>https://blog.lemondouble.com/ja/p/088bdb572b7dc509/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Raspberry Piや自宅サーバーを運用していると、意外と(?)サーバーを初期化しなければならない場面が多くあります。&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Kotlin on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/kotlin/</link><description>Recent content in Kotlin on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 17 Jan 2023 14:24:20 +0000</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/kotlin/index.xml" rel="self" type="application/rss+xml"/><item><title>Kotlin Cheat Sheet (For My Own Reference)</title><link>https://blog.lemondouble.com/en/p/f8a9d54607e901b4/</link><pubDate>Tue, 17 Jan 2023 14:24:20 +0000</pubDate><guid>https://blog.lemondouble.com/en/p/f8a9d54607e901b4/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TIP: When writing numbers, you can use formats like &lt;code&gt;var number = 1_000L&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-variables"&gt;1. Variables&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;You can still add elements to a &lt;code&gt;val&lt;/code&gt; collection&lt;/li&gt;
+&lt;li&gt;There&amp;rsquo;s no distinction between primitive and reference types, but during actual computation, values are converted to primitive types&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="2-null-handling"&gt;2. Null Handling&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Safe Call (&lt;code&gt;?.&lt;/code&gt;): executes if not null, skips if null&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str: String? = &amp;#34;ABC&amp;#34;
+str.length // ERROR
+str?.length // OK&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Elvis operator (&lt;code&gt;?:&lt;/code&gt;): if the expression on the left is null, use the value on the right&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str: String? = &amp;#34;ABC&amp;#34;
+str?.length ?: 0 // either str.length or 0 
+str?.length ?: throw IllegalArgumentException(&amp;#34;null이 들어왔습니다.&amp;#34;) // or throw exception
+str?.length ?: return 0 // can also be used for early return&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Platform Type: When pulling Java code into Kotlin
+&lt;ul&gt;
+&lt;li&gt;Both null and non-null types are usable&lt;/li&gt;
+&lt;li&gt;When possible, check the Java code directly or wrap it in Kotlin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;// If @Nullable, @NonNull are present they get converted, otherwise platform type
+// In Java 
+private final String name; &amp;lt;&amp;lt; When no annotation
+
+val name : String? = javaPerson.name // OK
+val name : String = javaPerson.name // OK&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id="3-type"&gt;3. Type&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Basic type conversion: use functions like &lt;code&gt;toXX&lt;/code&gt; between primitive types&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val number1 : Int = 4
+val number2 : Long = number1.toLong()
+
+val number1 : Int? = 3 
+val number2 : Long = number1?.toLong() ?: 0L // for nullable variables, handle as needed&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;User-defined types: leverage Smart Cast&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;fun printAgeIfPerson(obj: Any){
+	// is = Java&amp;#39;s instanceof
+	if(obj is Person){
+			// Smart cast makes obj&amp;#39;s type Person
+			println(obj.age)
+	}
+}
+
+// OR
+// Same as Java&amp;#39;s (Person) obj
+val person = obj as Person
+
+// !is, as? are also usable
+// as? : the whole expression becomes null&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Any: plays the role of Java&amp;rsquo;s Object + also includes the top of primitive types
+&lt;ul&gt;
+&lt;li&gt;Doesn&amp;rsquo;t include null; use &lt;code&gt;Any?&lt;/code&gt; if you want null too&lt;/li&gt;
+&lt;li&gt;Has equals, hashCode, toString&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Unit: similar to void, but Unit can itself be used as a type argument in generics&lt;/li&gt;
+&lt;li&gt;Nothing: indicates that the function does not return normally&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;fun fail(message : String): Nothing{
+	throw IllegalArgumentException(message)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;String interpolation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val person = Person(name = &amp;#34;lemon&amp;#34;, age = 20)
+val log = &amp;#34;이름 : ${person.name}, 나이 : ${person.age}&amp;#34;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;String indexing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str = &amp;#34;ABC&amp;#34;
+// Instead of Java&amp;#39;s str.get(0)
+str[1] //ok&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id="4-operators"&gt;4. Operators&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;In Kotlin, using &lt;code&gt;&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt;, &lt;code&gt;≥&lt;/code&gt;, &lt;code&gt;≤&lt;/code&gt; automatically calls &lt;code&gt;compareTo&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>

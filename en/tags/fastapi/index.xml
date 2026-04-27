@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>FastAPI on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/fastapi/</link><description>Recent content in FastAPI on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 26 Apr 2026 23:23:19 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/fastapi/index.xml" rel="self" type="application/rss+xml"/><item><title>What I Considered When Packaging It as a Library — hayakoe Part 4</title><link>https://blog.lemondouble.com/en/p/b7791b4f6c0818da/</link><pubDate>Sun, 26 Apr 2026 23:23:19 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/b7791b4f6c0818da/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the fourth and final main entry of the hayakoe series. You can read the previous post at &lt;a href="https://blog.lemondouble.com/en/p/9a99dd816456c397/"
+&gt;Squeezing Out the Last 1% — torch.compile, Batch Inference, Pause Restoration, ARM64 - hayakoe Part 3&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;If &lt;a href="https://blog.lemondouble.com/en/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+ through &lt;a href="https://blog.lemondouble.com/en/p/9a99dd816456c397/"
+&gt;Part 3&lt;/a&gt;
+ were about the model and inference side, Part 4 organizes the considerations I had &lt;strong&gt;while packaging that result so other people (and future me) can easily reuse it&lt;/strong&gt;.&lt;/p&gt;</description></item></channel></rss>

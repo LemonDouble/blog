@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bitwarden on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/bitwarden/</link><description>Recent content in Bitwarden on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Tue, 17 Jan 2023 14:03:50 +0000</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/bitwarden/index.xml" rel="self" type="application/rss+xml"/><item><title>Introducing Fly.io and a Service Worth Hosting on It (VaultWarden)</title><link>https://blog.lemondouble.com/en/p/740c42a214d8ce6b/</link><pubDate>Tue, 17 Jan 2023 14:03:50 +0000</pubDate><guid>https://blog.lemondouble.com/en/p/740c42a214d8ce6b/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Fly.io is a company that lets you easily deploy a Docker image to a specific country (or region) — all you need to do is prepare the Docker image.&lt;/p&gt;
+&lt;p&gt;After signing up, once you write a &lt;code&gt;fly.toml&lt;/code&gt; file appropriately and run&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;bash&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-bash"&gt;flyctl deploy&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;it does all the heavy lifting: uploading the image to the server and handling DNS, HTTPS setup, IP allocation, and monitoring (Grafana) configuration for you.&lt;/p&gt;</description></item></channel></rss>

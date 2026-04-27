@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>PostgreSQL on Lemon Blog</title><link>https://blog.lemondouble.com/ja/tags/postgresql/</link><description>Recent content in PostgreSQL on Lemon Blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Tue, 12 Dec 2023 22:09:10 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/ja/tags/postgresql/index.xml" rel="self" type="application/rss+xml"/><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 9. CloudNativePGでKubernetes上のデータベースを運用する</title><link>https://blog.lemondouble.com/ja/p/a4ded8cced5f045c/</link><pubDate>Tue, 12 Dec 2023 22:09:10 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/a4ded8cced5f045c/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="序論"&gt;序論&lt;/h3&gt;
+&lt;p&gt;データベースは管理が難しいです。&lt;/p&gt;
+&lt;p&gt;他のPodと違って、データの保管・バックアップ・管理にも気を使わなければなりませんし、フェイルオーバーやパフォーマンスにも注意を払う必要があります。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスタによるデータセンター構築 - 2. クラスタ初期設定編</title><link>https://blog.lemondouble.com/ja/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/f4efced2e8d5b1d8/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="ハードウェア"&gt;ハードウェア&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="ハードウェア構成図"&gt;&lt;/p&gt;
+&lt;p&gt;上の図を参考にハードウェアを構成します。&lt;/p&gt;
+&lt;p&gt;普段からPCを使っているご家庭なら、ルーターと普段使いのデスクトップはすでにあると思いますので、図のうち緑色の部分だけを追加すれば大丈夫です。&lt;/p&gt;</description></item></channel></rss>

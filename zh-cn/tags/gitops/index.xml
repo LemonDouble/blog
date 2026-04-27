@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GitOps on Lemon Blog</title><link>https://blog.lemondouble.com/zh-cn/tags/gitops/</link><description>Recent content in GitOps on Lemon Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sat, 09 Dec 2023 09:16:13 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-cn/tags/gitops/index.xml" rel="self" type="application/rss+xml"/><item><title>在家用 Raspberry Pi 集群搭建数据中心 - 5. ArgoCD GitOps 配置与 Longhorn 安装</title><link>https://blog.lemondouble.com/zh-cn/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/107eed6a453d6238/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-开始-gitops"&gt;1. 开始 GitOps&lt;/h3&gt;
+&lt;p&gt;ArgoCD 已经安装好了，接下来整理一下仓库结构。&lt;/p&gt;
+&lt;p&gt;我们会使用 App On Apps 模式来构建一种简洁的部署方式。&lt;/p&gt;
+&lt;p&gt;即使现在不太理解，先跟着做就行。&lt;/p&gt;</description></item><item><title>在家用树莓派集群搭建数据中心 - 4. Traefik HTTPS 认证及 ArgoCD 配置</title><link>https://blog.lemondouble.com/zh-cn/p/f10efbc0bcc4c537/</link><pubDate>Wed, 06 Dec 2023 05:21:00 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/f10efbc0bcc4c537/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;如果通过 Git 来管理整个系统会怎么样？
+将所需的容器种类、数量等全部声明在 Git 中，集群完全按照 Git 中声明的内容运行，这样不是非常方便吗？&lt;/p&gt;</description></item></channel></rss>

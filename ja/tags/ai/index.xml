@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI on Lemon Blog</title><link>https://blog.lemondouble.com/ja/tags/ai/</link><description>Recent content in AI on Lemon Blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 26 Apr 2026 23:23:19 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/ja/tags/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>ライブラリとしてパッケージングする際に考えたこと — hayakoe Part 4</title><link>https://blog.lemondouble.com/ja/p/b7791b4f6c0818da/</link><pubDate>Sun, 26 Apr 2026 23:23:19 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/b7791b4f6c0818da/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;hayakoe シリーズ 4 本目、最後の本編です。前回の記事は &lt;a href="https://blog.lemondouble.com/ja/p/9a99dd816456c397/"
+&gt;最後の 1% まで — torch.compile、バッチ推論、Pause 復元、ARM64 - hayakoe Part 3&lt;/a&gt;
+ でご覧いただけます。&lt;/p&gt;</description></item><item><title>最後の1%まで — torch.compile、バッチ推論、Pause復元、ARM64 - hayakoe Part 3</title><link>https://blog.lemondouble.com/ja/p/9a99dd816456c397/</link><pubDate>Sun, 26 Apr 2026 19:29:25 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/9a99dd816456c397/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;hayakoeシリーズの3本目の本編です。前回の記事は&lt;a href="https://blog.lemondouble.com/ja/p/137243ede98030f1/"
+&gt;メモリは半分に、速度は1.5倍速くした話 - hayakoe Part 2&lt;/a&gt;
+からご覧いただけます。&lt;/p&gt;</description></item><item><title>メモリは半分に、速度は1.5倍速く - hayakoe Part 2</title><link>https://blog.lemondouble.com/ja/p/137243ede98030f1/</link><pubDate>Sun, 26 Apr 2026 17:40:46 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/137243ede98030f1/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;hayakoeシリーズの2本目の本編です。前回の記事は&lt;a href="https://blog.lemondouble.com/ja/p/4c2a6225a737f531/"
+&gt;hayakoe - 2年ぶりにTTSモデルをいろいろ見てまたVITSに戻ってきた話 - Part 1&lt;/a&gt;
+でご覧いただけます。&lt;/p&gt;</description></item><item><title>hayakoe — 2年ぶりにTTSモデルをいろいろ見て、結局またVITSに落ち着いた話 - Part 1</title><link>https://blog.lemondouble.com/ja/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/4c2a6225a737f531/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;hayakoe シリーズの最初の本編です。導入記事は &lt;a href="https://blog.lemondouble.com/ja/p/ea78fbb9b78c38ac/"
+&gt;hayakoe — 使いやすくて速い TTS ライブラリを作る — 序論&lt;/a&gt;
+ からどうぞ。&lt;/p&gt;</description></item><item><title>hayakoe - 使いやすくて速いTTSライブラリを作る - 序論</title><link>https://blog.lemondouble.com/ja/p/ea78fbb9b78c38ac/</link><pubDate>Sun, 26 Apr 2026 11:31:45 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/ea78fbb9b78c38ac/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;2年ほど前にBert-VITS2という日本語TTSライブラリを知り、学習方法を一度まとめた記事を書いたことがあります。&lt;/p&gt;</description></item><item><title>Bert-VITS2で自分だけのTTSを作る</title><link>https://blog.lemondouble.com/ja/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/9c06f7dc324b5986/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="これから作るオーディオを聴いてみよう日本語"&gt;これから作るオーディオを聴いてみよう（日本語）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-ttsとは"&gt;1. TTSとは？&lt;/h3&gt;
+&lt;p&gt;Text-To-Speechは文字通り、テキストを音声データに変換するソフトウェアのことです。&lt;/p&gt;</description></item><item><title>ChatGPTは常識問題をうまく解けるのか？（論文レビュー）</title><link>https://blog.lemondouble.com/ja/p/dedda5393e239315/</link><pubDate>Thu, 30 Mar 2023 19:15:11 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/dedda5393e239315/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最近、暇なときに論文を一つずつ読む趣味ができました。
+その中で、arxivで面白い論文を一つ読んだので、まとめて共有してみようと思います。&lt;/p&gt;</description></item></channel></rss>

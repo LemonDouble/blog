@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Deep Learning on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/deep-learning/</link><description>Recent content in Deep Learning on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Fri, 26 Jul 2024 20:24:29 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/deep-learning/index.xml" rel="self" type="application/rss+xml"/><item><title>Building Your Own TTS with Bert-VITS2</title><link>https://blog.lemondouble.com/en/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/9c06f7dc324b5986/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="listen-to-the-audio-were-going-to-make-japanese"&gt;Listen to the Audio We&amp;rsquo;re Going to Make (Japanese)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-tts"&gt;1. TTS?&lt;/h3&gt;
+&lt;p&gt;Text-To-Speech, as the name suggests, is software that converts text into voice data.&lt;/p&gt;
+&lt;p&gt;Once you build one, you can use it across many automations without worrying about call quotas, so my goal was to build one myself.&lt;/p&gt;
+&lt;p&gt;If I&amp;rsquo;m going to build it anyway, wouldn&amp;rsquo;t it be more fun if a character I know speaks? So I&amp;rsquo;m going to fine-tune a model with custom data and build a TTS.&lt;/p&gt;</description></item></channel></rss>

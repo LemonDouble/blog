@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Voice Recognition on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/voice-recognition/</link><description>Recent content in Voice Recognition on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Fri, 26 Jul 2024 22:07:33 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/voice-recognition/index.xml" rel="self" type="application/rss+xml"/><item><title>Showing Off My Voice-Controlled AI Smart Home</title><link>https://blog.lemondouble.com/en/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/30f1bf25ad8b594a/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="preview-of-the-smart-home-i-built-japanese-audio-warning"&gt;Preview of the smart home I built (Japanese audio warning)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistant"&gt;1. HomeAssistant?&lt;/h3&gt;
+&lt;p&gt;It all starts with a platform called HomeAssistant, which I&amp;rsquo;ve &lt;a href="https://blog.lemondouble.com/en/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/"
+&gt;written about before&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;For HomeAssistant, 2023 was the &lt;a href="https://www.home-assistant.io/blog/2022/12/20/year-of-voice/" target="_blank" rel="noopener noreferrer"
+&gt;Year of Voice&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;With AI led by LLMs becoming more sophisticated, it was the year I started thinking, &amp;ldquo;We can really build Jarvis now!&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/30f1bf25ad8b594a/image.png" alt="Jarvis"&gt;&lt;/p&gt;
+&lt;h3 id="2-so-what-do-you-actually-want-to-say"&gt;2. So what do you actually want to say?&lt;/h3&gt;
+&lt;p&gt;I just wanted to show off (&amp;hellip;).&lt;/p&gt;</description></item></channel></rss>

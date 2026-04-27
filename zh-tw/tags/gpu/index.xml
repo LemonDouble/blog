@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GPU on Lemon Blog</title><link>https://blog.lemondouble.com/zh-tw/tags/gpu/</link><description>Recent content in GPU on Lemon Blog</description><generator>Hugo</generator><language>zh-TW</language><lastBuildDate>Fri, 26 Jul 2024 20:24:29 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-tw/tags/gpu/index.xml" rel="self" type="application/rss+xml"/><item><title>用 Bert-VITS2 打造屬於自己的 TTS</title><link>https://blog.lemondouble.com/zh-tw/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/9c06f7dc324b5986/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="先來聽聽我們要做的音訊日語"&gt;先來聽聽我們要做的音訊（日語）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-tts"&gt;1. TTS？&lt;/h3&gt;
+&lt;p&gt;Text-To-Speech，顧名思義，是把文字轉換成語音資料的軟體。&lt;/p&gt;
+&lt;p&gt;只要做好一次，就可以在大量自動化情境中使用，不必擔心呼叫次數，所以我的目標是親手做一個。&lt;/p&gt;</description></item></channel></rss>

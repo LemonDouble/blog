@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Operator on Lemon Blog</title><link>https://blog.lemondouble.com/zh-tw/tags/operator/</link><description>Recent content in Operator on Lemon Blog</description><generator>Hugo</generator><language>zh-TW</language><lastBuildDate>Tue, 12 Dec 2023 22:09:10 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-tw/tags/operator/index.xml" rel="self" type="application/rss+xml"/><item><title>在家用樹莓派叢集架設資料中心 - 9. 使用 CloudNativePG 在 Kubernetes 上運維資料庫</title><link>https://blog.lemondouble.com/zh-tw/p/a4ded8cced5f045c/</link><pubDate>Tue, 12 Dec 2023 22:09:10 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/a4ded8cced5f045c/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="序言"&gt;序言&lt;/h3&gt;
+&lt;p&gt;資料庫管理起來相當棘手。&lt;/p&gt;
+&lt;p&gt;與其他 Pod 不同，必須關心資料保管、備份、管理，還要留意 Failover 和效能。&lt;/p&gt;
+&lt;p&gt;所以據我所知，即使其他工作負載都跑在 Kubernetes 叢集上，單獨把 DB 放在 AWS RDS 之類的託管系統或獨立執行個體上的情況也很常見。&lt;/p&gt;</description></item></channel></rss>

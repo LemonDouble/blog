@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MetalLB on Lemon Blog</title><link>https://blog.lemondouble.com/tags/metallb/</link><description>Recent content in MetalLB on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Wed, 06 Dec 2023 05:20:00 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/metallb/index.xml" rel="self" type="application/rss+xml"/><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 3. Helm 설치 및 MetalLB로 로드 밸런서 설정하기</title><link>https://blog.lemondouble.com/p/06a98c88458a5fb7/</link><pubDate>Wed, 06 Dec 2023 05:20:00 +0900</pubDate><guid>https://blog.lemondouble.com/p/06a98c88458a5fb7/</guid><description>&lt;h3 id="helm-설치"&gt;Helm 설치&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;참고한 글 : &lt;a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer"
+&gt;Installing Helm&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;다음 커맨드를 차례로 입력하여 Helm을 설치합니다.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;이후, kubeconfig 파일을 설정해 줍니다.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+chmod 600 ~/.kube/config&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;이후 bashrc 제일 밑에 다음 한 줄을 추가한 후, &lt;code&gt;source ~/.bashrc&lt;/code&gt; 로 Shell 설정을 즉시 적용시킵니다.&lt;/p&gt;</description></item></channel></rss>

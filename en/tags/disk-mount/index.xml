@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Disk Mount on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/disk-mount/</link><description>Recent content in Disk Mount on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 09 Dec 2023 10:48:57 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/disk-mount/index.xml" rel="self" type="application/rss+xml"/><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 6. Adding Distributed Storage and Serving It via Longhorn</title><link>https://blog.lemondouble.com/en/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/615befc538a81902/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-add-and-mount-a-new-disk"&gt;1. Add and Mount a New Disk&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;This part is the same as a regular SSD / HDD mount! If something doesn&amp;rsquo;t work, feel free to search for &lt;code&gt;Ubuntu hard disk mount&lt;/code&gt; and follow along.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Connect the SSD or HDD to the Raspberry Pi.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;code&gt;sudo fdisk -l&lt;/code&gt; to find the name of the mounted hard disk. In my case, it&amp;rsquo;s &lt;code&gt;/dev/sda&lt;/code&gt;.&lt;/p&gt;</description></item></channel></rss>

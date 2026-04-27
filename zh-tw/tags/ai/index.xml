@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI on Lemon Blog</title><link>https://blog.lemondouble.com/zh-tw/tags/ai/</link><description>Recent content in AI on Lemon Blog</description><generator>Hugo</generator><language>zh-TW</language><lastBuildDate>Sun, 26 Apr 2026 23:23:19 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-tw/tags/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>打包成函式庫時考慮的問題 — hayakoe Part 4</title><link>https://blog.lemondouble.com/zh-tw/p/b7791b4f6c0818da/</link><pubDate>Sun, 26 Apr 2026 23:23:19 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/b7791b4f6c0818da/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;這是 hayakoe 系列的第四篇，也是最後一篇正篇。前一篇可在 &lt;a href="https://blog.lemondouble.com/zh-tw/p/9a99dd816456c397/"
+&gt;榨乾最後 1% — torch.compile、批次推論、Pause 還原、ARM64 - hayakoe Part 3&lt;/a&gt;
+ 查看。&lt;/p&gt;</description></item><item><title>榨乾最後1% — torch.compile、批次推論、Pause恢復、ARM64 - hayakoe Part 3</title><link>https://blog.lemondouble.com/zh-tw/p/9a99dd816456c397/</link><pubDate>Sun, 26 Apr 2026 19:29:25 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/9a99dd816456c397/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;這是hayakoe系列的第三篇正篇。上一篇文章可以在&lt;a href="https://blog.lemondouble.com/zh-tw/p/137243ede98030f1/"
+&gt;記憶體減半，速度提升1.5倍 - hayakoe Part 2&lt;/a&gt;
+中查看。&lt;/p&gt;</description></item><item><title>記憶體減半,速度提升1.5倍 - hayakoe Part 2</title><link>https://blog.lemondouble.com/zh-tw/p/137243ede98030f1/</link><pubDate>Sun, 26 Apr 2026 17:40:46 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/137243ede98030f1/</guid><description>&lt;p&gt;&lt;em&gt;註:筆者居住於韓國,部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;這是hayakoe系列的第二篇正文。前一篇文章可以在&lt;a href="https://blog.lemondouble.com/zh-tw/p/4c2a6225a737f531/"
+&gt;hayakoe - 時隔2年再次研究各種TTS模型後又回歸VITS的故事 - Part 1&lt;/a&gt;
+查看。&lt;/p&gt;</description></item><item><title>hayakoe — 時隔2年再次研究各種TTS模型，最終還是回到VITS的故事 - Part 1</title><link>https://blog.lemondouble.com/zh-tw/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/4c2a6225a737f531/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;這是 hayakoe 系列的第一篇正文。前言性質的文章可以在 &lt;a href="https://blog.lemondouble.com/zh-tw/p/ea78fbb9b78c38ac/"
+&gt;hayakoe — 打造好用又快的 TTS 函式庫 — 序論&lt;/a&gt;
+ 查看。&lt;/p&gt;
+&lt;p&gt;序論中簡單提到的一個話題是「重新選擇了模型」。Part 1 我想把這個過程講得更詳細一些。&lt;/p&gt;</description></item><item><title>hayakoe - 打造易用且快速的TTS函式庫 - 序論</title><link>https://blog.lemondouble.com/zh-tw/p/ea78fbb9b78c38ac/</link><pubDate>Sun, 26 Apr 2026 11:31:45 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/ea78fbb9b78c38ac/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;大約兩年前，我接觸到了一個叫做Bert-VITS2的日語TTS函式庫，並曾經寫過一篇整理學習方法的文章。&lt;/p&gt;</description></item><item><title>用 Bert-VITS2 打造屬於自己的 TTS</title><link>https://blog.lemondouble.com/zh-tw/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/9c06f7dc324b5986/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="先來聽聽我們要做的音訊日語"&gt;先來聽聽我們要做的音訊（日語）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-tts"&gt;1. TTS？&lt;/h3&gt;
+&lt;p&gt;Text-To-Speech，顧名思義，是把文字轉換成語音資料的軟體。&lt;/p&gt;
+&lt;p&gt;只要做好一次，就可以在大量自動化情境中使用，不必擔心呼叫次數，所以我的目標是親手做一個。&lt;/p&gt;</description></item><item><title>ChatGPT 能好好解決常識問題嗎？（論文解讀）</title><link>https://blog.lemondouble.com/zh-tw/p/dedda5393e239315/</link><pubDate>Thu, 30 Mar 2023 19:15:11 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/dedda5393e239315/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最近，我養成了閒暇時讀論文的習慣。
+其中，我在 arxiv 上讀到一篇有趣的論文，所以想整理並分享一下。&lt;/p&gt;
+&lt;p&gt;論文標題是 &lt;code&gt;ChatGPT is a Knowledgeable but Inexperienced Solver: An Investigation of Commonsense Problem in Large Language Models&lt;/code&gt; (&lt;a href="https://arxiv.org/abs/2303.16421" target="_blank" rel="noopener noreferrer"
+&gt;Arxiv Link&lt;/a&gt;
+)。&lt;/p&gt;</description></item></channel></rss>

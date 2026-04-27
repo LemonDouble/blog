@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GitHub Actions on Lemon Blog</title><link>https://blog.lemondouble.com/zh-cn/tags/github-actions/</link><description>Recent content in GitHub Actions on Lemon Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sun, 05 Apr 2026 21:22:00 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-cn/tags/github-actions/index.xml" rel="self" type="application/rss+xml"/><item><title>想升级个人服务器的 Python 版本，但上游停止更新，于是 fork 了 prebuilt wheel 包让它支持新 Python 版本的故事 (Pyopenjtalk)</title><link>https://blog.lemondouble.com/zh-cn/p/pyopenjtalk-prebuilt/</link><pubDate>Sun, 05 Apr 2026 21:22:00 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/pyopenjtalk-prebuilt/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;之前我写过一篇 &lt;a href="../make-vits2-tts/"
+&gt;用 Bert-VITS2 做 TTS 的文章&lt;/a&gt;
+，那时候做的 TTS 一直用得挺好。但是…Bert-VITS2 的仓库已经停止开发了。&lt;/p&gt;</description></item><item><title>通过 GitHub OIDC,无需在 GitHub Actions 中放置 AWS Key 即可使用 AWS 资源(免费)</title><link>https://blog.lemondouble.com/zh-cn/p/%E9%80%9A%E8%BF%87-github-oidc%E6%97%A0%E9%9C%80%E5%9C%A8-github-actions-%E4%B8%AD%E6%94%BE%E7%BD%AE-aws-key-%E5%8D%B3%E5%8F%AF%E4%BD%BF%E7%94%A8-aws-%E8%B5%84%E6%BA%90%E5%85%8D%E8%B4%B9/</link><pubDate>Sun, 22 Jan 2023 11:18:50 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/%E9%80%9A%E8%BF%87-github-oidc%E6%97%A0%E9%9C%80%E5%9C%A8-github-actions-%E4%B8%AD%E6%94%BE%E7%BD%AE-aws-key-%E5%8D%B3%E5%8F%AF%E4%BD%BF%E7%94%A8-aws-%E8%B5%84%E6%BA%90%E5%85%8D%E8%B4%B9/</guid><description>&lt;p&gt;&lt;em&gt;注:作者居住在韩国,部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;要在 GitHub Actions 中使用 AWS,通常需要经过以下步骤。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进入 IAM 控制台,创建一个新用户。&lt;/li&gt;
+&lt;li&gt;为 GitHub Actions 添加 IAM Role,采用 Programmatic access 方式,获取 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; 和 &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在仓库设置中,将刚刚获取的 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; 和 &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt; 添加到 GitHub Secrets。&lt;/li&gt;
+&lt;li&gt;然后在 GitHub Actions 中添加如下工作流,即可访问 AWS 资源。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;yaml&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-yaml"&gt;- name: Configure AWS Credentials
+ uses: aws-actions/configure-aws-credentials@v1
+ with:
+ aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+ aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ aws-region: us-east-2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;如果只有一个项目,这样管理也没什么问题。&lt;/p&gt;</description></item></channel></rss>

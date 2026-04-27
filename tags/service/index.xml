@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Service on Lemon Blog</title><link>https://blog.lemondouble.com/tags/service/</link><description>Recent content in Service on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Thu, 26 Jan 2023 23:15:42 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/service/index.xml" rel="self" type="application/rss+xml"/><item><title>내가 보려고 쓰는 K8S 리소스 정리</title><link>https://blog.lemondouble.com/p/f13e7c85c56b2c7c/</link><pubDate>Thu, 26 Jan 2023 23:15:42 +0900</pubDate><guid>https://blog.lemondouble.com/p/f13e7c85c56b2c7c/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; -o&lt;/code&gt; 또는 &lt;code&gt;k describe pod &amp;lt;podname&amp;gt;&lt;/code&gt;: 상태 정보 자세히 확인&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k logs -f &amp;lt;podname&amp;gt; -c &amp;lt;container-name&amp;gt;&lt;/code&gt; : 로그 확인&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; --show-lables&lt;/code&gt; : Label 정보 확인&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-pod"&gt;1. Pod&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;하나 이상의 Container의 집합&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;실행의 최소 단위&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;특징&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;여러 Container로 구성되었다면, 항상 동일 Node에 할당&lt;/li&gt;
+&lt;li&gt;고유 Pod IP 할당 (Pod당 하나)&lt;/li&gt;
+&lt;li&gt;Pod 내의 Container들은 네트워크 공유, 따라서 Localhost로 접근 가능&lt;/li&gt;
+&lt;li&gt;Volume 공유&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pod이 가질 수 있는 State&lt;/p&gt;</description></item></channel></rss>

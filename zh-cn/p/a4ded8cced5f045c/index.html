@@ -1,0 +1,227 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>在家用树莓派集群搭建数据中心 - 9. 使用 CloudNativePG 在 Kubernetes 上运维数据库 | Lemon Blog</title><meta name=description content="我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"><link rel=icon href=https://cdn.lemondouble.com/homepage/favicon.ico><link rel=canonical href=https://blog.lemondouble.com/zh-cn/p/a4ded8cced5f045c/><link rel=alternate hreflang=ko href=https://blog.lemondouble.com/p/a4ded8cced5f045c/><link rel=alternate hreflang=en href=https://blog.lemondouble.com/en/p/a4ded8cced5f045c/><link rel=alternate hreflang=ja href=https://blog.lemondouble.com/ja/p/a4ded8cced5f045c/><link rel=alternate hreflang=zh-cn href=https://blog.lemondouble.com/zh-cn/p/a4ded8cced5f045c/><link rel=alternate hreflang=zh-tw href=https://blog.lemondouble.com/zh-tw/p/a4ded8cced5f045c/><link rel=alternate hreflang=x-default href=https://blog.lemondouble.com/p/a4ded8cced5f045c/><link href=https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css rel=stylesheet><link href=https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css rel=stylesheet><meta property="og:title" content="在家用树莓派集群搭建数据中心 - 9. 使用 CloudNativePG 在 Kubernetes 上运维数据库"><meta property="og:description" content="我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.lemondouble.com/zh-cn/p/a4ded8cced5f045c/"><meta property="og:site_name" content="Lemon Blog"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="ja_JP"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:image" content="https://blog.lemondouble.com/p/a4ded8cced5f045c/cover.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="在家用树莓派集群搭建数据中心 - 9. 使用 CloudNativePG 在 Kubernetes 上运维数据库"><meta name=twitter:description content="我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"><meta name=twitter:image content="https://blog.lemondouble.com/p/a4ded8cced5f045c/cover.png"><link rel=stylesheet href=/css/8bit.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-dracula.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css><link rel=stylesheet href=/css/code-block.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-9C6YX68EBM"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9C6YX68EBM")</script><meta name=generator content="Hugo 0.159.2"></head><body><nav class=site-nav><div class=nav-inner><a href=/zh-cn/ class=nav-logo><img src=/img/brand/lemon-logo.webp alt=Logo>
+<span>Lemon Blog</span></a><div class=nav-links><a href=/zh-cn/ class=nav-link>首页</a>
+<a href=/zh-cn/projects/ class=nav-link>项目</a>
+<a href=/zh-cn/skills/ class=nav-link>技能</a>
+<a href=https://lemondouble.com/zh-cn target=_blank rel="noopener noreferrer" class=nav-link>关于</a></div><div class=nav-actions><div class=search-wrapper id=searchWrapper><span class=search-icon><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+</span><input type=text class=search-input id=searchInput placeholder=搜索... autocomplete=off>
+<button class=search-close-btn onclick=closeMobileSearch() aria-label=关闭搜索>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class=search-results id=searchResults></div></div><button class=mobile-search-btn onclick=openMobileSearch() aria-label=打开搜索>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><div class=lang-switcher id=langSwitcher><button type=button class=lang-switcher-btn onclick=toggleLangSwitcher(event) aria-label=选择语言 aria-haspopup=true aria-expanded=false>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3.0 014 10 15.3 15.3.0 01-4 10A15.3 15.3.0 018 12a15.3 15.3.0 014-10z"/></svg>
+<span class=lang-switcher-current>简体中文</span>
+<svg class="lang-switcher-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class=lang-switcher-menu id=langSwitcherMenu role=menu><a href=/p/a4ded8cced5f045c/ class=lang-switcher-item lang=ko role=menuitem>한국어
+</a><a href=/en/p/a4ded8cced5f045c/ class=lang-switcher-item lang=en role=menuitem>English
+</a><a href=/ja/p/a4ded8cced5f045c/ class=lang-switcher-item lang=ja role=menuitem>日本語
+</a><a href=/zh-cn/p/a4ded8cced5f045c/ class="lang-switcher-item active" lang=zh-cn role=menuitem>简体中文
+</a><a href=/zh-tw/p/a4ded8cced5f045c/ class=lang-switcher-item lang=zh-tw role=menuitem>繁體中文</a></div></div><button class=nav-menu-btn onclick=toggleMobileMenu() aria-label=打开菜单>
+<svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button></div></div></nav><div class=mobile-menu id=mobileMenu><a href=/zh-cn/ class=nav-link onclick=closeMobileMenu()>首页</a>
+<a href=/zh-cn/projects/ class=nav-link onclick=closeMobileMenu()>项目</a>
+<a href=/zh-cn/skills/ class=nav-link onclick=closeMobileMenu()>技能</a>
+<a href=https://lemondouble.com/zh-cn target=_blank rel="noopener noreferrer" class=nav-link onclick=closeMobileMenu()>关于</a><div class=mobile-menu-lang><span class=mobile-menu-lang-label>选择语言</span><div class=mobile-menu-lang-items><a href=/p/a4ded8cced5f045c/ class=mobile-menu-lang-item lang=ko onclick=closeMobileMenu()>한국어</a>
+<a href=/en/p/a4ded8cced5f045c/ class=mobile-menu-lang-item lang=en onclick=closeMobileMenu()>English</a>
+<a href=/ja/p/a4ded8cced5f045c/ class=mobile-menu-lang-item lang=ja onclick=closeMobileMenu()>日本語</a>
+<a href=/zh-cn/p/a4ded8cced5f045c/ class="mobile-menu-lang-item active" lang=zh-cn onclick=closeMobileMenu()>简体中文</a>
+<a href=/zh-tw/p/a4ded8cced5f045c/ class=mobile-menu-lang-item lang=zh-tw onclick=closeMobileMenu()>繁體中文</a></div></div></div><div class=container><main class=site-main><div class="post-layout has-toc"><article class=post-single><header class=post-header><div class=post-cover><img src=/p/a4ded8cced5f045c/cover_hu_73668a7fc2afee02.png alt="在家用树莓派集群搭建数据中心 - 9. 使用 CloudNativePG 在 Kubernetes 上运维数据库"></div><div class=post-header-content><div class=post-categories><a href=/zh-cn/categories/k8s/ class=category-tag>K8S</a>
+<a href=/zh-cn/categories/k3s/ class=category-tag>K3S</a>
+<a href=/zh-cn/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/ class=category-tag>树莓派</a></div><h1 class=post-title>在家用树莓派集群搭建数据中心 - 9. 使用 CloudNativePG 在 Kubernetes 上运维数据库</h1><div class=post-meta><time>2023.12.12</time>
+<span class=meta-sep>&#8226;</span>
+<span>4 min read</span></div></div></header><div class=post-content><p><em>注：作者居住在韩国，部分内容包含韩国特有的背景。</em></p><h3 id=序言>序言</h3><p>数据库管理起来很棘手。</p><p>与其他 Pod 不同，需要操心数据保管、备份、管理，还要关注 Failover 和性能。</p><p>所以据我所知，即便其他工作负载都在 Kubernetes 集群上运行，单独把 DB 放在 AWS RDS 之类的托管系统或独立实例上的情况也很常见。</p><p>但这真的重要吗？要在家里搭建数据中心，难道不应该有一个托管 DBMS 吗？</p><p>那就来做一个吧。我们将利用 Kubernetes 的 Operator Pattern 通过 <a href=https://cloudnative-pg.io/ target=_blank rel="noopener noreferrer">CloudNativePG</a>
+部署一个 1 主 2 从的集群，并配置为可从内网访问。</p><p>虽然不是 Postgres Operator，但读一读 <a href=https://nangman14.tistory.com/79#5.%20Mysql%20Operator%20Failover%20%ED%85%8C%EC%8A%A4%ED%8A%B8-1 target=_blank rel="noopener noreferrer">用 Mysql Operator 在 Kubernetes 环境运维 Mysql DB</a>
+（韩文）这篇文章，对跟上节奏可能会有些帮助。</p><h3 id=2-安装>2. 安装</h3><p>安装分两步进行。</p><ol><li>安装 CNPG Operator</li><li>安装 CNPG Cluster</li></ol><p>Operator 的作用是监视 Cluster 是否保持正常状态。
+实际使用的数据库集群通过第 2 步安装。</p><p>我们一步一步开始吧！这次也使用 ArgoCD 快速部署。</p><p><strong>1. 安装 CNPG Operator</strong></p><p><code>apps/enabled/cnpg-system.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg-system
+  namespace: argocd
+spec:
+  destination:
+    namespace: cnpg-system
+    server: &#39;https://kubernetes.default.svc&#39;
+  source:
+    path: modules/cnpg-system
+    repoURL: &#39;git@github.com:&lt;YourOrganizationName&gt;/&lt;YourRepositoryName&gt;.git&#39;
+    targetRevision: HEAD
+  project: default</code></pre></div><p><code>modules/cnpg-system/cnpg.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml># https://github.com/cloudnative-pg/cloudnative-pg
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg
+  namespace: argocd
+spec:
+  destination:
+    namespace: cnpg-system
+    server: &#39;https://kubernetes.default.svc&#39;
+  source:
+    repoURL: &#39;https://cloudnative-pg.github.io/charts&#39;
+    targetRevision: 0.19.1
+    chart: cloudnative-pg
+  project: default</code></pre></div><p>很简单吧？安装后部署一下，把 CNPG Operator 装上。</p><p><strong>2. 安装 CNPG Cluster</strong></p><p>我们要搭建的集群形态如下：</p><ol><li>每天 UTC 0 点（KST 上午 9 点）执行 S3 Daily Backup。</li><li>总共由 3 个 Pod 组成。每个 Pod 分布在多个节点上，以预防可能的不幸（？）。</li><li>通过 192.168.0.x 的 IP 可从内网访问 DB。</li></ol><p>我们一个一个开始吧！</p><p><code>apps/enabled/cnpg-cluster.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnpg-cluster
+  namespace: argocd
+spec:
+  destination:
+    namespace: cnpg-cluster
+    server: &#39;https://kubernetes.default.svc&#39;
+  source:
+    path: modules/cnpg-cluster-16
+    repoURL: &#39;git@github.com:&lt;YourOrganizationName&gt;/&lt;YourRepositoryName&gt;.git&#39;
+    targetRevision: HEAD
+  project: default</code></pre></div><p><code>modules/cnpg-cluster/cluster.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml># https://cloudnative-pg.io/documentation/1.21/quickstart/
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  namespace: cnpg-cluster
+  name: cnpg-cluster
+spec:
+  instances: 3
+
+  superuserSecret:
+    name: superuser-secrets
+  enableSuperuserAccess: true
+  primaryUpdateStrategy: unsupervised
+
+  # Persistent storage configuration
+  storage:
+    size: 10Gi
+    pvcTemplate:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: longhorn-ssd
+      volumeMode: Filesystem
+
+  # Backup properties
+  backup:
+    retentionPolicy: &#34;90d&#34;
+    barmanObjectStore:
+      destinationPath: s3://lemon-backup/cnpg-backup
+      s3Credentials:
+        accessKeyId:
+          name: aws-backup-secret
+          key: ACCESS_KEY_ID
+        secretAccessKey:
+          name: aws-backup-secret
+          key: ACCESS_SECRET_KEY
+      wal:
+        compression: gzip</code></pre></div><p>为了管理方便，开启了 Superuser 访问，
+DB 容量设为 10GB。（之后可以扩展。）</p><p>此外，为了在万一发生意外事故时(&mldr;)能够轻松备份，将备份存储设置为保存到 AWS S3，并保留最长 90 天。</p><p><code>modules/cnpg-cluster/daily-backup.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: postgresql.cnpg.io/v1
+kind: ScheduledBackup
+metadata:
+  namespace: cnpg-cluster
+  name: daily-backup
+spec:
+  schedule: &#34;0 0 0 * * *&#34; # Daily
+  backupOwnerReference: self
+  cluster:
+    name: cnpg-cluster</code></pre></div><p>简单的 Daily Backup 资源。</p><p><code>modules/cnpg-cluster/lb.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: v1
+kind: Service
+metadata:
+  name: cnpg-lb-rw
+  namespace: cnpg-cluster
+spec:
+  ports:
+    - name: postgres
+      port: 5432
+      protocol: TCP
+      targetPort: 5432
+  selector:
+    cnpg.io/cluster: cnpg-cluster
+    role: primary
+  type: LoadBalancer
+  loadBalancerIP: 192.168.0.206</code></pre></div><p>我这里允许通过 192.168.0.206 地址访问。
+之后查询或管理数据库时，可以从内网通过 <code>192.168.0.206</code> 访问进行管理。</p><p><code>modules/cnpg-cluster/sealed-aws-secrets.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: aws-secrets
+  namespace: cnpg-cluster
+  annotations: {}
+spec:
+  encryptedData:
+    ACCESS_KEY_ID: adffd...
+    ACCESS_SECRET_KEY: Aadfads...</code></pre></div><p>在 AWS 上授予 S3FullAccess 或特定 Bucket 的访问权限后，签发 ACCESS KEY 和 Secret，再用之前配置好的 Sealed Secret 注册。</p><p><code>modules/cnpg-cluster/sealed-superuser-secrets.yaml</code></p><p>生成过程稍微有点复杂！</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: v1
+kind: Secret
+metadata:
+  name: superuser-secrets
+  namespace: cnpg-cluster
+type: kubernetes.io/basic-auth
+stringData:
+  username: &lt;我要使用的 ID，不要 b64 编码，原样填写&gt;
+  password: &lt;我要使用的密码，不要 b64 编码，原样填写&gt;</code></pre></div><p>先按上面的内容以 secret.yaml 为名创建 Secret，然后用</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>sh</span></div><pre class=line-numbers><code class=language-sh>cat secret.yaml | kubeseal --controller-namespace=sealed-secrets-system --controller-name=sealed-secrets -oyaml &gt; sealed-superuser-secrets.yaml</code></pre></div><p>将其转换为 Sealed Secret，然后使用 Sealed Secret！</p><p>之后等待 Provisioning（需要一些时间），就可以通过 192.168.0.206 用刚才设置的 ID/Password 登录使用 DB 了！</p><p><strong>如果安装正常，请务必！设个第二天的提醒，确认 S3 对应文件夹中是否正常备份了！！！</strong></p><h3 id=3-恢复>3. 恢复</h3><p>过了一天确认正常备份后，<strong>请务必！确认能否恢复</strong>。
+等数据丢了再确认就太晚了……</p><p>分享一下我的恢复配置文件。</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml># https://cloudnative-pg.io/documentation/1.17/quickstart/
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  namespace: cnpg-cluster
+  name: cnpg-cluster
+spec:
+  instances: 3
+
+  superuserSecret:
+    name: superuser-secrets
+  primaryUpdateStrategy: unsupervised
+
+  bootstrap: # 新增
+    recovery:
+      source: clusterBackup
+
+  storage:
+    size: 10Gi
+    pvcTemplate:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: longhorn-ssd
+      volumeMode: Filesystem
+
+  externalClusters: # 新增
+    - name: clusterBackup
+      barmanObjectStore:
+        serverName: cnpg-cluster
+        destinationPath: s3://lemon-backup/postgres-backup
+        s3Credentials:
+          accessKeyId:
+            name: aws-secrets
+            key: ACCESS_KEY_ID
+          secretAccessKey:
+            name: aws-secrets
+            key: ACCESS_SECRET_KEY
+        wal:
+          compression: gzip</code></pre></div><p>按上面的方式给新集群加上 bootstrap、externalClusters 选项后，集群首次启动时会自动用已有的 S3 文件恢复数据。</p><p>连接/确认无误，恢复结束后，把 bootstrap、externalClusters 选项删除，再加回原来的备份选项即可。</p><p>这里需要注意的是，
+如果 Postgres 的主版本不同，恢复可能无法正常进行。</p><p>举个例子，假设我之前用的是 1.16 版本的 Operator（Postgres 15），即使把 Operator 升级到 1.21（默认是 Postgres 16 Operator），已生成的集群在没有手动升级的情况下仍会保持 PG 15。</p><p>此时如果发生故障要尝试恢复，由于 Operator 版本是 1.21，会去 Provisioning PG16，而原本 S3 中保存的是 PG15 的数据，恢复就可能失败。</p><p>遇到这种情况，可以把 Operator 降级到当时安装的版本，启动相同版本的 PG，然后恢复 -> 升级；或者通过设置 Image 来使用相同的主版本。</p><p><strong>如果可以，强烈建议先创建一个新集群确认能正常恢复后，再进行下一步！！</strong></p><h3 id=4-集群升级>4. 集群升级</h3><p>小版本升级会自动进行，主版本升级时按下面的方式做，通常不会有什么问题。（试过 15 -> 16）</p><p>在线升级请参考 <a href=https://www.enterprisedb.com/blog/current-state-major-postgresql-upgrades-cloudnativepg-kubernetes target=_blank rel="noopener noreferrer">The Current State of Major PostgreSQL Upgrades with CloudNativePG</a>
+，</p><p>如果是离线升级（允许停机）：</p><ol><li>在原集群用 pg_dumpall 导出数据</li><li>创建新集群</li><li>把第 1 步导出的数据灌入第 2 步</li><li>把指向原集群的应用改为指向新集群</li><li>测试后删除原集群</li></ol><h3 id=5-结尾>5. 结尾</h3><p>我目前用 CNPG 已经稳定运行了大约 7~8 个月。</p><p>考虑到我打扫卫生时经常顺手把线给拔了(&mldr;)，在一般情况下它足以作为相当稳健的 Postgres DB 来使用，即便我不小心把整个集群断电，也能简单地从已有的 S3 恢复数据，所以我觉得它的可靠性相当高。</p><p>当然，如果预算充裕，使用托管 RDB 才是最好的选择，但作为技术验证，希望大家也知道有这样一种系统！</p><p>到这一步，服务器等所需的系统应该都已就绪，可以开始开发了。我们就从简单的开始一步步搭吧。</p><p>另外在 Kubernetes 内，可以通过 cnpg-lb-rw.cnpg-cluster 这个名字访问该 DB。例如 <code>jdbc:postgresql://cnpg-lb-rw.cnpg-cluster:5432/my_app</code> 这样。</p><p>读这么长的文章辛苦大家了！下次将介绍如何利用 nvidia-device-plugin 在 K3S 上使用 GPU！</p></div><div class=post-tags><a href=/zh-cn/tags/k8s/ class=tag-link>#K8S</a>
+<a href=/zh-cn/tags/k3s/ class=tag-link>#K3S</a>
+<a href=/zh-cn/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/ class=tag-link>#树莓派</a>
+<a href=/zh-cn/tags/cloudnativepg/ class=tag-link>#CloudNativePG</a>
+<a href=/zh-cn/tags/postgresql/ class=tag-link>#PostgreSQL</a>
+<a href=/zh-cn/tags/operator/ class=tag-link>#Operator</a>
+<a href=/zh-cn/tags/ha/ class=tag-link>#HA</a></div><div class=post-license><p>&copy; 本文采用 CC BY-NC-SA 4.0 许可协议发布。</p></div><section class=post-comments><h3 class=comments-title>Comments</h3><script src=https://giscus.app/client.js data-repo=LemonDouble/LemonDouble.github.io-comments data-repo-id=R_kgDOI0UkDA data-category=Comments data-category-id=DIC_kwDOI0UkDM4CcIeY data-mapping=pathname data-reactions-enabled=1 data-emit-metadata=0 data-theme=dark crossorigin=anonymous async></script></section></article><aside class=toc-sidebar><a href=/zh-cn/ class=toc-back-btn onclick="return tocGoBack(event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+<span>返回上一页</span></a><nav class=toc-sidebar-nav><h4 class=toc-sidebar-title>本页目录</h4><nav id=TableOfContents><ul><li><ul><li><a href=#序言>序言</a></li><li><a href=#2-安装>2. 安装</a></li><li><a href=#3-恢复>3. 恢复</a></li><li><a href=#4-集群升级>4. 集群升级</a></li><li><a href=#5-结尾>5. 结尾</a></li></ul></li></ul></nav></nav></aside></div><script>function tocGoBack(e){var t=document.referrer&&document.referrer.indexOf(window.location.origin)===0;return!(t&&window.history.length>1)||(e.preventDefault(),window.history.back(),!1)}(function(){var e,t,o,i,s=document.querySelector(".toc-sidebar-nav");if(!s)return;if(o=s.querySelectorAll("a"),!o.length)return;if(e=[],o.forEach(function(t){var s=decodeURIComponent(t.getAttribute("href").slice(1)),n=document.getElementById(s);n&&e.push({el:n,link:t})}),!e.length)return;t=null;function n(e){if(t===e)return;t&&t.classList.remove("active"),e.classList.add("active"),t=e;var i=s,n=e.getBoundingClientRect(),o=i.getBoundingClientRect();(n.top<o.top||n.bottom>o.bottom)&&e.scrollIntoView({block:"nearest",behavior:"smooth"})}i=new IntersectionObserver(function(t){var s,o,i,a,r,c,l=[];t.forEach(function(t){var n=e.find(function(e){return e.el===t.target});n&&(n.isIntersecting=t.isIntersecting)});for(s=0;s<e.length;s++)if(e[s].isIntersecting){n(e[s].link);return}for(c=window.scrollY||window.pageYOffset,a=100,i=null,o=0;o<e.length;o++)r=e[o].el.getBoundingClientRect(),r.top<a&&(i=e[o]);i&&n(i.link)},{rootMargin:"-80px 0px -60% 0px",threshold:0}),e.forEach(function(e){e.isIntersecting=!1,i.observe(e.el)}),setTimeout(function(){var t,s,o,i,a=window.scrollY||window.pageYOffset;if(a<100)n(e[0].link);else{for(o=100,s=null,t=0;t<e.length;t++)i=e[t].el.getBoundingClientRect(),i.top<o&&(s=e[t]);n(s?s.link:e[0].link)}},100)})()</script></main></div><footer class=site-footer><div class=footer-content><div class=footer-links><a href=https://github.com/LemonDouble target=_blank rel=noopener>GitHub</a>
+<a href=https://twitter.com/_lemon_berry_ target=_blank rel=noopener>Twitter</a>
+<a href=mailto:contact@lemondouble.com>Email</a>
+<a href=https://sns.lemondouble.com/@lemondouble target=_blank rel=noopener>Misskey</a></div><p class=footer-copy>&copy; 2022-2026 LemonDouble &bull; Powered by Hugo</p><p class=footer-brand>LEMON BLOG</p></div></footer><script>function toggleMobileMenu(){var e=document.getElementById("mobileMenu");e.classList.toggle("active")}function closeMobileMenu(){document.getElementById("mobileMenu").classList.remove("active")}function openMobileSearch(){document.body.classList.add("mobile-search-active"),closeMobileMenu(),setTimeout(function(){var e=document.getElementById("searchInput");e&&e.focus()},50)}function closeMobileSearch(){document.body.classList.remove("mobile-search-active");var e,t=document.getElementById("searchInput");t&&(t.value="",t.blur()),e=document.getElementById("searchResults"),e&&(e.classList.remove("active"),e.innerHTML="")}document.addEventListener("keydown",function(e){e.key==="Escape"&&document.body.classList.contains("mobile-search-active")&&closeMobileSearch()});function pageJump(e,t){if(e.key==="Escape")return t.blur(),!1;if(e.key!=="Enter")return!0;e.preventDefault();var s,o,n=parseInt(t.value,10),i=parseInt(t.dataset.total,10);return!n||n<1||n>i?(t.value=t.defaultValue,!1):(s=t.dataset.base||"/",o=n===1?s:s.replace(/\/$/,"")+"/page/"+n+"/",window.location.href=o,!1)}function pageJumpFocus(e){e.value=""}function pageJumpReset(e){e.value=e.defaultValue}function pageJumpSanitize(e){var t=e.value.replace(/\D/g,"");t!==e.value&&(e.value=t)}function toggleLangSwitcher(e){e&&e.stopPropagation();var s,t=document.getElementById("langSwitcher"),n=t&&t.querySelector(".lang-switcher-btn");if(!t||!n)return;s=t.classList.toggle("open"),n.setAttribute("aria-expanded",s?"true":"false")}document.addEventListener("click",function(e){var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&!e.target.closest("#langSwitcher")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))}),document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))})</script><script>var searchInput,searchResults,searchIndex=null;(function(){fetch("/zh-cn/index.json").then(function(e){return e.json()}).then(function(e){searchIndex=e}).catch(function(){})})(),searchInput=document.getElementById("searchInput"),searchResults=document.getElementById("searchResults"),searchInput&&(searchInput.addEventListener("input",function(e){var n,t=e.target.value.trim().toLowerCase();if(!t||!searchIndex){searchResults.classList.remove("active"),searchResults.innerHTML="";return}if(n=searchIndex.filter(function(e){return e.title.toLowerCase().includes(t)||e.summary.toLowerCase().includes(t)||(e.categories||[]).some(function(e){return e.toLowerCase().includes(t)})||(e.tags||[]).some(function(e){return e.toLowerCase().includes(t)})}).slice(0,10),n.length===0){searchResults.innerHTML='<div class="search-empty">未找到搜索结果。</div>',searchResults.classList.add("active");return}searchResults.innerHTML=n.map(function(e){var t=(e.categories||[]).map(function(e){return'<span class="search-cat">'+e+"</span>"}).join('<span class="search-cat-sep">/</span>');return'<a href="'+e.url+'" class="search-result-item"><div class="search-result-title">'+e.title+'</div><div class="search-result-meta">'+e.date+(t?" &middot; "+t:"")+"</div></a>"}).join(""),searchResults.classList.add("active")}),document.addEventListener("click",function(e){e.target.closest(".search-wrapper")||(searchResults.classList.remove("active"),document.body.classList.contains("mobile-search-active")&&!e.target.closest(".mobile-search-btn")&&closeMobileSearch())}),searchInput.addEventListener("focus",function(){searchInput.value.trim()&&searchResults.classList.add("active")}))</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js></script></body></html>

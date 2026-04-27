@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pod on Lemon Blog</title><link>https://blog.lemondouble.com/ja/tags/pod/</link><description>Recent content in Pod on Lemon Blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Thu, 26 Jan 2023 23:15:42 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/ja/tags/pod/index.xml" rel="self" type="application/rss+xml"/><item><title>自分用にまとめるK8Sリソースまとめ</title><link>https://blog.lemondouble.com/ja/p/f13e7c85c56b2c7c/</link><pubDate>Thu, 26 Jan 2023 23:15:42 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/f13e7c85c56b2c7c/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; -o&lt;/code&gt; または &lt;code&gt;k describe pod &amp;lt;podname&amp;gt;&lt;/code&gt;：状態情報を詳細に確認&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k logs -f &amp;lt;podname&amp;gt; -c &amp;lt;container-name&amp;gt;&lt;/code&gt;：ログを確認&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; --show-lables&lt;/code&gt;：Label情報を確認&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-pod"&gt;1. Pod&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;1つ以上のContainerの集合&lt;/p&gt;</description></item></channel></rss>

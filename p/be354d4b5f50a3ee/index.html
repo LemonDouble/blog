@@ -1,0 +1,180 @@
+<!doctype html><html lang=ko><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 8. Private Docker Registry 및 접속 ID/PW 설정하기 | Lemon Blog</title><meta name=description content="이런저런 걸 합니다. 블로그 기고는 보통 제가 했던 일을 까먹지 않기 위해 합니다(..)"><link rel=icon href=https://cdn.lemondouble.com/homepage/favicon.ico><link rel=canonical href=https://blog.lemondouble.com/p/be354d4b5f50a3ee/><link rel=alternate hreflang=ko href=https://blog.lemondouble.com/p/be354d4b5f50a3ee/><link rel=alternate hreflang=en href=https://blog.lemondouble.com/en/p/be354d4b5f50a3ee/><link rel=alternate hreflang=ja href=https://blog.lemondouble.com/ja/p/be354d4b5f50a3ee/><link rel=alternate hreflang=zh-cn href=https://blog.lemondouble.com/zh-cn/p/be354d4b5f50a3ee/><link rel=alternate hreflang=zh-tw href=https://blog.lemondouble.com/zh-tw/p/be354d4b5f50a3ee/><link rel=alternate hreflang=x-default href=https://blog.lemondouble.com/p/be354d4b5f50a3ee/><link href=https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css rel=stylesheet><link href=https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css rel=stylesheet><meta property="og:title" content="집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 8. Private Docker Registry 및 접속 ID/PW 설정하기"><meta property="og:description" content="이런저런 걸 합니다. 블로그 기고는 보통 제가 했던 일을 까먹지 않기 위해 합니다(..)"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.lemondouble.com/p/be354d4b5f50a3ee/"><meta property="og:site_name" content="Lemon Blog"><meta property="og:locale" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="ja_JP"><meta property="og:locale:alternate" content="zh_CN"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:image" content="https://blog.lemondouble.com/p/be354d4b5f50a3ee/cover.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 8. Private Docker Registry 및 접속 ID/PW 설정하기"><meta name=twitter:description content="이런저런 걸 합니다. 블로그 기고는 보통 제가 했던 일을 까먹지 않기 위해 합니다(..)"><meta name=twitter:image content="https://blog.lemondouble.com/p/be354d4b5f50a3ee/cover.png"><link rel=stylesheet href=/css/8bit.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-dracula.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css><link rel=stylesheet href=/css/code-block.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-9C6YX68EBM"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9C6YX68EBM")</script><meta name=generator content="Hugo 0.159.2"></head><body><nav class=site-nav><div class=nav-inner><a href=/ class=nav-logo><img src=/img/brand/lemon-logo.webp alt=Logo>
+<span>Lemon Blog</span></a><div class=nav-links><a href=/ class=nav-link>홈</a>
+<a href=/projects/ class=nav-link>프로젝트</a>
+<a href=/skills/ class=nav-link>스킬</a>
+<a href=https://lemondouble.com target=_blank rel="noopener noreferrer" class=nav-link>프로필</a></div><div class=nav-actions><div class=search-wrapper id=searchWrapper><span class=search-icon><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+</span><input type=text class=search-input id=searchInput placeholder=검색... autocomplete=off>
+<button class=search-close-btn onclick=closeMobileSearch() aria-label="검색 닫기">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class=search-results id=searchResults></div></div><button class=mobile-search-btn onclick=openMobileSearch() aria-label="검색 열기">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><div class=lang-switcher id=langSwitcher><button type=button class=lang-switcher-btn onclick=toggleLangSwitcher(event) aria-label="언어 선택" aria-haspopup=true aria-expanded=false>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3.0 014 10 15.3 15.3.0 01-4 10A15.3 15.3.0 018 12a15.3 15.3.0 014-10z"/></svg>
+<span class=lang-switcher-current>한국어</span>
+<svg class="lang-switcher-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class=lang-switcher-menu id=langSwitcherMenu role=menu><a href=/p/be354d4b5f50a3ee/ class="lang-switcher-item active" lang=ko role=menuitem>한국어
+</a><a href=/en/p/be354d4b5f50a3ee/ class=lang-switcher-item lang=en role=menuitem>English
+</a><a href=/ja/p/be354d4b5f50a3ee/ class=lang-switcher-item lang=ja role=menuitem>日本語
+</a><a href=/zh-cn/p/be354d4b5f50a3ee/ class=lang-switcher-item lang=zh-cn role=menuitem>简体中文
+</a><a href=/zh-tw/p/be354d4b5f50a3ee/ class=lang-switcher-item lang=zh-tw role=menuitem>繁體中文</a></div></div><button class=nav-menu-btn onclick=toggleMobileMenu() aria-label="메뉴 열기">
+<svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button></div></div></nav><div class=mobile-menu id=mobileMenu><a href=/ class=nav-link onclick=closeMobileMenu()>홈</a>
+<a href=/projects/ class=nav-link onclick=closeMobileMenu()>프로젝트</a>
+<a href=/skills/ class=nav-link onclick=closeMobileMenu()>스킬</a>
+<a href=https://lemondouble.com target=_blank rel="noopener noreferrer" class=nav-link onclick=closeMobileMenu()>프로필</a><div class=mobile-menu-lang><span class=mobile-menu-lang-label>언어 선택</span><div class=mobile-menu-lang-items><a href=/p/be354d4b5f50a3ee/ class="mobile-menu-lang-item active" lang=ko onclick=closeMobileMenu()>한국어</a>
+<a href=/en/p/be354d4b5f50a3ee/ class=mobile-menu-lang-item lang=en onclick=closeMobileMenu()>English</a>
+<a href=/ja/p/be354d4b5f50a3ee/ class=mobile-menu-lang-item lang=ja onclick=closeMobileMenu()>日本語</a>
+<a href=/zh-cn/p/be354d4b5f50a3ee/ class=mobile-menu-lang-item lang=zh-cn onclick=closeMobileMenu()>简体中文</a>
+<a href=/zh-tw/p/be354d4b5f50a3ee/ class=mobile-menu-lang-item lang=zh-tw onclick=closeMobileMenu()>繁體中文</a></div></div></div><div class=container><main class=site-main><div class="post-layout has-toc"><article class=post-single><header class=post-header><div class=post-cover><img src=/p/be354d4b5f50a3ee/cover_hu_be3ced555e93501e.png alt="집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 8. Private Docker Registry 및 접속 ID/PW 설정하기"></div><div class=post-header-content><div class=post-categories><a href=/categories/k8s/ class=category-tag>K8S</a>
+<a href=/categories/k3s/ class=category-tag>K3S</a>
+<a href=/categories/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4/ class=category-tag>라즈베리 파이</a></div><h1 class=post-title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 8. Private Docker Registry 및 접속 ID/PW 설정하기</h1><div class=post-meta><time>2023.12.10</time>
+<span class=meta-sep>&#8226;</span>
+<span>3 min read</span></div></div></header><div class=post-content><h3 id=1-서론>1. 서론</h3><p>이왕 인프라 갖춘거 Private Docker Registry도 직접 만들어 봅시다.</p><p>저의 경우는, 이후 이 클러스터에 별도로 개인 서버들을 올려 사용하고 있어 해당 컨테이너를 관리하기 위해 Private Registry를 사용하고 있습니다.</p><p>만약 Dockerhub에 돈을 지불할 의향이 있거나, Public Image로도 충분하다면 이 가이드를 따르실 필요는 없습니다.</p><p>저희는 Private Repo를 사용할 것이기 떄문에, ID,Password 설정도 동시에 진행합니다!</p><h3 id=2-설치>2. 설치</h3><p>이번에도 ArgoCD로 빠르게 설치해봅시다!</p><p><code>modules/docker-registry-system/pvc.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: longhorn-docker-registry-pvc
+  namespace: docker-registry-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn-ssd
+  resources:
+    requests:
+      storage: 300Gi</code></pre></div><p>저의 경우 ML 서버를 운영해 이미지 사이즈가 큰 관계로, 넉넉하게 300Gi정도 줬는데 필요하시다면 수정하셔서 사용하시면 됩니다.</p><p><code>modules/docker-registry-system/service.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: v1
+kind: Service
+metadata:
+  name: registry-service
+  namespace: docker-registry-system
+spec:
+  selector:
+    app: registry
+  type: LoadBalancer
+  ports:
+    - name: docker-port
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
+  loadBalancerIP: 192.168.0.202</code></pre></div><p><code>modules/docker-registry-system/deployment.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry
+  namespace: docker-registry-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry
+  template:
+    metadata:
+      labels:
+        app: registry
+        name: registry
+    spec:
+      nodeSelector:
+        node-type: worker
+      containers:
+      - name: registry
+        image: registry:2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: REGISTRY_HTTP_ADDR
+          value: 0.0.0.0:5000
+        - name: REGISTRY_AUTH
+          value: htpasswd
+        - name: REGISTRY_AUTH_HTPASSWD_REALM
+          value: docker-registry
+        - name: REGISTRY_AUTH_HTPASSWD_PATH
+          value: /auth/registry.password
+        - name: REGISTRY_STORAGE_DELETE_ENABLED
+          value: &#34;true&#34;
+        volumeMounts:
+        - name: lv-storage
+          mountPath: /var/lib/registry
+          subPath: registry
+        - name: docker-registry-account-htpasswd
+          mountPath: /auth
+          readOnly: true
+      volumes:
+        - name: lv-storage
+          persistentVolumeClaim:
+            claimName: longhorn-docker-registry-pvc
+        - name: docker-registry-account-htpasswd
+          secret:
+            secretName: docker-registry-account-htpasswd</code></pre></div><p>docker-registry-account-htpasswd 라는 Secret을 통해 Registry에서 사용할 ID, Password를 지정합니다. 해당 내용은 뒤에서 다루겠습니다.</p><p><code>modules/docker-registry-system/sealed-docker-registry-account-htpasswd.yaml</code></p><p>Secrets 설정이 조금 복잡합니다. Step By Step으로 따라와 봅시다!</p><ol><li>Control Node에서 <code>htpasswd -Bbn &lt;id> &lt;password></code> 로 Docker Registry에서 사용할 id/password String을 얻습니다.</li><li>기존 7-1에서 설정한 kubeseal-webgui를 이용하여 해당 Secret을 암호화합니다.
+<img src=/p/be354d4b5f50a3ee/image.png alt=예시></li><li>해당 Secret을 sealed-docker-registry-account-htpasswd.yaml 로 붙여넣기 합니다.</li></ol><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: docker-registry-account-htpasswd
+  namespace: docker-registry-system
+  annotations: {}
+spec:
+  encryptedData: 
+    registry.password: dfadf...</code></pre></div><p><code>modules/docker-registry-system/ingress.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: docker-registry-ingress
+  namespace: docker-registry-system
+spec:
+  tls:
+    certResolver: le
+  routes:
+    - kind: Rule
+      match: Host(`&lt;사용할 subdomain&gt;`)
+      services:
+        - name: registry-service
+          port: 5000</code></pre></div><h3 id=3-정상-작동-확인>3. 정상 작동 확인</h3><p>정상 작동이 확인되었다면, 이후 배포합니다!</p><p>배포가 되었다면, 정상적으로 id/password로 로그인이 이뤄지는지 확인합니다.</p><p>docker가 깔려있는 곳에서 터미널로 다음을 실행합니다.</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>shell</span></div><pre class=line-numbers><code class=language-shell>docker login &lt;my-registry.lemon.com&gt;</code></pre></div><p>이후 id/password를 입력하고, 정상 로그인이 되는지 확인합니다.</p><h3 id=4-private-registry에서-이미지-받아오는-법>4. Private Registry에서 이미지 받아오는 법</h3><p>이제 Id/Password가 있는 Private Registry에서 이미지를 Pull 해오는 방법을 알아야겠죠? 그래야 올린 이미지를 쓸 수 있을테니까요.</p><p>제가 사용하는 방법을 일단 올려드립니다. 더 깔끔한 방법이 있을 것 같은데, 혹시 있다면 알려주세요!</p><p>만약 auth-server-system 이라는 namespace에서</p><ol><li><code>kubectl create secret docker-registry regcred --docker-server=&lt;your-registry-server> --docker-username=&lt;your-name> --docker-password=&lt;your-pword> --docker-email=&lt;your-email></code> 을 이용하여 default Namespace에 regcred라는 secret을 만듭니다.</li><li><code>kubectl get secret regcred --output=yaml > secret.yaml</code> 을 이용하여 secret.yaml에 secret 정보를 저장합니다. 해당 Secret은 어딘가에 백업해 둡니다.</li><li><code>kubectl delete secret regcred</code> 를 입력하여 default namespace에 만든 secret을 삭제합니다.</li><li>이후 2의 Secret에 Namespace를 수정하여 내가 사용할 namespace로 변경합니다. (예시 : auth-server-system)</li></ol><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: v1
+data:
+  .dockerconfigjson: ddfadf...
+kind: Secret
+metadata:
+  name: regcred
+  namespace: auth-server-system # 매번 여기를 변경
+type: kubernetes.io/dockerconfigjson</code></pre></div><ol start=5><li>이후 <code>cat secret.yaml | kubeseal --controller-namespace=sealed-secrets-system --controller-name=sealed-secrets -oyaml > sealed-regcred.yaml</code> 커맨드를 입력하여 Sealed Secret을 생성합니다.</li><li>Sealed regcred를 배포시 같이 배포하고, Deployment에 다음과 같이 ImagePullSecret을 추가합니다.</li></ol><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-server
+  namespace: auth-server-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-server
+  template:
+    metadata:
+      labels:
+        app: auth-server
+        name: auth-server
+    spec:
+      nodeSelector:
+        node-type: worker
+      containers:
+        - name: auth-server
+          image: registry.lemon.com/auth_server_repository:2023.12.10.1
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 80
+      imagePullSecrets:
+        - name: regcred # 이걸 추가</code></pre></div><h3 id=5-마치며>5. 마치며</h3><p>축하합니다! 이제 Private Docker Registry 구축을 완료해,</p><p>Id/Password를 이용해 내 이미지들을 안전하게 지킬 수 있게 되었습니다!</p><p>이제 다음엔 Web UI를 통해 이미지를 관리하는 법을 알려보고, Docker GC 방법에 대해 알아보겠습니다.</p></div><div class=post-tags><a href=/tags/k8s/ class=tag-link>#K8S</a>
+<a href=/tags/k3s/ class=tag-link>#K3S</a>
+<a href=/tags/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4/ class=tag-link>#라즈베리 파이</a>
+<a href=/tags/docker-registry/ class=tag-link>#Docker Registry</a>
+<a href=/tags/%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88%EB%A0%88%EC%A7%80%EC%8A%A4%ED%8A%B8%EB%A6%AC/ class=tag-link>#컨테이너레지스트리</a>
+<a href=/tags/longhorn/ class=tag-link>#Longhorn</a></div><div class=post-license><p>&copy; Licensed under CC BY-NC-SA 4.0</p></div><section class=post-comments><h3 class=comments-title>Comments</h3><script src=https://giscus.app/client.js data-repo=LemonDouble/LemonDouble.github.io-comments data-repo-id=R_kgDOI0UkDA data-category=Comments data-category-id=DIC_kwDOI0UkDM4CcIeY data-mapping=pathname data-reactions-enabled=1 data-emit-metadata=0 data-theme=dark crossorigin=anonymous async></script></section></article><aside class=toc-sidebar><a href=/ class=toc-back-btn onclick="return tocGoBack(event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+<span>이전 페이지</span></a><nav class=toc-sidebar-nav><h4 class=toc-sidebar-title>On this page</h4><nav id=TableOfContents><ul><li><ul><li><a href=#1-서론>1. 서론</a></li><li><a href=#2-설치>2. 설치</a></li><li><a href=#3-정상-작동-확인>3. 정상 작동 확인</a></li><li><a href=#4-private-registry에서-이미지-받아오는-법>4. Private Registry에서 이미지 받아오는 법</a></li><li><a href=#5-마치며>5. 마치며</a></li></ul></li></ul></nav></nav></aside></div><script>function tocGoBack(e){var t=document.referrer&&document.referrer.indexOf(window.location.origin)===0;return!(t&&window.history.length>1)||(e.preventDefault(),window.history.back(),!1)}(function(){var e,t,o,i,s=document.querySelector(".toc-sidebar-nav");if(!s)return;if(o=s.querySelectorAll("a"),!o.length)return;if(e=[],o.forEach(function(t){var s=decodeURIComponent(t.getAttribute("href").slice(1)),n=document.getElementById(s);n&&e.push({el:n,link:t})}),!e.length)return;t=null;function n(e){if(t===e)return;t&&t.classList.remove("active"),e.classList.add("active"),t=e;var i=s,n=e.getBoundingClientRect(),o=i.getBoundingClientRect();(n.top<o.top||n.bottom>o.bottom)&&e.scrollIntoView({block:"nearest",behavior:"smooth"})}i=new IntersectionObserver(function(t){var s,o,i,a,r,c,l=[];t.forEach(function(t){var n=e.find(function(e){return e.el===t.target});n&&(n.isIntersecting=t.isIntersecting)});for(s=0;s<e.length;s++)if(e[s].isIntersecting){n(e[s].link);return}for(c=window.scrollY||window.pageYOffset,a=100,i=null,o=0;o<e.length;o++)r=e[o].el.getBoundingClientRect(),r.top<a&&(i=e[o]);i&&n(i.link)},{rootMargin:"-80px 0px -60% 0px",threshold:0}),e.forEach(function(e){e.isIntersecting=!1,i.observe(e.el)}),setTimeout(function(){var t,s,o,i,a=window.scrollY||window.pageYOffset;if(a<100)n(e[0].link);else{for(o=100,s=null,t=0;t<e.length;t++)i=e[t].el.getBoundingClientRect(),i.top<o&&(s=e[t]);n(s?s.link:e[0].link)}},100)})()</script></main></div><footer class=site-footer><div class=footer-content><div class=footer-links><a href=https://github.com/LemonDouble target=_blank rel=noopener>GitHub</a>
+<a href=https://twitter.com/_lemon_berry_ target=_blank rel=noopener>Twitter</a>
+<a href=mailto:contact@lemondouble.com>Email</a>
+<a href=https://sns.lemondouble.com/@lemondouble target=_blank rel=noopener>Misskey</a></div><p class=footer-copy>&copy; 2022-2026 LemonDouble &bull; Powered by Hugo</p><p class=footer-brand>LEMON BLOG</p></div></footer><script>function toggleMobileMenu(){var e=document.getElementById("mobileMenu");e.classList.toggle("active")}function closeMobileMenu(){document.getElementById("mobileMenu").classList.remove("active")}function openMobileSearch(){document.body.classList.add("mobile-search-active"),closeMobileMenu(),setTimeout(function(){var e=document.getElementById("searchInput");e&&e.focus()},50)}function closeMobileSearch(){document.body.classList.remove("mobile-search-active");var e,t=document.getElementById("searchInput");t&&(t.value="",t.blur()),e=document.getElementById("searchResults"),e&&(e.classList.remove("active"),e.innerHTML="")}document.addEventListener("keydown",function(e){e.key==="Escape"&&document.body.classList.contains("mobile-search-active")&&closeMobileSearch()});function pageJump(e,t){if(e.key==="Escape")return t.blur(),!1;if(e.key!=="Enter")return!0;e.preventDefault();var s,o,n=parseInt(t.value,10),i=parseInt(t.dataset.total,10);return!n||n<1||n>i?(t.value=t.defaultValue,!1):(s=t.dataset.base||"/",o=n===1?s:s.replace(/\/$/,"")+"/page/"+n+"/",window.location.href=o,!1)}function pageJumpFocus(e){e.value=""}function pageJumpReset(e){e.value=e.defaultValue}function pageJumpSanitize(e){var t=e.value.replace(/\D/g,"");t!==e.value&&(e.value=t)}function toggleLangSwitcher(e){e&&e.stopPropagation();var s,t=document.getElementById("langSwitcher"),n=t&&t.querySelector(".lang-switcher-btn");if(!t||!n)return;s=t.classList.toggle("open"),n.setAttribute("aria-expanded",s?"true":"false")}document.addEventListener("click",function(e){var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&!e.target.closest("#langSwitcher")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))}),document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))})</script><script>var searchInput,searchResults,searchIndex=null;(function(){fetch("/index.json").then(function(e){return e.json()}).then(function(e){searchIndex=e}).catch(function(){})})(),searchInput=document.getElementById("searchInput"),searchResults=document.getElementById("searchResults"),searchInput&&(searchInput.addEventListener("input",function(e){var n,t=e.target.value.trim().toLowerCase();if(!t||!searchIndex){searchResults.classList.remove("active"),searchResults.innerHTML="";return}if(n=searchIndex.filter(function(e){return e.title.toLowerCase().includes(t)||e.summary.toLowerCase().includes(t)||(e.categories||[]).some(function(e){return e.toLowerCase().includes(t)})||(e.tags||[]).some(function(e){return e.toLowerCase().includes(t)})}).slice(0,10),n.length===0){searchResults.innerHTML='<div class="search-empty">검색 결과가 없습니다.</div>',searchResults.classList.add("active");return}searchResults.innerHTML=n.map(function(e){var t=(e.categories||[]).map(function(e){return'<span class="search-cat">'+e+"</span>"}).join('<span class="search-cat-sep">/</span>');return'<a href="'+e.url+'" class="search-result-item"><div class="search-result-title">'+e.title+'</div><div class="search-result-meta">'+e.date+(t?" &middot; "+t:"")+"</div></a>"}).join(""),searchResults.classList.add("active")}),document.addEventListener("click",function(e){e.target.closest(".search-wrapper")||(searchResults.classList.remove("active"),document.body.classList.contains("mobile-search-active")&&!e.target.closest(".mobile-search-btn")&&closeMobileSearch())}),searchInput.addEventListener("focus",function(){searchInput.value.trim()&&searchResults.classList.add("active")}))</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js></script></body></html>

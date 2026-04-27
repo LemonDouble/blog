@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>クラスタ構築 on Lemon Blog</title><link>https://blog.lemondouble.com/ja/tags/%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E6%A7%8B%E7%AF%89/</link><description>Recent content in クラスタ構築 on Lemon Blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 03 Dec 2023 22:20:29 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/ja/tags/%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%BF%E6%A7%8B%E7%AF%89/index.xml" rel="self" type="application/rss+xml"/><item><title>自宅でラズベリーパイクラスタによるデータセンター構築 - 2. クラスタ初期設定編</title><link>https://blog.lemondouble.com/ja/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/f4efced2e8d5b1d8/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="ハードウェア"&gt;ハードウェア&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="ハードウェア構成図"&gt;&lt;/p&gt;
+&lt;p&gt;上の図を参考にハードウェアを構成します。&lt;/p&gt;
+&lt;p&gt;普段からPCを使っているご家庭なら、ルーターと普段使いのデスクトップはすでにあると思いますので、図のうち緑色の部分だけを追加すれば大丈夫です。&lt;/p&gt;</description></item><item><title>自宅でラズベリーパイクラスタを使ってデータセンターを構築する - 序論</title><link>https://blog.lemondouble.com/ja/p/d42387934c57aa25/</link><pubDate>Sun, 03 Dec 2023 13:24:05 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/d42387934c57aa25/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="初めてラズベリーパイクラスタを構築してからおおよそ300日が経ちました"&gt;初めてラズベリーパイクラスタを構築してから、おおよそ300日が経ちました。&lt;/h3&gt;
+&lt;p&gt;きっかけはそれほど大きなものではありませんでした。&lt;/p&gt;
+&lt;p&gt;私は毎朝&lt;a href="https://news.hada.io/" target="_blank" rel="noopener noreferrer"
+&gt;GeekNews&lt;/a&gt;
+&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;というニュースキュレーションサービスを見ながら出勤しているのですが、その中で&lt;a href="https://news.hada.io/topic?id=8306" target="_blank" rel="noopener noreferrer"
+&gt;Chick-Fil-A の Edge Computing 技術アーキテクチャ：Enterprise Restaurant Compute&lt;/a&gt;
+という記事が目に留まりました。&lt;/p&gt;</description></item></channel></rss>

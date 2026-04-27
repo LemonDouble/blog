@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Lemon Blog</title><link>https://blog.lemondouble.com/zh-tw/post/</link><description>Recent content in Posts on Lemon Blog</description><generator>Hugo</generator><language>zh-TW</language><lastBuildDate>Sun, 26 Apr 2026 23:23:19 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-tw/post/index.xml" rel="self" type="application/rss+xml"/><item><title>打包成函式庫時考慮的問題 — hayakoe Part 4</title><link>https://blog.lemondouble.com/zh-tw/p/b7791b4f6c0818da/</link><pubDate>Sun, 26 Apr 2026 23:23:19 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/b7791b4f6c0818da/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;這是 hayakoe 系列的第四篇，也是最後一篇正篇。前一篇可在 &lt;a href="https://blog.lemondouble.com/zh-tw/p/9a99dd816456c397/"
+&gt;榨乾最後 1% — torch.compile、批次推論、Pause 還原、ARM64 - hayakoe Part 3&lt;/a&gt;
+ 查看。&lt;/p&gt;</description></item><item><title>榨乾最後1% — torch.compile、批次推論、Pause恢復、ARM64 - hayakoe Part 3</title><link>https://blog.lemondouble.com/zh-tw/p/9a99dd816456c397/</link><pubDate>Sun, 26 Apr 2026 19:29:25 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/9a99dd816456c397/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;這是hayakoe系列的第三篇正篇。上一篇文章可以在&lt;a href="https://blog.lemondouble.com/zh-tw/p/137243ede98030f1/"
+&gt;記憶體減半，速度提升1.5倍 - hayakoe Part 2&lt;/a&gt;
+中查看。&lt;/p&gt;</description></item><item><title>記憶體減半,速度提升1.5倍 - hayakoe Part 2</title><link>https://blog.lemondouble.com/zh-tw/p/137243ede98030f1/</link><pubDate>Sun, 26 Apr 2026 17:40:46 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/137243ede98030f1/</guid><description>&lt;p&gt;&lt;em&gt;註:筆者居住於韓國,部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;這是hayakoe系列的第二篇正文。前一篇文章可以在&lt;a href="https://blog.lemondouble.com/zh-tw/p/4c2a6225a737f531/"
+&gt;hayakoe - 時隔2年再次研究各種TTS模型後又回歸VITS的故事 - Part 1&lt;/a&gt;
+查看。&lt;/p&gt;</description></item><item><title>hayakoe — 時隔2年再次研究各種TTS模型，最終還是回到VITS的故事 - Part 1</title><link>https://blog.lemondouble.com/zh-tw/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/4c2a6225a737f531/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;這是 hayakoe 系列的第一篇正文。前言性質的文章可以在 &lt;a href="https://blog.lemondouble.com/zh-tw/p/ea78fbb9b78c38ac/"
+&gt;hayakoe — 打造好用又快的 TTS 函式庫 — 序論&lt;/a&gt;
+ 查看。&lt;/p&gt;
+&lt;p&gt;序論中簡單提到的一個話題是「重新選擇了模型」。Part 1 我想把這個過程講得更詳細一些。&lt;/p&gt;</description></item><item><title>hayakoe - 打造易用且快速的TTS函式庫 - 序論</title><link>https://blog.lemondouble.com/zh-tw/p/ea78fbb9b78c38ac/</link><pubDate>Sun, 26 Apr 2026 11:31:45 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/ea78fbb9b78c38ac/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;大約兩年前，我接觸到了一個叫做Bert-VITS2的日語TTS函式庫，並曾經寫過一篇整理學習方法的文章。&lt;/p&gt;</description></item><item><title>想升級個人伺服器的 Python 版本，但上游停止更新，於是 fork 了 prebuilt wheel 套件讓它支援新 Python 版本的故事 (Pyopenjtalk)</title><link>https://blog.lemondouble.com/zh-tw/p/pyopenjtalk-prebuilt/</link><pubDate>Sun, 05 Apr 2026 21:22:00 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/pyopenjtalk-prebuilt/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;之前我寫過一篇 &lt;a href="../make-vits2-tts/"
+&gt;用 Bert-VITS2 做 TTS 的文章&lt;/a&gt;
+，那時候做的 TTS 一直用得挺好。但是…Bert-VITS2 的 repo 已經停止開發了。&lt;/p&gt;</description></item><item><title>為了在 Home Assistant 中使用 AliExpress 買的電視背光燈而逆向藍牙協定的故事</title><link>https://blog.lemondouble.com/zh-tw/p/ble-controller-dev-story/</link><pubDate>Sun, 05 Apr 2026 18:07:00 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/ble-controller-dev-story/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/ble-controller-dev-story/backlight.webp" alt="AliExpress 商品圖片"&gt;&lt;/p&gt;
+&lt;p&gt;我在 AliExpress 上買了一個電視背光燈。&lt;/p&gt;
+&lt;p&gt;其實一開始我並不在意聯動不聯動的問題..反正只要電視後面有光，才區區2萬5千韓元&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;？沒理由不買吧？&lt;/p&gt;</description></item><item><title>AWS SAA 當日報名考試合格心得</title><link>https://blog.lemondouble.com/zh-tw/p/d3c7a9de0a536286/</link><pubDate>Sun, 04 Aug 2024 20:11:48 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/d3c7a9de0a536286/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;AWS 有實用的認證資格。(&lt;a href="https://aws.amazon.com/certification/exams/" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+)&lt;/p&gt;
+&lt;p&gt;我一直告訴自己「總有一天要考、總有一天要考」，但再這樣下去恐怕一輩子都考不到，今天剛好沒安排，乾脆當天報名直接參加了線上考試。&lt;/p&gt;</description></item><item><title>炫耀一下我用語音控制的AI智慧家庭</title><link>https://blog.lemondouble.com/zh-tw/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/30f1bf25ad8b594a/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="我做的智慧家庭預覽注意日文音訊"&gt;我做的智慧家庭預覽（注意：日文音訊）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistant"&gt;1. HomeAssistant？&lt;/h3&gt;
+&lt;p&gt;故事從一個我&lt;a href="https://blog.lemondouble.com/zh-tw/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/"
+&gt;以前寫過文章&lt;/a&gt;
+的平台 HomeAssistant 開始。&lt;/p&gt;
+&lt;p&gt;對 HomeAssistant 來說，2023年是&lt;a href="https://www.home-assistant.io/blog/2022/12/20/year-of-voice/" target="_blank" rel="noopener noreferrer"
+&gt;語音之年&lt;/a&gt;
+。&lt;/p&gt;</description></item><item><title>用 Bert-VITS2 打造屬於自己的 TTS</title><link>https://blog.lemondouble.com/zh-tw/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/9c06f7dc324b5986/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="先來聽聽我們要做的音訊日語"&gt;先來聽聽我們要做的音訊（日語）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-tts"&gt;1. TTS？&lt;/h3&gt;
+&lt;p&gt;Text-To-Speech，顧名思義，是把文字轉換成語音資料的軟體。&lt;/p&gt;
+&lt;p&gt;只要做好一次，就可以在大量自動化情境中使用，不必擔心呼叫次數，所以我的目標是親手做一個。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集搭建資料中心 - 10-2. 使用 Forward Auth 與 OAuth2 實作 SSO</title><link>https://blog.lemondouble.com/zh-tw/p/a63eb8199e2089b6/</link><pubDate>Sun, 07 Jan 2024 16:05:04 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/a63eb8199e2089b6/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-forward-auth"&gt;1. Forward Auth?&lt;/h3&gt;
+&lt;p&gt;當我們需要認證邏輯時，可以在哪裡實作認證邏輯呢？&lt;/p&gt;
+&lt;p&gt;最先想到的方法，可能是直接在應用程式中實作。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 10-1. 使用 Basic Auth 保護內部服務</title><link>https://blog.lemondouble.com/zh-tw/p/771435ba12d3f38c/</link><pubDate>Sun, 07 Jan 2024 12:41:24 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/771435ba12d3f38c/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;以下內容與 Sealed Secrets &lt;a href="https://lemondouble.github.io/zh-tw/p/%EC%A7%91%EC%97%90%EC%84%9C-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0-%EC%B0%A8%EB%A6%AC%EA%B8%B0-7.-sealed-secrets%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%B0%80-%EA%B4%80%EB%A6%AC--traefik-basic-auth-%EC%84%A4%EC%A0%95/#3-sealed-secrets-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-basic-auth-%EB%93%B1%EB%A1%9D%ED%95%B4%EB%B3%B4%EA%B8%B0" target="_blank" rel="noopener noreferrer"
+&gt;第 3 節&lt;/a&gt;
+ 有相當多重疊的部分。如果您已經完成那一節，並且對 Basic Auth 較為熟悉，可以直接跳過。&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集架設資料中心 - 9. 使用 CloudNativePG 在 Kubernetes 上運維資料庫</title><link>https://blog.lemondouble.com/zh-tw/p/a4ded8cced5f045c/</link><pubDate>Tue, 12 Dec 2023 22:09:10 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/a4ded8cced5f045c/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="序言"&gt;序言&lt;/h3&gt;
+&lt;p&gt;資料庫管理起來相當棘手。&lt;/p&gt;
+&lt;p&gt;與其他 Pod 不同，必須關心資料保管、備份、管理，還要留意 Failover 和效能。&lt;/p&gt;
+&lt;p&gt;所以據我所知，即使其他工作負載都跑在 Kubernetes 叢集上，單獨把 DB 放在 AWS RDS 之類的託管系統或獨立執行個體上的情況也很常見。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 8-1. Docker Registry UI 設定與 Registry GC 使用方法</title><link>https://blog.lemondouble.com/zh-tw/p/a68cc3e1f5e8a95b/</link><pubDate>Sun, 10 Dec 2023 11:39:46 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/a68cc3e1f5e8a95b/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-private-registry-雖然好用但管理起來太麻煩了"&gt;1. Private Registry 雖然好用，但管理起來太麻煩了！&lt;/h3&gt;
+&lt;p&gt;雖然有些人非常喜歡 CLI，但我實在記不住命令，所以更偏好 GUI 與有跡可循的紀錄。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 8. 建置私有 Docker Registry 並設定 ID/密碼</title><link>https://blog.lemondouble.com/zh-tw/p/be354d4b5f50a3ee/</link><pubDate>Sun, 10 Dec 2023 10:08:50 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/be354d4b5f50a3ee/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-前言"&gt;1. 前言&lt;/h3&gt;
+&lt;p&gt;既然已經把基礎建設準備好了，我們順便也來自己建一個私有 Docker Registry 吧。&lt;/p&gt;
+&lt;p&gt;我自己的情況是，後來在這個叢集上另外部署了一些個人伺服器，為了管理這些容器映像，所以使用了私有 Registry。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 7. 透過 Sealed Secrets 進行密鑰管理 + Traefik Basic Auth 設定</title><link>https://blog.lemondouble.com/zh-tw/p/1379182f14a62e9b/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/1379182f14a62e9b/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-sealed-secrets"&gt;1. Sealed Secrets?&lt;/h3&gt;
+&lt;p&gt;我們現在正在做 GitOps。也就是說，我們把所有與叢集相關的設定都上傳到 Git。&lt;/p&gt;
+&lt;p&gt;可是，Kubernetes Secret 沒有加密功能。任何人用 base64 解碼後都能看到明文內容。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集架設資料中心 - 7-1. 透過 Web UI 輕鬆建立 Sealed Secrets</title><link>https://blog.lemondouble.com/zh-tw/p/567b4c177bdb8401/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/567b4c177bdb8401/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-前言"&gt;1. 前言&lt;/h3&gt;
+&lt;p&gt;Sealed Secrets 整體上都不錯，但有一個問題：每次設定時都要建立 Secrets.yaml，再用 CLI 轉換為 Sealed Secrets，然後加入 Git，這個過程實在非常繁瑣。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 6. 新增分散式儲存並透過 Longhorn 提供服務</title><link>https://blog.lemondouble.com/zh-tw/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/615befc538a81902/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-新增並掛載新磁碟"&gt;1. 新增並掛載新磁碟&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;此部分內容與一般 SSD / HDD 掛載相同！如果遇到問題，也可以搜尋 &lt;code&gt;Ubuntu 硬碟掛載&lt;/code&gt; 等關鍵字參考操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;將 SSD 或 HDD 連接到樹莓派。&lt;/p&gt;</description></item><item><title>在家用 Raspberry Pi 叢集打造資料中心 - 5. ArgoCD GitOps 設定與 Longhorn 安裝</title><link>https://blog.lemondouble.com/zh-tw/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/107eed6a453d6238/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-開始-gitops"&gt;1. 開始 GitOps&lt;/h3&gt;
+&lt;p&gt;ArgoCD 已經安裝完成，接下來整理一下儲存庫的結構。&lt;/p&gt;
+&lt;p&gt;我們會使用 App On Apps 模式來打造一套簡潔的部署方式。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集架設資料中心 - 4. Traefik HTTPS 認證及 ArgoCD 設定</title><link>https://blog.lemondouble.com/zh-tw/p/f10efbc0bcc4c537/</link><pubDate>Wed, 06 Dec 2023 05:21:00 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/f10efbc0bcc4c537/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;如果透過 Git 來管理整個系統會怎麼樣呢？
+將所需的容器種類、數量等全部宣告在 Git 中，叢集完全按照 Git 中宣告的內容運作，這樣不是非常方便嗎？&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集搭建資料中心 - 3. 安裝 Helm 並使用 MetalLB 設定負載平衡器</title><link>https://blog.lemondouble.com/zh-tw/p/06a98c88458a5fb7/</link><pubDate>Wed, 06 Dec 2023 05:20:00 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/06a98c88458a5fb7/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="安裝-helm"&gt;安裝 Helm&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;參考文章：&lt;a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer"
+&gt;Installing Helm&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;依序輸入以下指令來安裝 Helm。&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;接著設定 kubeconfig 檔案。&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+chmod 600 ~/.kube/config&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;之後在 bashrc 的最底部加入下面這一行，再使用 &lt;code&gt;source ~/.bashrc&lt;/code&gt; 立即套用 Shell 設定。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集架設資料中心 - 2. 叢集初始化設定篇</title><link>https://blog.lemondouble.com/zh-tw/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/f4efced2e8d5b1d8/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="硬體"&gt;硬體&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="硬體構成示意圖"&gt;&lt;/p&gt;
+&lt;p&gt;請參考上圖來組裝硬體。&lt;/p&gt;
+&lt;p&gt;如果家裡有在用電腦，那大概率已經有路由器跟平常使用的桌機了，所以只需要在上圖中加上綠色部分即可。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集搭建資料中心 - 1. 硬體篇</title><link>https://blog.lemondouble.com/zh-tw/p/20ae99fa945edf10/</link><pubDate>Sun, 03 Dec 2023 14:54:33 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/20ae99fa945edf10/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;第一節是硬體時間！從簡單的內容到稍微複雜的話題，讓我們快速開始吧！&lt;/p&gt;
+&lt;h3 id="1-sbc-single-board-computer"&gt;1. SBC (Single Board Computer)&lt;/h3&gt;
+&lt;p&gt;最重要的當然還是SBC吧？&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 序論</title><link>https://blog.lemondouble.com/zh-tw/p/d42387934c57aa25/</link><pubDate>Sun, 03 Dec 2023 13:24:05 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/d42387934c57aa25/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="我第一次建置樹莓派叢集至今大約已經過了300天"&gt;我第一次建置樹莓派叢集至今，大約已經過了300天。&lt;/h3&gt;
+&lt;p&gt;契機其實並不算大。&lt;/p&gt;
+&lt;p&gt;我每天早上上班路上都會看一個叫&lt;a href="https://news.hada.io/" target="_blank" rel="noopener noreferrer"
+&gt;GeekNews&lt;/a&gt;
+&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;的新聞策展服務，其中一篇題為&lt;a href="https://news.hada.io/topic?id=8306" target="_blank" rel="noopener noreferrer"
+&gt;Chick-Fil-A 的 Edge Computing 技術架構：Enterprise Restaurant Compute&lt;/a&gt;
+的文章引起了我的注意。&lt;/p&gt;</description></item><item><title>要不要用 HomeAssistant 玩玩 IoT?</title><link>https://blog.lemondouble.com/zh-tw/p/107dcfce6eca0dd7/</link><pubDate>Sun, 21 May 2023 09:40:47 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/107dcfce6eca0dd7/</guid><description>&lt;p&gt;&lt;em&gt;註:筆者居住於韓國,部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;IoT 是相當有趣的主題,&lt;/p&gt;
+&lt;p&gt;但入門難度高,而且不算廣為人知的話題,所以似乎也不太有人知道能用它做什麼。&lt;/p&gt;
+&lt;p&gt;在眾多平台中,我親自安裝並正在使用 HomeAssistant(以下簡稱 HASS)這個平台,想聊聊為什麼需要這種平台,以及它能在我們的生活中改善什麼!&lt;/p&gt;</description></item><item><title>ChatGPT 能好好解決常識問題嗎？（論文解讀）</title><link>https://blog.lemondouble.com/zh-tw/p/dedda5393e239315/</link><pubDate>Thu, 30 Mar 2023 19:15:11 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/dedda5393e239315/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最近，我養成了閒暇時讀論文的習慣。
+其中，我在 arxiv 上讀到一篇有趣的論文，所以想整理並分享一下。&lt;/p&gt;
+&lt;p&gt;論文標題是 &lt;code&gt;ChatGPT is a Knowledgeable but Inexperienced Solver: An Investigation of Commonsense Problem in Large Language Models&lt;/code&gt; (&lt;a href="https://arxiv.org/abs/2303.16421" target="_blank" rel="noopener noreferrer"
+&gt;Arxiv Link&lt;/a&gt;
+)。&lt;/p&gt;</description></item><item><title>搞壞三張SD卡後氣炸了寫的樹莓派USB Boot設定方法</title><link>https://blog.lemondouble.com/zh-tw/p/977ba9d70a2a7029/</link><pubDate>Sun, 29 Jan 2023 17:31:39 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/977ba9d70a2a7029/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;樹莓派哪裡都好，就是SD卡開機經常讓人非常火大。&lt;/p&gt;
+&lt;p&gt;折騰的時候SD卡反覆拔插，不小心刮傷了導致無法辨識，真的會讓人心煩意亂。&lt;/p&gt;</description></item><item><title>自用 K8S 資源整理</title><link>https://blog.lemondouble.com/zh-tw/p/f13e7c85c56b2c7c/</link><pubDate>Thu, 26 Jan 2023 23:15:42 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/f13e7c85c56b2c7c/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; -o&lt;/code&gt; 或 &lt;code&gt;k describe pod &amp;lt;podname&amp;gt;&lt;/code&gt;：詳細查看狀態資訊&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k logs -f &amp;lt;podname&amp;gt; -c &amp;lt;container-name&amp;gt;&lt;/code&gt;：查看 log&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; --show-lables&lt;/code&gt;：查看 Label 資訊&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-pod"&gt;1. Pod&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;一個或多個 Container 的集合&lt;/p&gt;</description></item><item><title>適合部署在 Fly.io 上的服務 (Uptime Kuma)</title><link>https://blog.lemondouble.com/zh-tw/p/7da6be543113ac58/</link><pubDate>Sun, 22 Jan 2023 20:41:31 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/7da6be543113ac58/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;這次要介紹的專案是一個叫做 Uptime Kuma 的服務，它可以記錄伺服器的 Uptime。&lt;/p&gt;
+&lt;p&gt;它可以監控你自己的叢集/伺服器等，當發生問題時，可以透過 Telegram、Slack、Discord、E-mail 等多種方式通知你伺服器當機了。&lt;/p&gt;</description></item><item><title>使用 Private DNS 與 ALB 建構從 VPC 外部無法存取的 API</title><link>https://blog.lemondouble.com/zh-tw/p/acf607c351652785/</link><pubDate>Sun, 22 Jan 2023 17:12:43 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/acf607c351652785/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;建構 MSA 服務時，伺服器之間會發生非常頻繁的通訊。&lt;/p&gt;
+&lt;p&gt;舉例來說，假設有一個（高度簡化的）轉帳服務。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/acf607c351652785/2023-01-22-17-22-23.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;如果有錢包伺服器和使用者資訊伺服器，呼叫轉帳 API 時會發生上圖中的情況。&lt;/p&gt;</description></item><item><title>透過 GitHub OIDC,無須在 GitHub Actions 放置 AWS Key 即可使用 AWS 資源(免費)</title><link>https://blog.lemondouble.com/zh-tw/p/%E9%80%8F%E9%81%8E-github-oidc%E7%84%A1%E9%A0%88%E5%9C%A8-github-actions-%E6%94%BE%E7%BD%AE-aws-key-%E5%8D%B3%E5%8F%AF%E4%BD%BF%E7%94%A8-aws-%E8%B3%87%E6%BA%90%E5%85%8D%E8%B2%BB/</link><pubDate>Sun, 22 Jan 2023 11:18:50 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/%E9%80%8F%E9%81%8E-github-oidc%E7%84%A1%E9%A0%88%E5%9C%A8-github-actions-%E6%94%BE%E7%BD%AE-aws-key-%E5%8D%B3%E5%8F%AF%E4%BD%BF%E7%94%A8-aws-%E8%B3%87%E6%BA%90%E5%85%8D%E8%B2%BB/</guid><description>&lt;p&gt;&lt;em&gt;註:筆者居住於韓國,部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;要在 GitHub Actions 中使用 AWS,通常會經過以下步驟。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;進入 IAM 控制台,建立一個新使用者。&lt;/li&gt;
+&lt;li&gt;為 GitHub Actions 新增 IAM Role,採用 Programmatic access 方式,取得 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; 與 &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在儲存庫設定中,將剛剛取得的 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; 與 &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt; 加入 GitHub Secrets。&lt;/li&gt;
+&lt;li&gt;接著在 GitHub Actions 加入如下的工作流程,即可存取 AWS 資源。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;yaml&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-yaml"&gt;- name: Configure AWS Credentials
+ uses: aws-actions/configure-aws-credentials@v1
+ with:
+ aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+ aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ aws-region: us-east-2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;如果只有一個專案,這樣管理也沒有太大問題。&lt;/p&gt;</description></item><item><title>用 AWS SSO 在家也能用上公司裡那塊熟悉的登入頁（免費）</title><link>https://blog.lemondouble.com/zh-tw/p/1c9eaebbdee2ac98/</link><pubDate>Sat, 21 Jan 2023 16:17:06 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/1c9eaebbdee2ac98/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;如果你在公司或組織裡用過 AWS，應該看過下面這種 SSO（Single Sign On）登入頁面。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/1c9eaebbdee2ac98/2023-01-21-23-57-37.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;一旦設定好，工作階段期間不必每次都輸入 id/password，使用起來相當方便。&lt;/p&gt;</description></item><item><title>在樹莓派 + Ubuntu 22.04 上安裝 K3S</title><link>https://blog.lemondouble.com/zh-tw/p/fe0cac9de367fc18/</link><pubDate>Wed, 18 Jan 2023 11:56:02 +0000</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/fe0cac9de367fc18/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最近 Kubernetes 似乎是一項很熱門但也很困難的技術。&lt;/p&gt;
+&lt;p&gt;我從學生時代起就運行家庭伺服器有相當一段時間了(?)，在營運過程中遇到了不少麻煩事。&lt;/p&gt;</description></item><item><title>給自己看的樹莓派初始設定</title><link>https://blog.lemondouble.com/zh-tw/p/088bdb572b7dc509/</link><pubDate>Wed, 18 Jan 2023 11:13:14 +0000</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/088bdb572b7dc509/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;在折騰樹莓派或者家用伺服器時，意外(?)地經常需要把伺服器初始化重來。&lt;/p&gt;
+&lt;p&gt;可能是因為設定錯了導致某些東西跑不起來，或者是裝了一堆連自己都不記得裝過什麼的東西。&lt;/p&gt;</description></item><item><title>我自己留著看的 Kotlin 速查表</title><link>https://blog.lemondouble.com/zh-tw/p/f8a9d54607e901b4/</link><pubDate>Tue, 17 Jan 2023 14:24:20 +0000</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/f8a9d54607e901b4/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TIP：寫數字時可以使用 &lt;code&gt;var number = 1_000L&lt;/code&gt; 這種寫法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-變數"&gt;1. 變數&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;即使是 &lt;code&gt;val&lt;/code&gt; 集合，也可以加入 element&lt;/li&gt;
+&lt;li&gt;不區分 primitive 與 reference type，但實際運算時會轉換為 primitive type 進行運算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="2-null-處理"&gt;2. Null 處理&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Safe Call（&lt;code&gt;?.&lt;/code&gt;）：不為 null 時執行，為 null 時不執行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str: String? = &amp;#34;ABC&amp;#34;
+str.length // ERROR
+str?.length // OK&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Elvis 運算子（&lt;code&gt;?:&lt;/code&gt;）：若前面的運算結果為 null，則使用後面的值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str: String? = &amp;#34;ABC&amp;#34;
+str?.length ?: 0 // str.length 或 0 
+str?.length ?: throw IllegalArgumentException(&amp;#34;null이 들어왔습니다.&amp;#34;) // 或拋出例外
+str?.length ?: return 0 // 也可用於 Early return&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;平台型別：在 Kotlin 中引入 Java 程式碼時
+&lt;ul&gt;
+&lt;li&gt;null、non-null 兩種型別都可以使用&lt;/li&gt;
+&lt;li&gt;盡量直接確認 Java 程式碼，或以 Kotlin 包裝後使用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;// 有 @Nullable、@NonNull 時會被轉換，沒有時則為平台型別
+// 在 java 中 
+private final String name; &amp;lt;&amp;lt; 沒有 Annotation 時
+
+val name : String? = javaPerson.name // OK
+val name : String = javaPerson.name // OK&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id="3-type"&gt;3. Type&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;基本 Type 轉換：基本型別之間使用 &lt;code&gt;toXX&lt;/code&gt; 之類的函式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val number1 : Int = 4
+val number2 : Long = number1.toLong()
+
+val number1 : Int? = 3 
+val number2 : Long = number1?.toLong() ?: 0L // 若是 nullable 變數則靈活處理&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;自訂 Type：利用智慧轉型（Smart Cast）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;fun printAgeIfPerson(obj: Any){
+	// is = Java 的 instanceof
+	if(obj is Person){
+			// 經過智慧轉型，obj 的 type 變為 Person
+			println(obj.age)
+	}
+}
+
+// 或者
+// 等同於 java 的 (Person) obj
+val person = obj as Person
+
+// !is、as? 等也可以使用
+// as?：整體為 null&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Any：相當於 Java 的 Object + 還包含 Primitive Type 的最頂層
+&lt;ul&gt;
+&lt;li&gt;不包含 null，若想包含 null 請使用 &lt;code&gt;Any?&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;具有 equals、hashCode、toString&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Unit：類似 void，但 Unit 本身可作為泛型的型別實參&lt;/li&gt;
+&lt;li&gt;Nothing：表示函式不會正常結束&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;fun fail(message : String): Nothing{
+	throw IllegalArgumentException(message)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;String interpolation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val person = Person(name = &amp;#34;lemon&amp;#34;, age = 20)
+val log = &amp;#34;이름 : ${person.name}, 나이 : ${person.age}&amp;#34;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;String indexing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str = &amp;#34;ABC&amp;#34;
+// 取代 Java 中的 str.get(0)
+str[1] //ok&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id="4-運算子"&gt;4. 運算子&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Kotlin 中使用 &lt;code&gt;&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt;, &lt;code&gt;≥&lt;/code&gt;, &lt;code&gt;≤&lt;/code&gt; 時會自動呼叫 &lt;code&gt;compareTo&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Fly.io 介紹及適合部署到 Fly.io 的服務推薦（VaultWarden）</title><link>https://blog.lemondouble.com/zh-tw/p/740c42a214d8ce6b/</link><pubDate>Tue, 17 Jan 2023 14:03:50 +0000</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/740c42a214d8ce6b/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Fly.io 這家公司提供了一項功能：只要準備好 Docker 映像檔，就能輕鬆地把映像檔部署到指定國家等。&lt;/p&gt;
+&lt;p&gt;（註冊完成後）只要適當地撰寫一個名為 &lt;code&gt;fly.toml&lt;/code&gt; 的檔案，然後輸入&lt;/p&gt;</description></item><item><title>三色LED的內部是如何構成的？</title><link>https://blog.lemondouble.com/zh-tw/p/141eb2dfe7f486bf/</link><pubDate>Tue, 17 Jan 2023 13:45:21 +0000</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/141eb2dfe7f486bf/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;玩Arduino的時候會發現，單純地把LED開開關關&lt;/p&gt;
+&lt;p&gt;這件事居然能帶來出乎意料的原始快感。&lt;/p&gt;
+&lt;p&gt;但是..很快就會意識到上面那種單色LED只能發出一種顏色，於是開始尋找某種「能發出任何顏色的LED」..&lt;/p&gt;</description></item><item><title>Lemon Toolbox 首次上線回顧</title><link>https://blog.lemondouble.com/zh-tw/p/8b50460f83230126/</link><pubDate>Sun, 27 Feb 2022 15:39:07 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/8b50460f83230126/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/8b50460f83230126/image-18.png" alt="Lemon Toolbox 聊天機器人"&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;來聊聊我做了這樣一個服務的故事！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2024.06.30 補充：那時 ChatGPT 還沒出現，這種聊天機器人服務並不常見！&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Raspberry Pi on Lemon Blog</title><link>https://blog.lemondouble.com/en/categories/raspberry-pi/</link><description>Recent content in Raspberry Pi on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Fri, 26 Jul 2024 22:07:33 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/categories/raspberry-pi/index.xml" rel="self" type="application/rss+xml"/><item><title>Showing Off My Voice-Controlled AI Smart Home</title><link>https://blog.lemondouble.com/en/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/30f1bf25ad8b594a/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="preview-of-the-smart-home-i-built-japanese-audio-warning"&gt;Preview of the smart home I built (Japanese audio warning)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistant"&gt;1. HomeAssistant?&lt;/h3&gt;
+&lt;p&gt;It all starts with a platform called HomeAssistant, which I&amp;rsquo;ve &lt;a href="https://blog.lemondouble.com/en/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/"
+&gt;written about before&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;For HomeAssistant, 2023 was the &lt;a href="https://www.home-assistant.io/blog/2022/12/20/year-of-voice/" target="_blank" rel="noopener noreferrer"
+&gt;Year of Voice&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;With AI led by LLMs becoming more sophisticated, it was the year I started thinking, &amp;ldquo;We can really build Jarvis now!&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/30f1bf25ad8b594a/image.png" alt="Jarvis"&gt;&lt;/p&gt;
+&lt;h3 id="2-so-what-do-you-actually-want-to-say"&gt;2. So what do you actually want to say?&lt;/h3&gt;
+&lt;p&gt;I just wanted to show off (&amp;hellip;).&lt;/p&gt;</description></item><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 10-2. Implementing SSO with Forward Auth and OAuth2</title><link>https://blog.lemondouble.com/en/p/a63eb8199e2089b6/</link><pubDate>Sun, 07 Jan 2024 16:05:04 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/a63eb8199e2089b6/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-forward-auth"&gt;1. Forward Auth?&lt;/h3&gt;
+&lt;p&gt;When we need authentication logic, where can we implement it?&lt;/p&gt;
+&lt;p&gt;The first thought that comes to mind is implementing it directly in the application.&lt;/p&gt;
+&lt;p&gt;But what if we have many applications? Or what if some applications were not built by us — they were built by someone else, and we cannot freely implement authentication logic in them?&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 10-1. Protecting Internal Services with Basic Auth</title><link>https://blog.lemondouble.com/en/p/771435ba12d3f38c/</link><pubDate>Sun, 07 Jan 2024 12:41:24 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/771435ba12d3f38c/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The content below overlaps significantly with &lt;a href="https://lemondouble.github.io/en/p/%EC%A7%91%EC%97%90%EC%84%9C-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0-%EC%B0%A8%EB%A6%AC%EA%B8%B0-7.-sealed-secrets%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%B0%80-%EA%B4%80%EB%A6%AC--traefik-basic-auth-%EC%84%A4%EC%A0%95/#3-sealed-secrets-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-basic-auth-%EB%93%B1%EB%A1%9D%ED%95%B4%EB%B3%B4%EA%B8%B0" target="_blank" rel="noopener noreferrer"
+&gt;Section 3&lt;/a&gt;
+ of the Sealed Secrets post. If you&amp;rsquo;ve already gone through that section and are familiar with Basic Auth, feel free to skip.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id="1-introduction"&gt;1. Introduction&lt;/h3&gt;
+&lt;p&gt;When working with Kubernetes, you end up running quite a few services.&lt;/p&gt;
+&lt;p&gt;Of course, keeping things on the internal network only is the most secure option, but you might not always be able to manage your cluster from inside that network. For example, something could go wrong while you&amp;rsquo;re traveling.&lt;/p&gt;</description></item><item><title>Setting Up a Home Datacenter with a Raspberry Pi Cluster - 9. Running Databases on Kubernetes with CloudNativePG</title><link>https://blog.lemondouble.com/en/p/a4ded8cced5f045c/</link><pubDate>Tue, 12 Dec 2023 22:09:10 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/a4ded8cced5f045c/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="introduction"&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;Databases are tricky to manage.&lt;/p&gt;
+&lt;p&gt;Unlike other Pods, you have to worry about data storage, backups, and management, and you also have to pay attention to failover and performance.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s why I&amp;rsquo;ve heard it&amp;rsquo;s common to use a managed system like AWS RDS or a separate instance just for the DB, even if you run other workloads on a Kubernetes cluster.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 8-1. Setting Up Docker Registry UI and Using Registry GC</title><link>https://blog.lemondouble.com/en/p/a68cc3e1f5e8a95b/</link><pubDate>Sun, 10 Dec 2023 11:39:46 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/a68cc3e1f5e8a95b/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-private-registry-is-great-but-its-a-hassle-to-manage"&gt;1. Private Registry is great, but it&amp;rsquo;s a hassle to manage!&lt;/h3&gt;
+&lt;p&gt;Some people love the CLI, but I&amp;rsquo;m really bad at memorizing commands, so I prefer GUIs and visible records.&lt;/p&gt;
+&lt;p&gt;Docker Registry can be managed via CLI, but to make things a bit easier, I use &lt;a href="https://github.com/klausmeyer/docker-registry-browser" target="_blank" rel="noopener noreferrer"
+&gt;docker-registry-browser&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;re going to set up a GUI that looks something like this.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 8. Setting Up a Private Docker Registry with ID/Password Auth</title><link>https://blog.lemondouble.com/en/p/be354d4b5f50a3ee/</link><pubDate>Sun, 10 Dec 2023 10:08:50 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/be354d4b5f50a3ee/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-introduction"&gt;1. Introduction&lt;/h3&gt;
+&lt;p&gt;Since we already have the infrastructure, let&amp;rsquo;s go ahead and build our own Private Docker Registry too.&lt;/p&gt;
+&lt;p&gt;In my case, I run several personal servers on this cluster, so I use a Private Registry to manage those container images.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re willing to pay for Dockerhub or if Public Images are enough for you, you don&amp;rsquo;t need to follow this guide.&lt;/p&gt;</description></item><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 7-1. Easily Creating Sealed Secrets via Web UI</title><link>https://blog.lemondouble.com/en/p/567b4c177bdb8401/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/567b4c177bdb8401/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-introduction"&gt;1. Introduction&lt;/h3&gt;
+&lt;p&gt;Sealed Secrets is great overall, but it has one annoying issue: every time I configure something, I have to create a Secrets.yaml, convert it to Sealed Secrets via the CLI, and then add it to Git. It&amp;rsquo;s incredibly tedious.&lt;/p&gt;
+&lt;p&gt;To make this a bit easier, I&amp;rsquo;m going to build a simple Web UI using &lt;a href="https://github.com/Jaydee94/kubeseal-webgui" target="_blank" rel="noopener noreferrer"
+&gt;kubeseal-webgui&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/567b4c177bdb8401/image.png" alt="Kubeseal webui — you can simply set up Secrets in the web and get Sealed Secrets back."&gt;&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 7. Secret Management with Sealed Secrets + Traefik Basic Auth Setup</title><link>https://blog.lemondouble.com/en/p/1379182f14a62e9b/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/1379182f14a62e9b/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-sealed-secrets"&gt;1. Sealed Secrets?&lt;/h3&gt;
+&lt;p&gt;We&amp;rsquo;re doing GitOps right now. That means we&amp;rsquo;re pushing all cluster-related configuration to Git.&lt;/p&gt;
+&lt;p&gt;But here&amp;rsquo;s the problem: Kubernetes Secrets have no encryption. Anyone can decode them with base64 and see the contents in plain text.&lt;/p&gt;
+&lt;p&gt;So we can&amp;rsquo;t push them to Git, right?&lt;/p&gt;
+&lt;p&gt;Sealed Secrets was created to solve exactly this problem.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The cluster holds an encryption/decryption key.&lt;/li&gt;
+&lt;li&gt;Before pushing a file to Git, the user encrypts it with the key the cluster holds.&lt;/li&gt;
+&lt;li&gt;The encrypted Secret is pushed to Git. Anyone can see it, but it can&amp;rsquo;t be decrypted, so it&amp;rsquo;s safe.&lt;/li&gt;
+&lt;li&gt;Later, when the Secret is loaded back into the cluster via something like ArgoCD, the Sealed Secret controller decrypts it automatically.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Sealed Secrets GitHub: &lt;a href="https://github.com/bitnami-labs/sealed-secrets" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+&lt;/p&gt;</description></item><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 6. Adding Distributed Storage and Serving It via Longhorn</title><link>https://blog.lemondouble.com/en/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/615befc538a81902/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-add-and-mount-a-new-disk"&gt;1. Add and Mount a New Disk&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;This part is the same as a regular SSD / HDD mount! If something doesn&amp;rsquo;t work, feel free to search for &lt;code&gt;Ubuntu hard disk mount&lt;/code&gt; and follow along.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Connect the SSD or HDD to the Raspberry Pi.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;code&gt;sudo fdisk -l&lt;/code&gt; to find the name of the mounted hard disk. In my case, it&amp;rsquo;s &lt;code&gt;/dev/sda&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 5. ArgoCD GitOps Setup and Longhorn Installation</title><link>https://blog.lemondouble.com/en/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/107eed6a453d6238/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-getting-started-with-gitops"&gt;1. Getting Started with GitOps&lt;/h3&gt;
+&lt;p&gt;Now that we&amp;rsquo;ve installed ArgoCD, let&amp;rsquo;s organize our repository structure.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;re going to use the App On Apps pattern to create a clean deployment method.&lt;/p&gt;
+&lt;p&gt;Even if it doesn&amp;rsquo;t quite make sense yet, just follow along for now.&lt;/p&gt;
+&lt;p&gt;Take the empty repository we created last time and structure it like this:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;/apps
+ ㄴ/disabled
+ ㄴ/enabled
+/init
+/modules&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Then, add all the files we worked on earlier (ip_address_pool.yaml, the ArgoCD ingress.yaml, traefik-update.yaml, and values.yaml) to the init folder.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 4. Traefik HTTPS Certificates and ArgoCD Setup</title><link>https://blog.lemondouble.com/en/p/f10efbc0bcc4c537/</link><pubDate>Wed, 06 Dec 2023 05:21:00 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/f10efbc0bcc4c537/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;What if we could manage our entire system through Git?
+Wouldn&amp;rsquo;t it be incredibly convenient if we declared everything we need - container types, counts, etc. - in Git, and the cluster ran exactly as declared?&lt;/p&gt;
+&lt;p&gt;We wouldn&amp;rsquo;t have to check various parts of the cluster - we could just look at the configuration values pushed to Git.&lt;/p&gt;
+&lt;p&gt;Also, if a problem occurred during deployment, couldn&amp;rsquo;t we just revert immediately? And the issues that come from multiple people managing the same cluster could be handled through PRs, just like we always do.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 3. Installing Helm and Setting Up a Load Balancer with MetalLB</title><link>https://blog.lemondouble.com/en/p/06a98c88458a5fb7/</link><pubDate>Wed, 06 Dec 2023 05:20:00 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/06a98c88458a5fb7/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="installing-helm"&gt;Installing Helm&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Reference: &lt;a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer"
+&gt;Installing Helm&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Run the following commands in order to install Helm.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Next, configure the kubeconfig file.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+chmod 600 ~/.kube/config&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Then add the following line to the bottom of your &lt;code&gt;bashrc&lt;/code&gt;, and run &lt;code&gt;source ~/.bashrc&lt;/code&gt; to apply the shell settings immediately.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 2. Initial Cluster Setup</title><link>https://blog.lemondouble.com/en/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/f4efced2e8d5b1d8/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="hardware"&gt;Hardware&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="Hardware configuration diagram"&gt;&lt;/p&gt;
+&lt;p&gt;Set up your hardware as shown in the diagram above.&lt;/p&gt;
+&lt;p&gt;If you already use a computer at home, you most likely already have a router and a desktop set up, so you only need to add the parts marked in green.&lt;/p&gt;
+&lt;p&gt;If you bought an unmanaged switch hub online, just plug all of the Raspberry Pi LAN cables into the switch hub, then run a single internet cable from your router to the switch.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - Part 1: Hardware</title><link>https://blog.lemondouble.com/en/p/20ae99fa945edf10/</link><pubDate>Sun, 03 Dec 2023 14:54:33 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/20ae99fa945edf10/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The first session is all about hardware! Let&amp;rsquo;s start with the simple stuff and quickly move on to the more complex topics.&lt;/p&gt;
+&lt;h3 id="1-sbc-single-board-computer"&gt;1. SBC (Single Board Computer)&lt;/h3&gt;
+&lt;p&gt;The most important thing is, of course, the SBC.&lt;/p&gt;
+&lt;p&gt;Personally, I recommend setting alerts on Danggeun Market&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt; and grabbing &lt;strong&gt;Raspberry Pi 4B 4GB or 8GB&lt;/strong&gt; models one by one whenever they pop up.&lt;/p&gt;</description></item><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - Introduction</title><link>https://blog.lemondouble.com/en/p/d42387934c57aa25/</link><pubDate>Sun, 03 Dec 2023 13:24:05 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/d42387934c57aa25/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="about-300-days-have-passed-since-i-first-built-my-raspberry-pi-cluster"&gt;About 300 days have passed since I first built my Raspberry Pi cluster.&lt;/h3&gt;
+&lt;p&gt;The trigger wasn&amp;rsquo;t really that big a deal.&lt;/p&gt;
+&lt;p&gt;Every morning on my way to work, I read a news curation service called &lt;a href="https://news.hada.io/" target="_blank" rel="noopener noreferrer"
+&gt;GeekNews&lt;/a&gt;
+&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;, and one day an article titled &lt;a href="https://news.hada.io/topic?id=8306" target="_blank" rel="noopener noreferrer"
+&gt;Chick-Fil-A&amp;rsquo;s Edge Computing Architecture: Enterprise Restaurant Compute&lt;/a&gt;
+ caught my eye.&lt;/p&gt;
+&lt;p&gt;After that, the thought of &amp;ldquo;even Chick-Fil-A runs Kubernetes, so as a server engineer, shouldn&amp;rsquo;t I have at least one cluster of my own to manage?&amp;rdquo; was where it all began.&lt;/p&gt;</description></item><item><title>How About Trying IoT with HomeAssistant?</title><link>https://blog.lemondouble.com/en/p/107dcfce6eca0dd7/</link><pubDate>Sun, 21 May 2023 09:40:47 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/107dcfce6eca0dd7/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;IoT is a pretty fun topic, but&lt;/p&gt;
+&lt;p&gt;the entry barrier is high, and it&amp;rsquo;s not very well-known, so I feel like people don&amp;rsquo;t really know what they can do with it.&lt;/p&gt;
+&lt;p&gt;Among the many platforms out there, I personally installed and use HomeAssistant (hereafter HASS). I&amp;rsquo;d like to talk about why such a platform is needed and what it can improve in our lives!&lt;/p&gt;</description></item><item><title>After Killing Three SD Cards, Here's How I Set Up Raspberry Pi USB Boot</title><link>https://blog.lemondouble.com/en/p/977ba9d70a2a7029/</link><pubDate>Sun, 29 Jan 2023 17:31:39 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/977ba9d70a2a7029/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The Raspberry Pi is great in every way, except SD card booting can be incredibly frustrating.&lt;/p&gt;
+&lt;p&gt;When you&amp;rsquo;re tinkering, pulling SD cards in and out, scratching one and having it stop being recognized&amp;hellip; it really gets to you.&lt;/p&gt;
+&lt;p&gt;I know SD cards and USB drives use similar technology, but&amp;hellip;&lt;/p&gt;
+&lt;p&gt;In my experience, USB drives have generally been more reliable (in terms of physical durability).&lt;/p&gt;</description></item><item><title>Installing K3S on Raspberry Pi + Ubuntu 22.04</title><link>https://blog.lemondouble.com/en/p/fe0cac9de367fc18/</link><pubDate>Wed, 18 Jan 2023 11:56:02 +0000</pubDate><guid>https://blog.lemondouble.com/en/p/fe0cac9de367fc18/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Kubernetes seems to be one of those technologies that&amp;rsquo;s super hot but also pretty hard these days.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve been running a home server for quite a while since my student days, and I&amp;rsquo;ve run into plenty of headaches along the way.&lt;/p&gt;
+&lt;p&gt;Sometimes I move to a new place and have to redo my whole network setup, or a disk dies on me. Every time that happens, digging through Git and other computers to bring my site back up is&amp;hellip; a real pain.&lt;/p&gt;</description></item><item><title>Raspberry Pi Initial Setup (For My Future Reference)</title><link>https://blog.lemondouble.com/en/p/088bdb572b7dc509/</link><pubDate>Wed, 18 Jan 2023 11:13:14 +0000</pubDate><guid>https://blog.lemondouble.com/en/p/088bdb572b7dc509/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;When you run a Raspberry Pi or a home server, you end up needing to wipe and reinitialize the server surprisingly often.&lt;/p&gt;
+&lt;p&gt;Maybe something doesn&amp;rsquo;t work because of a misconfiguration, or you&amp;rsquo;ve installed so much stuff you no longer remember what&amp;rsquo;s on there.&lt;/p&gt;
+&lt;p&gt;So there&amp;rsquo;s a recurring set of tasks I do every time I reset my Raspberry Pi,&lt;/p&gt;</description></item></channel></rss>

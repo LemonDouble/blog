@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>최적화 on Lemon Blog</title><link>https://blog.lemondouble.com/tags/%EC%B5%9C%EC%A0%81%ED%99%94/</link><description>Recent content in 최적화 on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sun, 26 Apr 2026 19:29:25 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/%EC%B5%9C%EC%A0%81%ED%99%94/index.xml" rel="self" type="application/rss+xml"/><item><title>마지막 1% 까지 — torch.compile, 배치 추론, Pause 복원, ARM64 - hayakoe Part 3</title><link>https://blog.lemondouble.com/p/9a99dd816456c397/</link><pubDate>Sun, 26 Apr 2026 19:29:25 +0900</pubDate><guid>https://blog.lemondouble.com/p/9a99dd816456c397/</guid><description>&lt;p&gt;hayakoe 시리즈의 세 번째 본편입니다. 이전 글은 &lt;a href="https://blog.lemondouble.com/p/137243ede98030f1/"
+&gt;메모리는 절반으로, 속도는 1.5배 빠르게 한 이야기 - hayakoe Part 2&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.lemondouble.com/p/137243ede98030f1/"
+&gt;Part 2&lt;/a&gt;
+ 에서 큰 줄기 — BERT Q8 양자화 + Synthesizer ONNX 변환 — 로 메모리·속도를 꽤 개선했습니다. 다만 이 모델을 직접 운영해 보니, 큰 줄기와는 별개로 아쉽게 느껴졌던 부분들이 슬슬 눈에 들어왔습니다. 좀 더 쓰기 편한 형태로 다듬어 보면 좋겠다 싶은 작업들이었습니다.&lt;/p&gt;</description></item><item><title>메모리는 절반으로, 속도는 1.5배 빠르게 한 이야기 - hayakoe Part 2</title><link>https://blog.lemondouble.com/p/137243ede98030f1/</link><pubDate>Sun, 26 Apr 2026 17:40:46 +0900</pubDate><guid>https://blog.lemondouble.com/p/137243ede98030f1/</guid><description>&lt;p&gt;hayakoe 시리즈의 두 번째 본편입니다. 이전 글은 &lt;a href="https://blog.lemondouble.com/p/4c2a6225a737f531/"
+&gt;hayakoe - 2년만에 다시 TTS 모델 이것저것 보다 또 다시 VITS로 정착한 이야기 - Part 1&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.lemondouble.com/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+ 에서 학습된 모델까지 손에 쥐었지만, 시리즈 &lt;a href="https://blog.lemondouble.com/p/ea78fbb9b78c38ac/"
+&gt;서론&lt;/a&gt;
+ 에서 짚었듯 그 모델을 그대로 쓰기엔 여러 가지 불편이 있었습니다 — &lt;code&gt;openjtalk&lt;/code&gt; 가 외부에서 사전 데이터를 받아와 그 서버가 죽으면 같이 죽는 SPOF 문제, 그 의존성 때문에 막혀 있던 Python 버전업, 영어 합성이 안 돼 번역 레이어로 우회 중이던 점, 그리고 본 글에서 다룰 메모리·속도 부담까지.&lt;/p&gt;</description></item></channel></rss>

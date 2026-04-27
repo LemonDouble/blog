@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>라즈베리파이 on Lemon Blog</title><link>https://blog.lemondouble.com/tags/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4/</link><description>Recent content in 라즈베리파이 on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sun, 26 Apr 2026 19:29:25 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC%ED%8C%8C%EC%9D%B4/index.xml" rel="self" type="application/rss+xml"/><item><title>마지막 1% 까지 — torch.compile, 배치 추론, Pause 복원, ARM64 - hayakoe Part 3</title><link>https://blog.lemondouble.com/p/9a99dd816456c397/</link><pubDate>Sun, 26 Apr 2026 19:29:25 +0900</pubDate><guid>https://blog.lemondouble.com/p/9a99dd816456c397/</guid><description>&lt;p&gt;hayakoe 시리즈의 세 번째 본편입니다. 이전 글은 &lt;a href="https://blog.lemondouble.com/p/137243ede98030f1/"
+&gt;메모리는 절반으로, 속도는 1.5배 빠르게 한 이야기 - hayakoe Part 2&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.lemondouble.com/p/137243ede98030f1/"
+&gt;Part 2&lt;/a&gt;
+ 에서 큰 줄기 — BERT Q8 양자화 + Synthesizer ONNX 변환 — 로 메모리·속도를 꽤 개선했습니다. 다만 이 모델을 직접 운영해 보니, 큰 줄기와는 별개로 아쉽게 느껴졌던 부분들이 슬슬 눈에 들어왔습니다. 좀 더 쓰기 편한 형태로 다듬어 보면 좋겠다 싶은 작업들이었습니다.&lt;/p&gt;</description></item></channel></rss>

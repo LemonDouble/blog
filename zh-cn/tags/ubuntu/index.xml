@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ubuntu on Lemon Blog</title><link>https://blog.lemondouble.com/zh-cn/tags/ubuntu/</link><description>Recent content in Ubuntu on Lemon Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sun, 03 Dec 2023 22:20:29 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-cn/tags/ubuntu/index.xml" rel="self" type="application/rss+xml"/><item><title>在家用树莓派集群搭建数据中心 - 2. 集群初始化设置篇</title><link>https://blog.lemondouble.com/zh-cn/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/f4efced2e8d5b1d8/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="硬件"&gt;硬件&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="硬件构成示意图"&gt;&lt;/p&gt;
+&lt;p&gt;请参考上图来组装硬件。&lt;/p&gt;
+&lt;p&gt;如果你家里有在用电脑，那大概率已经有路由器和常用的台式机了，所以只需要在上图中加上绿色部分即可。&lt;/p&gt;</description></item><item><title>在树莓派 + Ubuntu 22.04 上安装 K3S</title><link>https://blog.lemondouble.com/zh-cn/p/fe0cac9de367fc18/</link><pubDate>Wed, 18 Jan 2023 11:56:02 +0000</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/fe0cac9de367fc18/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最近 Kubernetes 似乎是一项很火但也很难的技术。&lt;/p&gt;
+&lt;p&gt;我从学生时代起就运行家庭服务器有相当一段时间了(?)，在运营过程中遇到了不少麻烦事。&lt;/p&gt;</description></item><item><title>给自己看的树莓派初始设置</title><link>https://blog.lemondouble.com/zh-cn/p/088bdb572b7dc509/</link><pubDate>Wed, 18 Jan 2023 11:13:14 +0000</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/088bdb572b7dc509/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;折腾树莓派或者家庭服务器时，意外(?)地经常需要把服务器初始化重来。&lt;/p&gt;
+&lt;p&gt;可能是因为设置错了导致某些东西跑不起来，或者是装了一堆自己都不记得装过什么的东西。&lt;/p&gt;</description></item></channel></rss>

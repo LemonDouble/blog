@@ -1,0 +1,116 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>在家用树莓派集群搭建数据中心 - 8-1. Docker Registry UI 配置与 Registry GC 使用方法 | Lemon Blog</title><meta name=description content="我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"><link rel=icon href=https://cdn.lemondouble.com/homepage/favicon.ico><link rel=canonical href=https://blog.lemondouble.com/zh-cn/p/a68cc3e1f5e8a95b/><link rel=alternate hreflang=ko href=https://blog.lemondouble.com/p/a68cc3e1f5e8a95b/><link rel=alternate hreflang=en href=https://blog.lemondouble.com/en/p/a68cc3e1f5e8a95b/><link rel=alternate hreflang=ja href=https://blog.lemondouble.com/ja/p/a68cc3e1f5e8a95b/><link rel=alternate hreflang=zh-cn href=https://blog.lemondouble.com/zh-cn/p/a68cc3e1f5e8a95b/><link rel=alternate hreflang=zh-tw href=https://blog.lemondouble.com/zh-tw/p/a68cc3e1f5e8a95b/><link rel=alternate hreflang=x-default href=https://blog.lemondouble.com/p/a68cc3e1f5e8a95b/><link href=https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css rel=stylesheet><link href=https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css rel=stylesheet><meta property="og:title" content="在家用树莓派集群搭建数据中心 - 8-1. Docker Registry UI 配置与 Registry GC 使用方法"><meta property="og:description" content="我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.lemondouble.com/zh-cn/p/a68cc3e1f5e8a95b/"><meta property="og:site_name" content="Lemon Blog"><meta property="og:locale" content="zh_CN"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="ja_JP"><meta property="og:locale:alternate" content="zh_TW"><meta property="og:image" content="https://blog.lemondouble.com/p/a68cc3e1f5e8a95b/cover.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="在家用树莓派集群搭建数据中心 - 8-1. Docker Registry UI 配置与 Registry GC 使用方法"><meta name=twitter:description content="我做各种各样的事情。博客文章大多是为了不忘记自己做过的事而写的(..)"><meta name=twitter:image content="https://blog.lemondouble.com/p/a68cc3e1f5e8a95b/cover.png"><link rel=stylesheet href=/css/8bit.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-dracula.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css><link rel=stylesheet href=/css/code-block.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-9C6YX68EBM"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9C6YX68EBM")</script><meta name=generator content="Hugo 0.159.2"></head><body><nav class=site-nav><div class=nav-inner><a href=/zh-cn/ class=nav-logo><img src=/img/brand/lemon-logo.webp alt=Logo>
+<span>Lemon Blog</span></a><div class=nav-links><a href=/zh-cn/ class=nav-link>首页</a>
+<a href=/zh-cn/projects/ class=nav-link>项目</a>
+<a href=/zh-cn/skills/ class=nav-link>技能</a>
+<a href=https://lemondouble.com/zh-cn target=_blank rel="noopener noreferrer" class=nav-link>关于</a></div><div class=nav-actions><div class=search-wrapper id=searchWrapper><span class=search-icon><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+</span><input type=text class=search-input id=searchInput placeholder=搜索... autocomplete=off>
+<button class=search-close-btn onclick=closeMobileSearch() aria-label=关闭搜索>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class=search-results id=searchResults></div></div><button class=mobile-search-btn onclick=openMobileSearch() aria-label=打开搜索>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><div class=lang-switcher id=langSwitcher><button type=button class=lang-switcher-btn onclick=toggleLangSwitcher(event) aria-label=选择语言 aria-haspopup=true aria-expanded=false>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3.0 014 10 15.3 15.3.0 01-4 10A15.3 15.3.0 018 12a15.3 15.3.0 014-10z"/></svg>
+<span class=lang-switcher-current>简体中文</span>
+<svg class="lang-switcher-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class=lang-switcher-menu id=langSwitcherMenu role=menu><a href=/p/a68cc3e1f5e8a95b/ class=lang-switcher-item lang=ko role=menuitem>한국어
+</a><a href=/en/p/a68cc3e1f5e8a95b/ class=lang-switcher-item lang=en role=menuitem>English
+</a><a href=/ja/p/a68cc3e1f5e8a95b/ class=lang-switcher-item lang=ja role=menuitem>日本語
+</a><a href=/zh-cn/p/a68cc3e1f5e8a95b/ class="lang-switcher-item active" lang=zh-cn role=menuitem>简体中文
+</a><a href=/zh-tw/p/a68cc3e1f5e8a95b/ class=lang-switcher-item lang=zh-tw role=menuitem>繁體中文</a></div></div><button class=nav-menu-btn onclick=toggleMobileMenu() aria-label=打开菜单>
+<svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button></div></div></nav><div class=mobile-menu id=mobileMenu><a href=/zh-cn/ class=nav-link onclick=closeMobileMenu()>首页</a>
+<a href=/zh-cn/projects/ class=nav-link onclick=closeMobileMenu()>项目</a>
+<a href=/zh-cn/skills/ class=nav-link onclick=closeMobileMenu()>技能</a>
+<a href=https://lemondouble.com/zh-cn target=_blank rel="noopener noreferrer" class=nav-link onclick=closeMobileMenu()>关于</a><div class=mobile-menu-lang><span class=mobile-menu-lang-label>选择语言</span><div class=mobile-menu-lang-items><a href=/p/a68cc3e1f5e8a95b/ class=mobile-menu-lang-item lang=ko onclick=closeMobileMenu()>한국어</a>
+<a href=/en/p/a68cc3e1f5e8a95b/ class=mobile-menu-lang-item lang=en onclick=closeMobileMenu()>English</a>
+<a href=/ja/p/a68cc3e1f5e8a95b/ class=mobile-menu-lang-item lang=ja onclick=closeMobileMenu()>日本語</a>
+<a href=/zh-cn/p/a68cc3e1f5e8a95b/ class="mobile-menu-lang-item active" lang=zh-cn onclick=closeMobileMenu()>简体中文</a>
+<a href=/zh-tw/p/a68cc3e1f5e8a95b/ class=mobile-menu-lang-item lang=zh-tw onclick=closeMobileMenu()>繁體中文</a></div></div></div><div class=container><main class=site-main><div class="post-layout has-toc"><article class=post-single><header class=post-header><div class=post-cover><img src=/p/a68cc3e1f5e8a95b/cover_hu_1ed0b0a035dd55b0.png alt="在家用树莓派集群搭建数据中心 - 8-1. Docker Registry UI 配置与 Registry GC 使用方法"></div><div class=post-header-content><div class=post-categories><a href=/zh-cn/categories/k8s/ class=category-tag>K8S</a>
+<a href=/zh-cn/categories/k3s/ class=category-tag>K3S</a>
+<a href=/zh-cn/categories/%E6%A0%91%E8%8E%93%E6%B4%BE/ class=category-tag>树莓派</a></div><h1 class=post-title>在家用树莓派集群搭建数据中心 - 8-1. Docker Registry UI 配置与 Registry GC 使用方法</h1><div class=post-meta><time>2023.12.10</time>
+<span class=meta-sep>&#8226;</span>
+<span>2 min read</span></div></div></header><div class=post-content><p><em>注：作者居住在韩国，部分内容包含韩国特有的背景。</em></p><h3 id=1-private-registry-虽然好用但管理起来太麻烦了>1. Private Registry 虽然好用，但管理起来太麻烦了！</h3><p>虽然有些人非常喜欢 CLI，但我实在记不住命令，所以更喜欢 GUI 和有迹可循的记录。</p><p>Docker Registry 也可以通过 CLI 进行管理，但为了更方便一些，我使用 <a href=https://github.com/klausmeyer/docker-registry-browser target=_blank rel="noopener noreferrer">docker-registry-browser</a>
+。</p><p>将会使用类似下图的 GUI。</p><p><img src=/p/a68cc3e1f5e8a95b/image.png alt="Alt text"></p><p><img src=/p/a68cc3e1f5e8a95b/image-1.png alt="Alt text"></p><h3 id=2-安装>2. 安装</h3><p>将其与现有的 docker-registry-system 一起安装。</p><p>请在原有文件下方添加 <code>---</code> 后再编写。</p><p><code>modules/docker-registry-system/deployment.yaml</code></p><ul><li>现有 deployment</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-registry-ui-deployment
+  namespace: docker-registry-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-registry-ui-app
+  template:
+    metadata:
+      labels:
+        app: docker-registry-ui-app
+    spec:
+      nodeSelector:
+        node-type: worker
+      containers:
+        - name: docker-registry-ui-pod
+          image: klausmeyer/docker-registry-browser:1.7.0
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - secretRef:
+                name: docker-registry-ui-secrets-sealed-secrets</code></pre></div><p><code>modules/docker-registry-system/service.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>... 现有 service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: docker-registry-ui-service
+  namespace: docker-registry-system
+spec:
+  selector:
+    app: docker-registry-ui-app
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080</code></pre></div><p><code>modules/docker-registry-system/ingress.yaml</code></p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: docker-registry-ui-ingress
+  namespace: docker-registry-system
+spec:
+  tls:
+    certResolver: le
+  routes:
+    - kind: Rule
+      match: Host(`用于展示 UI 的 URL 示例:docker-ui.lemon.com`)
+      services:
+        - name: docker-registry-ui-service
+          port: 80</code></pre></div><p>如果还想配置 Basic Auth，请参考 <a href=/zh-cn/p/1379182f14a62e9b/>通过 Sealed Secrets 管理密钥 + Traefik Basic Auth 设置</a>
+。</p><p><code>modules/docker-registry-system/sealed-docker-registry-ui-secrets.yaml</code></p><p>进入 sealed secrets GUI，添加以下 Secret。（参考 Docs <a href=https://github.com/klausmeyer/docker-registry-browser/blob/master/docs/README.md target=_blank rel="noopener noreferrer">Link</a>
+）</p><ul><li>BASIC_AUTH_USER：登录 registry 使用的用户名</li><li>BASIC_AUTH_PASSWORD：密码</li><li>DOCKER_REGISTRY_URL：https://&lt;我注册的 Registry 地址></li><li>ENABLE_DELETE_IMAGES：true</li><li>SECRET_KEY_BASE：执行 <code>openssl rand -hex 64</code> 后得到的值</li></ul><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: docker-registry-ui-secrets
+  namespace: docker-registry-system
+  annotations: {}
+spec:
+  encryptedData:
+    BASIC_AUTH_USER: afdfads...
+    BASIC_AUTH_PASSWORD: fadvbads..
+    DOCKER_REGISTRY_URL: dfd..
+    ENABLE_DELETE_IMAGES: afdgd...
+    SECRET_KEY_BASE: dffdf...</code></pre></div><p>使用方法很直观，建议大家直接动手试一试！</p><h3 id=3-registry-gc>3. Registry GC</h3><p>即使在 Docker Registry UI 中删除镜像（或通过 CLI 删除镜像），磁盘空间也不会立即减少。</p><p>这是因为通过 GUI/CLI 删除镜像时，实际并没有发生物理删除，仅删除该镜像的 Manifest。</p><p>实际的数据删除发生在显式执行 Registry GC 的时候。</p><p>虽然还可以聊得更深入，但今天先聚焦在使用方法上，详细内容就略过。</p><p>（如果对相关内容更感兴趣，建议先阅读 <a href=https://blog.naver.com/alice_k106/221530340759 target=_blank rel="noopener noreferrer">通过透明玻璃纸理论理解 Overlay FS 的使用方法与联合挂载</a>
+（韩文）一文，然后再以 Docker registry 与镜像删除等关键词搜索看看。）</p><ul><li>执行 Registry GC</li></ul><p><strong>!! 注意！GC 执行期间不应在仓库中发生 Pull/Push。请先确认这一点再进行操作！</strong></p><ol><li>使用 <code>kubectl get pod -n docker-registry-system</code> 找到 Registry 的 Pod。</li><li>执行 <code>kubectl exec -it pod/&lt;registry-pod-name> -n docker-registry-system -- /bin/registry garbage-collect /etc/docker/registry/config.yml</code> 来执行 GC。</li><li>之后在 Longhorn Dashboard 中选择 Volume -> 点击 Trim Filesystem 来重新计算 Actual Size。</li></ol><h3 id=4-结语>4. 结语</h3><p>通过本文了解了 Docker UI、GC 的方法。</p><p>现在已经有了 Private Registry 和管理方法，可以安心地开发（？）服务器，把想要的服务器部署进去！</p><p>下次将介绍如何使用 CloudNativePG 在 Kubernetes 上运行数据库。</p></div><div class=post-tags><a href=/zh-cn/tags/k8s/ class=tag-link>#K8S</a>
+<a href=/zh-cn/tags/k3s/ class=tag-link>#K3S</a>
+<a href=/zh-cn/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/ class=tag-link>#树莓派</a>
+<a href=/zh-cn/tags/docker-registry/ class=tag-link>#Docker Registry</a>
+<a href=/zh-cn/tags/gc/ class=tag-link>#GC</a>
+<a href=/zh-cn/tags/web-ui/ class=tag-link>#Web UI</a></div><div class=post-license><p>&copy; 本文采用 CC BY-NC-SA 4.0 许可协议发布。</p></div><section class=post-comments><h3 class=comments-title>Comments</h3><script src=https://giscus.app/client.js data-repo=LemonDouble/LemonDouble.github.io-comments data-repo-id=R_kgDOI0UkDA data-category=Comments data-category-id=DIC_kwDOI0UkDM4CcIeY data-mapping=pathname data-reactions-enabled=1 data-emit-metadata=0 data-theme=dark crossorigin=anonymous async></script></section></article><aside class=toc-sidebar><a href=/zh-cn/ class=toc-back-btn onclick="return tocGoBack(event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+<span>返回上一页</span></a><nav class=toc-sidebar-nav><h4 class=toc-sidebar-title>本页目录</h4><nav id=TableOfContents><ul><li><ul><li><a href=#1-private-registry-虽然好用但管理起来太麻烦了>1. Private Registry 虽然好用，但管理起来太麻烦了！</a></li><li><a href=#2-安装>2. 安装</a></li><li><a href=#3-registry-gc>3. Registry GC</a></li><li><a href=#4-结语>4. 结语</a></li></ul></li></ul></nav></nav></aside></div><script>function tocGoBack(e){var t=document.referrer&&document.referrer.indexOf(window.location.origin)===0;return!(t&&window.history.length>1)||(e.preventDefault(),window.history.back(),!1)}(function(){var e,t,o,i,s=document.querySelector(".toc-sidebar-nav");if(!s)return;if(o=s.querySelectorAll("a"),!o.length)return;if(e=[],o.forEach(function(t){var s=decodeURIComponent(t.getAttribute("href").slice(1)),n=document.getElementById(s);n&&e.push({el:n,link:t})}),!e.length)return;t=null;function n(e){if(t===e)return;t&&t.classList.remove("active"),e.classList.add("active"),t=e;var i=s,n=e.getBoundingClientRect(),o=i.getBoundingClientRect();(n.top<o.top||n.bottom>o.bottom)&&e.scrollIntoView({block:"nearest",behavior:"smooth"})}i=new IntersectionObserver(function(t){var s,o,i,a,r,c,l=[];t.forEach(function(t){var n=e.find(function(e){return e.el===t.target});n&&(n.isIntersecting=t.isIntersecting)});for(s=0;s<e.length;s++)if(e[s].isIntersecting){n(e[s].link);return}for(c=window.scrollY||window.pageYOffset,a=100,i=null,o=0;o<e.length;o++)r=e[o].el.getBoundingClientRect(),r.top<a&&(i=e[o]);i&&n(i.link)},{rootMargin:"-80px 0px -60% 0px",threshold:0}),e.forEach(function(e){e.isIntersecting=!1,i.observe(e.el)}),setTimeout(function(){var t,s,o,i,a=window.scrollY||window.pageYOffset;if(a<100)n(e[0].link);else{for(o=100,s=null,t=0;t<e.length;t++)i=e[t].el.getBoundingClientRect(),i.top<o&&(s=e[t]);n(s?s.link:e[0].link)}},100)})()</script></main></div><footer class=site-footer><div class=footer-content><div class=footer-links><a href=https://github.com/LemonDouble target=_blank rel=noopener>GitHub</a>
+<a href=https://twitter.com/_lemon_berry_ target=_blank rel=noopener>Twitter</a>
+<a href=mailto:contact@lemondouble.com>Email</a>
+<a href=https://sns.lemondouble.com/@lemondouble target=_blank rel=noopener>Misskey</a></div><p class=footer-copy>&copy; 2022-2026 LemonDouble &bull; Powered by Hugo</p><p class=footer-brand>LEMON BLOG</p></div></footer><script>function toggleMobileMenu(){var e=document.getElementById("mobileMenu");e.classList.toggle("active")}function closeMobileMenu(){document.getElementById("mobileMenu").classList.remove("active")}function openMobileSearch(){document.body.classList.add("mobile-search-active"),closeMobileMenu(),setTimeout(function(){var e=document.getElementById("searchInput");e&&e.focus()},50)}function closeMobileSearch(){document.body.classList.remove("mobile-search-active");var e,t=document.getElementById("searchInput");t&&(t.value="",t.blur()),e=document.getElementById("searchResults"),e&&(e.classList.remove("active"),e.innerHTML="")}document.addEventListener("keydown",function(e){e.key==="Escape"&&document.body.classList.contains("mobile-search-active")&&closeMobileSearch()});function pageJump(e,t){if(e.key==="Escape")return t.blur(),!1;if(e.key!=="Enter")return!0;e.preventDefault();var s,o,n=parseInt(t.value,10),i=parseInt(t.dataset.total,10);return!n||n<1||n>i?(t.value=t.defaultValue,!1):(s=t.dataset.base||"/",o=n===1?s:s.replace(/\/$/,"")+"/page/"+n+"/",window.location.href=o,!1)}function pageJumpFocus(e){e.value=""}function pageJumpReset(e){e.value=e.defaultValue}function pageJumpSanitize(e){var t=e.value.replace(/\D/g,"");t!==e.value&&(e.value=t)}function toggleLangSwitcher(e){e&&e.stopPropagation();var s,t=document.getElementById("langSwitcher"),n=t&&t.querySelector(".lang-switcher-btn");if(!t||!n)return;s=t.classList.toggle("open"),n.setAttribute("aria-expanded",s?"true":"false")}document.addEventListener("click",function(e){var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&!e.target.closest("#langSwitcher")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))}),document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))})</script><script>var searchInput,searchResults,searchIndex=null;(function(){fetch("/zh-cn/index.json").then(function(e){return e.json()}).then(function(e){searchIndex=e}).catch(function(){})})(),searchInput=document.getElementById("searchInput"),searchResults=document.getElementById("searchResults"),searchInput&&(searchInput.addEventListener("input",function(e){var n,t=e.target.value.trim().toLowerCase();if(!t||!searchIndex){searchResults.classList.remove("active"),searchResults.innerHTML="";return}if(n=searchIndex.filter(function(e){return e.title.toLowerCase().includes(t)||e.summary.toLowerCase().includes(t)||(e.categories||[]).some(function(e){return e.toLowerCase().includes(t)})||(e.tags||[]).some(function(e){return e.toLowerCase().includes(t)})}).slice(0,10),n.length===0){searchResults.innerHTML='<div class="search-empty">未找到搜索结果。</div>',searchResults.classList.add("active");return}searchResults.innerHTML=n.map(function(e){var t=(e.categories||[]).map(function(e){return'<span class="search-cat">'+e+"</span>"}).join('<span class="search-cat-sep">/</span>');return'<a href="'+e.url+'" class="search-result-item"><div class="search-result-title">'+e.title+'</div><div class="search-result-meta">'+e.date+(t?" &middot; "+t:"")+"</div></a>"}).join(""),searchResults.classList.add("active")}),document.addEventListener("click",function(e){e.target.closest(".search-wrapper")||(searchResults.classList.remove("active"),document.body.classList.contains("mobile-search-active")&&!e.target.closest(".mobile-search-btn")&&closeMobileSearch())}),searchInput.addEventListener("focus",function(){searchInput.value.trim()&&searchResults.classList.add("active")}))</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js></script></body></html>

@@ -1,0 +1,167 @@
+<!doctype html><html lang=zh-tw><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>在家用樹莓派叢集架設資料中心 - 4. Traefik HTTPS 認證及 ArgoCD 設定 | Lemon Blog</title><meta name=description content="我做各種各樣的事情。部落格文章大多是為了不忘記自己做過的事而寫的(..)"><link rel=icon href=https://cdn.lemondouble.com/homepage/favicon.ico><link rel=canonical href=https://blog.lemondouble.com/zh-tw/p/f10efbc0bcc4c537/><link rel=alternate hreflang=ko href=https://blog.lemondouble.com/p/f10efbc0bcc4c537/><link rel=alternate hreflang=en href=https://blog.lemondouble.com/en/p/f10efbc0bcc4c537/><link rel=alternate hreflang=ja href=https://blog.lemondouble.com/ja/p/f10efbc0bcc4c537/><link rel=alternate hreflang=zh-cn href=https://blog.lemondouble.com/zh-cn/p/f10efbc0bcc4c537/><link rel=alternate hreflang=zh-tw href=https://blog.lemondouble.com/zh-tw/p/f10efbc0bcc4c537/><link rel=alternate hreflang=x-default href=https://blog.lemondouble.com/p/f10efbc0bcc4c537/><link href=https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css rel=stylesheet><link href=https://cdnjs.cloudflare.com/ajax/libs/pretendard/1.3.9/static/pretendard.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css rel=stylesheet><meta property="og:title" content="在家用樹莓派叢集架設資料中心 - 4. Traefik HTTPS 認證及 ArgoCD 設定"><meta property="og:description" content="我做各種各樣的事情。部落格文章大多是為了不忘記自己做過的事而寫的(..)"><meta property="og:type" content="article"><meta property="og:url" content="https://blog.lemondouble.com/zh-tw/p/f10efbc0bcc4c537/"><meta property="og:site_name" content="Lemon Blog"><meta property="og:locale" content="zh_TW"><meta property="og:locale:alternate" content="ko_KR"><meta property="og:locale:alternate" content="en_US"><meta property="og:locale:alternate" content="ja_JP"><meta property="og:locale:alternate" content="zh_CN"><meta property="og:image" content="https://blog.lemondouble.com/p/f10efbc0bcc4c537/cover.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="在家用樹莓派叢集架設資料中心 - 4. Traefik HTTPS 認證及 ArgoCD 設定"><meta name=twitter:description content="我做各種各樣的事情。部落格文章大多是為了不忘記自己做過的事而寫的(..)"><meta name=twitter:image content="https://blog.lemondouble.com/p/f10efbc0bcc4c537/cover.png"><link rel=stylesheet href=/css/8bit.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-dracula.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.css><link rel=stylesheet href=/css/code-block.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-9C6YX68EBM"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9C6YX68EBM")</script><meta name=generator content="Hugo 0.159.2"></head><body><nav class=site-nav><div class=nav-inner><a href=/zh-tw/ class=nav-logo><img src=/img/brand/lemon-logo.webp alt=Logo>
+<span>Lemon Blog</span></a><div class=nav-links><a href=/zh-tw/ class=nav-link>首頁</a>
+<a href=/zh-tw/projects/ class=nav-link>專案</a>
+<a href=/zh-tw/skills/ class=nav-link>技能</a>
+<a href=https://lemondouble.com/zh-tw target=_blank rel="noopener noreferrer" class=nav-link>關於</a></div><div class=nav-actions><div class=search-wrapper id=searchWrapper><span class=search-icon><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+</span><input type=text class=search-input id=searchInput placeholder=搜尋... autocomplete=off>
+<button class=search-close-btn onclick=closeMobileSearch() aria-label=關閉搜尋>
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><div class=search-results id=searchResults></div></div><button class=mobile-search-btn onclick=openMobileSearch() aria-label=開啟搜尋>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></button><div class=lang-switcher id=langSwitcher><button type=button class=lang-switcher-btn onclick=toggleLangSwitcher(event) aria-label=選擇語言 aria-haspopup=true aria-expanded=false>
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3.0 014 10 15.3 15.3.0 01-4 10A15.3 15.3.0 018 12a15.3 15.3.0 014-10z"/></svg>
+<span class=lang-switcher-current>繁體中文</span>
+<svg class="lang-switcher-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class=lang-switcher-menu id=langSwitcherMenu role=menu><a href=/p/f10efbc0bcc4c537/ class=lang-switcher-item lang=ko role=menuitem>한국어
+</a><a href=/en/p/f10efbc0bcc4c537/ class=lang-switcher-item lang=en role=menuitem>English
+</a><a href=/ja/p/f10efbc0bcc4c537/ class=lang-switcher-item lang=ja role=menuitem>日本語
+</a><a href=/zh-cn/p/f10efbc0bcc4c537/ class=lang-switcher-item lang=zh-cn role=menuitem>简体中文
+</a><a href=/zh-tw/p/f10efbc0bcc4c537/ class="lang-switcher-item active" lang=zh-tw role=menuitem>繁體中文</a></div></div><button class=nav-menu-btn onclick=toggleMobileMenu() aria-label=開啟選單>
+<svg id="menuIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg></button></div></div></nav><div class=mobile-menu id=mobileMenu><a href=/zh-tw/ class=nav-link onclick=closeMobileMenu()>首頁</a>
+<a href=/zh-tw/projects/ class=nav-link onclick=closeMobileMenu()>專案</a>
+<a href=/zh-tw/skills/ class=nav-link onclick=closeMobileMenu()>技能</a>
+<a href=https://lemondouble.com/zh-tw target=_blank rel="noopener noreferrer" class=nav-link onclick=closeMobileMenu()>關於</a><div class=mobile-menu-lang><span class=mobile-menu-lang-label>選擇語言</span><div class=mobile-menu-lang-items><a href=/p/f10efbc0bcc4c537/ class=mobile-menu-lang-item lang=ko onclick=closeMobileMenu()>한국어</a>
+<a href=/en/p/f10efbc0bcc4c537/ class=mobile-menu-lang-item lang=en onclick=closeMobileMenu()>English</a>
+<a href=/ja/p/f10efbc0bcc4c537/ class=mobile-menu-lang-item lang=ja onclick=closeMobileMenu()>日本語</a>
+<a href=/zh-cn/p/f10efbc0bcc4c537/ class=mobile-menu-lang-item lang=zh-cn onclick=closeMobileMenu()>简体中文</a>
+<a href=/zh-tw/p/f10efbc0bcc4c537/ class="mobile-menu-lang-item active" lang=zh-tw onclick=closeMobileMenu()>繁體中文</a></div></div></div><div class=container><main class=site-main><div class="post-layout has-toc"><article class=post-single><header class=post-header><div class=post-cover><img src=/p/f10efbc0bcc4c537/cover_hu_df587fbfd3bfdebb.png alt="在家用樹莓派叢集架設資料中心 - 4. Traefik HTTPS 認證及 ArgoCD 設定"></div><div class=post-header-content><div class=post-categories><a href=/zh-tw/categories/k8s/ class=category-tag>K8S</a>
+<a href=/zh-tw/categories/k3s/ class=category-tag>K3S</a>
+<a href=/zh-tw/categories/%E6%A8%B9%E8%8E%93%E6%B4%BE/ class=category-tag>樹莓派</a></div><h1 class=post-title>在家用樹莓派叢集架設資料中心 - 4. Traefik HTTPS 認證及 ArgoCD 設定</h1><div class=post-meta><time>2023.12.06</time>
+<span class=meta-sep>&#8226;</span>
+<span>4 min read</span></div></div></header><div class=post-content><p><em>註：筆者居住於韓國，部分內容包含韓國特有的背景。</em></p><p>如果透過 Git 來管理整個系統會怎麼樣呢？
+將所需的容器種類、數量等全部宣告在 Git 中，叢集完全按照 Git 中宣告的內容運作，這樣不是非常方便嗎？</p><p>不必特地查看叢集的各個角落，只需查看上傳到 Git 的設定值即可。</p><p>而且，如果在部署過程中發生問題，不就可以立即 Revert 嗎？此外，多人管理同一叢集時產生的問題也可以透過我們經常使用的 PR 來管理。</p><p>最後，如果叢集突然出現問題導致所有節點當機，由於宣告的狀態值在 Git 中，即使透過其他叢集也能快速進行復原。</p><p>這種方法被稱為 GitOps，而 ArgoCD 是幫助將 Git 中宣告的狀態與叢集狀態保持一致的工具。</p><p>接下來需要部署的系統真的非常多，所以讓我們先安裝幫助實現 GitOps 的 ArgoCD。</p><p>同時為了讓 ArgoCD 可以從外部存取，讓我們一起進行 Traefik 的 LetsEncrypt 設定等工作。</p><h3 id=套用-traefik-letsencrypt-certification>套用 Traefik Letsencrypt Certification</h3><ul><li>參考文章：<a href=https://traefik.io/blog/https-on-kubernetes-using-traefik-proxy/ target=_blank rel="noopener noreferrer">HTTPS on Kubernetes Using Traefik Proxy</a></li></ul><p>在 Control Node 上參考以下內容建立一個 traefik-update.yaml。</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml># https://traefik.io/blog/https-on-kubernetes-using-traefik-proxy/
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    ports:
+      web:
+        redirectTo:
+          port: websecure
+          priority: 10
+    additionalArguments:
+      - &#34;--log.level=INFO&#34;
+      - &#34;--certificatesresolvers.le.acme.email=yourMail@gmail.com&#34;
+      - &#34;--certificatesresolvers.le.acme.storage=/data/acme.json&#34;
+      - &#34;--certificatesresolvers.le.acme.tlschallenge=true&#34;
+      - &#34;--certificatesresolvers.le.acme.caServer=https://acme-v02.api.letsencrypt.org/directory&#34;</code></pre></div><p>接著使用 <code>kubectl apply -f traefik-update.yaml</code> 套用到叢集。</p><p>之後，在 IngressRoute 中可以使用 le（letsEncrypt）作為 CertificationResolver。（如果不明白這是什麼意思，繼續操作下去就會理解。）</p><h3 id=argocd-安裝>ArgoCD 安裝</h3><p>讓我們安裝 ArgoCD，並串接 Github SSO。</p><ol><li><p>進行 DNS 設定。將從外部存取 ArgoCD 時使用的子網域與目前的 IP 位址關聯。</p><ul><li>造訪「查看我的 IP」服務確認自己的 IP。</li><li>進入購買 DNS 的網站，在 A 紀錄的 IP4 Address 中填入剛才確認的自己的 IP。</li></ul></li><li><p>建立一個 <code>Github Organization</code>，並建立合適的 Role。我的情況是在個人 Organization 中新增了名為 Admin 的 Role。</p></li><li><p>進入 Organization -> Settings -> Developer Settings -> OAuth Apps，新增一個新的 OAuth 應用程式。</p></li></ol><p><img src=/p/f10efbc0bcc4c537/image.png alt="ArgoCD OAuth 設定，Authorization callback URL 很重要"></p><p>此時，將 Authorization callback URL 設定為 <code>https://&lt;剛才設定的網域>/api/dex/callback</code>。
+其餘可以自由變更。</p><p>之後發放並記住 <code>Client ID, Secret</code>。</p><ol start=4><li>建立 values.yaml 檔案</li></ol><p>參考以下檔案撰寫 <code>values.yaml</code> 檔案。</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>configs:
+  params:
+    # 由於 Traefik 處理 Https 連線，因此以 Insecure 模式啟動
+    server.insecure: true
+  rbac:
+    # Built-in Policy : https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+    policy.default: role:readonly
+    policy.csv: |
+      g, &lt;Github Organization 名稱&gt;:&lt;建立的 Role 名稱&gt;, role:admin
+
+server:
+  config:
+    url: https://&lt;設定的網域名稱&gt;
+
+    dex.config: |
+      connectors:
+      - type: github
+        id: github
+        name: github
+        config:
+          clientID: &lt;剛才發放的 Client ID&gt;
+          clientSecret: &lt;剛才發放的 Client Secret&gt;
+          orgs:
+          - name: &lt;Github Organization 名稱&gt;</code></pre></div><p>例如：</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>configs:
+  params:
+    # 由於 Traefik 處理 Https 連線，因此以 Insecure 模式啟動
+    server.insecure: true
+  rbac:
+    # Built-in Policy : https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+    policy.default: role:readonly
+    policy.csv: |
+      g, LemonLemon:Admin, role:admin
+
+server:
+  config:
+    url: https://argo.lemon.com
+
+    dex.config: |
+      connectors:
+      - type: github
+        id: github
+        name: github
+        config:
+          clientID: vadf45a6sdfad
+          clientSecret: adsfvasd45f6ads4f56asd7
+          orgs:
+          - name: LemonLemon</code></pre></div><ol start=5><li>建立 ingress.yaml 檔案</li></ol><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argocd-ingress
+  namespace: argocd
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`&lt;設定的網域名稱&gt;`)
+      priority: 10
+      services:
+        - name: argo-cd-argocd-server
+          port: 80
+    - kind: Rule
+      match: Host(`&lt;設定的網域名稱&gt;`) &amp;&amp; Headers(`Content-Type`, `application/grpc`)
+      priority: 11
+      services:
+        - name: argo-cd-argocd-server
+          port: 80
+          scheme: h2c
+  tls:
+    certResolver: le</code></pre></div><p>以下是範例。</p><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>yaml</span></div><pre class=line-numbers><code class=language-yaml>apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argocd-ingress
+  namespace: argocd
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`argo.lemon.com`)
+      priority: 10
+      services:
+        - name: argo-cd-argocd-server
+          port: 80
+    - kind: Rule
+      match: Host(`argo.lemon.com`) &amp;&amp; Headers(`Content-Type`, `application/grpc`)
+      priority: 11
+      services:
+        - name: argo-cd-argocd-server
+          port: 80
+          scheme: h2c
+  tls:
+    certResolver: le</code></pre></div><ol start=6><li>撰寫完 <code>values.yaml</code> 與 <code>ingress.yaml</code> 後，輸入以下指令安裝 argocd。</li></ol><div class=code-block><div class=code-header><div class=code-dots><span class="dot dot-red"></span>
+<span class="dot dot-yellow"></span>
+<span class="dot dot-green"></span></div><span class=code-lang>sh</span></div><pre class=line-numbers><code class=language-sh>kubectl create namespace argocd
+helm repo add argo https://argoproj.github.io/argo-helm
+helm install -n argocd argo-cd argo/argo-cd -f values.yaml
+
+kubectl apply -f ingress.yaml</code></pre></div><p>稍等片刻後，存取設定的網域（我的情況是 <code>https://argo.lemon.com</code>），ArgoCD 會正常出現。</p><p>之後點擊 <code>Log in Via Github</code> 按鈕登入。</p><p>如果登入成功，則表示安裝成功！</p><p>※ 提示：如果出現 401 錯誤，請嘗試 kill 一次 argocd 命名空間的 argocd-server pod。</p><h3 id=argocd-git-private-repo-連線>ArgoCD Git Private Repo 連線</h3><p>如果叢集使用 Public Repo，可以省略此設定，但為了防止萬一發生事故，讓我們在 Git 中也使用 private Repo，並在 ArgoCD 中連接使用。</p><p>在 Github 中新增一個新的（空的）儲存庫後，將該儲存庫與 ArgoCD 串接。</p><ol><li>登入 ArgoCD 後，點擊 Settings -> Repository -> Connect Repo。</li><li>connection method 選擇 ssh，Name 任意，Project 為 default，Repository URL 填入 git clone 時的 <code>ssh 位址</code>，SSH private key data 複製貼上 Control01 節點的 <code>~/.ssh/id_rsa</code>。</li><li>連線 Git。</li></ol><p><img src=/p/f10efbc0bcc4c537/image-1.png alt="Github 串接範例"></p><h3 id=結語>結語</h3><p>今天我們完成了 Traefik Ingress 設定、ArgoCD 安裝及 Git 串接。</p><p>下一篇文章將整理至今散落各處(?)的 yaml 檔案，使用 App of Apps 整理儲存庫結構，並建構一個即使發生故障也能透過一次點擊復原的系統。</p><p>一如既往，如有錯誤請告知！</p></div><div class=post-tags><a href=/zh-tw/tags/k8s/ class=tag-link>#K8S</a>
+<a href=/zh-tw/tags/k3s/ class=tag-link>#K3S</a>
+<a href=/zh-tw/tags/%E6%A8%B9%E8%8E%93%E6%B4%BE/ class=tag-link>#樹莓派</a>
+<a href=/zh-tw/tags/traefik/ class=tag-link>#Traefik</a>
+<a href=/zh-tw/tags/lets-encrypt/ class=tag-link>#Let's Encrypt</a>
+<a href=/zh-tw/tags/https/ class=tag-link>#HTTPS</a>
+<a href=/zh-tw/tags/argocd/ class=tag-link>#ArgoCD</a>
+<a href=/zh-tw/tags/gitops/ class=tag-link>#GitOps</a></div><div class=post-license><p>&copy; 本文以 CC BY-NC-SA 4.0 授權條款發佈。</p></div><section class=post-comments><h3 class=comments-title>Comments</h3><script src=https://giscus.app/client.js data-repo=LemonDouble/LemonDouble.github.io-comments data-repo-id=R_kgDOI0UkDA data-category=Comments data-category-id=DIC_kwDOI0UkDM4CcIeY data-mapping=pathname data-reactions-enabled=1 data-emit-metadata=0 data-theme=dark crossorigin=anonymous async></script></section></article><aside class=toc-sidebar><a href=/zh-tw/ class=toc-back-btn onclick="return tocGoBack(event)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+<span>返回上一頁</span></a><nav class=toc-sidebar-nav><h4 class=toc-sidebar-title>本頁目錄</h4><nav id=TableOfContents><ul><li><ul><li><a href=#套用-traefik-letsencrypt-certification>套用 Traefik Letsencrypt Certification</a></li><li><a href=#argocd-安裝>ArgoCD 安裝</a></li><li><a href=#argocd-git-private-repo-連線>ArgoCD Git Private Repo 連線</a></li><li><a href=#結語>結語</a></li></ul></li></ul></nav></nav></aside></div><script>function tocGoBack(e){var t=document.referrer&&document.referrer.indexOf(window.location.origin)===0;return!(t&&window.history.length>1)||(e.preventDefault(),window.history.back(),!1)}(function(){var e,t,o,i,s=document.querySelector(".toc-sidebar-nav");if(!s)return;if(o=s.querySelectorAll("a"),!o.length)return;if(e=[],o.forEach(function(t){var s=decodeURIComponent(t.getAttribute("href").slice(1)),n=document.getElementById(s);n&&e.push({el:n,link:t})}),!e.length)return;t=null;function n(e){if(t===e)return;t&&t.classList.remove("active"),e.classList.add("active"),t=e;var i=s,n=e.getBoundingClientRect(),o=i.getBoundingClientRect();(n.top<o.top||n.bottom>o.bottom)&&e.scrollIntoView({block:"nearest",behavior:"smooth"})}i=new IntersectionObserver(function(t){var s,o,i,a,r,c,l=[];t.forEach(function(t){var n=e.find(function(e){return e.el===t.target});n&&(n.isIntersecting=t.isIntersecting)});for(s=0;s<e.length;s++)if(e[s].isIntersecting){n(e[s].link);return}for(c=window.scrollY||window.pageYOffset,a=100,i=null,o=0;o<e.length;o++)r=e[o].el.getBoundingClientRect(),r.top<a&&(i=e[o]);i&&n(i.link)},{rootMargin:"-80px 0px -60% 0px",threshold:0}),e.forEach(function(e){e.isIntersecting=!1,i.observe(e.el)}),setTimeout(function(){var t,s,o,i,a=window.scrollY||window.pageYOffset;if(a<100)n(e[0].link);else{for(o=100,s=null,t=0;t<e.length;t++)i=e[t].el.getBoundingClientRect(),i.top<o&&(s=e[t]);n(s?s.link:e[0].link)}},100)})()</script></main></div><footer class=site-footer><div class=footer-content><div class=footer-links><a href=https://github.com/LemonDouble target=_blank rel=noopener>GitHub</a>
+<a href=https://twitter.com/_lemon_berry_ target=_blank rel=noopener>Twitter</a>
+<a href=mailto:contact@lemondouble.com>Email</a>
+<a href=https://sns.lemondouble.com/@lemondouble target=_blank rel=noopener>Misskey</a></div><p class=footer-copy>&copy; 2022-2026 LemonDouble &bull; Powered by Hugo</p><p class=footer-brand>LEMON BLOG</p></div></footer><script>function toggleMobileMenu(){var e=document.getElementById("mobileMenu");e.classList.toggle("active")}function closeMobileMenu(){document.getElementById("mobileMenu").classList.remove("active")}function openMobileSearch(){document.body.classList.add("mobile-search-active"),closeMobileMenu(),setTimeout(function(){var e=document.getElementById("searchInput");e&&e.focus()},50)}function closeMobileSearch(){document.body.classList.remove("mobile-search-active");var e,t=document.getElementById("searchInput");t&&(t.value="",t.blur()),e=document.getElementById("searchResults"),e&&(e.classList.remove("active"),e.innerHTML="")}document.addEventListener("keydown",function(e){e.key==="Escape"&&document.body.classList.contains("mobile-search-active")&&closeMobileSearch()});function pageJump(e,t){if(e.key==="Escape")return t.blur(),!1;if(e.key!=="Enter")return!0;e.preventDefault();var s,o,n=parseInt(t.value,10),i=parseInt(t.dataset.total,10);return!n||n<1||n>i?(t.value=t.defaultValue,!1):(s=t.dataset.base||"/",o=n===1?s:s.replace(/\/$/,"")+"/page/"+n+"/",window.location.href=o,!1)}function pageJumpFocus(e){e.value=""}function pageJumpReset(e){e.value=e.defaultValue}function pageJumpSanitize(e){var t=e.value.replace(/\D/g,"");t!==e.value&&(e.value=t)}function toggleLangSwitcher(e){e&&e.stopPropagation();var s,t=document.getElementById("langSwitcher"),n=t&&t.querySelector(".lang-switcher-btn");if(!t||!n)return;s=t.classList.toggle("open"),n.setAttribute("aria-expanded",s?"true":"false")}document.addEventListener("click",function(e){var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&!e.target.closest("#langSwitcher")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))}),document.addEventListener("keydown",function(e){if(e.key!=="Escape")return;var n,t=document.getElementById("langSwitcher");t&&t.classList.contains("open")&&(t.classList.remove("open"),n=t.querySelector(".lang-switcher-btn"),n&&n.setAttribute("aria-expanded","false"))})</script><script>var searchInput,searchResults,searchIndex=null;(function(){fetch("/zh-tw/index.json").then(function(e){return e.json()}).then(function(e){searchIndex=e}).catch(function(){})})(),searchInput=document.getElementById("searchInput"),searchResults=document.getElementById("searchResults"),searchInput&&(searchInput.addEventListener("input",function(e){var n,t=e.target.value.trim().toLowerCase();if(!t||!searchIndex){searchResults.classList.remove("active"),searchResults.innerHTML="";return}if(n=searchIndex.filter(function(e){return e.title.toLowerCase().includes(t)||e.summary.toLowerCase().includes(t)||(e.categories||[]).some(function(e){return e.toLowerCase().includes(t)})||(e.tags||[]).some(function(e){return e.toLowerCase().includes(t)})}).slice(0,10),n.length===0){searchResults.innerHTML='<div class="search-empty">未找到搜尋結果。</div>',searchResults.classList.add("active");return}searchResults.innerHTML=n.map(function(e){var t=(e.categories||[]).map(function(e){return'<span class="search-cat">'+e+"</span>"}).join('<span class="search-cat-sep">/</span>');return'<a href="'+e.url+'" class="search-result-item"><div class="search-result-title">'+e.title+'</div><div class="search-result-meta">'+e.date+(t?" &middot; "+t:"")+"</div></a>"}).join(""),searchResults.classList.add("active")}),document.addEventListener("click",function(e){e.target.closest(".search-wrapper")||(searchResults.classList.remove("active"),document.body.classList.contains("mobile-search-active")&&!e.target.closest(".mobile-search-btn")&&closeMobileSearch())}),searchInput.addEventListener("focus",function(){searchInput.value.trim()&&searchResults.classList.add("active")}))</script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js></script><script src=https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js></script></body></html>

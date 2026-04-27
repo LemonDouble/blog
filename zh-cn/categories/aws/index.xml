@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AWS on Lemon Blog</title><link>https://blog.lemondouble.com/zh-cn/categories/aws/</link><description>Recent content in AWS on Lemon Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sun, 04 Aug 2024 20:11:48 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-cn/categories/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>AWS SAA 当日报名考试合格回顾</title><link>https://blog.lemondouble.com/zh-cn/p/d3c7a9de0a536286/</link><pubDate>Sun, 04 Aug 2024 20:11:48 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/d3c7a9de0a536286/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;AWS 提供实用的认证资格。(&lt;a href="https://aws.amazon.com/certification/exams/" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+)&lt;/p&gt;
+&lt;p&gt;我一直跟自己说&amp;quot;以后再考、以后再考&amp;quot;，但再这样下去恐怕一辈子也考不到，今天正好没安排，干脆当天报名直接参加了在线考试。&lt;/p&gt;</description></item><item><title>使用 Private DNS 和 ALB 构建从 VPC 外部无法访问的 API</title><link>https://blog.lemondouble.com/zh-cn/p/acf607c351652785/</link><pubDate>Sun, 22 Jan 2023 17:12:43 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/acf607c351652785/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;构建 MSA 服务时，服务器之间会发生非常频繁的通信。&lt;/p&gt;
+&lt;p&gt;例如，假设有一个（高度简化的）转账服务。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/acf607c351652785/2023-01-22-17-22-23.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;如果有钱包服务器和用户信息服务器，调用转账 API 时会发生上图中的情况。&lt;/p&gt;</description></item><item><title>通过 GitHub OIDC,无需在 GitHub Actions 中放置 AWS Key 即可使用 AWS 资源(免费)</title><link>https://blog.lemondouble.com/zh-cn/p/%E9%80%9A%E8%BF%87-github-oidc%E6%97%A0%E9%9C%80%E5%9C%A8-github-actions-%E4%B8%AD%E6%94%BE%E7%BD%AE-aws-key-%E5%8D%B3%E5%8F%AF%E4%BD%BF%E7%94%A8-aws-%E8%B5%84%E6%BA%90%E5%85%8D%E8%B4%B9/</link><pubDate>Sun, 22 Jan 2023 11:18:50 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/%E9%80%9A%E8%BF%87-github-oidc%E6%97%A0%E9%9C%80%E5%9C%A8-github-actions-%E4%B8%AD%E6%94%BE%E7%BD%AE-aws-key-%E5%8D%B3%E5%8F%AF%E4%BD%BF%E7%94%A8-aws-%E8%B5%84%E6%BA%90%E5%85%8D%E8%B4%B9/</guid><description>&lt;p&gt;&lt;em&gt;注:作者居住在韩国,部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;要在 GitHub Actions 中使用 AWS,通常需要经过以下步骤。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;进入 IAM 控制台,创建一个新用户。&lt;/li&gt;
+&lt;li&gt;为 GitHub Actions 添加 IAM Role,采用 Programmatic access 方式,获取 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; 和 &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在仓库设置中,将刚刚获取的 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; 和 &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt; 添加到 GitHub Secrets。&lt;/li&gt;
+&lt;li&gt;然后在 GitHub Actions 中添加如下工作流,即可访问 AWS 资源。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;yaml&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-yaml"&gt;- name: Configure AWS Credentials
+ uses: aws-actions/configure-aws-credentials@v1
+ with:
+ aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+ aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ aws-region: us-east-2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;如果只有一个项目,这样管理也没什么问题。&lt;/p&gt;</description></item><item><title>用 AWS SSO 在家也能用上公司里那块熟悉的登录页（免费）</title><link>https://blog.lemondouble.com/zh-cn/p/1c9eaebbdee2ac98/</link><pubDate>Sat, 21 Jan 2023 16:17:06 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/1c9eaebbdee2ac98/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;如果你在公司或组织里用过 AWS，应该见过下面这种 SSO（Single Sign On）登录页面。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/1c9eaebbdee2ac98/2023-01-21-23-57-37.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;一旦设置好，会话期间不用每次都输入 id/password，使用起来很方便。&lt;/p&gt;</description></item></channel></rss>

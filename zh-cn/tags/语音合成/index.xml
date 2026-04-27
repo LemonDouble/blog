@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>语音合成 on Lemon Blog</title><link>https://blog.lemondouble.com/zh-cn/tags/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/</link><description>Recent content in 语音合成 on Lemon Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sun, 26 Apr 2026 16:33:46 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-cn/tags/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/index.xml" rel="self" type="application/rss+xml"/><item><title>hayakoe — 时隔2年再次研究各种TTS模型，最终还是回到VITS的故事 - Part 1</title><link>https://blog.lemondouble.com/zh-cn/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/4c2a6225a737f531/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;这是 hayakoe 系列的第一篇正文。前言性质的文章可以在 &lt;a href="https://blog.lemondouble.com/zh-cn/p/ea78fbb9b78c38ac/"
+&gt;hayakoe — 打造好用又快的 TTS 库 — 引言&lt;/a&gt;
+ 查看。&lt;/p&gt;
+&lt;p&gt;引言中简单提到的一个话题是「重新选择了模型」。Part 1 我想把这个过程讲得更详细一些。&lt;/p&gt;</description></item><item><title>用 Bert-VITS2 打造属于自己的 TTS</title><link>https://blog.lemondouble.com/zh-cn/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/9c06f7dc324b5986/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="先听一下我们要做的音频日语"&gt;先听一下我们要做的音频（日语）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-tts"&gt;1. TTS？&lt;/h3&gt;
+&lt;p&gt;Text-To-Speech，顾名思义，是将文本转换为语音数据的软件。&lt;/p&gt;
+&lt;p&gt;只要做好一次，就可以在大量自动化场景中使用，不必担心调用次数，所以我的目标是亲手做一个。&lt;/p&gt;</description></item></channel></rss>

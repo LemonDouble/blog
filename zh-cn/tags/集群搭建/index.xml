@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>集群搭建 on Lemon Blog</title><link>https://blog.lemondouble.com/zh-cn/tags/%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</link><description>Recent content in 集群搭建 on Lemon Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sun, 03 Dec 2023 22:20:29 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-cn/tags/%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/index.xml" rel="self" type="application/rss+xml"/><item><title>在家用树莓派集群搭建数据中心 - 2. 集群初始化设置篇</title><link>https://blog.lemondouble.com/zh-cn/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/f4efced2e8d5b1d8/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="硬件"&gt;硬件&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="硬件构成示意图"&gt;&lt;/p&gt;
+&lt;p&gt;请参考上图来组装硬件。&lt;/p&gt;
+&lt;p&gt;如果你家里有在用电脑，那大概率已经有路由器和常用的台式机了，所以只需要在上图中加上绿色部分即可。&lt;/p&gt;</description></item><item><title>在家用树莓派集群搭建数据中心 - 1. 硬件篇</title><link>https://blog.lemondouble.com/zh-cn/p/20ae99fa945edf10/</link><pubDate>Sun, 03 Dec 2023 14:54:33 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/20ae99fa945edf10/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;第一节是硬件时间！从简单的内容到稍微复杂的话题，让我们快速开始吧！&lt;/p&gt;
+&lt;h3 id="1-sbc-single-board-computer"&gt;1. SBC (Single Board Computer)&lt;/h3&gt;
+&lt;p&gt;最重要的当然还是SBC吧？&lt;/p&gt;</description></item><item><title>在家用树莓派集群搭建数据中心 - 序论</title><link>https://blog.lemondouble.com/zh-cn/p/d42387934c57aa25/</link><pubDate>Sun, 03 Dec 2023 13:24:05 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/d42387934c57aa25/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="我第一次搭建树莓派集群至今大约已经过去300天了"&gt;我第一次搭建树莓派集群至今，大约已经过去300天了。&lt;/h3&gt;
+&lt;p&gt;契机其实并不算大。&lt;/p&gt;
+&lt;p&gt;我每天早上上班路上都会看一个叫&lt;a href="https://news.hada.io/" target="_blank" rel="noopener noreferrer"
+&gt;GeekNews&lt;/a&gt;
+&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;的新闻聚合服务，其中一篇题为&lt;a href="https://news.hada.io/topic?id=8306" target="_blank" rel="noopener noreferrer"
+&gt;Chick-Fil-A 的 Edge Computing 技术架构：Enterprise Restaurant Compute&lt;/a&gt;
+的文章引起了我的注意。&lt;/p&gt;</description></item></channel></rss>

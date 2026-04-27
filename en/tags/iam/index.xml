@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IAM on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/iam/</link><description>Recent content in IAM on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 22 Jan 2023 11:18:50 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/iam/index.xml" rel="self" type="application/rss+xml"/><item><title>Use AWS Resources from GitHub Actions Without AWS Keys via GitHub OIDC (Free)</title><link>https://blog.lemondouble.com/en/p/use-aws-resources-from-github-actions-without-aws-keys-via-github-oidc-free/</link><pubDate>Sun, 22 Jan 2023 11:18:50 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/use-aws-resources-from-github-actions-without-aws-keys-via-github-oidc-free/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;To use AWS from GitHub Actions, you typically go through the following steps.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go to the IAM console and create a new user.&lt;/li&gt;
+&lt;li&gt;Add an IAM Role for GitHub Actions and use Programmatic access to issue an &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; and &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;In your repository settings, add the freshly issued &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; and &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt; to GitHub Secrets.&lt;/li&gt;
+&lt;li&gt;Then add a workflow like the one below in GitHub Actions to access AWS resources.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;yaml&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-yaml"&gt;- name: Configure AWS Credentials
+ uses: aws-actions/configure-aws-credentials@v1
+ with:
+ aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+ aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ aws-region: us-east-2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;If you only have one project, managing things this way isn&amp;rsquo;t a big problem.&lt;/p&gt;</description></item></channel></rss>

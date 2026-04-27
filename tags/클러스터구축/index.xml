@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>클러스터구축 on Lemon Blog</title><link>https://blog.lemondouble.com/tags/%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EA%B5%AC%EC%B6%95/</link><description>Recent content in 클러스터구축 on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sun, 03 Dec 2023 22:20:29 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EA%B5%AC%EC%B6%95/index.xml" rel="self" type="application/rss+xml"/><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 2. 클러스터 초기 설정 편</title><link>https://blog.lemondouble.com/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/p/f4efced2e8d5b1d8/</guid><description>&lt;h3 id="하드웨어"&gt;하드웨어&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="하드웨어 구성 도식"&gt;&lt;/p&gt;
+&lt;p&gt;위 그림을 참고하여, 하드웨어 구성을 시켜 줍니다.&lt;/p&gt;
+&lt;p&gt;컴퓨터를 사용하는 집이라면 아마 높은 확률로 라우터와 기본 데스크탑은 설정되어 있을테니, 위 도식에서 초록색 부분만 추가하시면 됩니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 1. 하드웨어 편</title><link>https://blog.lemondouble.com/p/20ae99fa945edf10/</link><pubDate>Sun, 03 Dec 2023 14:54:33 +0900</pubDate><guid>https://blog.lemondouble.com/p/20ae99fa945edf10/</guid><description>&lt;p&gt;첫 시간은 하드웨어 시간입니다! 간단한 것부터 조금 복잡한 이야기부터, 빠르게 시작해 봅시다!&lt;/p&gt;
+&lt;h3 id="1-sbc-single-board-computer"&gt;1. SBC (Single Board Computer)&lt;/h3&gt;
+&lt;p&gt;역시 제일 중요한건 SBC겠죠?&lt;/p&gt;
+&lt;p&gt;개인적으로는 당X마켓에 알림 걸어놓고, &lt;strong&gt;Raspberry PI 4B 4GB 모델 or 8GB&lt;/strong&gt; 모델이 올라올 때마다 하나씩 맞추시는걸 추천합니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 서론</title><link>https://blog.lemondouble.com/p/d42387934c57aa25/</link><pubDate>Sun, 03 Dec 2023 13:24:05 +0900</pubDate><guid>https://blog.lemondouble.com/p/d42387934c57aa25/</guid><description>&lt;h3 id="처음-라즈베리-파이-클러스터를-구축한-지-대략-300일이-지났습니다"&gt;처음 라즈베리 파이 클러스터를 구축한 지 대략 300일이 지났습니다.&lt;/h3&gt;
+&lt;p&gt;계기는 사실 그렇게 크진 않았습니다.&lt;/p&gt;
+&lt;p&gt;저는 매일 아침 &lt;a href="https://news.hada.io/" target="_blank" rel="noopener noreferrer"
+&gt;GeekNews&lt;/a&gt;
+ 라는 뉴스 큐레이팅 서비스를 보며 출근하는데, 그 중 &lt;a href="https://news.hada.io/topic?id=8306" target="_blank" rel="noopener noreferrer"
+&gt;Chick-Fil-A 의 Edge Computing 기술 아키텍처 : Enterprise Restaurant Compute&lt;/a&gt;
+ 라는 글이 눈에 보였습니다.&lt;/p&gt;</description></item></channel></rss>
