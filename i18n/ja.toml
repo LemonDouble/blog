@@ -72,3 +72,51 @@ other = "本記事は CC BY-NC-SA 4.0 の下で公開されています。"
 
 [language_switcher_label]
 other = "言語を選択"
+
+[opensource_contributions]
+other = "オープンソース貢献"
+
+[private_label]
+other = "非公開"
+
+[modal_close]
+other = "閉じる"
+
+[modal_original_repo]
+other = "オリジナル"
+
+[modal_retrospective]
+other = "振り返り"
+
+[status_dev]
+other = "開発中"
+
+[status_done]
+other = "完了"
+
+[status_done_personal]
+other = "完了 (個人用)"
+
+[status_done_advancing]
+other = "完了 (改善中)"
+
+[status_running]
+other = "運用中"
+
+[status_archived]
+other = "archived"
+
+[status_dropped]
+other = "中止"
+
+[status_default]
+other = ""
+
+[skill_level_primary]
+other = "🔥 メイン"
+
+[skill_level_secondary]
+other = "🛠️ たまに使う"
+
+[skill_level_familiar]
+other = "📚 触ったことあり"

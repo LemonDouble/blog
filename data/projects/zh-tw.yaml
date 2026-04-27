@@ -1,0 +1,770 @@
+intro: "這是整理我至今為止進行過的專案的頁面。從個人專案到開源貢獻、學校作業全都收錄在這裡(...) 比想像中還多呢。"
+
+opensource:
+  description: "雖然沒有想透過開源貢獻獲得什麼榮華富貴.. 但用各種開源工具的時候，意外地會發現一些不能正常運作的東西。與其等別人來修，不如自己修還比較快，所以每次有需要時就會自己動手修好並提交 PR。"
+  contributions:
+    - year: 2025
+      items:
+        - repo: "rustfs/rustfs"
+          pr: "https://github.com/rustfs/rustfs/pull/1018"
+          pr_number: 1018
+          description: "把 Helm chart 中的 storageSize 拆成 data/log 各自獨立的參數。資料儲存空間設成 2TB 的話日誌也會變成 2TB(...) 拜託請拆開來吧，我這樣請求的。"
+        - repo: "thuliteio/doks"
+          pr: "https://github.com/thuliteio/doks/pull/1356"
+          pr_number: 1356
+          description: "把 Hugo 版本升級之後本來能用的東西不能用了.. 所以修好了。"
+        - repo: "Jaydee94/kubeseal-webgui"
+          pr: "https://github.com/Jaydee94/kubeseal-webgui/pull/278"
+          pr_number: 278
+          description: "本來用得好好的，結果 Secret 剪貼簿複製功能壞了.. 所以修好了。"
+    - year: 2024
+      items:
+        - repo: "opensearch-project/helm-charts"
+          pr: "https://github.com/opensearch-project/helm-charts/pull/618"
+          pr_number: 618
+          description: "在 Helm 升級版本後部署不起來，一查發現預設的 opensearch.yml 跟 security plugin 有衝突。"
+    - year: 2023
+      items:
+        - repo: "minio/operator"
+          pr: "https://github.com/minio/operator/pull/1910"
+          pr_number: 1910
+          description: "existingSecret 沒有套用上去，一查發現 YAML 縮排寫錯了。"
+        - repo: "getsentry/sentry"
+          pr: "https://github.com/getsentry/sentry/pull/60571"
+          pr_number: 60571
+          description: "讀文件的時候看到一個錯字，順手就改了.. 大家知道嗎，錯字修正的 PR 很快就會被合併喔？這是在大型開源專案中蹭一腳的最佳方式。"
+        - repo: "stepci/stepci"
+          pr: "https://github.com/stepci/stepci/pull/66"
+          pr_number: 66
+          description: "新增 CLI 預設指令的輸出。這是我第一次向開源專案提 PR！"
+
+projects:
+  - year: 2026
+    items:
+      - name: "lemon-design-system"
+        slug: "lemon-design-system"
+        private: false
+        tagline: "對 AI agent 友善的個人設計系統"
+        languages: ["CSS"]
+        status: "완료"
+        description: |
+          我在 GeekNews（韓國技術資訊網站）上看到了 [awesome-design-md](https://github.com/VoltAgent/awesome-design-md)，雖然我不喜歡把其他網站的設計拆下來當作預設提供的做法，但「讓 AI 擁有一致設計系統」這個想法本身我覺得很棒。
+
+          我本來就會做許多專案，所以一直希望能擁有自己的設計系統，讓人光看設計就能認出「啊這是 LemonDouble 的專案！」。
+
+          因此我曾實際委託認識的設計師用 Figma 接案製作過，但.. 我畢竟是伺服器開發者.. 有些東西實作起來很困難，而且每個專案都會持續需要新元件，總不可能每次都委外，所以一直沒能真正套用。
+
+          但這個方法論也許可行，於是我從自己 favicon 的 logo 開始，先抽出 Primary / Secondary 顏色，再針對各色調整彩度／明度產出多個草稿，肉眼一張張檢視並反覆調整到滿意為止。
+
+          從部落格到所有有前端頁面的地方都套用了。
+
+          結果還挺不錯的。
+        url: "https://github.com/LemonDouble/lemon-design-system"
+
+      - name: "hayakoe"
+        slug: "hayakoe"
+        private: false
+        tagline: "ONNX 最佳化的日語 TTS 函式庫"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          TTS 領域有 [Bert-VITS](https://github.com/fishaudio/Bert-VITS2) → [Style-Bert-VITS2](https://github.com/litagin02/Style-Bert-VITS2) 這條譜系。
+
+          Bert-VITS 是 Fish-Speech 團隊以前的模型，現在他們已經轉向 autoregression 方式的 Fish-Speech 倉庫，那邊的更新就停了。
+
+          在這之上加一層 style 相關的 layer、訓練更多日語資料以提供日語強化的 Pretrained 模型，就是 Style-Bert-VITS2 的倉庫。
+
+          另外還做了各種改進。
+
+          但 Style-Bert-VITS2 的函式庫更新大概在八個月前就停了.. 既然已經停了，乾脆趁機整理一下程式碼，讓它更好用，所以我就動手做做看。
+
+          #### 已完成的內容
+
+          - pyopenjtalk-prebuilt 函式庫已經停止更新，在 Python 3.12 以上無法使用。我把它 fork 出來修改成最新版也可以建置的 lemon-pyopenjtalk-prebuilt 函式庫並改用之
+          - 修正 TTS 文字中若包含英文會被當成靜音處理的問題。利用 [loanwords_gairaigo](https://github.com/jamesohortle/loanwords_gairaigo) 的資料自動支援約 22 萬個英文→片假名映射，並簡化自訂字典登錄功能
+          - 對 BERT weight 進行動態量化，記憶體使用量約減少 50%
+          - 把 Synthesizer 透過 ONNX 最佳化，在 CPU 上達成約 1.6 倍的速度提升
+          - 將 BERT 與 Synthesizer 模型載入分離，讓 BERT 可被共用，每個說話者只需另外載入 Synthesizer，做到每位說話者只需約 200MB 記憶體
+          - 發布為 PyPI 套件，整理成 `pip install hayakoe` 後 3 行程式碼即可使用
+          - 在純 CPU 環境下無需安裝 PyTorch，僅靠 ONNX Runtime 即可推論，改為雙後端結構
+          - 支援句子級的串流 TTS（`stream()`）。不需要一次處理整段長文字，而是按句逐一生成，可用於即時回應
+          - `generate()` 對長文字自動以句子為單位分割處理，速度提升約 37 倍（400 字基準 143 秒 → 3.8 秒）
+          - 將 `weight_norm` 遷移為 `parametrizations.weight_norm`，確保 PyTorch 2.x+ 的相容性
+
+          #### 開發中的內容
+
+          - 正在實作預處理流水線，將想抽取資料的影片自動轉成訓練資料。影片上傳 → 抽取音訊 → 分離背景音 → Whisper 字幕生成 → 自動建立資料集，全程一條龍
+          - 正在實作互動式訓練 CLI，可從資料集預處理、模型訓練到品質報告生成全部一條龍進行
+        url: "https://github.com/LemonDouble/hayakoe"
+
+      - name: "super-arona"
+        slug: "super-arona"
+        private: true
+        tagline: "與 Arona 對話 - 基於 LLM 的 3D MMD 角色檢視器"
+        languages: ["TypeScript"]
+        status: "완료 (고도화 중)"
+        description: |
+          這是一個可以跟蔚藍檔案的 Arona 對話的 3D 角色檢視器。
+
+          - 使用 Babylon.js + babylon-mmd 進行 PMX 模型渲染
+          - 支援 16 種表情 morph target、14 種 VMD 動作
+          - 透過 Bullet WASM 進行頭髮／衣物物理模擬
+          - 預計接入基於 LLM 的對話功能
+
+          以前有個叫 arona 的專案，那只是一個簡單的聊天介面，把 query parameter 傳入文字後顯示。
+
+          super-arona 是它的續作，名副其實是更野心勃勃的版本。
+        url: null
+
+      - name: "shiroko"
+        slug: "shiroko"
+        private: true
+        tagline: "告訴我天氣"
+        languages: ["TypeScript"]
+        status: "완료 (개인용)"
+        description: |
+          這是為了透過 HomeAssistant 用 ADB 投放到電視上而做的天氣 app。
+
+          會根據氣象廳預報的降水類型，顯示雨／雪等天氣動畫。
+
+          因為是個人用沒什麼特別的，但每天早上做一次天氣 briefing 就能決定要不要騎腳踏車上班，所以挺方便的。
+        url: null
+
+      - name: "haruna"
+        slug: "haruna"
+        private: true
+        tagline: "週五美食會的問卷工具"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          這是一個美食評價系統。
+
+          每週五都會跟朋友們去探訪美食，既然要吃，順便打個分數應該也不錯吧.. 所以做成了匿名投票系統。
+
+          - 輪盤抽選
+          - 星級評分
+          - Google Maps URL 自動複製
+          - QR code 生成
+        url: null
+
+      - name: "claude-dashboard"
+        slug: "claude-dashboard"
+        private: true
+        tagline: "我自己要看而做的 Claude Code 專用網頁儀表板"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          這是一個解析 `~/.claude/projects/` 中的 JSONL 檔，並把 Claude Code 使用量（費用、token、session、模式）視覺化的網頁儀表板。
+
+          用 Docker Compose 啟動就完事了。
+
+          可以一眼看出我把 Claude 操了多兇(...)。
+        url: null
+
+      - name: "Style-Bert-VITS2"
+        slug: "style-bert-vits2"
+        private: false
+        tagline: "基於 Style-Bert-VITS2 的日語 TTS 函式庫"
+        languages: ["Python"]
+        status: "archived"
+        description: |
+          正在把原專案重新打包成函式庫，讓人能直接用 `pip install style-bert-vits2` 安裝。
+
+          以 ONNX runtime 在 CPU 上也能即時推論，計畫做到下載套件後 3 行程式碼就能推論。
+        url: "https://github.com/LemonDouble/Style-Bert-VITS2"
+        fork_of: "litagin02/Style-Bert-VITS2"
+
+      - name: "kepco_powerplanner_ha_addon"
+        slug: "kepco-powerplanner-ha-addon"
+        private: false
+        tagline: "韓國電力公社 PowerPlanner 的 Home Assistant 附加元件"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          原本的附加元件是透過 HA REST API 建立 sensor 的方式，沒辦法指定 Entity ID alias。
+
+          - 改成 MQTT Discovery 方式，賦予 `unique_id`，並讓 sensor 名稱也能在 HA UI 中改名與管理
+          - 透過 Supervisor API 自動偵測 MQTT broker，使設定更為簡便
+        url: "https://github.com/LemonDouble/kepco_powerplanner_ha_addon"
+        fork_of: null
+
+      - name: "claude-slack-bridge"
+        slug: "claude-slack-bridge"
+        private: false
+        tagline: "Claude Code ↔ Slack 雙向橋接 MCP 伺服器"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          這是為了讓 Claude Code 在做事的時候我能離開座位而做的 MCP 伺服器。
+
+          相比原本擴展了不少，主要功能如下：
+
+          - **MCP 工具 4 種**：`ask_on_slack`（送出問題並等待回答）、`notify_on_slack`（只送通知）、`upload_to_slack`（上傳檔案）、`download_slack_file`（下載 Slack 附件）
+          - **Slack → Claude**：在 Slack 中 mention bot 後會列出專案清單，選擇後就會在該專案啟動 Claude session。也可以直接在 Slack 中建立新專案。
+          - **即時進度**：Claude 每次使用 Read、Edit、Bash 等工具時，Slack 訊息都會即時更新。
+          - **訊息排隊**：Claude 在工作時若在 Slack 討論串裡留言，等工作結束後就會接著處理剩下的內容。
+          - **以 emoji 反應取消**：加上 ❌ 反應就會中斷工作。
+          - **模型／effort 設定**：可透過 thread 內指令變更模型（sonnet/opus/haiku）與 effort 等級，全域預設值也能保存。
+          - **顯示 token 使用量**：回覆完成時會自動顯示模型名稱、token 數量、cache 命中率、費用、耗時。
+        url: "https://github.com/LemonDouble/claude-slack-bridge"
+        fork_of: "tomeraitz/claude-slack-bridge"
+
+      - name: "ble_controller"
+        slug: "ble-controller"
+        private: false
+        tagline: "基於 BLE GATT Write 的通用 Home Assistant 控制器"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          我在 AliExpress 買了個便宜的 TV 連動背光，雖然官方 app 能用，但沒有第三方整合.. 順便趁機學一下 BLE HCI dump，於是開了這個專案。
+
+          這是一個通用控制器，對於沒有專屬 HA integration 的 BLE 裝置，只要在 UI 中指定 Service UUID／Characteristic UUID／hex payload 就能控制。
+
+          也寫了 [開發過程的部落格文章](/zh-tw/p/ble-controller/)。
+        url: "https://github.com/Lemon-HACS/ble_controller"
+        retrospective: "/zh-tw/p/ble-controller/"
+
+      - name: "extended_graph_agents"
+        slug: "extended-graph-agents"
+        private: false
+        tagline: "LangGraph 風格的視覺化 multi-agent 工作流編輯器"
+        languages: ["TypeScript"]
+        status: "개발중"
+        description: |
+          受 LangGraph 啟發而做的專案。
+
+          Home Assistant 的 Entity 越來越多，要讓單一 Agent 處理全部太吃力，能不能拆成適當的 subagent？這是出發點。
+
+          光是現在我家就有大約 300 個 entity。
+
+          一開始是用 React Flow canvas 拖拉 node 來自行組合工作流，但用 Claude Code 用得多了之後，我有了個體悟。
+
+          其實大家幾乎不會想自己畫 graph。
+
+          要怎麼組起來，老實說也得實際跑過一次才能抓到感覺..
+
+          所以從 v2 開始改採像 Claude Code 一樣，用自然語言不斷更新工作流，最後只在實在不行的部分手動微調的方向。
+
+          只要用自然語言說明，AI 就會自動生成／修改 LangGraph 風格的工作流，儲存後即可作為 HA Conversation Agent 直接註冊。
+        url: "https://github.com/Lemon-HACS/extended_graph_agents"
+
+      - name: "lemon_tts"
+        slug: "lemon-tts"
+        private: false
+        tagline: "多語言輸入→日語 TTS 的 Home Assistant 整合"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          反正 BERT-VITS 伺服器我都長期開著.. 抱著「順便讓認識的人一起用」的想法做了這個 HA 整合。
+
+          - 輸入韓文／英文等，會先自動翻譯成日文後以日語語音輸出
+          - 從 API 伺服器抓取 speaker 清單，自動為每位 speaker 建立 TTS entity
+        url: "https://github.com/Lemon-HACS/lemon_tts"
+
+      - name: "kanban"
+        slug: "kanban"
+        private: false
+        tagline: "Obsidian 看板外掛"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          我管理個人工作會用看板.. Jira 在公司用要付費，Notion 又慢又不順手，其他的也都覺得少了點什麼，所以乾脆自己做。
+
+          - 卡片是 `.md` 檔，可以用 LLM 自動處理
+          - 歸檔之後可以當作個人工作筆記使用
+          - 因為基於 Obsidian，資料完全保存在本機
+        url: "https://github.com/Lemon-Obsidian/kanban"
+
+      - name: "write-helper"
+        slug: "write-helper"
+        private: false
+        tagline: "基於 LLM 的寫作輔助 Obsidian 外掛"
+        languages: ["TypeScript"]
+        status: "드랍"
+        description: |
+          這個外掛在筆記儲存時會自動由 LLM 推薦標籤，並能透過 YAML 定義表單範本，為各欄位設定 LLM prompt。
+
+          本來是想用來寫東西的，但因為太忙最後沒怎麼用上(...)。
+        url: "https://github.com/Lemon-Obsidian/write-helper"
+
+      - name: "image-manager"
+        slug: "image-manager"
+        private: false
+        tagline: "Obsidian 圖片自動最佳化外掛"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          Vault 中佔最多容量的就是圖片.. 所以在剪貼簿貼上或加入 vault 時，會自動把 JPG/PNG/HEIC 轉成 WebP/AVIF。
+
+          剪貼簿貼上時有時會出現外部連結圖片，之後會壞掉，這個外掛也會防止那種情況。
+        url: "https://github.com/Lemon-Obsidian/image-manager"
+
+      - name: "git-sync"
+        slug: "git-sync"
+        private: false
+        tagline: "Obsidian Git 同步外掛"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          雖然原本就有 git 外掛.. 但每天離開 vault 前我都會忘記同步，所以做了這個。
+
+          按下 X 鈕就會自動 commit→push，忘記的次數就大幅減少了。
+        url: "https://github.com/Lemon-Obsidian/git-sync"
+
+      - name: "lemon-pyopenjtalk-prebuilt"
+        slug: "lemon-pyopenjtalk-prebuilt"
+        private: false
+        tagline: "pyopenjtalk 的預建 wheel 套件"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          因為 pyopenjtalk 不支援 Python 3.10 以上版本，所以我自己 build 後公開的套件。
+
+          不需要 CMake／C++ 編譯器，光用 pip install 就能安裝。
+        url: "https://github.com/LemonDoubleHQ/lemon-pyopenjtalk-prebuilt"
+        fork_of: null
+
+      - name: "lemon-protocol"
+        slug: "lemon-protocol"
+        private: true
+        tagline: "基於 Cloudflare R2 的個人檔案分享服務"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          這是以前做到一半就 drop 的 RabbitProtocol 的續作。
+
+          要分享大型檔案時找不到適合的服務，所以乾脆自己做。
+
+          - 使用 S3 multipart upload 上傳大型檔案（chunk 10MB~500MB 自適應）
+          - 密碼保護、下載次數限制、IP 過濾（CIDR）
+          - TTL 1~90 天到期設定
+          - Drop Link：別人可以上傳檔案給我的一次性接收連結（24 小時到期）
+          - 下載 log 追蹤與 Web Push 通知
+          - 與 lemon-auth 整合
+        url: null
+
+      - name: "lemon-vitepress-theme"
+        slug: "lemon-vitepress-theme"
+        private: false
+        tagline: "套用 LemonDouble 設計系統的 VitePress 主題套件"
+        languages: ["CSS"]
+        status: "완료"
+        description: |
+          做了不少函式庫想公開時，發現 docs 頁面也想統一風格，所以做了這個。
+
+          這是把 lemon-design-system 的色彩／字體套用到 VitePress 上的主題套件。
+
+          [hayakoe docs](https://lemondouble.github.io/hayakoe/) 就是用這個主題做的。
+        url: "https://github.com/LemonDouble/lemon-vitepress-theme"
+
+      - name: "lemon-auth"
+        slug: "lemon-auth"
+        private: false
+        tagline: "用於 auth-server 整合的 Next.js 認證函式庫"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          隨著 auth-server 的功能越來越多（個人檔案設定、passkey、TOTP 2FA、稽核 log、裝置管理等等...），整合流程變得相當複雜。
+
+          每次新服務都要從頭寫一次認證整合實在太麻煩，所以做了這個 Next.js 專用函式庫，讓人能以標準化的方式接入。
+        url: "https://github.com/LemonDouble/lemon-auth"
+
+      - name: "hass-kakao-map-changer"
+        slug: "hass-kakao-map-changer"
+        private: false
+        tagline: "把 Home Assistant 地圖換成 KakaoMap 的 HACS 整合"
+        languages: ["JavaScript"]
+        status: "완료"
+        description: |
+          這是把 Home Assistant 預設的 Leaflet 地圖換成 KakaoMap（韓國地圖服務）的 HACS 自訂整合。
+        url: "https://github.com/Lemon-HACS/hass-kakao-map-changer"
+
+      - name: "openrouter_monitor"
+        slug: "openrouter-monitor"
+        private: false
+        tagline: "OpenRouter credit 監控 Home Assistant 整合"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          這是可在 Home Assistant 中監控 OpenRouter credit 餘額與每個 API Key 使用量的 HACS 自訂整合。
+        url: "https://github.com/Lemon-HACS/openrouter_monitor"
+
+  - year: 2025
+    items:
+      - name: "skopeo-setup-action"
+        slug: "skopeo-setup-action"
+        private: false
+        tagline: "在 GitHub Actions 中設定 skopeo"
+        languages: []
+        status: "완료"
+        description: |
+          這是在 GitHub Actions runner 上安裝 [Skopeo](https://github.com/containers/skopeo) 的 action。
+
+          自架的 OCI 相容 registry 光靠 `docker buildx` 沒辦法更新 layer.. 需要的 action 卻找不到合適的，所以乾脆自己做了一個來用。
+        url: "https://github.com/LemonDouble/skopeo-setup-action"
+
+      - name: "misskey"
+        slug: "misskey"
+        private: false
+        tagline: "自架的微網誌平台"
+        languages: ["TypeScript"]
+        status: "운영중"
+        description: |
+          在 [sns.lemondouble.com](https://sns.lemondouble.com) 上已經營運約 1 年的 Misskey 站點。
+
+          在 `lemon` branch 中做圖示變更等客製化，同時持續與 upstream release 保持同步。
+        url: "https://github.com/LemonDouble/misskey"
+        fork_of: "misskey-dev/misskey"
+
+  - year: 2024
+    items:
+      - name: "fastapi-tdd"
+        slug: "fastapi-tdd"
+        private: false
+        tagline: "FastAPI TDD 課程實作"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          就職後稍微有點空閒時，跟著 Udemy 的「Try FastAPI - Test Driven Development 2024」課程練習 TDD 的倉庫。
+        url: "https://github.com/LemonDouble/fastapi-tdd"
+
+      - name: "HateGuard"
+        slug: "hateguard"
+        private: true
+        tagline: "瀏覽器內基於 ML 的仇恨言論自動過濾系統"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          我設想了一個系統：類似 AdBlock，在瀏覽器 DOM 中用 ML 自動過濾掉仇恨言論。
+
+          架構是用 PyTorch 訓練模型後轉成 ONNX，再透過 Transformers.js 在瀏覽器中推論。
+
+          因為資料集公開有疑慮所以以非公開方式進行，做到了「在 DOM 中偵測到仇恨言論時用紅框標記」的程度..
+
+          但資料集難以強化、Transformers.js 支援還很弱、要在 DOM 中處理的資料量太大需要極致最佳化，加上一個人不可能涵蓋所有網站，所以暫時 drop 了。
+        url: null
+
+      - name: "project-arona"
+        slug: "project-arona"
+        private: true
+        tagline: "基於 on-device ML 的自訂喚醒詞 + Arona 智慧音箱"
+        languages: ["Python"]
+        status: "드랍"
+        description: |
+          原本想用 OpenWakeWord 訓練自訂喚醒詞，做出叫「Arona」就會回應的智慧音箱。
+
+          雖然完成了喚醒詞訓練.. 但要寫韌體實在頭大，內建麥克風效果也不好，加上不確定方向是否正確，於是 drop 了。
+
+          其實我想要的是能在動態畫面中看到 Arona。
+        url: null
+
+  - year: 2023
+    items:
+      - name: "misskey-geeknews-webhooks"
+        slug: "misskey-geeknews-webhooks"
+        private: true
+        tagline: "GeekNews → Misskey 自動發文 bot"
+        languages: ["TypeScript"]
+        status: "운영중"
+        description: |
+          這是接收 GeekNews（韓國技術資訊網站）提供的 Google Chat webhook，並用 Misskey bot 帳號自動轉貼的 Cloudflare Workers。
+
+          從 2023 年 7 月起，已經運行約 3 年了。
+
+          兩個月前 GeekNews 增加了 domain 檢查導致整合中斷，我抱著姑且一試的心情向 GeekNews 詢問，結果他們真的非常友善地幫我加了例外，於是又恢復正常運作了。
+        url: null
+
+      - name: "lemon-k8s-cluster"
+        slug: "lemon-k8s-cluster"
+        private: true
+        tagline: "家用 K3S homelab 叢集"
+        languages: ["YAML"]
+        status: "운영중"
+        description: |
+          家用 K3S 叢集的 GitOps Config 倉庫。
+
+          以 ArgoCD Apps-of-Apps 模式管理，由 mini PC（Ryzen 3750H）與 GPU 工作站（Ryzen 5600x／RTX 3090／64GB）兩個節點運行中。
+
+          在這個叢集上運行的服務：
+
+          - **auth-server**：用 Go 寫的 SSO 伺服器（Traefik ForwardAuth 整合）
+          - **search-server**：基於 OpenSearch 的搜尋 API 伺服器
+          - **ml-server**：TTS／ML 相關伺服器（使用 RTX 3090）
+          - **Immich**：自架照片／影片備份
+          - **LibreChat**：多 LLM 聊天 UI
+          - **Ollama**：本機 LLM 推論伺服器（KEDA HTTP 擴縮）
+          - **OpenSearch**：搜尋／日誌 DB + dashboard
+          - **RustFS**：S3 相容物件儲存
+          - **Zot**：OCI 相容容器映像 registry
+          - **CloudNative PG**：PostgreSQL 叢集（pgvector、S3 備份）
+          - **Argo Workflows**：cron 工作流（追蹤者檢查、Misskey cache 清理等）
+          - **Longhorn**：分散式 block storage（SSD/NVMe/HDD 三層）
+          - 其他基礎建設 stack：Traefik、MetalLB、cert-manager、KEDA、Sealed Secrets、Beszel 等
+        url: null
+
+      - name: "lemon-talkgpt"
+        slug: "lemon-talkgpt"
+        private: true
+        tagline: "基於 talking-head-anime-3 的虛擬角色聊天"
+        languages: ["TypeScript", "Python"]
+        status: "archived"
+        description: |
+          只要有一張動畫角色圖片，就能在瀏覽器中與該角色對話的專案。
+
+          把 [talking-head-anime-3-demo](https://github.com/pkhungurn/talking-head-anime-3-demo) 部署到 ML 伺服器上產生上半身動畫，並用 MediaPipe 抽取臉部 landmark 後映射到角色上。
+
+          管線相當長：語音錄製→STT→ChatGPT 生成回答→翻譯→TTS 語音合成→talking-head-anime-3 生成影像，全部一氣呵成。
+
+          細節也都顧到了：對左右眨眼用平均值做校正使其同步、對話結束後讓嘴巴閉上、讓角色根據頭／身體方向看向我等等。
+
+          為了瀏覽器相容，連影像 codec 都從 VP9→H.264（PyAV）改了過來，挖了不少坑。把翻譯與 TTS 生成做成非同步並行，也縮短了推論時間。
+
+          雖然挺認真做的，但現在已經沒在用，所以是 archived 狀態。
+        url: null
+
+      - name: "lemon-main-page"
+        slug: "lemon-main-page"
+        private: false
+        tagline: "個人自我介紹頁面"
+        languages: ["TypeScript"]
+        status: "운영중"
+        description: |
+          在 [lemondouble.com](https://lemondouble.com) 運行中的個人 portfolio／自我介紹頁面。
+        url: "https://github.com/LemonDouble/lemon-main-page"
+
+      - name: "blog"
+        slug: "blog"
+        private: false
+        tagline: "個人部落格"
+        languages: ["Hugo", "CSS"]
+        status: "운영중"
+        description: |
+          基於 Hugo + GitHub Pages 的個人部落格。
+
+          就是你現在正在看的這個部落格！
+        url: "https://github.com/LemonDouble/blog"
+
+      - name: "chatgpt-serverless-discord-bot"
+        slug: "chatgpt-serverless-discord-bot"
+        private: false
+        tagline: "ChatGPT API + Lambda Serverless Discord Bot 範本"
+        languages: ["TypeScript"]
+        status: "archived"
+        description: |
+          這是利用 ChatGPT API 與 AWS Lambda 做出 Serverless Discord Bot 的範本。
+
+          每次只為了跑一個 bot 就開伺服器太貴了嘛~
+        url: "https://github.com/LemonDouble/chatgpt-serverless-discord-bot"
+
+      - name: "chatgpt-serverless-slack-bot"
+        slug: "chatgpt-serverless-slack-bot"
+        private: false
+        tagline: "ChatGPT API + Lambda Serverless Slack Bot 範本"
+        languages: ["TypeScript"]
+        status: "archived"
+        description: |
+          同樣是基於 ChatGPT API + AWS Lambda 的 Serverless Slack Bot 範本。
+        url: "https://github.com/LemonDouble/chatgpt-serverless-slack-bot"
+
+      - name: "lemon-chatgpt-translator"
+        slug: "lemon-chatgpt-translator"
+        private: false
+        tagline: "在 ChatGPT 搜尋時自動把 prompt 翻譯成英文"
+        languages: ["TypeScript"]
+        status: "archived"
+        description: |
+          這是個 Chrome 擴充功能，會在使用 ChatGPT 搜尋時把韓文 prompt 自動翻成英文。
+
+          當時韓文表現遠不如英文，用英文提問也算是個小技巧。
+
+          就算機翻的英文有點生硬，也比直接用韓文問得到的回答好太多了。
+        url: "https://github.com/LemonDouble/lemon-chatgpt-translator"
+
+      - name: "twitter-remove-doge"
+        slug: "twitter-remove-doge"
+        private: false
+        tagline: "把 Twitter logo 換回 Larry 的 Chrome 擴充"
+        languages: []
+        status: "archived"
+        description: |
+          某天 Elon Musk 突然在 Twitter 上把 logo 換成 Doge 幣的圖示(...) 我實在很想把它弄掉，於是第一次寫了 Chrome 擴充。
+
+          這是把 Twitter logo 還給原本主人 Larry 的擴充功能。
+        url: "https://github.com/LemonDouble/twitter-remove-doge"
+
+  - year: 2022
+    items:
+      - name: "Lemon Twitter Toolbox"
+        slug: "lemon-twitter-toolbox"
+        private: true
+        tagline: "基於 Twitter 的 BERT 聊天機器人服務"
+        languages: ["Java", "TypeScript", "Python"]
+        status: "archived"
+        description: |
+          當時為了求職作品集，想著「順便做點有趣的東西吧 + 做個會吸引大量流量的服務，把 AWS 帳單附在履歷上應該會很搶眼吧？」於是規劃了這個野心勃勃的專案。
+
+          這是把使用者推文 mention 對（問／答）以 BERT embedding 訓練後，做成個人化聊天機器人的服務。
+
+          以 AWS Lambda + SQS pipeline 將 ML 處理並行化，並由家用 Spring 伺服器負責認證／DB，做成混合架構。
+
+          上線當天 Spring 的 SQS 消費瓶頸與 Twitter API rate limit 同時爆發，吃了不少苦頭，詳細內容寫在回顧文裡了。
+
+          在 LLM 已經氾濫的現在，BERT 看起來像老古董，但當時對學部生而言是相當新潮的技術。
+        url: null
+        retrospective: "/zh-tw/p/lemon-toolbox/"
+
+      - name: "RabbitProtocol"
+        slug: "rabbitprotocol"
+        private: true
+        tagline: "綜合檔案管理程式"
+        languages: ["JavaScript"]
+        status: "드랍"
+        description: |
+          一開始是為了傳送像是 Skyrim mod pack 那種超過 100GB 的大型檔案而開始設計的，但什麼是 multipart upload、儲存策略要怎麼定，要思考的事情實在太多太多，最後 drop 了。
+        url: null
+
+  - year: 2021
+    items:
+      - name: "Beacon_based_Automatic_visitor_check_program"
+        slug: "beacon-visitor-check"
+        private: false
+        tagline: "基於藍牙 beacon 的訪客日誌自動化"
+        languages: ["Java"]
+        status: "archived"
+        description: |
+          疫情期間有段時間每個人進出都要寫日誌，所以做了這個用 BLE「人經過就自動寫好」的專案，這樣彼此都方便嘛？
+
+          這是學校的全球協力計畫（GBPL），跟日本、中國、台灣、越南的朋友一起進行的，能跟各國朋友協作真的是非常新奇的經驗。
+
+          藍牙 beacon 我也親手做了，雖然完全不懂 Android，但還是想盡辦法讓它跑起來(...)。
+        url: "https://github.com/LemonDouble/Beacon_based_Automatic_visitor_check_program_GBPL"
+        suffix: "(GBPL)"
+
+      - name: "Audio_processing_practice"
+        slug: "audio-processing-practice"
+        private: false
+        tagline: "語音處理腳本集"
+        languages: ["Python"]
+        status: "archived"
+        description: |
+          第一次實習時進了一家做音樂處理的新創，這是當時為了學習而建的倉庫。
+
+          mel spectrogram 之類的東西就是在這時學的，現在玩 VITS 時還挺派得上用場。
+
+          學起來終究都會有用處的。
+        url: "https://github.com/LemonDouble/Audio_processing_practice"
+
+      - name: "Socket_Order_Program"
+        slug: "socket-order-program"
+        private: false
+        tagline: "基於 C++ socket／thread 的點餐 server／client"
+        languages: ["C++"]
+        status: "archived"
+        description: |
+          大學網路 socket 程式設計課程的作業，記得是發表前一天熬夜趕工才勉強完成的(...)。
+
+          第一次用 C++ 做 low-level socket 通訊，還自己設定封包大小做了客製化通訊，挺有趣的。
+        url: "https://github.com/LemonDouble/Socket_Order_Program"
+
+      - name: "C_minus_compiler"
+        slug: "c-minus-compiler"
+        private: false
+        tagline: "C minus 編譯器實作"
+        languages: ["C++"]
+        status: "archived"
+        description: |
+          大學編譯器課程的作業。
+
+          做到了 Scanner 跟 Parser，本來想繼續做下去，但學部一個學期太短，只能到這裡了..
+
+          有機會的話，我也想做做看屬於自己的語言。
+
+          因為真的很有趣。
+        url: "https://github.com/LemonDouble/C_minus_compiler"
+
+      - name: "Simple_IR"
+        slug: "simple-ir"
+        private: false
+        tagline: "基於 TF-IDF 的簡易資訊檢索引擎"
+        languages: ["Python"]
+        status: "archived"
+        description: |
+          大學資訊檢索（搜尋引擎）課程的作業。
+
+          會讀取文件後做成 TF-IDF weight dictionary，並計算與 query 的相似度，輸出前 10 筆結果。
+        url: "https://github.com/LemonDouble/Simple_IR"
+
+      - name: "react-test-practice"
+        slug: "react-test-practice"
+        private: false
+        tagline: "React 測試函式庫練習"
+        languages: ["JavaScript"]
+        status: "archived"
+        description: |
+          第一次學 React testing。
+
+          當時為了求職還真的學了不少東西呢..
+        url: "https://github.com/LemonDouble/react-test-practice"
+
+      - name: "github-actions-practice"
+        slug: "github-actions-practice"
+        private: false
+        tagline: "GitHub Actions 練習"
+        languages: []
+        status: "archived"
+        description: |
+          第一次學 GitHub Actions。
+        url: "https://github.com/LemonDouble/github-actions-practice"
+
+      - name: "Spring_sample_Simple_Forum"
+        slug: "spring-simple-forum"
+        private: false
+        tagline: "讀書會用的留言板"
+        languages: ["Java"]
+        status: "archived"
+        description: |
+          第一次用 Spring 做的專案。
+
+          從簡單系統開始，一步步加上需求，思考為什麼需要物件導向設計與測試。
+        url: "https://github.com/LemonDouble/Spring_sample_Simple_Forum"
+
+      - name: "Skyos"
+        slug: "skyos"
+        private: false
+        tagline: "用 C++ 自己做 OS"
+        languages: ["C++"]
+        status: "드랍"
+        description: |
+          想自己做 OS，但.. 當時對我來說實在太困難了。
+        url: "https://github.com/LemonDouble/Skyos"
+
+      - name: "python_architecture"
+        slug: "python-architecture"
+        private: false
+        tagline: "Architecture Patterns with Python 書籍實作"
+        languages: ["Python"]
+        status: "archived"
+        description: |
+          這是讀「Architecture Patterns with Python」（Cosmic Python）一書時，學習 DDD、Repository pattern、Unit of Work、CQRS、event-driven architecture 等的倉庫。
+
+          學到了很多，但實際應用又是另一回事，這是我工作後才體會到的。
+        url: "https://github.com/LemonDouble/python_architecture"
+        fork_of: "cosmicpython/code"
+
+  - year: 2017
+    items:
+      - name: "Omok / Snake_Game / Simple_SQL"
+        slug: "early-projects"
+        private: false
+        tagline: "大一時期的專案們"
+        languages: ["C++", "C"]
+        status: "완료"
+        description: |
+          這是大一學 C/C++ 時做的東西。
+
+          - 五子棋遊戲
+          - 基於 System Call 的貪食蛇遊戲
+          - 模仿 MySQL 基本功能的簡易 SQL 實作
+
+          畢竟是大一做的，請可愛地看待(...)。當時對我來說真的很難..
+        url: "https://github.com/LemonDouble/Omok"

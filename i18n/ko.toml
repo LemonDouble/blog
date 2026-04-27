@@ -72,3 +72,51 @@ other = "Licensed under CC BY-NC-SA 4.0"
 
 [language_switcher_label]
 other = "언어 선택"
+
+[opensource_contributions]
+other = "오픈소스 기여"
+
+[private_label]
+other = "비공개"
+
+[modal_close]
+other = "닫기"
+
+[modal_original_repo]
+other = "원본"
+
+[modal_retrospective]
+other = "회고"
+
+[status_dev]
+other = "개발중"
+
+[status_done]
+other = "완료"
+
+[status_done_personal]
+other = "완료 (개인용)"
+
+[status_done_advancing]
+other = "완료 (고도화 중)"
+
+[status_running]
+other = "운영중"
+
+[status_archived]
+other = "archived"
+
+[status_dropped]
+other = "드랍"
+
+[status_default]
+other = ""
+
+[skill_level_primary]
+other = "🔥 주력"
+
+[skill_level_secondary]
+other = "🛠️ 가끔씩 써요"
+
+[skill_level_familiar]
+other = "📚 할 줄은 알아요"

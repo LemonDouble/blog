@@ -5,7 +5,7 @@
     </header>
 
     <div class="skills-table-wrapper">
-        {{ $data := hugo.Data.skills }}
+        {{ $data := index site.Data.skills .Site.Language.Lang }}
         <table class="skills-table">
             <colgroup>
                 <col class="col-category">
@@ -16,9 +16,9 @@
             <thead>
                 <tr>
                     <th></th>
-                    <th>🔥 주력</th>
-                    <th>🛠️ 가끔씩 써요</th>
-                    <th>📚 할 줄은 알아요</th>
+                    <th>{{ T "skill_level_primary" }}</th>
+                    <th>{{ T "skill_level_secondary" }}</th>
+                    <th>{{ T "skill_level_familiar" }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +28,7 @@
                     {{ $items := .items }}
 
                     {{/* primary */}}
-                    <td data-level="주력">
+                    <td data-level="{{ T "skill_level_primary" }}">
                         <div class="skill-badges">
                         {{ range $items }}{{ if eq .level "primary" }}<span class="skill-badge" style="--badge-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . | safeURL }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/white" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
                         {{ end }}{{ end }}
@@ -36,7 +36,7 @@
                     </td>
 
                     {{/* secondary */}}
-                    <td data-level="가끔씩 써요">
+                    <td data-level="{{ T "skill_level_secondary" }}">
                         <div class="skill-badges">
                         {{ range $items }}{{ if eq .level "secondary" }}<span class="skill-badge" style="--badge-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . | safeURL }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/white" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
                         {{ end }}{{ end }}
@@ -44,7 +44,7 @@
                     </td>
 
                     {{/* familiar */}}
-                    <td data-level="할 줄은 알아요">
+                    <td data-level="{{ T "skill_level_familiar" }}">
                         <div class="skill-badges">
                         {{ range $items }}{{ if eq .level "familiar" }}<span class="skill-badge" style="--badge-color: #{{ .color }};">{{ with .custom_logo }}<img src="{{ . | safeURL }}" alt="" width="14" height="14">{{ else }}{{ with .logo }}<img src="https://cdn.simpleicons.org/{{ . }}/white" alt="" width="14" height="14" loading="lazy">{{ end }}{{ end }}<span>{{ .name }}</span></span>
                         {{ end }}{{ end }}

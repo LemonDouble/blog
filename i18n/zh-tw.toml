@@ -72,3 +72,51 @@ other = "本文以 CC BY-NC-SA 4.0 授權條款發佈。"
 
 [language_switcher_label]
 other = "選擇語言"
+
+[opensource_contributions]
+other = "開源貢獻"
+
+[private_label]
+other = "私有"
+
+[modal_close]
+other = "關閉"
+
+[modal_original_repo]
+other = "原作"
+
+[modal_retrospective]
+other = "回顧"
+
+[status_dev]
+other = "開發中"
+
+[status_done]
+other = "已完成"
+
+[status_done_personal]
+other = "已完成 (個人)"
+
+[status_done_advancing]
+other = "已完成 (持續優化)"
+
+[status_running]
+other = "營運中"
+
+[status_archived]
+other = "archived"
+
+[status_dropped]
+other = "已棄用"
+
+[status_default]
+other = ""
+
+[skill_level_primary]
+other = "🔥 主力"
+
+[skill_level_secondary]
+other = "🛠️ 偶爾使用"
+
+[skill_level_familiar]
+other = "📚 略懂"
