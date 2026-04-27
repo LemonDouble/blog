@@ -1,4 +1,4 @@
-{{- $data := hugo.Data.skills -}}
+{{- $data := index site.Data.skills .Site.Language.Lang -}}
 {{- $allSkills := slice -}}
 {{- range $data.categories -}}
   {{- $category := .name -}}

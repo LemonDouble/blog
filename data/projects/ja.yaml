@@ -1,0 +1,770 @@
+intro: "これまで進めてきたプロジェクトを整理したページです。個人プロジェクトからオープンソースへの貢献、学校の課題まで全部集めてみました(...)思ったより多いですね。"
+
+opensource:
+  description: "オープンソースへの貢献で大きな富や名声を得るつもりはないですが.. オープンソースをあれこれ使っていると、意外と動かないものが時々あるんですよね。誰かが直してくれるのを待つより自分で直すほうが早いので、その都度必要なものは自分で直してPRを送っています。"
+  contributions:
+    - year: 2025
+      items:
+        - repo: "rustfs/rustfs"
+          pr: "https://github.com/rustfs/rustfs/pull/1018"
+          pr_number: 1018
+          description: "Helm chartでstorageSizeをdata/log別パラメータに分離。データストレージを2TBに設定するとログも2TBになってしまうので(...)お願いだから分けてくださいとお願いしました。"
+        - repo: "thuliteio/doks"
+          pr: "https://github.com/thuliteio/doks/pull/1356"
+          pr_number: 1356
+          description: "Hugoのバージョンを上げたら動いていたものが動かなくなったので.. 直しました。"
+        - repo: "Jaydee94/kubeseal-webgui"
+          pr: "https://github.com/Jaydee94/kubeseal-webgui/pull/278"
+          pr_number: 278
+          description: "便利に使っていたのですが、Secretのクリップボードコピーができなくなっていたので.. 直しました。"
+    - year: 2024
+      items:
+        - repo: "opensearch-project/helm-charts"
+          pr: "https://github.com/opensearch-project/helm-charts/pull/618"
+          pr_number: 618
+          description: "Helmでバージョンを上げたらデプロイできなくなったので調べたら、デフォルトのopensearch.ymlがsecurity pluginと衝突していました。"
+    - year: 2023
+      items:
+        - repo: "minio/operator"
+          pr: "https://github.com/minio/operator/pull/1910"
+          pr_number: 1910
+          description: "existingSecretが適用されないので調べたら、YAMLのインデントが間違っていました。"
+        - repo: "getsentry/sentry"
+          pr: "https://github.com/getsentry/sentry/pull/60571"
+          pr_number: 60571
+          description: "ドキュメントを読んでいたら誤字が見つかったので.. 皆さん、誤字修正のPRはすぐマージしてもらえるんですよ?大規模なオープンソースに名前を載せる最高の方法です。"
+        - repo: "stepci/stepci"
+          pr: "https://github.com/stepci/stepci/pull/66"
+          pr_number: 66
+          description: "CLIデフォルトコマンド出力の追加。初めてオープンソースにPRを送ってみました!"
+
+projects:
+  - year: 2026
+    items:
+      - name: "lemon-design-system"
+        slug: "lemon-design-system"
+        private: false
+        tagline: "AIエージェントフレンドリーな個人デザインシステム"
+        languages: ["CSS"]
+        status: "완료"
+        description: |
+          [awesome-design-md](https://github.com/VoltAgent/awesome-design-md)をGeekNews (韓国の技術ニュースサイト)で見たのですが、他のウェブサイトのデザインを抜き出してプリセットとして提供するという点は気に入らないものの.. AIが一貫したデザインシステムを持てるというアイデア自体は良いと思いました。
+
+          もともと色々なプロジェクトをやっていると、自分だけのデザインシステムで、デザインを見るだけで「あ、LemonDoubleのプロジェクトだ!」と分かるようにしたいという考えがありました。
+
+          そこで実際に知り合いのデザイナーさんにFigmaで外注したこともあったのですが.. 私はあくまでサーバー開発者なので.. 実装が難しい部分もあり、プロジェクトごとにコンポーネントが必要になるたびにデザイナーさんに外注するわけにもいかず、適用できずにいたんです。
+
+          ところがこの方法論ならいけるかもしれないと思い、私のfaviconのロゴを起点にPrimary / Secondaryカラーを抽出した後、各色ごとに彩度/明度を調整しながら案を出し、目で検証しながら気に入るまで修正して作ってみました。
+
+          ブログをはじめ、フロントが立ち上がっているすべてのページに適用しました。
+
+          うまくいきましたね。
+        url: "https://github.com/LemonDouble/lemon-design-system"
+
+      - name: "hayakoe"
+        slug: "hayakoe"
+        private: false
+        tagline: "ONNX最適化された日本語TTSライブラリ"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          TTS分野には[Bert-VITS](https://github.com/fishaudio/Bert-VITS2) → [Style-Bert-VITS2](https://github.com/litagin02/Style-Bert-VITS2)という系譜があります。
+
+          Bert-VITSはFish-Speechチームの以前のモデルで、現在はautoregression方式のFish-Speechリポジトリに更新が移ったため、リポジトリの更新が止まっています。
+
+          ここにstyle関連のlayerを一つ加え、日本語データをより多く学習させて日本語強化のPretrainedモデルを提供しているのがStyle-Bert-VITS2リポジトリです。
+
+          加えて様々な改善が入っていました。
+
+          ところがStyle-Bert-VITS2ライブラリの更新が8ヶ月ほど前に止まってしまったので.. どうせ更新が止まっているなら、コード整理を一度行ってより使いやすくしたいと思って作業しています。
+
+          #### 実装完了した内容
+
+          - pyopenjtalk-prebuiltライブラリの更新が止まり、Python 3.12以上で使えない問題を、当該リポジトリをフォークして最新バージョンでもビルドできるよう修正したlemon-pyopenjtalk-prebuiltライブラリへ変更
+          - TTSテキスト内に英語が入ると無音になる問題を修正。[loanwords_gairaigo](https://github.com/jamesohortle/loanwords_gairaigo)データを活用して約22万件の英語→カタカナマッピングを自動サポートし、カスタム辞書登録機能を簡素化
+          - BERT weightをダイナミック量子化することで、メモリ使用量を約50%削減
+          - SynthesizerをONNXで最適化し、CPUで約1.6倍の速度向上を達成
+          - BERT / Synthesizerモデルのロードを分離し、BERTは共通で使い、話者ごとに異なるSynthesizerだけを別途ロードするようにすることで、話者一つあたり200MB程度のメモリのみで済むよう改善
+          - PyPIパッケージとして公開し、`pip install hayakoe`後に3行のコードですぐ使えるよう整理
+          - CPU専用環境ではPyTorchのインストールなしにONNX Runtimeのみで推論可能なデュアルバックエンド構造へ変更
+          - 文単位ストリーミングTTS(`stream()`)対応。長いテキストを一度に処理せず文ごとに順次生成し、リアルタイム応答に活用可能
+          - `generate()`で長いテキストを自動的に文単位に分割処理し、約37倍の速度向上(400文字基準143秒 → 3.8秒)
+          - `weight_norm` → `parametrizations.weight_norm`への移行でPyTorch 2.x+互換性を確保
+
+          #### 実装中の内容
+
+          - データ抽出したい動画から学習データを自動生成する前処理パイプラインを実装中。動画アップロード → 音声抽出 → 背景音分離 → Whisper字幕生成 → データセット自動構成までを一連の流れで処理
+          - データセットの前処理からモデル学習、品質レポート生成までを一連の流れで進められるインタラクティブ学習CLIを実装中
+        url: "https://github.com/LemonDouble/hayakoe"
+
+      - name: "super-arona"
+        slug: "super-arona"
+        private: true
+        tagline: "アロナと会話する - LLMベース3D MMDキャラクタービューア"
+        languages: ["TypeScript"]
+        status: "완료 (고도화 중)"
+        description: |
+          ブルーアーカイブのアロナと会話できる3Dキャラクタービューアです。
+
+          - Babylon.js + babylon-mmdでPMXモデルをレンダリング
+          - 表情モーフターゲット16種、VMDモーション14種をサポート
+          - Bullet WASMで髪/布の物理シミュレーション
+          - LLMベースの会話機能を連携予定
+
+          以前aronaというプロジェクトがあったのですが、こちらはクエリパラメータでテキストを受け取って表示するシンプルなチャットインターフェースでした。
+
+          super-aronaはその後継作で、名前の通りはるかに野心的なバージョンです。
+        url: null
+
+      - name: "shiroko"
+        slug: "shiroko"
+        private: true
+        tagline: "天気を教えてくれる"
+        languages: ["TypeScript"]
+        status: "완료 (개인용)"
+        description: |
+          HomeAssistantからADBでTVに表示するために作った天気アプリです。
+
+          気象庁予報の降水タイプに応じて、雨/雪のような天気アニメーションを表示します。
+
+          個人用なので大したものではないですが、毎朝天気のブリーフィングがあると自転車で出勤するか決められて便利です。
+        url: null
+
+      - name: "haruna"
+        slug: "haruna"
+        private: true
+        tagline: "金曜美食会アンケートツール"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          グルメ評価システムです。
+
+          毎週金曜日に友人たちとグルメ巡りに行くのですが、せっかく食べるなら星評価もつけたいと思って.. 匿名投票システムとして作りました。
+
+          - ルーレット抽選
+          - 星評価
+          - Google Maps URL自動コピー
+          - QRコード生成
+        url: null
+
+      - name: "claude-dashboard"
+        slug: "claude-dashboard"
+        private: true
+        tagline: "自分用に作ったClaude Code向けWebダッシュボード"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          `~/.claude/projects/`のJSONLファイルをパースして、Claude Codeの使用量(費用、トークン、セッション、パターン)を可視化するWebダッシュボードです。
+
+          Docker Composeで起動すれば完了。
+
+          自分がどれだけClaudeを酷使しているか一目で分かります(...)。
+        url: null
+
+      - name: "Style-Bert-VITS2"
+        slug: "style-bert-vits2"
+        private: false
+        tagline: "Style-Bert-VITS2ベースの日本語TTSライブラリ"
+        languages: ["Python"]
+        status: "archived"
+        description: |
+          オリジナルプロジェクトを`pip install style-bert-vits2`でそのままインストールできるよう、ライブラリとしてリパッケージしています。
+
+          ONNXランタイムでCPUでもリアルタイム推論が可能で、パッケージをダウンロードして3行で推論できるようにする予定です。
+        url: "https://github.com/LemonDouble/Style-Bert-VITS2"
+        fork_of: "litagin02/Style-Bert-VITS2"
+
+      - name: "kepco_powerplanner_ha_addon"
+        slug: "kepco-powerplanner-ha-addon"
+        private: false
+        tagline: "韓国電力公社パワープランナーのHome Assistantアドオン"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          オリジナルのアドオンがHA REST APIでセンサーを生成する方式だったため、Entity ID aliasを指定できませんでした。
+
+          - MQTT Discovery方式に切り替えて`unique_id`を付与し、HA UIでセンサー名の変更や管理ができるよう改善
+          - Supervisor APIによるMQTTブローカー自動検出を追加して設定を簡素化
+        url: "https://github.com/LemonDouble/kepco_powerplanner_ha_addon"
+        fork_of: null
+
+      - name: "claude-slack-bridge"
+        slug: "claude-slack-bridge"
+        private: false
+        tagline: "Claude Code ↔ Slack双方向ブリッジMCPサーバー"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          Claude Codeに作業をさせて席を外すときに使うために作ったMCPサーバーです。
+
+          オリジナルからかなり拡張しましたが、主な機能は以下の通りです:
+
+          - **MCPツール4種**: `ask_on_slack`(質問を送り回答を待機)、`notify_on_slack`(通知のみ送信)、`upload_to_slack`(ファイルアップロード)、`download_slack_file`(Slack添付ファイルのダウンロード)
+          - **Slack → Claude**: Slackでボットをメンションするとプロジェクト一覧が表示され、選択するとそのプロジェクトでClaudeセッションが始まります。新規プロジェクト作成もSlackから直接可能。
+          - **リアルタイム進捗**: ClaudeがRead、Edit、Bashなどのツールを使うたびにSlackメッセージがリアルタイムで更新されます。
+          - **メッセージキューイング**: Claudeが作業中の時にSlackスレッドにメッセージを残しておくと、作業が終わり次第続けて処理します。
+          - **絵文字リアクションでキャンセル**: ❌リアクションをつけると作業が中断されます。
+          - **モデル/effort設定**: スレッド内コマンドでモデル(sonnet/opus/haiku)とeffortレベルを変更でき、グローバルなデフォルト値も保存可能です。
+          - **トークン使用量表示**: 応答完了時にモデル名、トークン数、キャッシュヒット率、費用、所要時間を自動的に表示します。
+        url: "https://github.com/LemonDouble/claude-slack-bridge"
+        fork_of: "tomeraitz/claude-slack-bridge"
+
+      - name: "ble_controller"
+        slug: "ble-controller"
+        private: false
+        tagline: "BLE GATT Writeベースの汎用Home Assistantコントローラー"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          AliExpressで安いTV連動バックライトを買ったのですが、アプリ連動はできるもののサードパーティ連動が別途なく.. この機会にBLE HCIダンプも学んでみようと思って始めたプロジェクトです。
+
+          専用のHA統合がないBLE機器を、UIでService UUID/Characteristic UUID/hexペイロードを指定するだけで制御できる汎用コントローラーです。
+
+          [開発記ブログ記事](/ja/p/ble-controller/)も書きました。
+        url: "https://github.com/Lemon-HACS/ble_controller"
+        retrospective: "/p/ble-controller/"
+
+      - name: "extended_graph_agents"
+        slug: "extended-graph-agents"
+        private: false
+        tagline: "LangGraphスタイルの視覚的マルチエージェントワークフローエディタ"
+        languages: ["TypeScript"]
+        status: "개발중"
+        description: |
+          LangGraphにインスパイアされて作りました。
+
+          Home AssistantでEntityがどんどん増えると、一つのAgentですべてを処理するには負担が大きすぎるので、適切なsubagentに分けられないか?と思って作ってみたプロジェクトです。
+
+          今でもエンティティが300個ほどあるんですよ。
+
+          最初はReact Flowキャンバスでノードをドラッグアンドドロップしてワークフローを直接構成する方向でしたが、Claude Codeを使い込むうちに気付いたことがあります。
+
+          自分でグラフを作りたいというニーズが、実はほとんどないんですよね。
+
+          どう構成すべきかも、結局一度動かしてみないと感覚がつかめない感じですし..
+
+          そこでv2からは、Claude Codeのように自然言語でワークフローを継続的に更新し、本当にうまくいかない部分だけ最後に直接整える方向に切り替えました。
+
+          自然言語で説明するとAIがLangGraphスタイルのワークフローを自動生成/修正し、保存するとHA Conversation Agentとしてそのまま登録されます。
+        url: "https://github.com/Lemon-HACS/extended_graph_agents"
+
+      - name: "lemon_tts"
+        slug: "lemon-tts"
+        private: false
+        tagline: "多言語入力→日本語TTS Home Assistant統合"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          BERT-VITSサーバーをどうせ常時動かしているので.. 知り合いと一緒に使おうという感覚で作ったHA統合です。
+
+          - 韓国語/英語などを入力すると自動翻訳後に日本語音声で出力
+          - APIサーバーからスピーカー一覧を取得し、スピーカーごとのTTSエンティティを自動生成
+        url: "https://github.com/Lemon-HACS/lemon_tts"
+
+      - name: "kanban"
+        slug: "kanban"
+        private: false
+        tagline: "Obsidianカンバンプラグイン"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          個人の作業管理にカンバンを使っているのですが.. Jiraは仕事で使うにはお金がかかるし、Notionは遅くて機能も使いづらく、その他もどこか一つずつ抜けている感じだったので、自分で作りました。
+
+          - カードが`.md`ファイルなのでLLMで自動処理可能
+          - アーカイブ処理すれば個人の業務ノートとして活用可能
+          - Obsidianベースなのでデータが完全にローカル
+        url: "https://github.com/Lemon-Obsidian/kanban"
+
+      - name: "write-helper"
+        slug: "write-helper"
+        private: false
+        tagline: "LLMベースの執筆補助Obsidianプラグイン"
+        languages: ["TypeScript"]
+        status: "드랍"
+        description: |
+          ノート保存時にLLMが自動的にタグを推薦し、YAML定義のフォームテンプレートでフィールドごとのLLMプロンプト設定が可能なプラグインです。
+
+          何か文章を書こうと思って作ったのですが、忙しくて使わなくなってしまいました(...)。
+        url: "https://github.com/Lemon-Obsidian/write-helper"
+
+      - name: "image-manager"
+        slug: "image-manager"
+        private: false
+        tagline: "Obsidianの画像自動最適化プラグイン"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          Vaultで一番容量を食うのが画像なので.. クリップボードからの貼り付けやVault追加時にJPG/PNG/HEIC→WebP/AVIFへ自動変換します。
+
+          クリップボードから貼り付けると外部リンクで画像が入ってしまい、後で壊れることもあるのですが、そういうことも防止します。
+        url: "https://github.com/Lemon-Obsidian/image-manager"
+
+      - name: "git-sync"
+        slug: "git-sync"
+        private: false
+        tagline: "ObsidianのGit同期プラグイン"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          既存のgitプラグインはあるのですが.. いつもVaultを離れる前に同期するのを忘れてしまうので作りました。
+
+          Xボタンを押すとcommit→pushを自動でやってくれるので、忘れることがかなり減りました。
+        url: "https://github.com/Lemon-Obsidian/git-sync"
+
+      - name: "lemon-pyopenjtalk-prebuilt"
+        slug: "lemon-pyopenjtalk-prebuilt"
+        private: false
+        tagline: "pyopenjtalkの事前ビルド済みwheelパッケージ"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          pyopenjtalkがPython 3.10以上をサポートしていないため、自分でビルドして公開したパッケージです。
+
+          CMake/C++コンパイラなしでpip installだけでインストール可能です。
+        url: "https://github.com/LemonDoubleHQ/lemon-pyopenjtalk-prebuilt"
+        fork_of: null
+
+      - name: "lemon-protocol"
+        slug: "lemon-protocol"
+        private: true
+        tagline: "Cloudflare R2ベースの個人用ファイル共有サービス"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          以前作りかけてドロップしたRabbitProtocolの後継作です。
+
+          大容量ファイルを共有する際に適切なサービスがなかったため、自分で作りました。
+
+          - S3 multipart uploadで大容量ファイルアップロード(チャンク10MB~500MB適応型)
+          - パスワード保護、ダウンロード回数制限、IPフィルタリング(CIDR)
+          - TTL 1~90日の有効期限設定
+          - Drop Link: 相手が私にファイルをアップロードできる1回限りの受信リンク(24時間有効期限)
+          - ダウンロードログ追跡とWeb Push通知
+          - lemon-auth連携
+        url: null
+
+      - name: "lemon-vitepress-theme"
+        slug: "lemon-vitepress-theme"
+        private: false
+        tagline: "LemonDoubleデザインシステムが適用されたVitePressテーマパッケージ"
+        languages: ["CSS"]
+        status: "완료"
+        description: |
+          色々なライブラリを作って公開しようとしているうちに、docsページもトーン&マナーを揃えたくなって作りました。
+
+          lemon-design-systemのカラー/タイポグラフィをVitePressに適用したテーマパッケージです。
+
+          [hayakoe docs](https://lemondouble.github.io/hayakoe/)はこのテーマを使って作られています。
+        url: "https://github.com/LemonDouble/lemon-vitepress-theme"
+
+      - name: "lemon-auth"
+        slug: "lemon-auth"
+        private: false
+        tagline: "auth-server連携用のNext.js認証ライブラリ"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          auth-serverに機能がどんどん増えていく中で(プロフィール設定、パスキー、TOTP 2FA、監査ログ、デバイス管理など...)、連携フローがかなり複雑になりました。
+
+          毎回新しいサービスごとに認証連携をゼロから書くのが嫌だったので、標準化された方式で連携できるよう作ったNext.js専用ライブラリです。
+        url: "https://github.com/LemonDouble/lemon-auth"
+
+      - name: "hass-kakao-map-changer"
+        slug: "hass-kakao-map-changer"
+        private: false
+        tagline: "Home Assistantの地図をカカオマップに置き換えるHACS統合"
+        languages: ["JavaScript"]
+        status: "완료"
+        description: |
+          Home AssistantのデフォルトのLeaflet地図をカカオマップ (韓国の地図サービス)に置き換えるHACSカスタム統合です。
+        url: "https://github.com/Lemon-HACS/hass-kakao-map-changer"
+
+      - name: "openrouter_monitor"
+        slug: "openrouter-monitor"
+        private: false
+        tagline: "OpenRouterクレジット監視Home Assistant統合"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          OpenRouterのクレジット残高とAPI Keyごとの使用量をHome Assistantで監視できるHACSカスタム統合です。
+        url: "https://github.com/Lemon-HACS/openrouter_monitor"
+
+  - year: 2025
+    items:
+      - name: "skopeo-setup-action"
+        slug: "skopeo-setup-action"
+        private: false
+        tagline: "GitHub Actionsでskopeoをセットアップ"
+        languages: []
+        status: "완료"
+        description: |
+          GitHub Actionsランナーに[Skopeo](https://github.com/containers/skopeo)をインストールするアクションです。
+
+          セルフホストのOCI互換レジストリに`docker buildx`だけではレイヤー更新ができないので.. 必要なアクションだったのですが適切なものがなかったので、自分で作って使うことにしました。
+        url: "https://github.com/LemonDouble/skopeo-setup-action"
+
+      - name: "misskey"
+        slug: "misskey"
+        private: false
+        tagline: "セルフホスティングのマイクロブログプラットフォーム"
+        languages: ["TypeScript"]
+        status: "운영중"
+        description: |
+          [sns.lemondouble.com](https://sns.lemondouble.com)で約1年間運用しているMisskeyインスタンスです。
+
+          `lemon`ブランチでアイコン変更などのカスタマイズをしながら、アップストリームのリリースとも継続的に同期を取っています。
+        url: "https://github.com/LemonDouble/misskey"
+        fork_of: "misskey-dev/misskey"
+
+  - year: 2024
+    items:
+      - name: "fastapi-tdd"
+        slug: "fastapi-tdd"
+        private: false
+        tagline: "FastAPI TDD講座の実習"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          就職してから少し余裕ができた時に、Udemyの"Try FastAPI - Test Driven Development 2024"講座を進めながらTDDを学んだリポジトリです。
+        url: "https://github.com/LemonDouble/fastapi-tdd"
+
+      - name: "HateGuard"
+        slug: "hateguard"
+        private: true
+        tagline: "ブラウザベースのヘイトスピーチ自動フィルタリングシステム"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          ちょうどアドブロックのように、ブラウザのDOMからヘイトスピーチをMLで自動的に取り除くシステムを構想しました。
+
+          PyTorchでモデルを学習しONNXに変換して、Transformers.jsでブラウザ上で推論する構造です。
+
+          データセット公開の問題もあって非公開で進めており、DOMからヘイトスピーチを検出して赤い枠で表示するところまでは成功したのですが..
+
+          データセットの高度化が難しく、Transformers.jsのサポートが弱く、DOMで処理するデータが多すぎて極限の最適化が必要で、一人ですべてのサイトをカバーするのが不可能だったので、いったんドロップすることにしました。
+        url: null
+
+      - name: "project-arona"
+        slug: "project-arona"
+        private: true
+        tagline: "オンデバイスMLベースのカスタムウェイクワード + アロナスピーカー"
+        languages: ["Python"]
+        status: "드랍"
+        description: |
+          OpenWakeWordでカスタムウェイクワードを学習させて「アロナ」と呼ぶと反応するスピーカーを作ろうとしたプロジェクトです。
+
+          ウェイクワードの学習まではできたのですが.. ファームウェアを書くのが大変で、内蔵マイクの性能も良くなく、この方向で合っているのかよく分からなくなったのでドロップしました。
+
+          私は動く画面でアロナを見たかったんです。
+        url: null
+
+  - year: 2023
+    items:
+      - name: "misskey-geeknews-webhooks"
+        slug: "misskey-geeknews-webhooks"
+        private: true
+        tagline: "GeekNews → Misskey自動投稿ボット"
+        languages: ["TypeScript"]
+        status: "운영중"
+        description: |
+          GeekNews (韓国の技術ニュースサイト)が提供するGoogle ChatのWebhookを受け取って、Misskeyボットアカウントで自動投稿するCloudflare Workersです。
+
+          2023年7月から約3年間運用しています。
+
+          2ヶ月ほど前にGeekNews側でドメイン検査が追加されて連携が切れていたのですが、藁にもすがる思いで.. GeekNews側に問い合わせたところ、本当にありがたいことに例外処理をしてくださり、復旧して運用が続いています。
+        url: null
+
+      - name: "lemon-k8s-cluster"
+        slug: "lemon-k8s-cluster"
+        private: true
+        tagline: "家庭用K3Sホームラボクラスター"
+        languages: ["YAML"]
+        status: "운영중"
+        description: |
+          家庭用K3SクラスターのGitOps Configリポジトリです。
+
+          ArgoCD Apps-of-Appsパターンで管理し、ミニPC(Ryzen 3750H)とGPUワークステーション(Ryzen 5600x/RTX 3090/64GB)の2ノードで運用しています。
+
+          このクラスター上で動いているサービス:
+
+          - **auth-server**: Goで作ったSSOサーバー(Traefik ForwardAuth連携)
+          - **search-server**: OpenSearchベースの検索APIサーバー
+          - **ml-server**: TTS / ML関連サーバー(RTX 3090使用)
+          - **Immich**: セルフホスティングの写真/動画バックアップ
+          - **LibreChat**: マルチLLMチャットUI
+          - **Ollama**: ローカルLLM推論サーバー(KEDA HTTPスケーリング)
+          - **OpenSearch**: 検索/ログDB + ダッシュボード
+          - **RustFS**: S3互換オブジェクトストレージ
+          - **Zot**: OCI互換コンテナイメージレジストリ
+          - **CloudNative PG**: PostgreSQLクラスター(pgvector、S3バックアップ)
+          - **Argo Workflows**: cronワークフロー(フォロワーチェック、Misskeyキャッシュ整理など)
+          - **Longhorn**: 分散ブロックストレージ(SSD/NVMe/HDDの3階層)
+          - その他Traefik、MetalLB、cert-manager、KEDA、Sealed Secrets、Beszelなどのインフラスタック
+        url: null
+
+      - name: "lemon-talkgpt"
+        slug: "lemon-talkgpt"
+        private: true
+        tagline: "talking-head-anime-3ベースのバーチャルキャラクターチャット"
+        languages: ["TypeScript", "Python"]
+        status: "archived"
+        description: |
+          アニメキャラクターの画像が一枚あれば、ブラウザでそのキャラクターと会話できるプロジェクトです。
+
+          [talking-head-anime-3-demo](https://github.com/pkhungurn/talking-head-anime-3-demo)をMLサーバーに載せて上半身のアニメーションを生成し、MediaPipeで顔のランドマークを抽出してキャラクターにマッピングしました。
+
+          パイプラインがかなり長くて、音声録音→STT→ChatGPTの回答生成→翻訳→TTS音声合成→talking-head-anime-3で映像生成までを一気通貫で動かしています。
+
+          まばたきが両目で同じになるよう平均値で補正したり、会話が終わると口を閉じさせたり、頭/体の方向に応じてキャラクターが私の方を見るようにするなど、細部にもこだわりました。
+
+          ブラウザ互換のため、動画コーデックもVP9→H.264(PyAV)に変えるなど試行錯誤があり、翻訳とTTS生成を非同期で同時に走らせて推論時間も短縮しました。
+
+          自分なりに頑張って作ったのですが、現在は使っていないのでarchived状態です。
+        url: null
+
+      - name: "lemon-main-page"
+        slug: "lemon-main-page"
+        private: false
+        tagline: "個人の自己紹介ページ"
+        languages: ["TypeScript"]
+        status: "운영중"
+        description: |
+          [lemondouble.com](https://lemondouble.com)で運用している個人ポートフォリオ/自己紹介ページです。
+        url: "https://github.com/LemonDouble/lemon-main-page"
+
+      - name: "blog"
+        slug: "blog"
+        private: false
+        tagline: "個人ブログ"
+        languages: ["Hugo", "CSS"]
+        status: "운영중"
+        description: |
+          Hugo + GitHub Pagesベースの個人ブログ。
+
+          今ご覧いただいているまさにこのブログです!
+        url: "https://github.com/LemonDouble/blog"
+
+      - name: "chatgpt-serverless-discord-bot"
+        slug: "chatgpt-serverless-discord-bot"
+        private: false
+        tagline: "ChatGPT API + Lambda Serverless Discord Botテンプレート"
+        languages: ["TypeScript"]
+        status: "archived"
+        description: |
+          ChatGPT APIとAWS Lambdaを利用してServerless Discord Botを作れるテンプレートです。
+
+          ボット一つ動かすために毎回サーバーを立てると高くつきますからね~
+        url: "https://github.com/LemonDouble/chatgpt-serverless-discord-bot"
+
+      - name: "chatgpt-serverless-slack-bot"
+        slug: "chatgpt-serverless-slack-bot"
+        private: false
+        tagline: "ChatGPT API + Lambda Serverless Slack Botテンプレート"
+        languages: ["TypeScript"]
+        status: "archived"
+        description: |
+          同様にChatGPT API + AWS LambdaベースのServerless Slack Botテンプレートです。
+        url: "https://github.com/LemonDouble/chatgpt-serverless-slack-bot"
+
+      - name: "lemon-chatgpt-translator"
+        slug: "lemon-chatgpt-translator"
+        private: false
+        tagline: "ChatGPT検索時にプロンプトを自動英訳"
+        languages: ["TypeScript"]
+        status: "archived"
+        description: |
+          ChatGPTで検索する際に、韓国語のプロンプトを自動で英語に翻訳してくれるChrome拡張機能です。
+
+          当時は韓国語の性能が英語よりはるかに劣っていたので、英語で質問するのがちょっとしたコツだったんですよね。
+
+          翻訳機にかけた英語が少しぎこちなくても、韓国語の回答よりはるかに良かった時代でした。
+        url: "https://github.com/LemonDouble/lemon-chatgpt-translator"
+
+      - name: "twitter-remove-doge"
+        slug: "twitter-remove-doge"
+        private: false
+        tagline: "TwitterのロゴをLarryに戻すChrome拡張"
+        languages: []
+        status: "archived"
+        description: |
+          突然Twitterにイーロン・マスクがドージコインのロゴを出して(...)、これを消し去りたい気持ちで初めてChrome拡張機能を作ってみました。
+
+          Twitterのロゴを本来の持ち主であるLarryに返す拡張です。
+        url: "https://github.com/LemonDouble/twitter-remove-doge"
+
+  - year: 2022
+    items:
+      - name: "Lemon Twitter Toolbox"
+        slug: "lemon-twitter-toolbox"
+        private: true
+        tagline: "TwitterベースのBERTチャットボットサービス"
+        languages: ["Java", "TypeScript", "Python"]
+        status: "archived"
+        description: |
+          就職用ポートフォリオを作るついでに、面白いものを作ろう + トラフィックを多く受けそうなサービスを作って、履歴書にAWSの請求書を添付したらパッと目立つんじゃないか?と計画した野心的なプロジェクトでした。
+
+          ユーザーのツイートメンション対(質問/回答)をBERTエンベディングで学習させて、パーソナライズされたチャットボットを作るサービスです。
+
+          AWS Lambda + SQSパイプラインでML処理を並列化し、Springホームサーバーで認証/DBを担当するハイブリッド構造で作りました。
+
+          ローンチ当日にSpringのSQS消費ボトルネックとTwitter APIのレートリミットが同時に発生してかなり苦労したのですが、詳しい話は振り返り記事に書いています。
+
+          LLMが普及した今ではBERTというと古い技術に見えるかもしれませんが、当時は学部生基準でかなり目新しい最新技術だったんですよ。
+        url: null
+        retrospective: "/p/lemon-toolbox/"
+
+      - name: "RabbitProtocol"
+        slug: "rabbitprotocol"
+        private: true
+        tagline: "総合ファイル管理プログラム"
+        languages: ["JavaScript"]
+        status: "드랍"
+        description: |
+          Skyrimのモッドパックのような100GBを超える大容量ファイルを転送する方法が必要で設計を始めたのですが.. マルチパートアップロードはどうする、ストレージポリシーはどうする、と考えることが多すぎて結局ドロップしました。
+        url: null
+
+  - year: 2021
+    items:
+      - name: "Beacon_based_Automatic_visitor_check_program"
+        slug: "beacon-visitor-check"
+        private: false
+        tagline: "Bluetoothビーコンベースの訪問日誌自動化"
+        languages: ["Java"]
+        status: "archived"
+        description: |
+          コロナ禍ですべての人が出入りのたびに日誌を書いていた時期があったのですが、BLEを使ってサッと通り過ぎれば自動で記録されるようにしたら、お互い良いんじゃないか?と思って作ったプロジェクトです。
+
+          学校のグローバル協力プログラム(GBPL)で日本、中国、台湾、ベトナムの友人たちと一緒に進めたのですが、様々な国の友人たちと協業できた本当に貴重な経験でした。
+
+          Bluetoothビーコンも自分で作ってみましたし、Androidは何も知らなかったのですが、なんとか動くように作りました(...)。
+        url: "https://github.com/LemonDouble/Beacon_based_Automatic_visitor_check_program_GBPL"
+        suffix: "(GBPL)"
+
+      - name: "Audio_processing_practice"
+        slug: "audio-processing-practice"
+        private: false
+        tagline: "音声処理スクリプト集"
+        languages: ["Python"]
+        status: "archived"
+        description: |
+          初めてインターンをした時、音楽処理関連のスタートアップに入ったのですが、勉強用に作ったリポジトリです。
+
+          メルスペクトログラムなどをここで学び、今VITSで遊ぶのに役立っています。
+
+          結局学んでおけばすべて役に立つものですね。
+        url: "https://github.com/LemonDouble/Audio_processing_practice"
+
+      - name: "Socket_Order_Program"
+        slug: "socket-order-program"
+        private: false
+        tagline: "C++ソケット/スレッドベースの料理注文サーバー/クライアント"
+        languages: ["C++"]
+        status: "archived"
+        description: |
+          大学のネットワークソケットプログラミング授業の課題で、発表前日に徹夜してギリギリで作った記憶があります(...)。
+
+          C++でローレベルのソケット通信を初めて行い、パケットサイズも自分で決めてカスタム通信をしてみたのですが、なかなか面白かったです。
+        url: "https://github.com/LemonDouble/Socket_Order_Program"
+
+      - name: "C_minus_compiler"
+        slug: "c-minus-compiler"
+        private: false
+        tagline: "C minusコンパイラ実装"
+        languages: ["C++"]
+        status: "archived"
+        description: |
+          大学のコンパイラ授業の課題です。
+
+          ScannerとParserまで実装したのですが、もっとやりたかったものの学部の1学期は短くて、ここまでしか..
+
+          いつか機会があれば、自分の言語を作ってみたいですね。
+
+          面白かったので。
+        url: "https://github.com/LemonDouble/C_minus_compiler"
+
+      - name: "Simple_IR"
+        slug: "simple-ir"
+        private: false
+        tagline: "TF-IDFベースのシンプルな情報検索エンジン"
+        languages: ["Python"]
+        status: "archived"
+        description: |
+          大学の情報検索(検索エンジン)授業の課題です。
+
+          文書を読み込んでTF-IDF weight dictionaryを作り、クエリとの類似度を測定して上位10件の結果を出力します。
+        url: "https://github.com/LemonDouble/Simple_IR"
+
+      - name: "react-test-practice"
+        slug: "react-test-practice"
+        private: false
+        tagline: "Reactテストライブラリの練習"
+        languages: ["JavaScript"]
+        status: "archived"
+        description: |
+          Reactのテスティングを初めて勉強してみました。
+
+          当時は就職するということで色々と勉強したものです..
+        url: "https://github.com/LemonDouble/react-test-practice"
+
+      - name: "github-actions-practice"
+        slug: "github-actions-practice"
+        private: false
+        tagline: "GitHub Actions実習"
+        languages: []
+        status: "archived"
+        description: |
+          GitHub Actionsを初めて学んでみました。
+        url: "https://github.com/LemonDouble/github-actions-practice"
+
+      - name: "Spring_sample_Simple_Forum"
+        slug: "spring-simple-forum"
+        private: false
+        tagline: "勉強用の掲示板作成"
+        languages: ["Java"]
+        status: "archived"
+        description: |
+          Springを初めて使ったプロジェクトです。
+
+          シンプルなシステムから段階的に要件を追加しながら、オブジェクト指向設計とテストがなぜ必要かを考えてみました。
+        url: "https://github.com/LemonDouble/Spring_sample_Simple_Forum"
+
+      - name: "Skyos"
+        slug: "skyos"
+        private: false
+        tagline: "C++で自分だけのOSを作る"
+        languages: ["C++"]
+        status: "드랍"
+        description: |
+          OSを自分で作ってみようとしたのですが.. 当時は難しすぎる課題でした。
+        url: "https://github.com/LemonDouble/Skyos"
+
+      - name: "python_architecture"
+        slug: "python-architecture"
+        private: false
+        tagline: "Architecture Patterns with Python本の実習"
+        languages: ["Python"]
+        status: "archived"
+        description: |
+          "Architecture Patterns with Python" (Cosmic Python)本を読みながら、DDD、Repositoryパターン、Unit of Work、CQRS、イベントドリブンアーキテクチャといったものを学習したリポジトリです。
+
+          多くのことを学びましたが、実際に適用するのはまた別の話だということを仕事をしながら気付きました。
+        url: "https://github.com/LemonDouble/python_architecture"
+        fork_of: "cosmicpython/code"
+
+  - year: 2017
+    items:
+      - name: "Omok / Snake_Game / Simple_SQL"
+        slug: "early-projects"
+        private: false
+        tagline: "大学1年生時代のプロジェクト"
+        languages: ["C++", "C"]
+        status: "완료"
+        description: |
+          大学1年生の時にC/C++を学びながら作ったものです。
+
+          - 五目並べゲーム
+          - System Callベースのスネークゲーム
+          - MySQLの基本機能を真似たシンプルなSQL実装
+
+          1年生の時のものなので可愛く見てください(...)。当時は本当に難しかったんですよ..
+        url: "https://github.com/LemonDouble/Omok"

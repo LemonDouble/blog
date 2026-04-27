@@ -84,11 +84,9 @@
             </a>
             <div class="nav-links">
                 <a href="{{ "/" | relLangURL }}" class="nav-link{{ if .IsHome }} active{{ end }}">{{ T "nav_home" }}</a>
-                {{ if eq .Site.Language.Lang "ko" }}
-                <a href="/projects/" class="nav-link{{ if eq .RelPermalink "/projects/" }} active{{ end }}">{{ T "nav_projects" }}</a>
-                <a href="/skills/" class="nav-link{{ if eq .RelPermalink "/skills/" }} active{{ end }}">{{ T "nav_skills" }}</a>
-                {{ end }}
-                <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link">{{ T "nav_about" }}</a>
+                <a href="{{ "/projects/" | relLangURL }}" class="nav-link{{ if hasPrefix .RelPermalink (printf "%sprojects/" (relLangURL "/")) }} active{{ end }}">{{ T "nav_projects" }}</a>
+                <a href="{{ "/skills/" | relLangURL }}" class="nav-link{{ if hasPrefix .RelPermalink (printf "%sskills/" (relLangURL "/")) }} active{{ end }}">{{ T "nav_skills" }}</a>
+                <a href="https://lemondouble.com{{ if ne .Site.Language.Lang "ko" }}/{{ .Site.Language.Lang }}{{ end }}" target="_blank" rel="noopener noreferrer" class="nav-link">{{ T "nav_about" }}</a>
             </div>
             <div class="nav-actions">
                 <div class="search-wrapper" id="searchWrapper">
@@ -115,11 +113,9 @@
     {{/* Mobile Menu */}}
     <div class="mobile-menu" id="mobileMenu">
         <a href="{{ "/" | relLangURL }}" class="nav-link{{ if .IsHome }} active{{ end }}" onclick="closeMobileMenu()">{{ T "nav_home" }}</a>
-        {{ if eq .Site.Language.Lang "ko" }}
-        <a href="/projects/" class="nav-link{{ if eq .RelPermalink "/projects/" }} active{{ end }}" onclick="closeMobileMenu()">{{ T "nav_projects" }}</a>
-        <a href="/skills/" class="nav-link{{ if eq .RelPermalink "/skills/" }} active{{ end }}" onclick="closeMobileMenu()">{{ T "nav_skills" }}</a>
-        {{ end }}
-        <a href="https://lemondouble.com" target="_blank" rel="noopener noreferrer" class="nav-link" onclick="closeMobileMenu()">{{ T "nav_about" }}</a>
+        <a href="{{ "/projects/" | relLangURL }}" class="nav-link{{ if hasPrefix .RelPermalink (printf "%sprojects/" (relLangURL "/")) }} active{{ end }}" onclick="closeMobileMenu()">{{ T "nav_projects" }}</a>
+        <a href="{{ "/skills/" | relLangURL }}" class="nav-link{{ if hasPrefix .RelPermalink (printf "%sskills/" (relLangURL "/")) }} active{{ end }}" onclick="closeMobileMenu()">{{ T "nav_skills" }}</a>
+        <a href="https://lemondouble.com{{ if ne .Site.Language.Lang "ko" }}/{{ .Site.Language.Lang }}{{ end }}" target="_blank" rel="noopener noreferrer" class="nav-link" onclick="closeMobileMenu()">{{ T "nav_about" }}</a>
 
         {{/* Language section in mobile menu */}}
         <div class="mobile-menu-lang">

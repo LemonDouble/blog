@@ -1,4 +1,4 @@
-{{- $data := hugo.Data.projects -}}
+{{- $data := index site.Data.projects .Site.Language.Lang -}}
 {{- $allProjects := slice -}}
 {{- range $data.projects -}}
   {{- $year := .year -}}

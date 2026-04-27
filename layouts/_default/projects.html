@@ -1,6 +1,7 @@
 {{ define "main" }}
-{{ $data := hugo.Data.projects }}
+{{ $data := index site.Data.projects .Site.Language.Lang }}
 {{ $statusClass := dict "개발중" "dev" "완료" "done" "운영중" "running" "archived" "archived" "드랍" "dropped" "완료 (개인용)" "done" "완료 (고도화 중)" "done" }}
+{{ $statusKey := dict "개발중" "dev" "완료" "done" "운영중" "running" "archived" "archived" "드랍" "dropped" "완료 (개인용)" "done_personal" "완료 (고도화 중)" "done_advancing" }}
 
 <article class="projects-page">
     <header class="projects-header">
@@ -11,7 +12,7 @@
         <p class="projects-intro">{{ $data.intro }}</p>
 
         <section class="projects-section">
-            <h2>오픈소스 기여</h2>
+            <h2>{{ T "opensource_contributions" }}</h2>
             <p class="projects-section-desc">{{ $data.opensource.description }}</p>
             {{ range $data.opensource.contributions }}
             <h3>{{ .year }}</h3>
@@ -32,6 +33,7 @@
             <div class="projects-grid">
                 {{ range .items }}
                 {{ $sc := index $statusClass .status | default "default" }}
+                {{ $sk := index $statusKey .status | default "default" }}
                 <button class="project-card" data-project="{{ .slug }}" type="button">
                     {{ with .image }}
                     <div class="project-card-image">
@@ -42,8 +44,8 @@
                         <h3 class="project-card-title">{{ .name }}{{ with .suffix }} {{ . }}{{ end }}</h3>
                         <p class="project-card-tagline">{{ .tagline }}</p>
                         <div class="project-card-meta">
-                            <span class="project-badge project-badge--{{ $sc }}">{{ .status }}</span>
-                            {{ if .private }}<span class="project-badge project-badge--private">비공개</span>{{ end }}
+                            <span class="project-badge project-badge--{{ $sc }}">{{ T (printf "status_%s" $sk) }}</span>
+                            {{ if .private }}<span class="project-badge project-badge--private">{{ T "private_label" }}</span>{{ end }}
                             {{ with .fork_of }}<span class="project-badge project-badge--fork">Fork</span>{{ end }}
                         </div>
                     </div>
@@ -57,7 +59,7 @@
     <div class="project-modal" id="projectModal">
         <div class="project-modal-backdrop"></div>
         <div class="project-modal-dialog">
-            <button class="project-modal-close" type="button" aria-label="닫기">&times;</button>
+            <button class="project-modal-close" type="button" aria-label="{{ T "modal_close" }}">&times;</button>
             <div class="project-modal-body" id="projectModalBody"></div>
         </div>
     </div>
@@ -65,6 +67,7 @@
     {{ range $data.projects }}
     {{ range .items }}
     {{ $sc := index $statusClass .status | default "default" }}
+    {{ $sk := index $statusKey .status | default "default" }}
     <div id="modal-{{ .slug }}" hidden>
         {{ with .image }}
         <div class="project-modal-image">
@@ -79,16 +82,16 @@
         </div>
         <p class="project-modal-tagline">{{ .tagline }}</p>
         <div class="project-modal-meta">
-            <span class="project-badge project-badge--{{ $sc }}">{{ .status }}</span>
-            {{ if .private }}<span class="project-badge project-badge--private">비공개</span>{{ end }}
+            <span class="project-badge project-badge--{{ $sc }}">{{ T (printf "status_%s" $sk) }}</span>
+            {{ if .private }}<span class="project-badge project-badge--private">{{ T "private_label" }}</span>{{ end }}
             {{ range .languages }}
             <span class="project-lang-badge">{{ partial "lang-icon" . }} {{ . }}</span>
             {{ end }}
             {{ with .fork_of }}
-            <span class="project-modal-meta-item">원본: <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">{{ . }}</a></span>
+            <span class="project-modal-meta-item">{{ T "modal_original_repo" }}: <a href="https://github.com/{{ . }}" target="_blank" rel="noopener noreferrer">{{ . }}</a></span>
             {{ end }}
             {{ with .retrospective }}
-            <span class="project-modal-meta-item">회고: <a href="{{ . }}">{{ . }}</a></span>
+            <span class="project-modal-meta-item">{{ T "modal_retrospective" }}: <a href="{{ . }}">{{ . }}</a></span>
             {{ end }}
         </div>
         <div class="project-modal-desc">

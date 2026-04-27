@@ -1,0 +1,770 @@
+intro: "A page summarizing the projects I've worked on so far. Personal projects, open source contributions, school assignments — I gathered them all here. Turns out it's quite a lot."
+
+opensource:
+  description: "I'm not really aiming for fame and fortune through open source contributions, but when you use enough open source software, you'll occasionally find things that just don't work. Rather than waiting for someone else to fix them, it's faster to fix them myself, so I send PRs whenever something needs fixing."
+  contributions:
+    - year: 2025
+      items:
+        - repo: "rustfs/rustfs"
+          pr: "https://github.com/rustfs/rustfs/pull/1018"
+          pr_number: 1018
+          description: "Split storageSize in the Helm chart into separate parameters for data/log. If you set data storage to 2TB, logs would also be 2TB(...) so I begged them to please split it."
+        - repo: "thuliteio/doks"
+          pr: "https://github.com/thuliteio/doks/pull/1356"
+          pr_number: 1356
+          description: "Bumped the Hugo version and something that used to work broke.. so I fixed it."
+        - repo: "Jaydee94/kubeseal-webgui"
+          pr: "https://github.com/Jaydee94/kubeseal-webgui/pull/278"
+          pr_number: 278
+          description: "Was using it happily, but the Secret clipboard copy wasn't working.. so I fixed it."
+    - year: 2024
+      items:
+        - repo: "opensearch-project/helm-charts"
+          pr: "https://github.com/opensearch-project/helm-charts/pull/618"
+          pr_number: 618
+          description: "Bumped the version in Helm and the deploy stopped working — turned out the default opensearch.yml was conflicting with the security plugin."
+    - year: 2023
+      items:
+        - repo: "minio/operator"
+          pr: "https://github.com/minio/operator/pull/1910"
+          pr_number: 1910
+          description: "existingSecret wasn't being applied — turned out the YAML indentation was wrong."
+        - repo: "getsentry/sentry"
+          pr: "https://github.com/getsentry/sentry/pull/60571"
+          pr_number: 60571
+          description: "I was reading the docs and spotted a typo.. you know, typo fixes get merged really quickly? It's the best way to sneak a contribution into a big open source project."
+        - repo: "stepci/stepci"
+          pr: "https://github.com/stepci/stepci/pull/66"
+          pr_number: 66
+          description: "Added default CLI command output. My very first open source PR!"
+
+projects:
+  - year: 2026
+    items:
+      - name: "lemon-design-system"
+        slug: "lemon-design-system"
+        private: false
+        tagline: "An AI-agent-friendly personal design system"
+        languages: ["CSS"]
+        status: "완료"
+        description: |
+          I saw [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) on GeekNews (a Korean tech news aggregator). I'm not a fan of the idea of ripping off other websites' designs as presets, but the idea itself — that AI can carry a consistent design system — struck me as a good one.
+
+          Since I work on a lot of side projects, I've always wanted my own design system, where you could see the design alone and instantly recognize "ah, this is a LemonDouble project!"
+
+          I actually commissioned a designer I know on Figma once, but as a server engineer, some parts were tricky to implement, and I needed components for every project — I couldn't keep commissioning a designer every time. So I never really applied it.
+
+          But I figured this methodology might make it possible. Starting from my favicon logo, I extracted Primary / Secondary colors, then adjusted saturation/brightness for each, generated mockups, eyeballed them, and iterated until I was happy.
+
+          Applied it to my blog and every page I have a frontend on.
+
+          Worked out pretty well.
+        url: "https://github.com/LemonDouble/lemon-design-system"
+
+      - name: "hayakoe"
+        slug: "hayakoe"
+        private: false
+        tagline: "ONNX-optimized Japanese TTS library"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          On the TTS side, there's a lineage that goes [Bert-VITS](https://github.com/fishaudio/Bert-VITS2) → [Style-Bert-VITS2](https://github.com/litagin02/Style-Bert-VITS2).
+
+          Bert-VITS is the Fish-Speech team's older model, and now updates have moved to the autoregression-based Fish-Speech repo, so the original repo has stopped getting updates.
+
+          Style-Bert-VITS2 adds a style-related layer on top of that, trains on more Japanese data, and ships a Japanese-strengthened pretrained model.
+
+          There were various other improvements on top of that.
+
+          But Style-Bert-VITS2 itself stopped updating about 8 months ago, so since updates have stopped anyway, I figured I'd clean up the code to make it easier to use.
+
+          #### Implemented
+
+          - Replaced pyopenjtalk-prebuilt (which stopped updating and can't be used on Python 3.12+) with lemon-pyopenjtalk-prebuilt, a fork I patched to build on the latest versions.
+          - Fixed an issue where English inside TTS text was treated as silence. Used [loanwords_gairaigo](https://github.com/jamesohortle/loanwords_gairaigo) data to automatically support ~220k English→Katakana mappings, and simplified custom dictionary registration.
+          - Dynamically quantized BERT weights to cut memory usage by ~50%.
+          - Optimized the Synthesizer to ONNX, achieving ~1.6x speedup on CPU.
+          - Separated BERT / Synthesizer model loading so BERT is shared, and only the per-speaker Synthesizer is loaded separately — each speaker now uses only ~200MB of memory.
+          - Distributed as a PyPI package — `pip install hayakoe` and you can use it in 3 lines.
+          - On CPU-only environments, made it possible to run inference with just ONNX Runtime, no PyTorch install needed — dual backend.
+          - Added sentence-level streaming TTS (`stream()`). Long text isn't processed all at once; it's generated sentence by sentence, usable for real-time response.
+          - `generate()` automatically splits long text into sentences, achieving ~37x speedup (143s → 3.8s for 400 chars).
+          - Migrated from `weight_norm` → `parametrizations.weight_norm` for PyTorch 2.x+ compatibility.
+
+          #### In progress
+
+          - Building a preprocessing pipeline that automatically generates training data from a video. Video upload → audio extraction → background removal → Whisper subtitles → dataset auto-assembly, all in one flow.
+          - Building an interactive training CLI that takes you from dataset preprocessing through model training and quality report generation in a single flow.
+        url: "https://github.com/LemonDouble/hayakoe"
+
+      - name: "super-arona"
+        slug: "super-arona"
+        private: true
+        tagline: "Talk to Arona — an LLM-based 3D MMD character viewer"
+        languages: ["TypeScript"]
+        status: "완료 (고도화 중)"
+        description: |
+          A 3D character viewer that lets you talk to Arona from Blue Archive.
+
+          - PMX model rendering with Babylon.js + babylon-mmd
+          - 16 facial expression morph targets, 14 VMD motions
+          - Hair/cloth physics simulation via Bullet WASM
+          - LLM-based conversation integration planned
+
+          There was an earlier project called arona, but it was a simple chat interface that displayed text passed via query parameters.
+
+          super-arona is its successor — as the name suggests, a much more ambitious version.
+        url: null
+
+      - name: "shiroko"
+        slug: "shiroko"
+        private: true
+        tagline: "Tells you the weather"
+        languages: ["TypeScript"]
+        status: "완료 (개인용)"
+        description: |
+          A weather app I made to display on the TV via ADB from HomeAssistant.
+
+          Shows weather animations like rain/snow based on the precipitation type from the Korean Meteorological Administration forecast.
+
+          It's just for personal use so nothing fancy, but a daily morning weather briefing helps me decide whether to bike to work — pretty handy.
+        url: null
+
+      - name: "haruna"
+        slug: "haruna"
+        private: true
+        tagline: "Friday foodie club survey tool"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          A restaurant rating system.
+
+          Every Friday I go restaurant-hunting with friends, and since we're eating anyway I figured we might as well rate the places, so I built an anonymous voting system.
+
+          - Roulette picker
+          - Star ratings
+          - Auto-copy Google Maps URL
+          - QR code generation
+        url: null
+
+      - name: "claude-dashboard"
+        slug: "claude-dashboard"
+        private: true
+        tagline: "A Claude Code web dashboard I made for myself"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          A web dashboard that parses JSONL files from `~/.claude/projects/` and visualizes Claude Code usage (cost, tokens, sessions, patterns).
+
+          Just bring it up with Docker Compose, done.
+
+          Lets me see at a glance just how much I'm overworking Claude(...).
+        url: null
+
+      - name: "Style-Bert-VITS2"
+        slug: "style-bert-vits2"
+        private: false
+        tagline: "Japanese TTS library based on Style-Bert-VITS2"
+        languages: ["Python"]
+        status: "archived"
+        description: |
+          Repackaging the original project as a library you can install with just `pip install style-bert-vits2`.
+
+          Real-time inference on CPU via the ONNX runtime, with a goal of inference in 3 lines after install.
+        url: "https://github.com/LemonDouble/Style-Bert-VITS2"
+        fork_of: "litagin02/Style-Bert-VITS2"
+
+      - name: "kepco_powerplanner_ha_addon"
+        slug: "kepco-powerplanner-ha-addon"
+        private: false
+        tagline: "Home Assistant add-on for KEPCO (Korea Electric Power Corporation) PowerPlanner"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          The original add-on creates sensors via the HA REST API, which meant you couldn't assign Entity ID aliases.
+
+          - Switched to MQTT Discovery so each sensor gets a `unique_id`, and you can rename and manage sensors from the HA UI.
+          - Added auto-detection of the MQTT broker via the Supervisor API to simplify setup.
+        url: "https://github.com/LemonDouble/kepco_powerplanner_ha_addon"
+        fork_of: null
+
+      - name: "claude-slack-bridge"
+        slug: "claude-slack-bridge"
+        private: false
+        tagline: "Bidirectional Claude Code ↔ Slack bridge MCP server"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          An MCP server I built for the times I leave Claude Code running and step away from my desk.
+
+          I extended it quite a bit from the original. The main features:
+
+          - **4 MCP tools**: `ask_on_slack` (send a question and wait for an answer), `notify_on_slack` (notify only), `upload_to_slack` (file upload), `download_slack_file` (download Slack attachments).
+          - **Slack → Claude**: Mention the bot in Slack and you get a project list; pick one and a Claude session starts in that project. You can also create a new project right from Slack.
+          - **Real-time progress**: When Claude uses tools like Read, Edit, or Bash, the Slack message updates in real time.
+          - **Message queueing**: While Claude is working, drop messages in the Slack thread and they'll be processed once the current task finishes.
+          - **Cancel via emoji reaction**: React with ❌ and the task is interrupted.
+          - **Model/effort settings**: In-thread commands let you change the model (sonnet/opus/haiku) and effort level, and you can save global defaults too.
+          - **Token usage display**: When a response completes, it automatically shows model name, token counts, cache hit rate, cost, and elapsed time.
+        url: "https://github.com/LemonDouble/claude-slack-bridge"
+        fork_of: "tomeraitz/claude-slack-bridge"
+
+      - name: "ble_controller"
+        slug: "ble-controller"
+        private: false
+        tagline: "Generic Home Assistant controller based on BLE GATT Write"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          I bought a cheap TV-sync backlight off AliExpress, and the app integration worked but there was no third-party integration. Took it as a chance to learn BLE HCI dumps and started this project.
+
+          A generic controller that lets you control BLE devices (without a dedicated HA integration) by specifying just Service UUID / Characteristic UUID / hex payload from the UI.
+
+          I also wrote a [dev journal blog post](/en/p/ble-controller/).
+        url: "https://github.com/Lemon-HACS/ble_controller"
+        retrospective: "/p/ble-controller/"
+
+      - name: "extended_graph_agents"
+        slug: "extended-graph-agents"
+        private: false
+        tagline: "LangGraph-style visual multi-agent workflow editor"
+        languages: ["TypeScript"]
+        status: "개발중"
+        description: |
+          Inspired by LangGraph.
+
+          As Home Assistant entities pile up, having a single Agent handle everything gets too heavy. So I wondered: can we split this into appropriate subagents?
+
+          I have around 300 entities right now alone.
+
+          Initially I went with a React Flow canvas where you'd drag-and-drop nodes to build the workflow yourself, but using Claude Code heavily made me realize something.
+
+          People rarely actually want to build the graph by hand.
+
+          And honestly, you can't really tell how to structure it until you've run it once anyway.
+
+          So from v2 onward, I pivoted toward the Claude Code approach: keep updating the workflow in natural language, and only hand-tweak the parts that absolutely need it at the very end.
+
+          Describe it in natural language and the AI auto-generates/modifies a LangGraph-style workflow; on save, it gets registered straight as an HA Conversation Agent.
+        url: "https://github.com/Lemon-HACS/extended_graph_agents"
+
+      - name: "lemon_tts"
+        slug: "lemon-tts"
+        private: false
+        tagline: "Multilingual input → Japanese TTS Home Assistant integration"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          Since I'm always running a BERT-VITS server anyway.. an HA integration I made so people I know could use it together.
+
+          - Type in Korean/English/etc. and it auto-translates and outputs Japanese voice.
+          - Pulls the speaker list from the API server and auto-creates per-speaker TTS entities.
+        url: "https://github.com/Lemon-HACS/lemon_tts"
+
+      - name: "kanban"
+        slug: "kanban"
+        private: false
+        tagline: "Obsidian Kanban plugin"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          I use Kanban for personal task management. Jira costs money for company use, Notion is slow with awkward features, and the rest all feel like they're missing something — so I built my own.
+
+          - Cards are `.md` files, so LLMs can process them automatically.
+          - Archived items become a personal work-log.
+          - Obsidian-based, so data stays fully local.
+        url: "https://github.com/Lemon-Obsidian/kanban"
+
+      - name: "write-helper"
+        slug: "write-helper"
+        private: false
+        tagline: "LLM-based writing assistant Obsidian plugin"
+        languages: ["TypeScript"]
+        status: "드랍"
+        description: |
+          A plugin that auto-suggests tags via LLM on note save, and lets you configure per-field LLM prompts via YAML-defined form templates.
+
+          Built it to write more, but I got busy and ended up not using it(...).
+        url: "https://github.com/Lemon-Obsidian/write-helper"
+
+      - name: "image-manager"
+        slug: "image-manager"
+        private: false
+        tagline: "Obsidian image auto-optimization plugin"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          The biggest space hog in my vault is images. So I made it auto-convert JPG/PNG/HEIC → WebP/AVIF on clipboard paste or vault add.
+
+          Pasting from clipboard sometimes inserts an external link that breaks later — this prevents that too.
+        url: "https://github.com/Lemon-Obsidian/image-manager"
+
+      - name: "git-sync"
+        slug: "git-sync"
+        private: false
+        tagline: "Obsidian Git sync plugin"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          There's an existing git plugin, but I kept forgetting to sync before closing the vault, so I made my own.
+
+          Hit the X button and it does commit→push automatically — way fewer "I forgot to sync" moments.
+        url: "https://github.com/Lemon-Obsidian/git-sync"
+
+      - name: "lemon-pyopenjtalk-prebuilt"
+        slug: "lemon-pyopenjtalk-prebuilt"
+        private: false
+        tagline: "Prebuilt wheel package for pyopenjtalk"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          pyopenjtalk doesn't support Python 3.10+, so I built it myself and published the package.
+
+          Installs with just pip install — no CMake / C++ compiler required.
+        url: "https://github.com/LemonDoubleHQ/lemon-pyopenjtalk-prebuilt"
+        fork_of: null
+
+      - name: "lemon-protocol"
+        slug: "lemon-protocol"
+        private: true
+        tagline: "Personal file-sharing service backed by Cloudflare R2"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          The successor to RabbitProtocol, which I started before but dropped.
+
+          There wasn't a good service for sharing huge files, so I built one.
+
+          - Large file upload via S3 multipart upload (adaptive 10MB~500MB chunks)
+          - Password protection, download count limits, IP filtering (CIDR)
+          - TTL expiration from 1~90 days
+          - Drop Link: a single-use receive link that lets others upload files to me (24h expiration)
+          - Download log tracking and Web Push notifications
+          - lemon-auth integration
+        url: null
+
+      - name: "lemon-vitepress-theme"
+        slug: "lemon-vitepress-theme"
+        private: false
+        tagline: "VitePress theme package with the LemonDouble design system applied"
+        languages: ["CSS"]
+        status: "완료"
+        description: |
+          As I started publishing various libraries, I wanted the docs pages to match my tone too — so I made this.
+
+          A theme package that applies lemon-design-system's color/typography to VitePress.
+
+          [hayakoe docs](https://lemondouble.github.io/hayakoe/) are built with this theme.
+        url: "https://github.com/LemonDouble/lemon-vitepress-theme"
+
+      - name: "lemon-auth"
+        slug: "lemon-auth"
+        private: false
+        tagline: "Next.js auth library for integrating with auth-server"
+        languages: ["TypeScript"]
+        status: "완료"
+        description: |
+          As auth-server gained more features (profile settings, passkeys, TOTP 2FA, audit logs, device management, etc...), the integration flow got pretty complex.
+
+          I didn't want to write auth integration from scratch for every new service, so I made a Next.js-only library to standardize the integration flow.
+        url: "https://github.com/LemonDouble/lemon-auth"
+
+      - name: "hass-kakao-map-changer"
+        slug: "hass-kakao-map-changer"
+        private: false
+        tagline: "HACS integration that swaps the Home Assistant map for Kakao Map"
+        languages: ["JavaScript"]
+        status: "완료"
+        description: |
+          A HACS custom integration that replaces Home Assistant's default Leaflet map with Kakao Map (a Korean map service).
+        url: "https://github.com/Lemon-HACS/hass-kakao-map-changer"
+
+      - name: "openrouter_monitor"
+        slug: "openrouter-monitor"
+        private: false
+        tagline: "Home Assistant integration for OpenRouter credit monitoring"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          A HACS custom integration that lets you monitor OpenRouter credit balance and per-API-Key usage from Home Assistant.
+        url: "https://github.com/Lemon-HACS/openrouter_monitor"
+
+  - year: 2025
+    items:
+      - name: "skopeo-setup-action"
+        slug: "skopeo-setup-action"
+        private: false
+        tagline: "Set up skopeo on GitHub Actions"
+        languages: []
+        status: "완료"
+        description: |
+          A GitHub Action that installs [Skopeo](https://github.com/containers/skopeo) on the runner.
+
+          With self-hosted OCI-compatible registries, `docker buildx` alone can't update layers. I needed an action for it but couldn't find a good one, so I built my own.
+        url: "https://github.com/LemonDouble/skopeo-setup-action"
+
+      - name: "misskey"
+        slug: "misskey"
+        private: false
+        tagline: "Self-hosted microblogging platform"
+        languages: ["TypeScript"]
+        status: "운영중"
+        description: |
+          A Misskey instance I've been running for about a year at [sns.lemondouble.com](https://sns.lemondouble.com).
+
+          I do customizations like icon changes on the `lemon` branch, while keeping it in sync with upstream releases.
+        url: "https://github.com/LemonDouble/misskey"
+        fork_of: "misskey-dev/misskey"
+
+  - year: 2024
+    items:
+      - name: "fastapi-tdd"
+        slug: "fastapi-tdd"
+        private: false
+        tagline: "FastAPI TDD course practice"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          A repo where I followed Udemy's "Try FastAPI - Test Driven Development 2024" course to study TDD during a brief lull after starting my job.
+        url: "https://github.com/LemonDouble/fastapi-tdd"
+
+      - name: "HateGuard"
+        slug: "hateguard"
+        private: true
+        tagline: "Browser-based hate speech auto-filtering system"
+        languages: ["Python"]
+        status: "완료"
+        description: |
+          I imagined a system that automatically filters hate speech from the browser DOM via ML, much like an ad blocker.
+
+          The structure: train the model in PyTorch, convert to ONNX, and run inference in the browser via Transformers.js.
+
+          I kept it private due to dataset publication concerns. I got as far as detecting hate speech in the DOM and marking it with a red box..
+
+          But improving the dataset is hard, Transformers.js support was weak, the DOM has way too much data so extreme optimization was needed, and one person can't possibly cover every site — so I dropped it for now.
+        url: null
+
+      - name: "project-arona"
+        slug: "project-arona"
+        private: true
+        tagline: "On-device ML custom wakeword + Arona speaker"
+        languages: ["Python"]
+        status: "드랍"
+        description: |
+          A project where I tried to build a speaker that responds when you say "Arona", using OpenWakeWord to train a custom wakeword.
+
+          I got as far as training the wakeword, but writing firmware was daunting, the built-in mic quality was bad, and I wasn't sure this was even the right direction — so I dropped it.
+
+          What I really wanted was to see Arona on a moving screen.
+        url: null
+
+  - year: 2023
+    items:
+      - name: "misskey-geeknews-webhooks"
+        slug: "misskey-geeknews-webhooks"
+        private: true
+        tagline: "GeekNews → Misskey auto-posting bot"
+        languages: ["TypeScript"]
+        status: "운영중"
+        description: |
+          A Cloudflare Workers project that takes the Google Chat webhook from GeekNews and auto-posts to Misskey via a bot account.
+
+          Running for about 3 years since July 2023.
+
+          About 2 months ago, GeekNews added domain checks and the integration broke. Grasping at straws, I reached out to GeekNews, and they very kindly added an exception, so it's running again.
+        url: null
+
+      - name: "lemon-k8s-cluster"
+        slug: "lemon-k8s-cluster"
+        private: true
+        tagline: "Home K3S homelab cluster"
+        languages: ["YAML"]
+        status: "운영중"
+        description: |
+          GitOps config repository for my home K3S cluster.
+
+          Managed with the ArgoCD Apps-of-Apps pattern, running across 2 nodes — a mini PC (Ryzen 3750H) and a GPU workstation (Ryzen 5600x / RTX 3090 / 64GB).
+
+          Services running on this cluster:
+
+          - **auth-server**: SSO server written in Go (integrates with Traefik ForwardAuth)
+          - **search-server**: Search API server backed by OpenSearch
+          - **ml-server**: TTS / ML server (uses RTX 3090)
+          - **Immich**: Self-hosted photo/video backup
+          - **LibreChat**: Multi-LLM chat UI
+          - **Ollama**: Local LLM inference server (KEDA HTTP scaling)
+          - **OpenSearch**: Search/log DB + dashboard
+          - **RustFS**: S3-compatible object storage
+          - **Zot**: OCI-compatible container image registry
+          - **CloudNative PG**: PostgreSQL cluster (pgvector, S3 backups)
+          - **Argo Workflows**: Cron workflows (follower checks, Misskey cache cleanup, etc.)
+          - **Longhorn**: Distributed block storage (3-tier SSD/NVMe/HDD)
+          - Plus the rest of the infra stack: Traefik, MetalLB, cert-manager, KEDA, Sealed Secrets, Beszel, etc.
+        url: null
+
+      - name: "lemon-talkgpt"
+        slug: "lemon-talkgpt"
+        private: true
+        tagline: "Virtual character chat based on talking-head-anime-3"
+        languages: ["TypeScript", "Python"]
+        status: "archived"
+        description: |
+          A project where, given a single anime character image, you can chat with that character right in the browser.
+
+          I deployed [talking-head-anime-3-demo](https://github.com/pkhungurn/talking-head-anime-3-demo) on the ML server to generate upper-body animation, and used MediaPipe to extract facial landmarks and map them to the character.
+
+          The pipeline is pretty long: voice recording → STT → ChatGPT response generation → translation → TTS voice synthesis → video generation via talking-head-anime-3, all in one flow.
+
+          I also paid attention to detail — averaging the eye blinks so they're symmetric, closing the mouth when conversation ends, and making the character look at you depending on head/body orientation.
+
+          For browser compatibility I switched the video codec from VP9 → H.264 (PyAV), which took some debugging, and I ran translation and TTS generation concurrently to cut inference time.
+
+          I put quite a bit of work into it, but I'm not using it now, so it's archived.
+        url: null
+
+      - name: "lemon-main-page"
+        slug: "lemon-main-page"
+        private: false
+        tagline: "Personal landing page"
+        languages: ["TypeScript"]
+        status: "운영중"
+        description: |
+          The personal portfolio / landing page running at [lemondouble.com](https://lemondouble.com).
+        url: "https://github.com/LemonDouble/lemon-main-page"
+
+      - name: "blog"
+        slug: "blog"
+        private: false
+        tagline: "Personal blog"
+        languages: ["Hugo", "CSS"]
+        status: "운영중"
+        description: |
+          A personal blog based on Hugo + GitHub Pages.
+
+          The very blog you're looking at right now!
+        url: "https://github.com/LemonDouble/blog"
+
+      - name: "chatgpt-serverless-discord-bot"
+        slug: "chatgpt-serverless-discord-bot"
+        private: false
+        tagline: "ChatGPT API + Lambda serverless Discord bot template"
+        languages: ["TypeScript"]
+        status: "archived"
+        description: |
+          A template for building a serverless Discord bot using the ChatGPT API and AWS Lambda.
+
+          Spinning up a server for every little bot gets expensive!
+        url: "https://github.com/LemonDouble/chatgpt-serverless-discord-bot"
+
+      - name: "chatgpt-serverless-slack-bot"
+        slug: "chatgpt-serverless-slack-bot"
+        private: false
+        tagline: "ChatGPT API + Lambda serverless Slack bot template"
+        languages: ["TypeScript"]
+        status: "archived"
+        description: |
+          Same idea as above — a serverless Slack bot template based on ChatGPT API + AWS Lambda.
+        url: "https://github.com/LemonDouble/chatgpt-serverless-slack-bot"
+
+      - name: "lemon-chatgpt-translator"
+        slug: "lemon-chatgpt-translator"
+        private: false
+        tagline: "Auto-translate ChatGPT prompts to English on search"
+        languages: ["TypeScript"]
+        status: "archived"
+        description: |
+          A Chrome extension that auto-translates Korean prompts to English when searching ChatGPT.
+
+          Back then, Korean performance was much worse than English, so asking in English was kind of a tip.
+
+          Even an awkwardly translated English prompt gave you noticeably better answers than asking in Korean.
+        url: "https://github.com/LemonDouble/lemon-chatgpt-translator"
+
+      - name: "twitter-remove-doge"
+        slug: "twitter-remove-doge"
+        private: false
+        tagline: "Chrome extension that restores the Twitter logo to Larry"
+        languages: []
+        status: "archived"
+        description: |
+          Elon Musk suddenly slapped the Dogecoin logo on Twitter(...) and I wanted it gone, so I built my first Chrome extension.
+
+          An extension that returns the Twitter logo to its rightful owner, Larry.
+        url: "https://github.com/LemonDouble/twitter-remove-doge"
+
+  - year: 2022
+    items:
+      - name: "Lemon Twitter Toolbox"
+        slug: "lemon-twitter-toolbox"
+        private: true
+        tagline: "Twitter-based BERT chatbot service"
+        languages: ["Java", "TypeScript", "Python"]
+        status: "archived"
+        description: |
+          An ambitious project I planned while building my job-search portfolio: let's make something fun + something that pulls real traffic, so an AWS bill on the resume would really stand out.
+
+          A service that learns from a user's tweet mention pairs (question/answer) via BERT embeddings to build a personalized chatbot.
+
+          The architecture was hybrid: an AWS Lambda + SQS pipeline parallelized ML processing, while a Spring server at home handled auth/DB.
+
+          On launch day, the Spring SQS-consumption bottleneck and the Twitter API rate limit hit at the same time, which was rough — the full story is in the retrospective post.
+
+          With LLMs everywhere now, BERT might look ancient, but at the time, as an undergrad, it was pretty cutting-edge.
+        url: null
+        retrospective: "/p/lemon-toolbox/"
+
+      - name: "RabbitProtocol"
+        slug: "rabbitprotocol"
+        private: true
+        tagline: "Comprehensive file management program"
+        languages: ["JavaScript"]
+        status: "드랍"
+        description: |
+          I needed a way to transfer huge files (100GB+ Skyrim modpacks and the like), so I started designing this. But what's multipart upload, what's the storage policy, how do I handle this and that — there was just too much to think about, and I dropped it.
+        url: null
+
+  - year: 2021
+    items:
+      - name: "Beacon_based_Automatic_visitor_check_program"
+        slug: "beacon-visitor-check"
+        private: false
+        tagline: "Bluetooth beacon-based visitor log automation"
+        languages: ["Java"]
+        status: "archived"
+        description: |
+          During COVID, everyone had to fill out a visitor log every time they entered a place. I figured BLE could handle it automatically as you walk by, and that would be better for everyone — so I built it.
+
+          We did this through the school's global cooperation program (GBPL) with friends from Japan, China, Taiwan, and Vietnam — a really unique experience working with people from different countries.
+
+          I built the Bluetooth beacon myself too, and somehow got Android working without knowing anything about it(...).
+        url: "https://github.com/LemonDouble/Beacon_based_Automatic_visitor_check_program_GBPL"
+        suffix: "(GBPL)"
+
+      - name: "Audio_processing_practice"
+        slug: "audio-processing-practice"
+        private: false
+        tagline: "Collection of audio-processing scripts"
+        languages: ["Python"]
+        status: "archived"
+        description: |
+          During my first internship I joined a music-processing startup, and built this repo to study.
+
+          Things like mel-spectrograms — I learned them here, and they come in handy now while I'm playing with VITS.
+
+          Turns out everything you learn ends up being useful eventually.
+        url: "https://github.com/LemonDouble/Audio_processing_practice"
+
+      - name: "Socket_Order_Program"
+        slug: "socket-order-program"
+        private: false
+        tagline: "C++ socket/thread-based food-order server/client"
+        languages: ["C++"]
+        status: "archived"
+        description: |
+          A network-socket programming class assignment in college — I remember pulling an all-nighter the day before the presentation to barely finish it(...).
+
+          First time doing low-level socket communication in C++, including defining packet sizes myself for custom protocols. It was actually pretty fun.
+        url: "https://github.com/LemonDouble/Socket_Order_Program"
+
+      - name: "C_minus_compiler"
+        slug: "c-minus-compiler"
+        private: false
+        tagline: "C minus compiler implementation"
+        languages: ["C++"]
+        status: "archived"
+        description: |
+          A compilers class assignment in college.
+
+          I implemented Scanner and Parser. I wanted to do more, but a single undergrad semester is short, so it stopped there.
+
+          Someday, given the chance, I'd like to design my own language.
+
+          It was fun.
+        url: "https://github.com/LemonDouble/C_minus_compiler"
+
+      - name: "Simple_IR"
+        slug: "simple-ir"
+        private: false
+        tagline: "Simple TF-IDF-based information retrieval engine"
+        languages: ["Python"]
+        status: "archived"
+        description: |
+          An information retrieval (search engine) class assignment in college.
+
+          Reads documents to build a TF-IDF weight dictionary, then measures similarity against a query and returns the top 10 results.
+        url: "https://github.com/LemonDouble/Simple_IR"
+
+      - name: "react-test-practice"
+        slug: "react-test-practice"
+        private: false
+        tagline: "React testing library practice"
+        languages: ["JavaScript"]
+        status: "archived"
+        description: |
+          First time studying React testing.
+
+          I really did study a ton of stuff back when I was preparing for jobs..
+        url: "https://github.com/LemonDouble/react-test-practice"
+
+      - name: "github-actions-practice"
+        slug: "github-actions-practice"
+        private: false
+        tagline: "GitHub Actions practice"
+        languages: []
+        status: "archived"
+        description: |
+          First time learning GitHub Actions.
+        url: "https://github.com/LemonDouble/github-actions-practice"
+
+      - name: "Spring_sample_Simple_Forum"
+        slug: "spring-simple-forum"
+        private: false
+        tagline: "Forum implementation for study"
+        languages: ["Java"]
+        status: "archived"
+        description: |
+          The first project where I really used Spring.
+
+          Started simple and added requirements step by step, thinking through why object-oriented design and testing actually matter.
+        url: "https://github.com/LemonDouble/Spring_sample_Simple_Forum"
+
+      - name: "Skyos"
+        slug: "skyos"
+        private: false
+        tagline: "Building my own OS in C++"
+        languages: ["C++"]
+        status: "드랍"
+        description: |
+          I tried to build an OS from scratch.. it was way too hard for me at the time.
+        url: "https://github.com/LemonDouble/Skyos"
+
+      - name: "python_architecture"
+        slug: "python-architecture"
+        private: false
+        tagline: "Practice from the Architecture Patterns with Python book"
+        languages: ["Python"]
+        status: "archived"
+        description: |
+          A repo where I worked through "Architecture Patterns with Python" (Cosmic Python), studying DDD, the Repository pattern, Unit of Work, CQRS, event-driven architecture, and so on.
+
+          I learned a lot, but actually applying it is a different story — something I came to understand once I started working.
+        url: "https://github.com/LemonDouble/python_architecture"
+        fork_of: "cosmicpython/code"
+
+  - year: 2017
+    items:
+      - name: "Omok / Snake_Game / Simple_SQL"
+        slug: "early-projects"
+        private: false
+        tagline: "Projects from my freshman year of college"
+        languages: ["C++", "C"]
+        status: "완료"
+        description: |
+          Things I built in my first year of college while learning C/C++.
+
+          - Omok (Gomoku) game
+          - System Call-based snake game
+          - A simple SQL implementation that mimics MySQL's basic features
+
+          Be gentle — these are first-year work(...). They were genuinely tough at the time.
+        url: "https://github.com/LemonDouble/Omok"

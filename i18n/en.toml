@@ -72,3 +72,51 @@ other = "Licensed under CC BY-NC-SA 4.0"
 
 [language_switcher_label]
 other = "Select language"
+
+[opensource_contributions]
+other = "Open Source Contributions"
+
+[private_label]
+other = "Private"
+
+[modal_close]
+other = "Close"
+
+[modal_original_repo]
+other = "Original"
+
+[modal_retrospective]
+other = "Retrospective"
+
+[status_dev]
+other = "In Development"
+
+[status_done]
+other = "Done"
+
+[status_done_personal]
+other = "Done (Personal)"
+
+[status_done_advancing]
+other = "Done (Iterating)"
+
+[status_running]
+other = "Active"
+
+[status_archived]
+other = "archived"
+
+[status_dropped]
+other = "Dropped"
+
+[status_default]
+other = ""
+
+[skill_level_primary]
+other = "🔥 Primary"
+
+[skill_level_secondary]
+other = "🛠️ Occasional"
+
+[skill_level_familiar]
+other = "📚 Familiar"
