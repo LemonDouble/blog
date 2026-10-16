@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Traefik on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/traefik/</link><description>Recent content in Traefik on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 07 Jan 2024 16:05:04 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/traefik/index.xml" rel="self" type="application/rss+xml"/><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 10-2. Implementing SSO with Forward Auth and OAuth2</title><link>https://blog.lemondouble.com/en/p/a63eb8199e2089b6/</link><pubDate>Sun, 07 Jan 2024 16:05:04 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/a63eb8199e2089b6/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-forward-auth"&gt;1. Forward Auth?&lt;/h3&gt;
+&lt;p&gt;When we need authentication logic, where can we implement it?&lt;/p&gt;
+&lt;p&gt;The first thought that comes to mind is implementing it directly in the application.&lt;/p&gt;
+&lt;p&gt;But what if we have many applications? Or what if some applications were not built by us — they were built by someone else, and we cannot freely implement authentication logic in them?&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 10-1. Protecting Internal Services with Basic Auth</title><link>https://blog.lemondouble.com/en/p/771435ba12d3f38c/</link><pubDate>Sun, 07 Jan 2024 12:41:24 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/771435ba12d3f38c/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The content below overlaps significantly with &lt;a href="https://lemondouble.github.io/en/p/%EC%A7%91%EC%97%90%EC%84%9C-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0-%EC%B0%A8%EB%A6%AC%EA%B8%B0-7.-sealed-secrets%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%B0%80-%EA%B4%80%EB%A6%AC--traefik-basic-auth-%EC%84%A4%EC%A0%95/#3-sealed-secrets-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-basic-auth-%EB%93%B1%EB%A1%9D%ED%95%B4%EB%B3%B4%EA%B8%B0" target="_blank" rel="noopener noreferrer"
+&gt;Section 3&lt;/a&gt;
+ of the Sealed Secrets post. If you&amp;rsquo;ve already gone through that section and are familiar with Basic Auth, feel free to skip.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id="1-introduction"&gt;1. Introduction&lt;/h3&gt;
+&lt;p&gt;When working with Kubernetes, you end up running quite a few services.&lt;/p&gt;
+&lt;p&gt;Of course, keeping things on the internal network only is the most secure option, but you might not always be able to manage your cluster from inside that network. For example, something could go wrong while you&amp;rsquo;re traveling.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 7. Secret Management with Sealed Secrets + Traefik Basic Auth Setup</title><link>https://blog.lemondouble.com/en/p/1379182f14a62e9b/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/1379182f14a62e9b/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-sealed-secrets"&gt;1. Sealed Secrets?&lt;/h3&gt;
+&lt;p&gt;We&amp;rsquo;re doing GitOps right now. That means we&amp;rsquo;re pushing all cluster-related configuration to Git.&lt;/p&gt;
+&lt;p&gt;But here&amp;rsquo;s the problem: Kubernetes Secrets have no encryption. Anyone can decode them with base64 and see the contents in plain text.&lt;/p&gt;
+&lt;p&gt;So we can&amp;rsquo;t push them to Git, right?&lt;/p&gt;
+&lt;p&gt;Sealed Secrets was created to solve exactly this problem.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The cluster holds an encryption/decryption key.&lt;/li&gt;
+&lt;li&gt;Before pushing a file to Git, the user encrypts it with the key the cluster holds.&lt;/li&gt;
+&lt;li&gt;The encrypted Secret is pushed to Git. Anyone can see it, but it can&amp;rsquo;t be decrypted, so it&amp;rsquo;s safe.&lt;/li&gt;
+&lt;li&gt;Later, when the Secret is loaded back into the cluster via something like ArgoCD, the Sealed Secret controller decrypts it automatically.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Sealed Secrets GitHub: &lt;a href="https://github.com/bitnami-labs/sealed-secrets" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 4. Traefik HTTPS Certificates and ArgoCD Setup</title><link>https://blog.lemondouble.com/en/p/f10efbc0bcc4c537/</link><pubDate>Wed, 06 Dec 2023 05:21:00 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/f10efbc0bcc4c537/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;What if we could manage our entire system through Git?
+Wouldn&amp;rsquo;t it be incredibly convenient if we declared everything we need - container types, counts, etc. - in Git, and the cluster ran exactly as declared?&lt;/p&gt;
+&lt;p&gt;We wouldn&amp;rsquo;t have to check various parts of the cluster - we could just look at the configuration values pushed to Git.&lt;/p&gt;
+&lt;p&gt;Also, if a problem occurred during deployment, couldn&amp;rsquo;t we just revert immediately? And the issues that come from multiple people managing the same cluster could be handled through PRs, just like we always do.&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>TTS on Lemon Blog</title><link>https://blog.lemondouble.com/en/categories/tts/</link><description>Recent content in TTS on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 26 Apr 2026 23:23:19 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/categories/tts/index.xml" rel="self" type="application/rss+xml"/><item><title>What I Considered When Packaging It as a Library — hayakoe Part 4</title><link>https://blog.lemondouble.com/en/p/b7791b4f6c0818da/</link><pubDate>Sun, 26 Apr 2026 23:23:19 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/b7791b4f6c0818da/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the fourth and final main entry of the hayakoe series. You can read the previous post at &lt;a href="https://blog.lemondouble.com/en/p/9a99dd816456c397/"
+&gt;Squeezing Out the Last 1% — torch.compile, Batch Inference, Pause Restoration, ARM64 - hayakoe Part 3&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;If &lt;a href="https://blog.lemondouble.com/en/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+ through &lt;a href="https://blog.lemondouble.com/en/p/9a99dd816456c397/"
+&gt;Part 3&lt;/a&gt;
+ were about the model and inference side, Part 4 organizes the considerations I had &lt;strong&gt;while packaging that result so other people (and future me) can easily reuse it&lt;/strong&gt;.&lt;/p&gt;</description></item><item><title>Squeezing Out the Last 1% — torch.compile, Batch Inference, Pause Restoration, ARM64 - hayakoe Part 3</title><link>https://blog.lemondouble.com/en/p/9a99dd816456c397/</link><pubDate>Sun, 26 Apr 2026 19:29:25 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/9a99dd816456c397/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the third main installment of the hayakoe series. You can find the previous post at &lt;a href="https://blog.lemondouble.com/en/p/137243ede98030f1/"
+&gt;Halving Memory and Boosting Speed by 1.5× - hayakoe Part 2&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;In &lt;a href="https://blog.lemondouble.com/en/p/137243ede98030f1/"
+&gt;Part 2&lt;/a&gt;
+, I made significant improvements to memory and speed via the main pillars — BERT Q8 quantization + Synthesizer ONNX conversion. But once I started actually running this model in production, I noticed a few things that felt unsatisfying, separate from the main pillars. They were the kind of work where I thought it would be nice to polish things into a more usable form.&lt;/p&gt;</description></item><item><title>Cutting Memory in Half and Speeding Up by 1.5x - hayakoe Part 2</title><link>https://blog.lemondouble.com/en/p/137243ede98030f1/</link><pubDate>Sun, 26 Apr 2026 17:40:46 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/137243ede98030f1/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the second main installment of the hayakoe series. You can read the previous post at &lt;a href="https://blog.lemondouble.com/en/p/4c2a6225a737f531/"
+&gt;hayakoe - After 2 Years, Trying Various TTS Models Again and Settling Back to VITS - Part 1&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;By the end of &lt;a href="https://blog.lemondouble.com/en/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+, I had a trained model in hand, but as I noted in the &lt;a href="https://blog.lemondouble.com/en/p/ea78fbb9b78c38ac/"
+&gt;introduction&lt;/a&gt;
+ of the series, using that model as-is came with several inconveniences — the SPOF issue where &lt;code&gt;openjtalk&lt;/code&gt; fetches dictionary data from an external server and dies along with it, the Python version upgrade blocked by that dependency, the fact that English synthesis didn&amp;rsquo;t work so I was routing through a translation layer, and the memory and speed burden I&amp;rsquo;ll cover in this post.&lt;/p&gt;</description></item><item><title>hayakoe — Two Years Later, Surveyed TTS Models Again and Still Landed on VITS — Part 1</title><link>https://blog.lemondouble.com/en/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/4c2a6225a737f531/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the first proper entry in the hayakoe series. The intro post is over at &lt;a href="https://blog.lemondouble.com/en/p/ea78fbb9b78c38ac/"
+&gt;hayakoe — Building a TTS Library That&amp;rsquo;s Easy and Fast to Use — Intro&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;One topic I touched on briefly in the intro was &amp;ldquo;I picked the model from scratch again.&amp;rdquo; In Part 1, I want to walk through that process in more detail.&lt;/p&gt;</description></item><item><title>hayakoe - Building an Easy-to-Use, Fast TTS Library - Introduction</title><link>https://blog.lemondouble.com/en/p/ea78fbb9b78c38ac/</link><pubDate>Sun, 26 Apr 2026 11:31:45 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/ea78fbb9b78c38ac/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;About two years ago, I came across a Japanese TTS library called Bert-VITS2, and I once wrote a post summarizing how to train it.&lt;/p&gt;
+&lt;p&gt;After that, I deployed the trained model on my home cluster server and had been using it casually. I forked the original code, then trimmed it down to keep only the path needed for voice synthesis.&lt;/p&gt;</description></item><item><title>Building Your Own TTS with Bert-VITS2</title><link>https://blog.lemondouble.com/en/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/9c06f7dc324b5986/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="listen-to-the-audio-were-going-to-make-japanese"&gt;Listen to the Audio We&amp;rsquo;re Going to Make (Japanese)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-tts"&gt;1. TTS?&lt;/h3&gt;
+&lt;p&gt;Text-To-Speech, as the name suggests, is software that converts text into voice data.&lt;/p&gt;
+&lt;p&gt;Once you build one, you can use it across many automations without worrying about call quotas, so my goal was to build one myself.&lt;/p&gt;
+&lt;p&gt;If I&amp;rsquo;m going to build it anyway, wouldn&amp;rsquo;t it be more fun if a character I know speaks? So I&amp;rsquo;m going to fine-tune a model with custom data and build a TTS.&lt;/p&gt;</description></item></channel></rss>

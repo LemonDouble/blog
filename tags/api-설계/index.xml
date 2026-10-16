@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>API 설계 on Lemon Blog</title><link>https://blog.lemondouble.com/tags/api-%EC%84%A4%EA%B3%84/</link><description>Recent content in API 설계 on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sun, 26 Apr 2026 23:23:19 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/api-%EC%84%A4%EA%B3%84/index.xml" rel="self" type="application/rss+xml"/><item><title>라이브러리로 패키징하면서 고민한 것들 - hayakoe Part 4</title><link>https://blog.lemondouble.com/p/b7791b4f6c0818da/</link><pubDate>Sun, 26 Apr 2026 23:23:19 +0900</pubDate><guid>https://blog.lemondouble.com/p/b7791b4f6c0818da/</guid><description>&lt;p&gt;hayakoe 시리즈의 네 번째이자 마지막 본편입니다. 이전 글은 &lt;a href="https://blog.lemondouble.com/p/9a99dd816456c397/"
+&gt;마지막 1% 까지 — torch.compile, 배치 추론, Pause 복원, ARM64 - hayakoe Part 3&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.lemondouble.com/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+ 부터 &lt;a href="https://blog.lemondouble.com/p/9a99dd816456c397/"
+&gt;Part 3&lt;/a&gt;
+ 까지는 모델·추론 측면의 작업이었다면, Part 4 는 &lt;strong&gt;그 결과물을 다른 사람도 (그리고 미래의 내가도) 쉽게 가져다 쓸 수 있게 패키징하는 과정&lt;/strong&gt; 에서 했던 고민들을 정리합니다.&lt;/p&gt;</description></item></channel></rss>

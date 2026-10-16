@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>智能家居 on Lemon Blog</title><link>https://blog.lemondouble.com/zh-cn/tags/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/</link><description>Recent content in 智能家居 on Lemon Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sun, 05 Apr 2026 18:07:00 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-cn/tags/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/index.xml" rel="self" type="application/rss+xml"/><item><title>为了在 Home Assistant 中使用 AliExpress 买的电视背光灯而逆向蓝牙协议的故事</title><link>https://blog.lemondouble.com/zh-cn/p/ble-controller-dev-story/</link><pubDate>Sun, 05 Apr 2026 18:07:00 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/ble-controller-dev-story/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/ble-controller-dev-story/backlight.webp" alt="AliExpress 商品图片"&gt;&lt;/p&gt;
+&lt;p&gt;我在 AliExpress 上买了一个电视背光灯。&lt;/p&gt;
+&lt;p&gt;其实一开始我并不在意联动不联动的问题..反正只要电视后面有光,才区区2万5千韩元&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;?没理由不买吧?&lt;/p&gt;</description></item><item><title>炫耀一下我用语音控制的AI智能家居</title><link>https://blog.lemondouble.com/zh-cn/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/30f1bf25ad8b594a/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="我做的智能家居预览注意日语音频"&gt;我做的智能家居预览（注意：日语音频）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistant"&gt;1. HomeAssistant？&lt;/h3&gt;
+&lt;p&gt;故事从一个我&lt;a href="https://blog.lemondouble.com/zh-cn/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/"
+&gt;以前写过文章&lt;/a&gt;
+的平台 HomeAssistant 开始。&lt;/p&gt;
+&lt;p&gt;对 HomeAssistant 来说，2023年是&lt;a href="https://www.home-assistant.io/blog/2022/12/20/year-of-voice/" target="_blank" rel="noopener noreferrer"
+&gt;语音之年&lt;/a&gt;
+。&lt;/p&gt;</description></item><item><title>要不要用 HomeAssistant 玩玩 IoT?</title><link>https://blog.lemondouble.com/zh-cn/p/107dcfce6eca0dd7/</link><pubDate>Sun, 21 May 2023 09:40:47 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/107dcfce6eca0dd7/</guid><description>&lt;p&gt;&lt;em&gt;注:作者居住在韩国,部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;IoT 是一个相当有趣的话题,&lt;/p&gt;
+&lt;p&gt;但入门难度较高,而且也不是很广为人知的话题,所以人们似乎也不太清楚用它能做什么。&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GitOps on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/gitops/</link><description>Recent content in GitOps on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 09 Dec 2023 09:16:13 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/gitops/index.xml" rel="self" type="application/rss+xml"/><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 5. ArgoCD GitOps Setup and Longhorn Installation</title><link>https://blog.lemondouble.com/en/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/107eed6a453d6238/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-getting-started-with-gitops"&gt;1. Getting Started with GitOps&lt;/h3&gt;
+&lt;p&gt;Now that we&amp;rsquo;ve installed ArgoCD, let&amp;rsquo;s organize our repository structure.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;re going to use the App On Apps pattern to create a clean deployment method.&lt;/p&gt;
+&lt;p&gt;Even if it doesn&amp;rsquo;t quite make sense yet, just follow along for now.&lt;/p&gt;
+&lt;p&gt;Take the empty repository we created last time and structure it like this:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;/apps
+ ㄴ/disabled
+ ㄴ/enabled
+/init
+/modules&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Then, add all the files we worked on earlier (ip_address_pool.yaml, the ArgoCD ingress.yaml, traefik-update.yaml, and values.yaml) to the init folder.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 4. Traefik HTTPS Certificates and ArgoCD Setup</title><link>https://blog.lemondouble.com/en/p/f10efbc0bcc4c537/</link><pubDate>Wed, 06 Dec 2023 05:21:00 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/f10efbc0bcc4c537/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;What if we could manage our entire system through Git?
+Wouldn&amp;rsquo;t it be incredibly convenient if we declared everything we need - container types, counts, etc. - in Git, and the cluster ran exactly as declared?&lt;/p&gt;
+&lt;p&gt;We wouldn&amp;rsquo;t have to check various parts of the cluster - we could just look at the configuration values pushed to Git.&lt;/p&gt;
+&lt;p&gt;Also, if a problem occurred during deployment, couldn&amp;rsquo;t we just revert immediately? And the issues that come from multiple people managing the same cluster could be handled through PRs, just like we always do.&lt;/p&gt;</description></item></channel></rss>

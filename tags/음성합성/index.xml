@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>음성합성 on Lemon Blog</title><link>https://blog.lemondouble.com/tags/%EC%9D%8C%EC%84%B1%ED%95%A9%EC%84%B1/</link><description>Recent content in 음성합성 on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sun, 26 Apr 2026 16:33:46 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/%EC%9D%8C%EC%84%B1%ED%95%A9%EC%84%B1/index.xml" rel="self" type="application/rss+xml"/><item><title>hayakoe - 2년만에 다시 TTS 모델 이것저것 보다 또 다시 VITS로 정착한 이야기 - Part 1</title><link>https://blog.lemondouble.com/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/p/4c2a6225a737f531/</guid><description>&lt;p&gt;hayakoe 시리즈의 첫 번째 본편입니다. 서론 격 글은 &lt;a href="https://blog.lemondouble.com/p/ea78fbb9b78c38ac/"
+&gt;hayakoe - 쓰기 편하고 빠른 TTS 라이브러리 만들기 - 서론&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;서론에서 잠깐 다뤘던 부분 중 하나가 &amp;ldquo;모델부터 다시 골랐다&amp;rdquo; 는 이야기였습니다. Part 1 에서는 그 과정을 좀 더 풀어 보려 합니다.&lt;/p&gt;</description></item><item><title>Bert-VITS2로 나만의 TTS 만들기</title><link>https://blog.lemondouble.com/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/p/9c06f7dc324b5986/</guid><description>&lt;h2 id="우리가-만들-오디오-한번-들어보기-일본어"&gt;우리가 만들 오디오 한번 들어보기 (일본어)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-tts"&gt;1. TTS?&lt;/h3&gt;
+&lt;p&gt;Text-To-Speech는 문자 그대로, 텍스트를 음성 데이터로 변경해 주는 소프트웨어를 말합니다.&lt;/p&gt;
+&lt;p&gt;한번 만들어 놓으면, 호출량 걱정 없이 많은 Automation에서 사용할 수 있기에, 직접 한번 만들어 보는 것이 목표입니다.&lt;/p&gt;</description></item></channel></rss>

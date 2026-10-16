@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GPT-SoVITS on Lemon Blog</title><link>https://blog.lemondouble.com/zh-tw/tags/gpt-sovits/</link><description>Recent content in GPT-SoVITS on Lemon Blog</description><generator>Hugo</generator><language>zh-TW</language><lastBuildDate>Sun, 26 Apr 2026 16:33:46 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-tw/tags/gpt-sovits/index.xml" rel="self" type="application/rss+xml"/><item><title>hayakoe — 時隔2年再次研究各種TTS模型，最終還是回到VITS的故事 - Part 1</title><link>https://blog.lemondouble.com/zh-tw/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/4c2a6225a737f531/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;這是 hayakoe 系列的第一篇正文。前言性質的文章可以在 &lt;a href="https://blog.lemondouble.com/zh-tw/p/ea78fbb9b78c38ac/"
+&gt;hayakoe — 打造好用又快的 TTS 函式庫 — 序論&lt;/a&gt;
+ 查看。&lt;/p&gt;
+&lt;p&gt;序論中簡單提到的一個話題是「重新選擇了模型」。Part 1 我想把這個過程講得更詳細一些。&lt;/p&gt;</description></item></channel></rss>

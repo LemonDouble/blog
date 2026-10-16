@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>音声合成 on Lemon Blog</title><link>https://blog.lemondouble.com/ja/tags/%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90/</link><description>Recent content in 音声合成 on Lemon Blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sun, 26 Apr 2026 16:33:46 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/ja/tags/%E9%9F%B3%E5%A3%B0%E5%90%88%E6%88%90/index.xml" rel="self" type="application/rss+xml"/><item><title>hayakoe — 2年ぶりにTTSモデルをいろいろ見て、結局またVITSに落ち着いた話 - Part 1</title><link>https://blog.lemondouble.com/ja/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/4c2a6225a737f531/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;hayakoe シリーズの最初の本編です。導入記事は &lt;a href="https://blog.lemondouble.com/ja/p/ea78fbb9b78c38ac/"
+&gt;hayakoe — 使いやすくて速い TTS ライブラリを作る — 序論&lt;/a&gt;
+ からどうぞ。&lt;/p&gt;</description></item><item><title>Bert-VITS2で自分だけのTTSを作る</title><link>https://blog.lemondouble.com/ja/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/9c06f7dc324b5986/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="これから作るオーディオを聴いてみよう日本語"&gt;これから作るオーディオを聴いてみよう（日本語）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-ttsとは"&gt;1. TTSとは？&lt;/h3&gt;
+&lt;p&gt;Text-To-Speechは文字通り、テキストを音声データに変換するソフトウェアのことです。&lt;/p&gt;</description></item></channel></rss>

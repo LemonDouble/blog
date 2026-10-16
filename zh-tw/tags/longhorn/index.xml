@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Longhorn on Lemon Blog</title><link>https://blog.lemondouble.com/zh-tw/tags/longhorn/</link><description>Recent content in Longhorn on Lemon Blog</description><generator>Hugo</generator><language>zh-TW</language><lastBuildDate>Sun, 10 Dec 2023 10:08:50 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-tw/tags/longhorn/index.xml" rel="self" type="application/rss+xml"/><item><title>在家用樹莓派叢集打造資料中心 - 8. 建置私有 Docker Registry 並設定 ID/密碼</title><link>https://blog.lemondouble.com/zh-tw/p/be354d4b5f50a3ee/</link><pubDate>Sun, 10 Dec 2023 10:08:50 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/be354d4b5f50a3ee/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-前言"&gt;1. 前言&lt;/h3&gt;
+&lt;p&gt;既然已經把基礎建設準備好了，我們順便也來自己建一個私有 Docker Registry 吧。&lt;/p&gt;
+&lt;p&gt;我自己的情況是，後來在這個叢集上另外部署了一些個人伺服器，為了管理這些容器映像，所以使用了私有 Registry。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 6. 新增分散式儲存並透過 Longhorn 提供服務</title><link>https://blog.lemondouble.com/zh-tw/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/615befc538a81902/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-新增並掛載新磁碟"&gt;1. 新增並掛載新磁碟&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;此部分內容與一般 SSD / HDD 掛載相同！如果遇到問題，也可以搜尋 &lt;code&gt;Ubuntu 硬碟掛載&lt;/code&gt; 等關鍵字參考操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;將 SSD 或 HDD 連接到樹莓派。&lt;/p&gt;</description></item><item><title>在家用 Raspberry Pi 叢集打造資料中心 - 5. ArgoCD GitOps 設定與 Longhorn 安裝</title><link>https://blog.lemondouble.com/zh-tw/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/107eed6a453d6238/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-開始-gitops"&gt;1. 開始 GitOps&lt;/h3&gt;
+&lt;p&gt;ArgoCD 已經安裝完成，接下來整理一下儲存庫的結構。&lt;/p&gt;
+&lt;p&gt;我們會使用 App On Apps 模式來打造一套簡潔的部署方式。&lt;/p&gt;</description></item></channel></rss>

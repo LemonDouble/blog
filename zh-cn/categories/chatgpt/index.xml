@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ChatGPT on Lemon Blog</title><link>https://blog.lemondouble.com/zh-cn/categories/chatgpt/</link><description>Recent content in ChatGPT on Lemon Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Thu, 30 Mar 2023 19:15:11 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-cn/categories/chatgpt/index.xml" rel="self" type="application/rss+xml"/><item><title>ChatGPT 能很好地解决常识问题吗？（论文解读）</title><link>https://blog.lemondouble.com/zh-cn/p/dedda5393e239315/</link><pubDate>Thu, 30 Mar 2023 19:15:11 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/dedda5393e239315/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最近，我养成了在闲暇时读论文的习惯。
+其中，我在 arxiv 上读到一篇有趣的论文，所以想整理并分享一下。&lt;/p&gt;
+&lt;p&gt;论文标题是 &lt;code&gt;ChatGPT is a Knowledgeable but Inexperienced Solver: An Investigation of Commonsense Problem in Large Language Models&lt;/code&gt; (&lt;a href="https://arxiv.org/abs/2303.16421" target="_blank" rel="noopener noreferrer"
+&gt;Arxiv Link&lt;/a&gt;
+)。&lt;/p&gt;</description></item></channel></rss>

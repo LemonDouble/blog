@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MetalLB on Lemon Blog</title><link>https://blog.lemondouble.com/ja/tags/metallb/</link><description>Recent content in MetalLB on Lemon Blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Wed, 06 Dec 2023 05:20:00 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/ja/tags/metallb/index.xml" rel="self" type="application/rss+xml"/><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを作る - 3. Helmのインストールと MetalLB によるロードバランサーの設定</title><link>https://blog.lemondouble.com/ja/p/06a98c88458a5fb7/</link><pubDate>Wed, 06 Dec 2023 05:20:00 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/06a98c88458a5fb7/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="helmのインストール"&gt;Helmのインストール&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;参考記事：&lt;a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer"
+&gt;Installing Helm&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;次のコマンドを順番に入力してHelmをインストールします。&lt;/p&gt;</description></item></channel></rss>

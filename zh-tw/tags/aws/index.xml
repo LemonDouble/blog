@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AWS on Lemon Blog</title><link>https://blog.lemondouble.com/zh-tw/tags/aws/</link><description>Recent content in AWS on Lemon Blog</description><generator>Hugo</generator><language>zh-TW</language><lastBuildDate>Sun, 04 Aug 2024 20:11:48 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-tw/tags/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>AWS SAA 當日報名考試合格心得</title><link>https://blog.lemondouble.com/zh-tw/p/d3c7a9de0a536286/</link><pubDate>Sun, 04 Aug 2024 20:11:48 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/d3c7a9de0a536286/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;AWS 有實用的認證資格。(&lt;a href="https://aws.amazon.com/certification/exams/" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+)&lt;/p&gt;
+&lt;p&gt;我一直告訴自己「總有一天要考、總有一天要考」，但再這樣下去恐怕一輩子都考不到，今天剛好沒安排，乾脆當天報名直接參加了線上考試。&lt;/p&gt;</description></item><item><title>使用 Private DNS 與 ALB 建構從 VPC 外部無法存取的 API</title><link>https://blog.lemondouble.com/zh-tw/p/acf607c351652785/</link><pubDate>Sun, 22 Jan 2023 17:12:43 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/acf607c351652785/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;建構 MSA 服務時，伺服器之間會發生非常頻繁的通訊。&lt;/p&gt;
+&lt;p&gt;舉例來說，假設有一個（高度簡化的）轉帳服務。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/acf607c351652785/2023-01-22-17-22-23.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;如果有錢包伺服器和使用者資訊伺服器，呼叫轉帳 API 時會發生上圖中的情況。&lt;/p&gt;</description></item><item><title>透過 GitHub OIDC,無須在 GitHub Actions 放置 AWS Key 即可使用 AWS 資源(免費)</title><link>https://blog.lemondouble.com/zh-tw/p/%E9%80%8F%E9%81%8E-github-oidc%E7%84%A1%E9%A0%88%E5%9C%A8-github-actions-%E6%94%BE%E7%BD%AE-aws-key-%E5%8D%B3%E5%8F%AF%E4%BD%BF%E7%94%A8-aws-%E8%B3%87%E6%BA%90%E5%85%8D%E8%B2%BB/</link><pubDate>Sun, 22 Jan 2023 11:18:50 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/%E9%80%8F%E9%81%8E-github-oidc%E7%84%A1%E9%A0%88%E5%9C%A8-github-actions-%E6%94%BE%E7%BD%AE-aws-key-%E5%8D%B3%E5%8F%AF%E4%BD%BF%E7%94%A8-aws-%E8%B3%87%E6%BA%90%E5%85%8D%E8%B2%BB/</guid><description>&lt;p&gt;&lt;em&gt;註:筆者居住於韓國,部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;要在 GitHub Actions 中使用 AWS,通常會經過以下步驟。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;進入 IAM 控制台,建立一個新使用者。&lt;/li&gt;
+&lt;li&gt;為 GitHub Actions 新增 IAM Role,採用 Programmatic access 方式,取得 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; 與 &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;在儲存庫設定中,將剛剛取得的 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; 與 &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt; 加入 GitHub Secrets。&lt;/li&gt;
+&lt;li&gt;接著在 GitHub Actions 加入如下的工作流程,即可存取 AWS 資源。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;yaml&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-yaml"&gt;- name: Configure AWS Credentials
+ uses: aws-actions/configure-aws-credentials@v1
+ with:
+ aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+ aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ aws-region: us-east-2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;如果只有一個專案,這樣管理也沒有太大問題。&lt;/p&gt;</description></item><item><title>用 AWS SSO 在家也能用上公司裡那塊熟悉的登入頁（免費）</title><link>https://blog.lemondouble.com/zh-tw/p/1c9eaebbdee2ac98/</link><pubDate>Sat, 21 Jan 2023 16:17:06 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/1c9eaebbdee2ac98/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;如果你在公司或組織裡用過 AWS，應該看過下面這種 SSO（Single Sign On）登入頁面。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/1c9eaebbdee2ac98/2023-01-21-23-57-37.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;一旦設定好，工作階段期間不必每次都輸入 id/password，使用起來相當方便。&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JVM on Lemon Blog</title><link>https://blog.lemondouble.com/zh-tw/tags/jvm/</link><description>Recent content in JVM on Lemon Blog</description><generator>Hugo</generator><language>zh-TW</language><lastBuildDate>Tue, 17 Jan 2023 14:24:20 +0000</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-tw/tags/jvm/index.xml" rel="self" type="application/rss+xml"/><item><title>我自己留著看的 Kotlin 速查表</title><link>https://blog.lemondouble.com/zh-tw/p/f8a9d54607e901b4/</link><pubDate>Tue, 17 Jan 2023 14:24:20 +0000</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/f8a9d54607e901b4/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TIP：寫數字時可以使用 &lt;code&gt;var number = 1_000L&lt;/code&gt; 這種寫法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-變數"&gt;1. 變數&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;即使是 &lt;code&gt;val&lt;/code&gt; 集合，也可以加入 element&lt;/li&gt;
+&lt;li&gt;不區分 primitive 與 reference type，但實際運算時會轉換為 primitive type 進行運算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="2-null-處理"&gt;2. Null 處理&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Safe Call（&lt;code&gt;?.&lt;/code&gt;）：不為 null 時執行，為 null 時不執行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str: String? = &amp;#34;ABC&amp;#34;
+str.length // ERROR
+str?.length // OK&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Elvis 運算子（&lt;code&gt;?:&lt;/code&gt;）：若前面的運算結果為 null，則使用後面的值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str: String? = &amp;#34;ABC&amp;#34;
+str?.length ?: 0 // str.length 或 0 
+str?.length ?: throw IllegalArgumentException(&amp;#34;null이 들어왔습니다.&amp;#34;) // 或拋出例外
+str?.length ?: return 0 // 也可用於 Early return&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;平台型別：在 Kotlin 中引入 Java 程式碼時
+&lt;ul&gt;
+&lt;li&gt;null、non-null 兩種型別都可以使用&lt;/li&gt;
+&lt;li&gt;盡量直接確認 Java 程式碼，或以 Kotlin 包裝後使用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;// 有 @Nullable、@NonNull 時會被轉換，沒有時則為平台型別
+// 在 java 中 
+private final String name; &amp;lt;&amp;lt; 沒有 Annotation 時
+
+val name : String? = javaPerson.name // OK
+val name : String = javaPerson.name // OK&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id="3-type"&gt;3. Type&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;基本 Type 轉換：基本型別之間使用 &lt;code&gt;toXX&lt;/code&gt; 之類的函式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val number1 : Int = 4
+val number2 : Long = number1.toLong()
+
+val number1 : Int? = 3 
+val number2 : Long = number1?.toLong() ?: 0L // 若是 nullable 變數則靈活處理&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;自訂 Type：利用智慧轉型（Smart Cast）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;fun printAgeIfPerson(obj: Any){
+	// is = Java 的 instanceof
+	if(obj is Person){
+			// 經過智慧轉型，obj 的 type 變為 Person
+			println(obj.age)
+	}
+}
+
+// 或者
+// 等同於 java 的 (Person) obj
+val person = obj as Person
+
+// !is、as? 等也可以使用
+// as?：整體為 null&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Any：相當於 Java 的 Object + 還包含 Primitive Type 的最頂層
+&lt;ul&gt;
+&lt;li&gt;不包含 null，若想包含 null 請使用 &lt;code&gt;Any?&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;具有 equals、hashCode、toString&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Unit：類似 void，但 Unit 本身可作為泛型的型別實參&lt;/li&gt;
+&lt;li&gt;Nothing：表示函式不會正常結束&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;fun fail(message : String): Nothing{
+	throw IllegalArgumentException(message)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;String interpolation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val person = Person(name = &amp;#34;lemon&amp;#34;, age = 20)
+val log = &amp;#34;이름 : ${person.name}, 나이 : ${person.age}&amp;#34;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;String indexing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str = &amp;#34;ABC&amp;#34;
+// 取代 Java 中的 str.get(0)
+str[1] //ok&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id="4-運算子"&gt;4. 運算子&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Kotlin 中使用 &lt;code&gt;&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt;, &lt;code&gt;≥&lt;/code&gt;, &lt;code&gt;≤&lt;/code&gt; 時會自動呼叫 &lt;code&gt;compareTo&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>

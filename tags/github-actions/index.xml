@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GitHub Actions on Lemon Blog</title><link>https://blog.lemondouble.com/tags/github-actions/</link><description>Recent content in GitHub Actions on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sun, 05 Apr 2026 21:22:00 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/github-actions/index.xml" rel="self" type="application/rss+xml"/><item><title>개인 서버 파이썬 버전 올리고 싶은데 업뎃이 멈춰서 prebuilt wheel 패키지 포크떠서 파이썬 추가 버전 지원하게 한 이야기 (Pyopenjtalk)</title><link>https://blog.lemondouble.com/p/pyopenjtalk-prebuilt/</link><pubDate>Sun, 05 Apr 2026 21:22:00 +0900</pubDate><guid>https://blog.lemondouble.com/p/pyopenjtalk-prebuilt/</guid><description>&lt;p&gt;예전에 &lt;a href="../make-vits2-tts/"
+&gt;Bert-VITS2로 TTS 만드는 글&lt;/a&gt;
+을 올린 적이 있었는데요. 그때 만들어 둔 TTS를 꽤 잘 쓰고 있었습니다. 근데.. Bert-VITS2 레포가 개발이 멈춰버렸어요.&lt;/p&gt;
+&lt;p&gt;레포가 멈추면 뭐가 문제냐면.. 파이썬 버전 올리기가 힘들고 의존성 관리가 힘듭니다.&lt;/p&gt;</description></item><item><title>Github OIDC를 이용해 Github Actions에 AWS Key 넣지 않고 AWS 리소스 사용하기 (무료)</title><link>https://blog.lemondouble.com/p/github-oidc%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-github-actions%EC%97%90-aws-key-%EB%84%A3%EC%A7%80-%EC%95%8A%EA%B3%A0-aws-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EB%AC%B4%EB%A3%8C/</link><pubDate>Sun, 22 Jan 2023 11:18:50 +0900</pubDate><guid>https://blog.lemondouble.com/p/github-oidc%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-github-actions%EC%97%90-aws-key-%EB%84%A3%EC%A7%80-%EC%95%8A%EA%B3%A0-aws-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EB%AC%B4%EB%A3%8C/</guid><description>&lt;p&gt;Github Actions에서 AWS를 사용하려면 보통 다음과 같은 과정을 거칩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;IAM 창에 들어가서 새로운 유저를 발급합니다.&lt;/li&gt;
+&lt;li&gt;Github Actions에서 IAM Role을 추가하고, Programmatic access 방식을 추가해 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt;, &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt; 를 발급받습니다.&lt;/li&gt;
+&lt;li&gt;레포지토리에 설정에서, Github Secrets에 방금 발급받은 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt;, &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt;를 추가합니다.&lt;/li&gt;
+&lt;li&gt;이후 github actions에서 다음과 같은 워크플로우를 추가한 뒤 AWS 리소스에 접근합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;yaml&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-yaml"&gt;- name: Configure AWS Credentials
+ uses: aws-actions/configure-aws-credentials@v1
+ with:
+ aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+ aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ aws-region: us-east-2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;프로젝트가 하나라면, 이런 식으로 관리해도 큰 문제가 없습니다.&lt;/p&gt;</description></item></channel></rss>

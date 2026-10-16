@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>負載平衡器 on Lemon Blog</title><link>https://blog.lemondouble.com/zh-tw/tags/%E8%B2%A0%E8%BC%89%E5%B9%B3%E8%A1%A1%E5%99%A8/</link><description>Recent content in 負載平衡器 on Lemon Blog</description><generator>Hugo</generator><language>zh-TW</language><lastBuildDate>Wed, 06 Dec 2023 05:20:00 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-tw/tags/%E8%B2%A0%E8%BC%89%E5%B9%B3%E8%A1%A1%E5%99%A8/index.xml" rel="self" type="application/rss+xml"/><item><title>在家用樹莓派叢集搭建資料中心 - 3. 安裝 Helm 並使用 MetalLB 設定負載平衡器</title><link>https://blog.lemondouble.com/zh-tw/p/06a98c88458a5fb7/</link><pubDate>Wed, 06 Dec 2023 05:20:00 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/06a98c88458a5fb7/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="安裝-helm"&gt;安裝 Helm&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;參考文章：&lt;a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer"
+&gt;Installing Helm&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;依序輸入以下指令來安裝 Helm。&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;接著設定 kubeconfig 檔案。&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+chmod 600 ~/.kube/config&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;之後在 bashrc 的最底部加入下面這一行，再使用 &lt;code&gt;source ~/.bashrc&lt;/code&gt; 立即套用 Shell 設定。&lt;/p&gt;</description></item></channel></rss>

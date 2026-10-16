@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GPU on Lemon Blog</title><link>https://blog.lemondouble.com/ja/tags/gpu/</link><description>Recent content in GPU on Lemon Blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Fri, 26 Jul 2024 20:24:29 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/ja/tags/gpu/index.xml" rel="self" type="application/rss+xml"/><item><title>Bert-VITS2で自分だけのTTSを作る</title><link>https://blog.lemondouble.com/ja/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/9c06f7dc324b5986/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="これから作るオーディオを聴いてみよう日本語"&gt;これから作るオーディオを聴いてみよう（日本語）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-ttsとは"&gt;1. TTSとは？&lt;/h3&gt;
+&lt;p&gt;Text-To-Speechは文字通り、テキストを音声データに変換するソフトウェアのことです。&lt;/p&gt;</description></item></channel></rss>

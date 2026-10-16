@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>HomeAssistant on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/homeassistant/</link><description>Recent content in HomeAssistant on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 05 Apr 2026 18:07:00 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/homeassistant/index.xml" rel="self" type="application/rss+xml"/><item><title>Reverse-Engineering the Bluetooth Protocol of an AliExpress TV Backlight to Use It with Home Assistant</title><link>https://blog.lemondouble.com/en/p/ble-controller-dev-story/</link><pubDate>Sun, 05 Apr 2026 18:07:00 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/ble-controller-dev-story/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/ble-controller-dev-story/backlight.webp" alt="AliExpress product image"&gt;&lt;/p&gt;
+&lt;p&gt;I bought a TV backlight on AliExpress.&lt;/p&gt;
+&lt;p&gt;Honestly, I didn&amp;rsquo;t really care about integrations at first.. some lights behind the TV for just $20-something? No reason not to buy it, right?&lt;/p&gt;
+&lt;p&gt;It would be nice if it could sync with what&amp;rsquo;s playing on the TV in real time, but..&lt;/p&gt;
+&lt;p&gt;If it were a Chromecast, I could just hook the HDMI line, but my TV doesn&amp;rsquo;t have anything like that — it&amp;rsquo;s an Android TV. So in theory? I could connect via ADB or install a separate app, extract pixel info from the screen edges, and sync it in real time..?&lt;/p&gt;</description></item><item><title>Showing Off My Voice-Controlled AI Smart Home</title><link>https://blog.lemondouble.com/en/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/30f1bf25ad8b594a/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="preview-of-the-smart-home-i-built-japanese-audio-warning"&gt;Preview of the smart home I built (Japanese audio warning)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistant"&gt;1. HomeAssistant?&lt;/h3&gt;
+&lt;p&gt;It all starts with a platform called HomeAssistant, which I&amp;rsquo;ve &lt;a href="https://blog.lemondouble.com/en/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/"
+&gt;written about before&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;For HomeAssistant, 2023 was the &lt;a href="https://www.home-assistant.io/blog/2022/12/20/year-of-voice/" target="_blank" rel="noopener noreferrer"
+&gt;Year of Voice&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;With AI led by LLMs becoming more sophisticated, it was the year I started thinking, &amp;ldquo;We can really build Jarvis now!&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/30f1bf25ad8b594a/image.png" alt="Jarvis"&gt;&lt;/p&gt;
+&lt;h3 id="2-so-what-do-you-actually-want-to-say"&gt;2. So what do you actually want to say?&lt;/h3&gt;
+&lt;p&gt;I just wanted to show off (&amp;hellip;).&lt;/p&gt;</description></item><item><title>How About Trying IoT with HomeAssistant?</title><link>https://blog.lemondouble.com/en/p/107dcfce6eca0dd7/</link><pubDate>Sun, 21 May 2023 09:40:47 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/107dcfce6eca0dd7/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;IoT is a pretty fun topic, but&lt;/p&gt;
+&lt;p&gt;the entry barrier is high, and it&amp;rsquo;s not very well-known, so I feel like people don&amp;rsquo;t really know what they can do with it.&lt;/p&gt;
+&lt;p&gt;Among the many platforms out there, I personally installed and use HomeAssistant (hereafter HASS). I&amp;rsquo;d like to talk about why such a platform is needed and what it can improve in our lives!&lt;/p&gt;</description></item></channel></rss>

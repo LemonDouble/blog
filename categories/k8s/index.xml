@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>K8S on Lemon Blog</title><link>https://blog.lemondouble.com/categories/k8s/</link><description>Recent content in K8S on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sun, 07 Jan 2024 16:05:04 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/categories/k8s/index.xml" rel="self" type="application/rss+xml"/><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 10-2. Forward Auth와 OAuth2를 이용한 SSO 구현</title><link>https://blog.lemondouble.com/p/a63eb8199e2089b6/</link><pubDate>Sun, 07 Jan 2024 16:05:04 +0900</pubDate><guid>https://blog.lemondouble.com/p/a63eb8199e2089b6/</guid><description>&lt;h3 id="1-forward-auth"&gt;1. Forward Auth?&lt;/h3&gt;
+&lt;p&gt;인증 로직이 필요할 떄, 우리는 인증 로직을 어디서 구현할 수 있을까요?&lt;/p&gt;
+&lt;p&gt;바로 드는 생각은, 어플리케이션에서 직접 구현하는 방법일 것입니다.&lt;/p&gt;
+&lt;p&gt;하지만 어플리케이션이 많아지면 어떨까요? 혹은, 일부 어플리케이션은 내가 만든 것이 아니라 다른 사람이 만든 어플리케이션이라, 내가 맘대로 인증 로직을 구현할 수 없다면 어떨까요?&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 10-1. Basic Auth로 내부용 서비스 보호하기</title><link>https://blog.lemondouble.com/p/771435ba12d3f38c/</link><pubDate>Sun, 07 Jan 2024 12:41:24 +0900</pubDate><guid>https://blog.lemondouble.com/p/771435ba12d3f38c/</guid><description>&lt;p&gt;&lt;strong&gt;아래 내용은 Sealed Secrets &lt;a href="https://lemondouble.github.io/p/%EC%A7%91%EC%97%90%EC%84%9C-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0-%EC%B0%A8%EB%A6%AC%EA%B8%B0-7.-sealed-secrets%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%B0%80-%EA%B4%80%EB%A6%AC--traefik-basic-auth-%EC%84%A4%EC%A0%95/#3-sealed-secrets-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-basic-auth-%EB%93%B1%EB%A1%9D%ED%95%B4%EB%B3%B4%EA%B8%B0" target="_blank" rel="noopener noreferrer"
+&gt;섹션 3&lt;/a&gt;
+과 겹치는 부분이 많습니다. 해당 섹션을 진행하셨고, Basic Auth에 대해 잘 아신다면 스킵해도 무방합니다.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id="1-서론"&gt;1. 서론&lt;/h3&gt;
+&lt;p&gt;쿠버네티스를 하다 보면, 이런저런 서비스를 많이 올리게 됩니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 9. CloudNativePG로 쿠버네티스에서 데이터베이스 운용하기</title><link>https://blog.lemondouble.com/p/a4ded8cced5f045c/</link><pubDate>Tue, 12 Dec 2023 22:09:10 +0900</pubDate><guid>https://blog.lemondouble.com/p/a4ded8cced5f045c/</guid><description>&lt;h3 id="서론"&gt;서론&lt;/h3&gt;
+&lt;p&gt;데이터베이스는 관리하기 까다롭습니다.&lt;/p&gt;
+&lt;p&gt;다른 Pod과 다르게 데이터 보관, 백업, 관리에도 신경써야 하고, Failover 및 성능에도 관심을 가져야 합니다.&lt;/p&gt;
+&lt;p&gt;그래서 다른 워크로드는 쿠버네티스 클러스터에서 돌리더라도, DB만큼은 AWS RDS등의 관리형 시스템이나 별도 인스턴스를 사용하는 경우도 흔한 것으로 알고 있습니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 8-1. Docker Registry UI 설정 및 Registry GC 사용법</title><link>https://blog.lemondouble.com/p/a68cc3e1f5e8a95b/</link><pubDate>Sun, 10 Dec 2023 11:39:46 +0900</pubDate><guid>https://blog.lemondouble.com/p/a68cc3e1f5e8a95b/</guid><description>&lt;h3 id="1-private-registry는-좋은데-관리하기가-너무-까다로워요"&gt;1. Private Registry는 좋은데, 관리하기가 너무 까다로워요!&lt;/h3&gt;
+&lt;p&gt;CLI를 엄청 좋아하는 사람도 있지만.. 저는 커맨드 외우는걸 정말 못 하는 고로.. GUI와 기록을 선호합니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 8. Private Docker Registry 및 접속 ID/PW 설정하기</title><link>https://blog.lemondouble.com/p/be354d4b5f50a3ee/</link><pubDate>Sun, 10 Dec 2023 10:08:50 +0900</pubDate><guid>https://blog.lemondouble.com/p/be354d4b5f50a3ee/</guid><description>&lt;h3 id="1-서론"&gt;1. 서론&lt;/h3&gt;
+&lt;p&gt;이왕 인프라 갖춘거 Private Docker Registry도 직접 만들어 봅시다.&lt;/p&gt;
+&lt;p&gt;저의 경우는, 이후 이 클러스터에 별도로 개인 서버들을 올려 사용하고 있어 해당 컨테이너를 관리하기 위해 Private Registry를 사용하고 있습니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 7-1. Web UI를 통해 간편하게 Sealed Secrets 만들기</title><link>https://blog.lemondouble.com/p/567b4c177bdb8401/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/p/567b4c177bdb8401/</guid><description>&lt;h3 id="1-서론"&gt;1. 서론&lt;/h3&gt;
+&lt;p&gt;Sealed Secrets 다 괜찮은데, 문제가 하나 있다면 매번 설정할 떄마다 Secrets.yaml 만들고&amp;hellip; CLI로 Sealed Secrets로 변경한 뒤에.. Git에 추가하는게 끝내주게 귀찮다는 점입니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 7. Sealed Secrets를 통한 비밀 관리 + Traefik Basic Auth 설정</title><link>https://blog.lemondouble.com/p/1379182f14a62e9b/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/p/1379182f14a62e9b/</guid><description>&lt;h3 id="1-sealed-secrets"&gt;1. Sealed Secrets?&lt;/h3&gt;
+&lt;p&gt;저희는 지금 GitOps를 하고 있습니다. 즉 Git에 클러스터와 관련된 모든 설정을 올리고 있습니다.&lt;/p&gt;
+&lt;p&gt;그런?데? 쿠버네티스 Secret은? 암호화 기능이 없습니다. base64로 디코딩하면 누구나 평문으로 내용을 볼 수 있습니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 6. 분산 스토리지 추가 및 Longhorn을 통한 제공하기</title><link>https://blog.lemondouble.com/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/p/615befc538a81902/</guid><description>&lt;h3 id="1-신규-디스크-추가-및-마운트"&gt;1. 신규 디스크 추가 및 마운트&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;해당 내용은 일반적인 SSD / HDD 마운트와 동일합니다! 뭔가 잘 안 된다면, &lt;code&gt;우분투 하드디스크 마운트&lt;/code&gt; 등을 검색하셔서 따라해도 무방합니다!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;SSD, HDD를 라즈베리 파이에 연결합니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 5. ArgoCD GitOps 설정 및 Longhorn 설치</title><link>https://blog.lemondouble.com/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/p/107eed6a453d6238/</guid><description>&lt;h3 id="1-gitops-시작"&gt;1. GitOps 시작&lt;/h3&gt;
+&lt;p&gt;이제 ArgoCD를 설치하였으니, 리포지토리 구조를 정리해 봅시다.&lt;/p&gt;
+&lt;p&gt;저희는 App On Apps 패턴을 이용하여 간결한 배포 방법을 만들어 볼 것입니다.&lt;/p&gt;
+&lt;p&gt;이해가 되지 않더라도 일단 따라와 주세요.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 4. Traefik https 인증 및 ArgoCD 설정</title><link>https://blog.lemondouble.com/p/f10efbc0bcc4c537/</link><pubDate>Wed, 06 Dec 2023 05:21:00 +0900</pubDate><guid>https://blog.lemondouble.com/p/f10efbc0bcc4c537/</guid><description>&lt;p&gt;만약, 시스템을 Git을 통해 관리하면 어떨까요?
+내가 필요한 컨테이너 종류, 개수 등을 전부 Git에 선언하고 Git에 선언되어 있는 그대로 클러스터가 운영된다면, 굉장히 편하지 않을까요?&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 3. Helm 설치 및 MetalLB로 로드 밸런서 설정하기</title><link>https://blog.lemondouble.com/p/06a98c88458a5fb7/</link><pubDate>Wed, 06 Dec 2023 05:20:00 +0900</pubDate><guid>https://blog.lemondouble.com/p/06a98c88458a5fb7/</guid><description>&lt;h3 id="helm-설치"&gt;Helm 설치&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;참고한 글 : &lt;a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer"
+&gt;Installing Helm&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;다음 커맨드를 차례로 입력하여 Helm을 설치합니다.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;이후, kubeconfig 파일을 설정해 줍니다.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+chmod 600 ~/.kube/config&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;이후 bashrc 제일 밑에 다음 한 줄을 추가한 후, &lt;code&gt;source ~/.bashrc&lt;/code&gt; 로 Shell 설정을 즉시 적용시킵니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 2. 클러스터 초기 설정 편</title><link>https://blog.lemondouble.com/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/p/f4efced2e8d5b1d8/</guid><description>&lt;h3 id="하드웨어"&gt;하드웨어&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="하드웨어 구성 도식"&gt;&lt;/p&gt;
+&lt;p&gt;위 그림을 참고하여, 하드웨어 구성을 시켜 줍니다.&lt;/p&gt;
+&lt;p&gt;컴퓨터를 사용하는 집이라면 아마 높은 확률로 라우터와 기본 데스크탑은 설정되어 있을테니, 위 도식에서 초록색 부분만 추가하시면 됩니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 1. 하드웨어 편</title><link>https://blog.lemondouble.com/p/20ae99fa945edf10/</link><pubDate>Sun, 03 Dec 2023 14:54:33 +0900</pubDate><guid>https://blog.lemondouble.com/p/20ae99fa945edf10/</guid><description>&lt;p&gt;첫 시간은 하드웨어 시간입니다! 간단한 것부터 조금 복잡한 이야기부터, 빠르게 시작해 봅시다!&lt;/p&gt;
+&lt;h3 id="1-sbc-single-board-computer"&gt;1. SBC (Single Board Computer)&lt;/h3&gt;
+&lt;p&gt;역시 제일 중요한건 SBC겠죠?&lt;/p&gt;
+&lt;p&gt;개인적으로는 당X마켓에 알림 걸어놓고, &lt;strong&gt;Raspberry PI 4B 4GB 모델 or 8GB&lt;/strong&gt; 모델이 올라올 때마다 하나씩 맞추시는걸 추천합니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 서론</title><link>https://blog.lemondouble.com/p/d42387934c57aa25/</link><pubDate>Sun, 03 Dec 2023 13:24:05 +0900</pubDate><guid>https://blog.lemondouble.com/p/d42387934c57aa25/</guid><description>&lt;h3 id="처음-라즈베리-파이-클러스터를-구축한-지-대략-300일이-지났습니다"&gt;처음 라즈베리 파이 클러스터를 구축한 지 대략 300일이 지났습니다.&lt;/h3&gt;
+&lt;p&gt;계기는 사실 그렇게 크진 않았습니다.&lt;/p&gt;
+&lt;p&gt;저는 매일 아침 &lt;a href="https://news.hada.io/" target="_blank" rel="noopener noreferrer"
+&gt;GeekNews&lt;/a&gt;
+ 라는 뉴스 큐레이팅 서비스를 보며 출근하는데, 그 중 &lt;a href="https://news.hada.io/topic?id=8306" target="_blank" rel="noopener noreferrer"
+&gt;Chick-Fil-A 의 Edge Computing 기술 아키텍처 : Enterprise Restaurant Compute&lt;/a&gt;
+ 라는 글이 눈에 보였습니다.&lt;/p&gt;</description></item><item><title>내가 보려고 쓰는 K8S 리소스 정리</title><link>https://blog.lemondouble.com/p/f13e7c85c56b2c7c/</link><pubDate>Thu, 26 Jan 2023 23:15:42 +0900</pubDate><guid>https://blog.lemondouble.com/p/f13e7c85c56b2c7c/</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; -o&lt;/code&gt; 또는 &lt;code&gt;k describe pod &amp;lt;podname&amp;gt;&lt;/code&gt;: 상태 정보 자세히 확인&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k logs -f &amp;lt;podname&amp;gt; -c &amp;lt;container-name&amp;gt;&lt;/code&gt; : 로그 확인&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; --show-lables&lt;/code&gt; : Label 정보 확인&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-pod"&gt;1. Pod&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;하나 이상의 Container의 집합&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;실행의 최소 단위&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;특징&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;여러 Container로 구성되었다면, 항상 동일 Node에 할당&lt;/li&gt;
+&lt;li&gt;고유 Pod IP 할당 (Pod당 하나)&lt;/li&gt;
+&lt;li&gt;Pod 내의 Container들은 네트워크 공유, 따라서 Localhost로 접근 가능&lt;/li&gt;
+&lt;li&gt;Volume 공유&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pod이 가질 수 있는 State&lt;/p&gt;</description></item><item><title>라즈베리 파이 + Ubuntu 22.04에 K3S 설치해서 쓰기</title><link>https://blog.lemondouble.com/p/fe0cac9de367fc18/</link><pubDate>Wed, 18 Jan 2023 11:56:02 +0000</pubDate><guid>https://blog.lemondouble.com/p/fe0cac9de367fc18/</guid><description>&lt;p&gt;요즘 되게 핫하면서도 어려운 기술이 쿠버네티스인 것 같습니다.&lt;/p&gt;
+&lt;p&gt;저는 학생때부터 나름 꽤 오래(?) 홈 서버를 운영했었는데, 운영을 하면서 꽤 많은 힘든 일을 마주했습니다.&lt;/p&gt;</description></item></channel></rss>

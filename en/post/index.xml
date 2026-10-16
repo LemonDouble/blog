@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Lemon Blog</title><link>https://blog.lemondouble.com/en/post/</link><description>Recent content in Posts on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 26 Apr 2026 23:23:19 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/post/index.xml" rel="self" type="application/rss+xml"/><item><title>What I Considered When Packaging It as a Library — hayakoe Part 4</title><link>https://blog.lemondouble.com/en/p/b7791b4f6c0818da/</link><pubDate>Sun, 26 Apr 2026 23:23:19 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/b7791b4f6c0818da/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the fourth and final main entry of the hayakoe series. You can read the previous post at &lt;a href="https://blog.lemondouble.com/en/p/9a99dd816456c397/"
+&gt;Squeezing Out the Last 1% — torch.compile, Batch Inference, Pause Restoration, ARM64 - hayakoe Part 3&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;If &lt;a href="https://blog.lemondouble.com/en/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+ through &lt;a href="https://blog.lemondouble.com/en/p/9a99dd816456c397/"
+&gt;Part 3&lt;/a&gt;
+ were about the model and inference side, Part 4 organizes the considerations I had &lt;strong&gt;while packaging that result so other people (and future me) can easily reuse it&lt;/strong&gt;.&lt;/p&gt;</description></item><item><title>Squeezing Out the Last 1% — torch.compile, Batch Inference, Pause Restoration, ARM64 - hayakoe Part 3</title><link>https://blog.lemondouble.com/en/p/9a99dd816456c397/</link><pubDate>Sun, 26 Apr 2026 19:29:25 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/9a99dd816456c397/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the third main installment of the hayakoe series. You can find the previous post at &lt;a href="https://blog.lemondouble.com/en/p/137243ede98030f1/"
+&gt;Halving Memory and Boosting Speed by 1.5× - hayakoe Part 2&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;In &lt;a href="https://blog.lemondouble.com/en/p/137243ede98030f1/"
+&gt;Part 2&lt;/a&gt;
+, I made significant improvements to memory and speed via the main pillars — BERT Q8 quantization + Synthesizer ONNX conversion. But once I started actually running this model in production, I noticed a few things that felt unsatisfying, separate from the main pillars. They were the kind of work where I thought it would be nice to polish things into a more usable form.&lt;/p&gt;</description></item><item><title>Cutting Memory in Half and Speeding Up by 1.5x - hayakoe Part 2</title><link>https://blog.lemondouble.com/en/p/137243ede98030f1/</link><pubDate>Sun, 26 Apr 2026 17:40:46 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/137243ede98030f1/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the second main installment of the hayakoe series. You can read the previous post at &lt;a href="https://blog.lemondouble.com/en/p/4c2a6225a737f531/"
+&gt;hayakoe - After 2 Years, Trying Various TTS Models Again and Settling Back to VITS - Part 1&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;By the end of &lt;a href="https://blog.lemondouble.com/en/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+, I had a trained model in hand, but as I noted in the &lt;a href="https://blog.lemondouble.com/en/p/ea78fbb9b78c38ac/"
+&gt;introduction&lt;/a&gt;
+ of the series, using that model as-is came with several inconveniences — the SPOF issue where &lt;code&gt;openjtalk&lt;/code&gt; fetches dictionary data from an external server and dies along with it, the Python version upgrade blocked by that dependency, the fact that English synthesis didn&amp;rsquo;t work so I was routing through a translation layer, and the memory and speed burden I&amp;rsquo;ll cover in this post.&lt;/p&gt;</description></item><item><title>hayakoe — Two Years Later, Surveyed TTS Models Again and Still Landed on VITS — Part 1</title><link>https://blog.lemondouble.com/en/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/4c2a6225a737f531/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the first proper entry in the hayakoe series. The intro post is over at &lt;a href="https://blog.lemondouble.com/en/p/ea78fbb9b78c38ac/"
+&gt;hayakoe — Building a TTS Library That&amp;rsquo;s Easy and Fast to Use — Intro&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;One topic I touched on briefly in the intro was &amp;ldquo;I picked the model from scratch again.&amp;rdquo; In Part 1, I want to walk through that process in more detail.&lt;/p&gt;</description></item><item><title>hayakoe - Building an Easy-to-Use, Fast TTS Library - Introduction</title><link>https://blog.lemondouble.com/en/p/ea78fbb9b78c38ac/</link><pubDate>Sun, 26 Apr 2026 11:31:45 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/ea78fbb9b78c38ac/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;About two years ago, I came across a Japanese TTS library called Bert-VITS2, and I once wrote a post summarizing how to train it.&lt;/p&gt;
+&lt;p&gt;After that, I deployed the trained model on my home cluster server and had been using it casually. I forked the original code, then trimmed it down to keep only the path needed for voice synthesis.&lt;/p&gt;</description></item><item><title>Forking a prebuilt wheel package to support newer Python versions because the upstream stopped updating (Pyopenjtalk)</title><link>https://blog.lemondouble.com/en/p/pyopenjtalk-prebuilt/</link><pubDate>Sun, 05 Apr 2026 21:22:00 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/pyopenjtalk-prebuilt/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A while back I wrote a &lt;a href="../make-vits2-tts/"
+&gt;post about building a TTS with Bert-VITS2&lt;/a&gt;
+. I&amp;rsquo;ve been using that TTS pretty happily ever since. But… the Bert-VITS2 repo development just stopped.&lt;/p&gt;
+&lt;p&gt;When a repo stops getting updates, what&amp;rsquo;s the problem? Bumping Python versions and managing dependencies becomes painful.&lt;/p&gt;
+&lt;p&gt;In my case, I have an &amp;ldquo;ML Server&amp;rdquo; on my home server where I&amp;rsquo;ve crammed all my ML-related stuff. So I&amp;rsquo;ve installed all sorts of things on it… and when there&amp;rsquo;s a stale repo like that, conflicts keep popping up whenever I try to install something. For example, numpy 2.0…&lt;/p&gt;</description></item><item><title>Reverse-Engineering the Bluetooth Protocol of an AliExpress TV Backlight to Use It with Home Assistant</title><link>https://blog.lemondouble.com/en/p/ble-controller-dev-story/</link><pubDate>Sun, 05 Apr 2026 18:07:00 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/ble-controller-dev-story/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/ble-controller-dev-story/backlight.webp" alt="AliExpress product image"&gt;&lt;/p&gt;
+&lt;p&gt;I bought a TV backlight on AliExpress.&lt;/p&gt;
+&lt;p&gt;Honestly, I didn&amp;rsquo;t really care about integrations at first.. some lights behind the TV for just $20-something? No reason not to buy it, right?&lt;/p&gt;
+&lt;p&gt;It would be nice if it could sync with what&amp;rsquo;s playing on the TV in real time, but..&lt;/p&gt;
+&lt;p&gt;If it were a Chromecast, I could just hook the HDMI line, but my TV doesn&amp;rsquo;t have anything like that — it&amp;rsquo;s an Android TV. So in theory? I could connect via ADB or install a separate app, extract pixel info from the screen edges, and sync it in real time..?&lt;/p&gt;</description></item><item><title>AWS SAA Same-Day Exam Pass Review</title><link>https://blog.lemondouble.com/en/p/d3c7a9de0a536286/</link><pubDate>Sun, 04 Aug 2024 20:11:48 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/d3c7a9de0a536286/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;AWS offers practical certifications. (&lt;a href="https://aws.amazon.com/certification/exams/" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+)&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;d been telling myself &amp;ldquo;someday, someday I&amp;rsquo;ll get it&amp;hellip;&amp;rdquo; for ages. Worried I&amp;rsquo;d never actually do it, I figured since I had no plans today, I&amp;rsquo;d just sign up on the spot and take it as an online exam.&lt;/p&gt;
+&lt;p&gt;There are tons of articles out there about what this certification is, why it&amp;rsquo;s worth getting, and how to study for it, so I&amp;rsquo;ll leave that to other blogs. I just want to summarize the application process / things to watch out for / a quick review based on 2024.&lt;/p&gt;</description></item><item><title>Showing Off My Voice-Controlled AI Smart Home</title><link>https://blog.lemondouble.com/en/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/30f1bf25ad8b594a/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="preview-of-the-smart-home-i-built-japanese-audio-warning"&gt;Preview of the smart home I built (Japanese audio warning)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistant"&gt;1. HomeAssistant?&lt;/h3&gt;
+&lt;p&gt;It all starts with a platform called HomeAssistant, which I&amp;rsquo;ve &lt;a href="https://blog.lemondouble.com/en/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/"
+&gt;written about before&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;For HomeAssistant, 2023 was the &lt;a href="https://www.home-assistant.io/blog/2022/12/20/year-of-voice/" target="_blank" rel="noopener noreferrer"
+&gt;Year of Voice&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;With AI led by LLMs becoming more sophisticated, it was the year I started thinking, &amp;ldquo;We can really build Jarvis now!&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/30f1bf25ad8b594a/image.png" alt="Jarvis"&gt;&lt;/p&gt;
+&lt;h3 id="2-so-what-do-you-actually-want-to-say"&gt;2. So what do you actually want to say?&lt;/h3&gt;
+&lt;p&gt;I just wanted to show off (&amp;hellip;).&lt;/p&gt;</description></item><item><title>Building Your Own TTS with Bert-VITS2</title><link>https://blog.lemondouble.com/en/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/9c06f7dc324b5986/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="listen-to-the-audio-were-going-to-make-japanese"&gt;Listen to the Audio We&amp;rsquo;re Going to Make (Japanese)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-tts"&gt;1. TTS?&lt;/h3&gt;
+&lt;p&gt;Text-To-Speech, as the name suggests, is software that converts text into voice data.&lt;/p&gt;
+&lt;p&gt;Once you build one, you can use it across many automations without worrying about call quotas, so my goal was to build one myself.&lt;/p&gt;
+&lt;p&gt;If I&amp;rsquo;m going to build it anyway, wouldn&amp;rsquo;t it be more fun if a character I know speaks? So I&amp;rsquo;m going to fine-tune a model with custom data and build a TTS.&lt;/p&gt;</description></item><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 10-2. Implementing SSO with Forward Auth and OAuth2</title><link>https://blog.lemondouble.com/en/p/a63eb8199e2089b6/</link><pubDate>Sun, 07 Jan 2024 16:05:04 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/a63eb8199e2089b6/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-forward-auth"&gt;1. Forward Auth?&lt;/h3&gt;
+&lt;p&gt;When we need authentication logic, where can we implement it?&lt;/p&gt;
+&lt;p&gt;The first thought that comes to mind is implementing it directly in the application.&lt;/p&gt;
+&lt;p&gt;But what if we have many applications? Or what if some applications were not built by us — they were built by someone else, and we cannot freely implement authentication logic in them?&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 10-1. Protecting Internal Services with Basic Auth</title><link>https://blog.lemondouble.com/en/p/771435ba12d3f38c/</link><pubDate>Sun, 07 Jan 2024 12:41:24 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/771435ba12d3f38c/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The content below overlaps significantly with &lt;a href="https://lemondouble.github.io/en/p/%EC%A7%91%EC%97%90%EC%84%9C-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0-%EC%B0%A8%EB%A6%AC%EA%B8%B0-7.-sealed-secrets%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%B0%80-%EA%B4%80%EB%A6%AC--traefik-basic-auth-%EC%84%A4%EC%A0%95/#3-sealed-secrets-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-basic-auth-%EB%93%B1%EB%A1%9D%ED%95%B4%EB%B3%B4%EA%B8%B0" target="_blank" rel="noopener noreferrer"
+&gt;Section 3&lt;/a&gt;
+ of the Sealed Secrets post. If you&amp;rsquo;ve already gone through that section and are familiar with Basic Auth, feel free to skip.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id="1-introduction"&gt;1. Introduction&lt;/h3&gt;
+&lt;p&gt;When working with Kubernetes, you end up running quite a few services.&lt;/p&gt;
+&lt;p&gt;Of course, keeping things on the internal network only is the most secure option, but you might not always be able to manage your cluster from inside that network. For example, something could go wrong while you&amp;rsquo;re traveling.&lt;/p&gt;</description></item><item><title>Setting Up a Home Datacenter with a Raspberry Pi Cluster - 9. Running Databases on Kubernetes with CloudNativePG</title><link>https://blog.lemondouble.com/en/p/a4ded8cced5f045c/</link><pubDate>Tue, 12 Dec 2023 22:09:10 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/a4ded8cced5f045c/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="introduction"&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;Databases are tricky to manage.&lt;/p&gt;
+&lt;p&gt;Unlike other Pods, you have to worry about data storage, backups, and management, and you also have to pay attention to failover and performance.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s why I&amp;rsquo;ve heard it&amp;rsquo;s common to use a managed system like AWS RDS or a separate instance just for the DB, even if you run other workloads on a Kubernetes cluster.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 8-1. Setting Up Docker Registry UI and Using Registry GC</title><link>https://blog.lemondouble.com/en/p/a68cc3e1f5e8a95b/</link><pubDate>Sun, 10 Dec 2023 11:39:46 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/a68cc3e1f5e8a95b/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-private-registry-is-great-but-its-a-hassle-to-manage"&gt;1. Private Registry is great, but it&amp;rsquo;s a hassle to manage!&lt;/h3&gt;
+&lt;p&gt;Some people love the CLI, but I&amp;rsquo;m really bad at memorizing commands, so I prefer GUIs and visible records.&lt;/p&gt;
+&lt;p&gt;Docker Registry can be managed via CLI, but to make things a bit easier, I use &lt;a href="https://github.com/klausmeyer/docker-registry-browser" target="_blank" rel="noopener noreferrer"
+&gt;docker-registry-browser&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;re going to set up a GUI that looks something like this.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 8. Setting Up a Private Docker Registry with ID/Password Auth</title><link>https://blog.lemondouble.com/en/p/be354d4b5f50a3ee/</link><pubDate>Sun, 10 Dec 2023 10:08:50 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/be354d4b5f50a3ee/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-introduction"&gt;1. Introduction&lt;/h3&gt;
+&lt;p&gt;Since we already have the infrastructure, let&amp;rsquo;s go ahead and build our own Private Docker Registry too.&lt;/p&gt;
+&lt;p&gt;In my case, I run several personal servers on this cluster, so I use a Private Registry to manage those container images.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re willing to pay for Dockerhub or if Public Images are enough for you, you don&amp;rsquo;t need to follow this guide.&lt;/p&gt;</description></item><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 7-1. Easily Creating Sealed Secrets via Web UI</title><link>https://blog.lemondouble.com/en/p/567b4c177bdb8401/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/567b4c177bdb8401/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-introduction"&gt;1. Introduction&lt;/h3&gt;
+&lt;p&gt;Sealed Secrets is great overall, but it has one annoying issue: every time I configure something, I have to create a Secrets.yaml, convert it to Sealed Secrets via the CLI, and then add it to Git. It&amp;rsquo;s incredibly tedious.&lt;/p&gt;
+&lt;p&gt;To make this a bit easier, I&amp;rsquo;m going to build a simple Web UI using &lt;a href="https://github.com/Jaydee94/kubeseal-webgui" target="_blank" rel="noopener noreferrer"
+&gt;kubeseal-webgui&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/567b4c177bdb8401/image.png" alt="Kubeseal webui — you can simply set up Secrets in the web and get Sealed Secrets back."&gt;&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 7. Secret Management with Sealed Secrets + Traefik Basic Auth Setup</title><link>https://blog.lemondouble.com/en/p/1379182f14a62e9b/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/1379182f14a62e9b/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-sealed-secrets"&gt;1. Sealed Secrets?&lt;/h3&gt;
+&lt;p&gt;We&amp;rsquo;re doing GitOps right now. That means we&amp;rsquo;re pushing all cluster-related configuration to Git.&lt;/p&gt;
+&lt;p&gt;But here&amp;rsquo;s the problem: Kubernetes Secrets have no encryption. Anyone can decode them with base64 and see the contents in plain text.&lt;/p&gt;
+&lt;p&gt;So we can&amp;rsquo;t push them to Git, right?&lt;/p&gt;
+&lt;p&gt;Sealed Secrets was created to solve exactly this problem.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The cluster holds an encryption/decryption key.&lt;/li&gt;
+&lt;li&gt;Before pushing a file to Git, the user encrypts it with the key the cluster holds.&lt;/li&gt;
+&lt;li&gt;The encrypted Secret is pushed to Git. Anyone can see it, but it can&amp;rsquo;t be decrypted, so it&amp;rsquo;s safe.&lt;/li&gt;
+&lt;li&gt;Later, when the Secret is loaded back into the cluster via something like ArgoCD, the Sealed Secret controller decrypts it automatically.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Sealed Secrets GitHub: &lt;a href="https://github.com/bitnami-labs/sealed-secrets" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+&lt;/p&gt;</description></item><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 6. Adding Distributed Storage and Serving It via Longhorn</title><link>https://blog.lemondouble.com/en/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/615befc538a81902/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-add-and-mount-a-new-disk"&gt;1. Add and Mount a New Disk&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;This part is the same as a regular SSD / HDD mount! If something doesn&amp;rsquo;t work, feel free to search for &lt;code&gt;Ubuntu hard disk mount&lt;/code&gt; and follow along.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Connect the SSD or HDD to the Raspberry Pi.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;code&gt;sudo fdisk -l&lt;/code&gt; to find the name of the mounted hard disk. In my case, it&amp;rsquo;s &lt;code&gt;/dev/sda&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 5. ArgoCD GitOps Setup and Longhorn Installation</title><link>https://blog.lemondouble.com/en/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/107eed6a453d6238/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-getting-started-with-gitops"&gt;1. Getting Started with GitOps&lt;/h3&gt;
+&lt;p&gt;Now that we&amp;rsquo;ve installed ArgoCD, let&amp;rsquo;s organize our repository structure.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;re going to use the App On Apps pattern to create a clean deployment method.&lt;/p&gt;
+&lt;p&gt;Even if it doesn&amp;rsquo;t quite make sense yet, just follow along for now.&lt;/p&gt;
+&lt;p&gt;Take the empty repository we created last time and structure it like this:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;/apps
+ ㄴ/disabled
+ ㄴ/enabled
+/init
+/modules&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Then, add all the files we worked on earlier (ip_address_pool.yaml, the ArgoCD ingress.yaml, traefik-update.yaml, and values.yaml) to the init folder.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 4. Traefik HTTPS Certificates and ArgoCD Setup</title><link>https://blog.lemondouble.com/en/p/f10efbc0bcc4c537/</link><pubDate>Wed, 06 Dec 2023 05:21:00 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/f10efbc0bcc4c537/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;What if we could manage our entire system through Git?
+Wouldn&amp;rsquo;t it be incredibly convenient if we declared everything we need - container types, counts, etc. - in Git, and the cluster ran exactly as declared?&lt;/p&gt;
+&lt;p&gt;We wouldn&amp;rsquo;t have to check various parts of the cluster - we could just look at the configuration values pushed to Git.&lt;/p&gt;
+&lt;p&gt;Also, if a problem occurred during deployment, couldn&amp;rsquo;t we just revert immediately? And the issues that come from multiple people managing the same cluster could be handled through PRs, just like we always do.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 3. Installing Helm and Setting Up a Load Balancer with MetalLB</title><link>https://blog.lemondouble.com/en/p/06a98c88458a5fb7/</link><pubDate>Wed, 06 Dec 2023 05:20:00 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/06a98c88458a5fb7/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="installing-helm"&gt;Installing Helm&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Reference: &lt;a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer"
+&gt;Installing Helm&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Run the following commands in order to install Helm.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Next, configure the kubeconfig file.&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+chmod 600 ~/.kube/config&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Then add the following line to the bottom of your &lt;code&gt;bashrc&lt;/code&gt;, and run &lt;code&gt;source ~/.bashrc&lt;/code&gt; to apply the shell settings immediately.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - 2. Initial Cluster Setup</title><link>https://blog.lemondouble.com/en/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/f4efced2e8d5b1d8/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="hardware"&gt;Hardware&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="Hardware configuration diagram"&gt;&lt;/p&gt;
+&lt;p&gt;Set up your hardware as shown in the diagram above.&lt;/p&gt;
+&lt;p&gt;If you already use a computer at home, you most likely already have a router and a desktop set up, so you only need to add the parts marked in green.&lt;/p&gt;
+&lt;p&gt;If you bought an unmanaged switch hub online, just plug all of the Raspberry Pi LAN cables into the switch hub, then run a single internet cable from your router to the switch.&lt;/p&gt;</description></item><item><title>Building a Home Datacenter with a Raspberry Pi Cluster - Part 1: Hardware</title><link>https://blog.lemondouble.com/en/p/20ae99fa945edf10/</link><pubDate>Sun, 03 Dec 2023 14:54:33 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/20ae99fa945edf10/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The first session is all about hardware! Let&amp;rsquo;s start with the simple stuff and quickly move on to the more complex topics.&lt;/p&gt;
+&lt;h3 id="1-sbc-single-board-computer"&gt;1. SBC (Single Board Computer)&lt;/h3&gt;
+&lt;p&gt;The most important thing is, of course, the SBC.&lt;/p&gt;
+&lt;p&gt;Personally, I recommend setting alerts on Danggeun Market&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt; and grabbing &lt;strong&gt;Raspberry Pi 4B 4GB or 8GB&lt;/strong&gt; models one by one whenever they pop up.&lt;/p&gt;</description></item><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - Introduction</title><link>https://blog.lemondouble.com/en/p/d42387934c57aa25/</link><pubDate>Sun, 03 Dec 2023 13:24:05 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/d42387934c57aa25/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="about-300-days-have-passed-since-i-first-built-my-raspberry-pi-cluster"&gt;About 300 days have passed since I first built my Raspberry Pi cluster.&lt;/h3&gt;
+&lt;p&gt;The trigger wasn&amp;rsquo;t really that big a deal.&lt;/p&gt;
+&lt;p&gt;Every morning on my way to work, I read a news curation service called &lt;a href="https://news.hada.io/" target="_blank" rel="noopener noreferrer"
+&gt;GeekNews&lt;/a&gt;
+&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;, and one day an article titled &lt;a href="https://news.hada.io/topic?id=8306" target="_blank" rel="noopener noreferrer"
+&gt;Chick-Fil-A&amp;rsquo;s Edge Computing Architecture: Enterprise Restaurant Compute&lt;/a&gt;
+ caught my eye.&lt;/p&gt;
+&lt;p&gt;After that, the thought of &amp;ldquo;even Chick-Fil-A runs Kubernetes, so as a server engineer, shouldn&amp;rsquo;t I have at least one cluster of my own to manage?&amp;rdquo; was where it all began.&lt;/p&gt;</description></item><item><title>How About Trying IoT with HomeAssistant?</title><link>https://blog.lemondouble.com/en/p/107dcfce6eca0dd7/</link><pubDate>Sun, 21 May 2023 09:40:47 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/107dcfce6eca0dd7/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;IoT is a pretty fun topic, but&lt;/p&gt;
+&lt;p&gt;the entry barrier is high, and it&amp;rsquo;s not very well-known, so I feel like people don&amp;rsquo;t really know what they can do with it.&lt;/p&gt;
+&lt;p&gt;Among the many platforms out there, I personally installed and use HomeAssistant (hereafter HASS). I&amp;rsquo;d like to talk about why such a platform is needed and what it can improve in our lives!&lt;/p&gt;</description></item><item><title>Can ChatGPT Solve Commonsense Problems Well? (Paper Review)</title><link>https://blog.lemondouble.com/en/p/dedda5393e239315/</link><pubDate>Thu, 30 Mar 2023 19:15:11 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/dedda5393e239315/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Lately, I&amp;rsquo;ve picked up a hobby of reading papers when I&amp;rsquo;m bored.
+Among them, I came across an interesting paper on arxiv, so I thought I&amp;rsquo;d organize and share it.&lt;/p&gt;
+&lt;p&gt;The paper is titled &lt;code&gt;ChatGPT is a Knowledgeable but Inexperienced Solver: An Investigation of Commonsense Problem in Large Language Models&lt;/code&gt; (&lt;a href="https://arxiv.org/abs/2303.16421" target="_blank" rel="noopener noreferrer"
+&gt;Arxiv Link&lt;/a&gt;
+).&lt;/p&gt;
+&lt;p&gt;The topic is: &lt;strong&gt;Can large language models (ChatGPT) solve commonsense problems well?&lt;/strong&gt; It&amp;rsquo;s a pretty interesting topic, so I&amp;rsquo;ll share what I&amp;rsquo;ve read while studying it myself.&lt;/p&gt;</description></item><item><title>After Killing Three SD Cards, Here's How I Set Up Raspberry Pi USB Boot</title><link>https://blog.lemondouble.com/en/p/977ba9d70a2a7029/</link><pubDate>Sun, 29 Jan 2023 17:31:39 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/977ba9d70a2a7029/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The Raspberry Pi is great in every way, except SD card booting can be incredibly frustrating.&lt;/p&gt;
+&lt;p&gt;When you&amp;rsquo;re tinkering, pulling SD cards in and out, scratching one and having it stop being recognized&amp;hellip; it really gets to you.&lt;/p&gt;
+&lt;p&gt;I know SD cards and USB drives use similar technology, but&amp;hellip;&lt;/p&gt;
+&lt;p&gt;In my experience, USB drives have generally been more reliable (in terms of physical durability).&lt;/p&gt;</description></item><item><title>K8S Resources Cheat Sheet (For My Own Reference)</title><link>https://blog.lemondouble.com/en/p/f13e7c85c56b2c7c/</link><pubDate>Thu, 26 Jan 2023 23:15:42 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/f13e7c85c56b2c7c/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; -o&lt;/code&gt; or &lt;code&gt;k describe pod &amp;lt;podname&amp;gt;&lt;/code&gt;: Check detailed status info&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k logs -f &amp;lt;podname&amp;gt; -c &amp;lt;container-name&amp;gt;&lt;/code&gt;: Check logs&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; --show-lables&lt;/code&gt;: Check label info&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-pod"&gt;1. Pod&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A group of one or more Containers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The smallest unit of execution&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Characteristics&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If composed of multiple Containers, they are always assigned to the same Node&lt;/li&gt;
+&lt;li&gt;Each Pod gets a unique Pod IP (one per Pod)&lt;/li&gt;
+&lt;li&gt;Containers inside a Pod share the network, so they can be reached via Localhost&lt;/li&gt;
+&lt;li&gt;Volumes are shared&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;States a Pod can have&lt;/p&gt;</description></item><item><title>A Service That Fits Well on Fly.io (Uptime Kuma)</title><link>https://blog.lemondouble.com/en/p/7da6be543113ac58/</link><pubDate>Sun, 22 Jan 2023 20:41:31 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/7da6be543113ac58/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The project I&amp;rsquo;m introducing this time is a service called Uptime Kuma, which records the uptime of your servers.&lt;/p&gt;
+&lt;p&gt;You can monitor your own clusters/servers, and when something goes wrong, it can notify you that the server is down through various channels like Telegram, Slack, Discord, E-mail, and so on.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/7da6be543113ac58/2023-01-22-20-50-49.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;This is what it looks like!&lt;/p&gt;
+&lt;p&gt;If you visit the GitHub address ( &lt;a href="https://github.com/louislam/uptime-kuma" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+ ), you can also try out the demo service.&lt;/p&gt;</description></item><item><title>Building APIs Inaccessible from Outside the VPC Using Private DNS and ALB</title><link>https://blog.lemondouble.com/en/p/acf607c351652785/</link><pubDate>Sun, 22 Jan 2023 17:12:43 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/acf607c351652785/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;When you build an MSA service, you&amp;rsquo;ll see very frequent communication between servers.&lt;/p&gt;
+&lt;p&gt;For example, let&amp;rsquo;s say there&amp;rsquo;s a (very simplified) money-transfer service.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/acf607c351652785/2023-01-22-17-22-23.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;If there&amp;rsquo;s a wallet server and a user-info server, calling the transfer API would result in something like the picture above.&lt;/p&gt;
+&lt;p&gt;But what if the &lt;strong&gt;valid-user check API&lt;/strong&gt; could be accessed from outside?&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/acf607c351652785/2023-01-22-17-27-08.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;A malicious user with bad intentions could even chart the ratio of legitimate users on our service (&amp;hellip;).&lt;/p&gt;</description></item><item><title>Use AWS Resources from GitHub Actions Without AWS Keys via GitHub OIDC (Free)</title><link>https://blog.lemondouble.com/en/p/use-aws-resources-from-github-actions-without-aws-keys-via-github-oidc-free/</link><pubDate>Sun, 22 Jan 2023 11:18:50 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/use-aws-resources-from-github-actions-without-aws-keys-via-github-oidc-free/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;To use AWS from GitHub Actions, you typically go through the following steps.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go to the IAM console and create a new user.&lt;/li&gt;
+&lt;li&gt;Add an IAM Role for GitHub Actions and use Programmatic access to issue an &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; and &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;In your repository settings, add the freshly issued &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; and &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt; to GitHub Secrets.&lt;/li&gt;
+&lt;li&gt;Then add a workflow like the one below in GitHub Actions to access AWS resources.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;yaml&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-yaml"&gt;- name: Configure AWS Credentials
+ uses: aws-actions/configure-aws-credentials@v1
+ with:
+ aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+ aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ aws-region: us-east-2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;If you only have one project, managing things this way isn&amp;rsquo;t a big problem.&lt;/p&gt;</description></item><item><title>Use That Familiar Office AWS SSO Screen at Home Too (Free)</title><link>https://blog.lemondouble.com/en/p/1c9eaebbdee2ac98/</link><pubDate>Sat, 21 Jan 2023 16:17:06 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/1c9eaebbdee2ac98/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;ve used AWS at a company or organization, you&amp;rsquo;ve probably seen an SSO (Single Sign On) login page like the one below.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/1c9eaebbdee2ac98/2023-01-21-23-57-37.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;Once it&amp;rsquo;s set up, you don&amp;rsquo;t have to enter your id/password every time as long as the session is alive, which is convenient.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s also a security win when using aws-cli or aws-sdk, since you don&amp;rsquo;t have to store sensitive values like &lt;code&gt;AWS_ACCESS_KEY&lt;/code&gt; and &lt;code&gt;AWS_ACCESS_SECRET&lt;/code&gt; in plaintext on your local machine.&lt;/p&gt;</description></item><item><title>Installing K3S on Raspberry Pi + Ubuntu 22.04</title><link>https://blog.lemondouble.com/en/p/fe0cac9de367fc18/</link><pubDate>Wed, 18 Jan 2023 11:56:02 +0000</pubDate><guid>https://blog.lemondouble.com/en/p/fe0cac9de367fc18/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Kubernetes seems to be one of those technologies that&amp;rsquo;s super hot but also pretty hard these days.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve been running a home server for quite a while since my student days, and I&amp;rsquo;ve run into plenty of headaches along the way.&lt;/p&gt;
+&lt;p&gt;Sometimes I move to a new place and have to redo my whole network setup, or a disk dies on me. Every time that happens, digging through Git and other computers to bring my site back up is&amp;hellip; a real pain.&lt;/p&gt;</description></item><item><title>Raspberry Pi Initial Setup (For My Future Reference)</title><link>https://blog.lemondouble.com/en/p/088bdb572b7dc509/</link><pubDate>Wed, 18 Jan 2023 11:13:14 +0000</pubDate><guid>https://blog.lemondouble.com/en/p/088bdb572b7dc509/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;When you run a Raspberry Pi or a home server, you end up needing to wipe and reinitialize the server surprisingly often.&lt;/p&gt;
+&lt;p&gt;Maybe something doesn&amp;rsquo;t work because of a misconfiguration, or you&amp;rsquo;ve installed so much stuff you no longer remember what&amp;rsquo;s on there.&lt;/p&gt;
+&lt;p&gt;So there&amp;rsquo;s a recurring set of tasks I do every time I reset my Raspberry Pi,&lt;/p&gt;</description></item><item><title>Kotlin Cheat Sheet (For My Own Reference)</title><link>https://blog.lemondouble.com/en/p/f8a9d54607e901b4/</link><pubDate>Tue, 17 Jan 2023 14:24:20 +0000</pubDate><guid>https://blog.lemondouble.com/en/p/f8a9d54607e901b4/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;TIP: When writing numbers, you can use formats like &lt;code&gt;var number = 1_000L&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-variables"&gt;1. Variables&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;You can still add elements to a &lt;code&gt;val&lt;/code&gt; collection&lt;/li&gt;
+&lt;li&gt;There&amp;rsquo;s no distinction between primitive and reference types, but during actual computation, values are converted to primitive types&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="2-null-handling"&gt;2. Null Handling&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Safe Call (&lt;code&gt;?.&lt;/code&gt;): executes if not null, skips if null&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str: String? = &amp;#34;ABC&amp;#34;
+str.length // ERROR
+str?.length // OK&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Elvis operator (&lt;code&gt;?:&lt;/code&gt;): if the expression on the left is null, use the value on the right&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str: String? = &amp;#34;ABC&amp;#34;
+str?.length ?: 0 // either str.length or 0 
+str?.length ?: throw IllegalArgumentException(&amp;#34;null이 들어왔습니다.&amp;#34;) // or throw exception
+str?.length ?: return 0 // can also be used for early return&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Platform Type: When pulling Java code into Kotlin
+&lt;ul&gt;
+&lt;li&gt;Both null and non-null types are usable&lt;/li&gt;
+&lt;li&gt;When possible, check the Java code directly or wrap it in Kotlin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;// If @Nullable, @NonNull are present they get converted, otherwise platform type
+// In Java 
+private final String name; &amp;lt;&amp;lt; When no annotation
+
+val name : String? = javaPerson.name // OK
+val name : String = javaPerson.name // OK&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id="3-type"&gt;3. Type&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Basic type conversion: use functions like &lt;code&gt;toXX&lt;/code&gt; between primitive types&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val number1 : Int = 4
+val number2 : Long = number1.toLong()
+
+val number1 : Int? = 3 
+val number2 : Long = number1?.toLong() ?: 0L // for nullable variables, handle as needed&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;User-defined types: leverage Smart Cast&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;fun printAgeIfPerson(obj: Any){
+	// is = Java&amp;#39;s instanceof
+	if(obj is Person){
+			// Smart cast makes obj&amp;#39;s type Person
+			println(obj.age)
+	}
+}
+
+// OR
+// Same as Java&amp;#39;s (Person) obj
+val person = obj as Person
+
+// !is, as? are also usable
+// as? : the whole expression becomes null&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;Any: plays the role of Java&amp;rsquo;s Object + also includes the top of primitive types
+&lt;ul&gt;
+&lt;li&gt;Doesn&amp;rsquo;t include null; use &lt;code&gt;Any?&lt;/code&gt; if you want null too&lt;/li&gt;
+&lt;li&gt;Has equals, hashCode, toString&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Unit: similar to void, but Unit can itself be used as a type argument in generics&lt;/li&gt;
+&lt;li&gt;Nothing: indicates that the function does not return normally&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;fun fail(message : String): Nothing{
+	throw IllegalArgumentException(message)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;String interpolation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val person = Person(name = &amp;#34;lemon&amp;#34;, age = 20)
+val log = &amp;#34;이름 : ${person.name}, 나이 : ${person.age}&amp;#34;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;String indexing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;kotlin&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-kotlin"&gt;val str = &amp;#34;ABC&amp;#34;
+// Instead of Java&amp;#39;s str.get(0)
+str[1] //ok&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id="4-operators"&gt;4. Operators&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;In Kotlin, using &lt;code&gt;&amp;gt;&lt;/code&gt;, &lt;code&gt;&amp;lt;&lt;/code&gt;, &lt;code&gt;≥&lt;/code&gt;, &lt;code&gt;≤&lt;/code&gt; automatically calls &lt;code&gt;compareTo&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Introducing Fly.io and a Service Worth Hosting on It (VaultWarden)</title><link>https://blog.lemondouble.com/en/p/740c42a214d8ce6b/</link><pubDate>Tue, 17 Jan 2023 14:03:50 +0000</pubDate><guid>https://blog.lemondouble.com/en/p/740c42a214d8ce6b/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Fly.io is a company that lets you easily deploy a Docker image to a specific country (or region) — all you need to do is prepare the Docker image.&lt;/p&gt;
+&lt;p&gt;After signing up, once you write a &lt;code&gt;fly.toml&lt;/code&gt; file appropriately and run&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;bash&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-bash"&gt;flyctl deploy&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;it does all the heavy lifting: uploading the image to the server and handling DNS, HTTPS setup, IP allocation, and monitoring (Grafana) configuration for you.&lt;/p&gt;</description></item><item><title>How is a 3-color LED structured internally?</title><link>https://blog.lemondouble.com/en/p/141eb2dfe7f486bf/</link><pubDate>Tue, 17 Jan 2023 13:45:21 +0000</pubDate><guid>https://blog.lemondouble.com/en/p/141eb2dfe7f486bf/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;When you start playing with Arduino, you realize that simply turning an LED on and off&lt;/p&gt;
+&lt;p&gt;brings a surprisingly primal sense of joy.&lt;/p&gt;
+&lt;p&gt;But&amp;hellip; soon you realize that a single-color LED like the one above can only produce one color, and you start hunting for some kind of &amp;ldquo;LED that can produce any color&amp;rdquo;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;If you go on this adventure, you&amp;rsquo;ll come across Cathode (-) / Anode (+) LEDs like the one below.&lt;/p&gt;</description></item><item><title>Lemon Toolbox: First Launch Retrospective</title><link>https://blog.lemondouble.com/en/p/8b50460f83230126/</link><pubDate>Sun, 27 Feb 2022 15:39:07 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/8b50460f83230126/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/8b50460f83230126/image-18.png" alt="Lemon Toolbox chatbot"&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A story about building a service like this!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Added 2024.06.30: Back then, ChatGPT didn&amp;rsquo;t exist yet, so chatbot services like this were not common!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/8b50460f83230126/image.png" alt="First-day Twitter screenshot"&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Aaaah what on earth is happening!!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id="1-why-did-i-develop-this"&gt;1. Why did I develop this?&lt;/h3&gt;
+&lt;p&gt;&lt;del&gt;I originally wrote something long, but other people&amp;rsquo;s TMI isn&amp;rsquo;t very fun, so I&amp;rsquo;m keeping it short. Even shortened, it&amp;rsquo;s still pretty long though!&lt;/del&gt;&lt;/p&gt;</description></item></channel></rss>

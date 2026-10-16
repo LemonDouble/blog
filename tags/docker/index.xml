@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on Lemon Blog</title><link>https://blog.lemondouble.com/tags/docker/</link><description>Recent content in Docker on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sun, 26 Apr 2026 23:23:19 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>라이브러리로 패키징하면서 고민한 것들 - hayakoe Part 4</title><link>https://blog.lemondouble.com/p/b7791b4f6c0818da/</link><pubDate>Sun, 26 Apr 2026 23:23:19 +0900</pubDate><guid>https://blog.lemondouble.com/p/b7791b4f6c0818da/</guid><description>&lt;p&gt;hayakoe 시리즈의 네 번째이자 마지막 본편입니다. 이전 글은 &lt;a href="https://blog.lemondouble.com/p/9a99dd816456c397/"
+&gt;마지막 1% 까지 — torch.compile, 배치 추론, Pause 복원, ARM64 - hayakoe Part 3&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.lemondouble.com/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+ 부터 &lt;a href="https://blog.lemondouble.com/p/9a99dd816456c397/"
+&gt;Part 3&lt;/a&gt;
+ 까지는 모델·추론 측면의 작업이었다면, Part 4 는 &lt;strong&gt;그 결과물을 다른 사람도 (그리고 미래의 내가도) 쉽게 가져다 쓸 수 있게 패키징하는 과정&lt;/strong&gt; 에서 했던 고민들을 정리합니다.&lt;/p&gt;</description></item><item><title>Fly.io에 올리기 좋은 서비스 (Uptime Kuma)</title><link>https://blog.lemondouble.com/p/7da6be543113ac58/</link><pubDate>Sun, 22 Jan 2023 20:41:31 +0900</pubDate><guid>https://blog.lemondouble.com/p/7da6be543113ac58/</guid><description>&lt;p&gt;이번에 소개할 프로젝트는 서버의 Uptime을 기록해 주는 Uptime Kuma라는 서비스입니다.&lt;/p&gt;
+&lt;p&gt;내 클러스터/서버 등을 모니터링하고, 문제가 생긴 경우 Telegram, Slack, Discord, E-mail&amp;hellip; 등의 여러 방법을 통해 서버가 죽었음을 알려줄 수 있습니다.&lt;/p&gt;</description></item><item><title>Fly.io 소개 및 Fly.io에 올리기 좋은 서비스 추천 (VaultWarden)</title><link>https://blog.lemondouble.com/p/740c42a214d8ce6b/</link><pubDate>Tue, 17 Jan 2023 14:03:50 +0000</pubDate><guid>https://blog.lemondouble.com/p/740c42a214d8ce6b/</guid><description>&lt;p&gt;Fly.io 라는 회사에선 도커 이미지만 준비하면 간단히 도커 이미지를 특정 국가 등에 배포할 수 있는 기능을 제공합니다.&lt;/p&gt;
+&lt;p&gt;(가입 완료 후) fly.toml 이란 파일을 적절히 작성 후&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;bash&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-bash"&gt;flyctl deploy&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;만 입력하면, 잘 지지고 볶아서 이미지를 서버에 올려 주고, DNS, https 설정, IP 발급, 모니터링 (Grafana) 설정 등을 해 줍니다.&lt;/p&gt;</description></item></channel></rss>

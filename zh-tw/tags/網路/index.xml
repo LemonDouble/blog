@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>網路 on Lemon Blog</title><link>https://blog.lemondouble.com/zh-tw/tags/%E7%B6%B2%E8%B7%AF/</link><description>Recent content in 網路 on Lemon Blog</description><generator>Hugo</generator><language>zh-TW</language><lastBuildDate>Sun, 22 Jan 2023 17:12:43 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-tw/tags/%E7%B6%B2%E8%B7%AF/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 Private DNS 與 ALB 建構從 VPC 外部無法存取的 API</title><link>https://blog.lemondouble.com/zh-tw/p/acf607c351652785/</link><pubDate>Sun, 22 Jan 2023 17:12:43 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/acf607c351652785/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;建構 MSA 服務時，伺服器之間會發生非常頻繁的通訊。&lt;/p&gt;
+&lt;p&gt;舉例來說，假設有一個（高度簡化的）轉帳服務。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/acf607c351652785/2023-01-22-17-22-23.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;如果有錢包伺服器和使用者資訊伺服器，呼叫轉帳 API 時會發生上圖中的情況。&lt;/p&gt;</description></item></channel></rss>

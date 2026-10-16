@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>磁盘挂载 on Lemon Blog</title><link>https://blog.lemondouble.com/zh-cn/tags/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/</link><description>Recent content in 磁盘挂载 on Lemon Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sat, 09 Dec 2023 10:48:57 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-cn/tags/%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD/index.xml" rel="self" type="application/rss+xml"/><item><title>在家用树莓派集群搭建数据中心 - 6. 添加分布式存储并通过 Longhorn 提供服务</title><link>https://blog.lemondouble.com/zh-cn/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/615befc538a81902/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-添加并挂载新磁盘"&gt;1. 添加并挂载新磁盘&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;这部分内容与一般的 SSD / HDD 挂载相同！如果遇到问题，可以搜索 &lt;code&gt;Ubuntu 硬盘挂载&lt;/code&gt; 等关键词参考操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;将 SSD 或 HDD 连接到树莓派。&lt;/p&gt;</description></item></channel></rss>

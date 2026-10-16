@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Service on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/service/</link><description>Recent content in Service on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Thu, 26 Jan 2023 23:15:42 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/service/index.xml" rel="self" type="application/rss+xml"/><item><title>K8S Resources Cheat Sheet (For My Own Reference)</title><link>https://blog.lemondouble.com/en/p/f13e7c85c56b2c7c/</link><pubDate>Thu, 26 Jan 2023 23:15:42 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/f13e7c85c56b2c7c/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; -o&lt;/code&gt; or &lt;code&gt;k describe pod &amp;lt;podname&amp;gt;&lt;/code&gt;: Check detailed status info&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k logs -f &amp;lt;podname&amp;gt; -c &amp;lt;container-name&amp;gt;&lt;/code&gt;: Check logs&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; --show-lables&lt;/code&gt;: Check label info&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-pod"&gt;1. Pod&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A group of one or more Containers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The smallest unit of execution&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Characteristics&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If composed of multiple Containers, they are always assigned to the same Node&lt;/li&gt;
+&lt;li&gt;Each Pod gets a unique Pod IP (one per Pod)&lt;/li&gt;
+&lt;li&gt;Containers inside a Pod share the network, so they can be reached via Localhost&lt;/li&gt;
+&lt;li&gt;Volumes are shared&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;States a Pod can have&lt;/p&gt;</description></item></channel></rss>

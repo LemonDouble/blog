@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Optimization on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/optimization/</link><description>Recent content in Optimization on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 26 Apr 2026 19:29:25 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/optimization/index.xml" rel="self" type="application/rss+xml"/><item><title>Squeezing Out the Last 1% — torch.compile, Batch Inference, Pause Restoration, ARM64 - hayakoe Part 3</title><link>https://blog.lemondouble.com/en/p/9a99dd816456c397/</link><pubDate>Sun, 26 Apr 2026 19:29:25 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/9a99dd816456c397/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the third main installment of the hayakoe series. You can find the previous post at &lt;a href="https://blog.lemondouble.com/en/p/137243ede98030f1/"
+&gt;Halving Memory and Boosting Speed by 1.5× - hayakoe Part 2&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;In &lt;a href="https://blog.lemondouble.com/en/p/137243ede98030f1/"
+&gt;Part 2&lt;/a&gt;
+, I made significant improvements to memory and speed via the main pillars — BERT Q8 quantization + Synthesizer ONNX conversion. But once I started actually running this model in production, I noticed a few things that felt unsatisfying, separate from the main pillars. They were the kind of work where I thought it would be nice to polish things into a more usable form.&lt;/p&gt;</description></item><item><title>Cutting Memory in Half and Speeding Up by 1.5x - hayakoe Part 2</title><link>https://blog.lemondouble.com/en/p/137243ede98030f1/</link><pubDate>Sun, 26 Apr 2026 17:40:46 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/137243ede98030f1/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This is the second main installment of the hayakoe series. You can read the previous post at &lt;a href="https://blog.lemondouble.com/en/p/4c2a6225a737f531/"
+&gt;hayakoe - After 2 Years, Trying Various TTS Models Again and Settling Back to VITS - Part 1&lt;/a&gt;
+.&lt;/p&gt;
+&lt;p&gt;By the end of &lt;a href="https://blog.lemondouble.com/en/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+, I had a trained model in hand, but as I noted in the &lt;a href="https://blog.lemondouble.com/en/p/ea78fbb9b78c38ac/"
+&gt;introduction&lt;/a&gt;
+ of the series, using that model as-is came with several inconveniences — the SPOF issue where &lt;code&gt;openjtalk&lt;/code&gt; fetches dictionary data from an external server and dies along with it, the Python version upgrade blocked by that dependency, the fact that English synthesis didn&amp;rsquo;t work so I was routing through a translation layer, and the memory and speed burden I&amp;rsquo;ll cover in this post.&lt;/p&gt;</description></item></channel></rss>

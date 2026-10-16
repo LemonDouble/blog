@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Raspberry Pi on Lemon Blog</title><link>https://blog.lemondouble.com/zh-cn/tags/raspberry-pi/</link><description>Recent content in Raspberry Pi on Lemon Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sat, 09 Dec 2023 09:16:13 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-cn/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml"/><item><title>在家用 Raspberry Pi 集群搭建数据中心 - 5. ArgoCD GitOps 配置与 Longhorn 安装</title><link>https://blog.lemondouble.com/zh-cn/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/107eed6a453d6238/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-开始-gitops"&gt;1. 开始 GitOps&lt;/h3&gt;
+&lt;p&gt;ArgoCD 已经安装好了，接下来整理一下仓库结构。&lt;/p&gt;
+&lt;p&gt;我们会使用 App On Apps 模式来构建一种简洁的部署方式。&lt;/p&gt;
+&lt;p&gt;即使现在不太理解，先跟着做就行。&lt;/p&gt;</description></item><item><title>要不要用 HomeAssistant 玩玩 IoT?</title><link>https://blog.lemondouble.com/zh-cn/p/107dcfce6eca0dd7/</link><pubDate>Sun, 21 May 2023 09:40:47 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/107dcfce6eca0dd7/</guid><description>&lt;p&gt;&lt;em&gt;注:作者居住在韩国,部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;IoT 是一个相当有趣的话题,&lt;/p&gt;
+&lt;p&gt;但入门难度较高,而且也不是很广为人知的话题,所以人们似乎也不太清楚用它能做什么。&lt;/p&gt;</description></item></channel></rss>

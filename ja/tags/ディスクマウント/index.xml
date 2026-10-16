@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>ディスクマウント on Lemon Blog</title><link>https://blog.lemondouble.com/ja/tags/%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88/</link><description>Recent content in ディスクマウント on Lemon Blog</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 09 Dec 2023 10:48:57 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/ja/tags/%E3%83%87%E3%82%A3%E3%82%B9%E3%82%AF%E3%83%9E%E3%82%A6%E3%83%B3%E3%83%88/index.xml" rel="self" type="application/rss+xml"/><item><title>自宅でRaspberry Piクラスタを使ってデータセンターを構築する - 6. 分散ストレージの追加とLonghornでの提供</title><link>https://blog.lemondouble.com/ja/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/ja/p/615befc538a81902/</guid><description>&lt;p&gt;&lt;em&gt;注：筆者は韓国在住のため、本文には韓国特有の文脈が含まれることがあります。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-新規ディスクの追加とマウント"&gt;1. 新規ディスクの追加とマウント&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;この内容は一般的なSSD / HDDのマウントと同じです！うまくいかない場合は、&lt;code&gt;Ubuntu ハードディスク マウント&lt;/code&gt;などで検索して進めても問題ありません。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;SSDまたはHDDをRaspberry Piに接続します。&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI on Lemon Blog</title><link>https://blog.lemondouble.com/tags/ai/</link><description>Recent content in AI on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sun, 26 Apr 2026 23:23:19 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>라이브러리로 패키징하면서 고민한 것들 - hayakoe Part 4</title><link>https://blog.lemondouble.com/p/b7791b4f6c0818da/</link><pubDate>Sun, 26 Apr 2026 23:23:19 +0900</pubDate><guid>https://blog.lemondouble.com/p/b7791b4f6c0818da/</guid><description>&lt;p&gt;hayakoe 시리즈의 네 번째이자 마지막 본편입니다. 이전 글은 &lt;a href="https://blog.lemondouble.com/p/9a99dd816456c397/"
+&gt;마지막 1% 까지 — torch.compile, 배치 추론, Pause 복원, ARM64 - hayakoe Part 3&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.lemondouble.com/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+ 부터 &lt;a href="https://blog.lemondouble.com/p/9a99dd816456c397/"
+&gt;Part 3&lt;/a&gt;
+ 까지는 모델·추론 측면의 작업이었다면, Part 4 는 &lt;strong&gt;그 결과물을 다른 사람도 (그리고 미래의 내가도) 쉽게 가져다 쓸 수 있게 패키징하는 과정&lt;/strong&gt; 에서 했던 고민들을 정리합니다.&lt;/p&gt;</description></item><item><title>마지막 1% 까지 — torch.compile, 배치 추론, Pause 복원, ARM64 - hayakoe Part 3</title><link>https://blog.lemondouble.com/p/9a99dd816456c397/</link><pubDate>Sun, 26 Apr 2026 19:29:25 +0900</pubDate><guid>https://blog.lemondouble.com/p/9a99dd816456c397/</guid><description>&lt;p&gt;hayakoe 시리즈의 세 번째 본편입니다. 이전 글은 &lt;a href="https://blog.lemondouble.com/p/137243ede98030f1/"
+&gt;메모리는 절반으로, 속도는 1.5배 빠르게 한 이야기 - hayakoe Part 2&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.lemondouble.com/p/137243ede98030f1/"
+&gt;Part 2&lt;/a&gt;
+ 에서 큰 줄기 — BERT Q8 양자화 + Synthesizer ONNX 변환 — 로 메모리·속도를 꽤 개선했습니다. 다만 이 모델을 직접 운영해 보니, 큰 줄기와는 별개로 아쉽게 느껴졌던 부분들이 슬슬 눈에 들어왔습니다. 좀 더 쓰기 편한 형태로 다듬어 보면 좋겠다 싶은 작업들이었습니다.&lt;/p&gt;</description></item><item><title>메모리는 절반으로, 속도는 1.5배 빠르게 한 이야기 - hayakoe Part 2</title><link>https://blog.lemondouble.com/p/137243ede98030f1/</link><pubDate>Sun, 26 Apr 2026 17:40:46 +0900</pubDate><guid>https://blog.lemondouble.com/p/137243ede98030f1/</guid><description>&lt;p&gt;hayakoe 시리즈의 두 번째 본편입니다. 이전 글은 &lt;a href="https://blog.lemondouble.com/p/4c2a6225a737f531/"
+&gt;hayakoe - 2년만에 다시 TTS 모델 이것저것 보다 또 다시 VITS로 정착한 이야기 - Part 1&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.lemondouble.com/p/4c2a6225a737f531/"
+&gt;Part 1&lt;/a&gt;
+ 에서 학습된 모델까지 손에 쥐었지만, 시리즈 &lt;a href="https://blog.lemondouble.com/p/ea78fbb9b78c38ac/"
+&gt;서론&lt;/a&gt;
+ 에서 짚었듯 그 모델을 그대로 쓰기엔 여러 가지 불편이 있었습니다 — &lt;code&gt;openjtalk&lt;/code&gt; 가 외부에서 사전 데이터를 받아와 그 서버가 죽으면 같이 죽는 SPOF 문제, 그 의존성 때문에 막혀 있던 Python 버전업, 영어 합성이 안 돼 번역 레이어로 우회 중이던 점, 그리고 본 글에서 다룰 메모리·속도 부담까지.&lt;/p&gt;</description></item><item><title>hayakoe - 2년만에 다시 TTS 모델 이것저것 보다 또 다시 VITS로 정착한 이야기 - Part 1</title><link>https://blog.lemondouble.com/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/p/4c2a6225a737f531/</guid><description>&lt;p&gt;hayakoe 시리즈의 첫 번째 본편입니다. 서론 격 글은 &lt;a href="https://blog.lemondouble.com/p/ea78fbb9b78c38ac/"
+&gt;hayakoe - 쓰기 편하고 빠른 TTS 라이브러리 만들기 - 서론&lt;/a&gt;
+ 에서 보실 수 있습니다.&lt;/p&gt;
+&lt;p&gt;서론에서 잠깐 다뤘던 부분 중 하나가 &amp;ldquo;모델부터 다시 골랐다&amp;rdquo; 는 이야기였습니다. Part 1 에서는 그 과정을 좀 더 풀어 보려 합니다.&lt;/p&gt;</description></item><item><title>hayakoe - 쓰기 편하고 빠른 TTS 라이브러리 만들기 - 서론</title><link>https://blog.lemondouble.com/p/ea78fbb9b78c38ac/</link><pubDate>Sun, 26 Apr 2026 11:31:45 +0900</pubDate><guid>https://blog.lemondouble.com/p/ea78fbb9b78c38ac/</guid><description>&lt;p&gt;2년 전쯤 Bert-VITS2 라는 일본어 TTS 라이브러리를 알게 돼서, 학습 방법을 한번 정리한 글을 적은 적이 있습니다.&lt;/p&gt;
+&lt;p&gt;그 후로는 학습한 모델을 홈 클러스터 서버에 올려 평소에 쓰고 있었습니다. 원본 코드는 Fork 한 뒤, 음성 합성에 필요한 path 만 따로 추려내 정리해서 쓰고 있었습니다.&lt;/p&gt;</description></item><item><title>Bert-VITS2로 나만의 TTS 만들기</title><link>https://blog.lemondouble.com/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/p/9c06f7dc324b5986/</guid><description>&lt;h2 id="우리가-만들-오디오-한번-들어보기-일본어"&gt;우리가 만들 오디오 한번 들어보기 (일본어)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-tts"&gt;1. TTS?&lt;/h3&gt;
+&lt;p&gt;Text-To-Speech는 문자 그대로, 텍스트를 음성 데이터로 변경해 주는 소프트웨어를 말합니다.&lt;/p&gt;
+&lt;p&gt;한번 만들어 놓으면, 호출량 걱정 없이 많은 Automation에서 사용할 수 있기에, 직접 한번 만들어 보는 것이 목표입니다.&lt;/p&gt;</description></item><item><title>ChatGPT는 상식 문제를 잘 풀 수 있을까? (논문)</title><link>https://blog.lemondouble.com/p/dedda5393e239315/</link><pubDate>Thu, 30 Mar 2023 19:15:11 +0900</pubDate><guid>https://blog.lemondouble.com/p/dedda5393e239315/</guid><description>&lt;p&gt;요즘 심심할 때 논문을 하나씩 읽는 취미가 생겼습니다.
+그 중, arxiv에서 재밌는 논문을 하나 읽게 되어서, 정리하고 공유해 보려고 합니다.&lt;/p&gt;
+&lt;p&gt;논문 제목은 &lt;code&gt;ChatGPT is a Knowledgeable but Inexperienced Solver: An Investigation of Commonsense Problem in Large Language Models&lt;/code&gt; (&lt;a href="https://arxiv.org/abs/2303.16421" target="_blank" rel="noopener noreferrer"
+&gt;Arxiv Link&lt;/a&gt;
+) 입니다.&lt;/p&gt;</description></item></channel></rss>

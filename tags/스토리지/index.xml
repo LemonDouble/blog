@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>스토리지 on Lemon Blog</title><link>https://blog.lemondouble.com/tags/%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80/</link><description>Recent content in 스토리지 on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sat, 09 Dec 2023 10:48:57 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80/index.xml" rel="self" type="application/rss+xml"/><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 6. 분산 스토리지 추가 및 Longhorn을 통한 제공하기</title><link>https://blog.lemondouble.com/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/p/615befc538a81902/</guid><description>&lt;h3 id="1-신규-디스크-추가-및-마운트"&gt;1. 신규 디스크 추가 및 마운트&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;해당 내용은 일반적인 SSD / HDD 마운트와 동일합니다! 뭔가 잘 안 된다면, &lt;code&gt;우분투 하드디스크 마운트&lt;/code&gt; 등을 검색하셔서 따라해도 무방합니다!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;SSD, HDD를 라즈베리 파이에 연결합니다.&lt;/p&gt;</description></item><item><title>집에서 라즈베리 파이 클러스터로 데이터센터 차리기 - 5. ArgoCD GitOps 설정 및 Longhorn 설치</title><link>https://blog.lemondouble.com/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/p/107eed6a453d6238/</guid><description>&lt;h3 id="1-gitops-시작"&gt;1. GitOps 시작&lt;/h3&gt;
+&lt;p&gt;이제 ArgoCD를 설치하였으니, 리포지토리 구조를 정리해 봅시다.&lt;/p&gt;
+&lt;p&gt;저희는 App On Apps 패턴을 이용하여 간결한 배포 방법을 만들어 볼 것입니다.&lt;/p&gt;
+&lt;p&gt;이해가 되지 않더라도 일단 따라와 주세요.&lt;/p&gt;</description></item></channel></rss>

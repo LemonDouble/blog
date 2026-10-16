@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>K8S on Lemon Blog</title><link>https://blog.lemondouble.com/zh-tw/tags/k8s/</link><description>Recent content in K8S on Lemon Blog</description><generator>Hugo</generator><language>zh-TW</language><lastBuildDate>Sun, 07 Jan 2024 16:05:04 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-tw/tags/k8s/index.xml" rel="self" type="application/rss+xml"/><item><title>在家用樹莓派叢集搭建資料中心 - 10-2. 使用 Forward Auth 與 OAuth2 實作 SSO</title><link>https://blog.lemondouble.com/zh-tw/p/a63eb8199e2089b6/</link><pubDate>Sun, 07 Jan 2024 16:05:04 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/a63eb8199e2089b6/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-forward-auth"&gt;1. Forward Auth?&lt;/h3&gt;
+&lt;p&gt;當我們需要認證邏輯時，可以在哪裡實作認證邏輯呢？&lt;/p&gt;
+&lt;p&gt;最先想到的方法，可能是直接在應用程式中實作。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 10-1. 使用 Basic Auth 保護內部服務</title><link>https://blog.lemondouble.com/zh-tw/p/771435ba12d3f38c/</link><pubDate>Sun, 07 Jan 2024 12:41:24 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/771435ba12d3f38c/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;以下內容與 Sealed Secrets &lt;a href="https://lemondouble.github.io/zh-tw/p/%EC%A7%91%EC%97%90%EC%84%9C-%EB%9D%BC%EC%A6%88%EB%B2%A0%EB%A6%AC-%ED%8C%8C%EC%9D%B4-%ED%81%B4%EB%9F%AC%EC%8A%A4%ED%84%B0%EB%A1%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%84%BC%ED%84%B0-%EC%B0%A8%EB%A6%AC%EA%B8%B0-7.-sealed-secrets%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%B0%80-%EA%B4%80%EB%A6%AC--traefik-basic-auth-%EC%84%A4%EC%A0%95/#3-sealed-secrets-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-basic-auth-%EB%93%B1%EB%A1%9D%ED%95%B4%EB%B3%B4%EA%B8%B0" target="_blank" rel="noopener noreferrer"
+&gt;第 3 節&lt;/a&gt;
+ 有相當多重疊的部分。如果您已經完成那一節，並且對 Basic Auth 較為熟悉，可以直接跳過。&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集架設資料中心 - 9. 使用 CloudNativePG 在 Kubernetes 上運維資料庫</title><link>https://blog.lemondouble.com/zh-tw/p/a4ded8cced5f045c/</link><pubDate>Tue, 12 Dec 2023 22:09:10 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/a4ded8cced5f045c/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="序言"&gt;序言&lt;/h3&gt;
+&lt;p&gt;資料庫管理起來相當棘手。&lt;/p&gt;
+&lt;p&gt;與其他 Pod 不同，必須關心資料保管、備份、管理，還要留意 Failover 和效能。&lt;/p&gt;
+&lt;p&gt;所以據我所知，即使其他工作負載都跑在 Kubernetes 叢集上，單獨把 DB 放在 AWS RDS 之類的託管系統或獨立執行個體上的情況也很常見。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 8-1. Docker Registry UI 設定與 Registry GC 使用方法</title><link>https://blog.lemondouble.com/zh-tw/p/a68cc3e1f5e8a95b/</link><pubDate>Sun, 10 Dec 2023 11:39:46 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/a68cc3e1f5e8a95b/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-private-registry-雖然好用但管理起來太麻煩了"&gt;1. Private Registry 雖然好用，但管理起來太麻煩了！&lt;/h3&gt;
+&lt;p&gt;雖然有些人非常喜歡 CLI，但我實在記不住命令，所以更偏好 GUI 與有跡可循的紀錄。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 8. 建置私有 Docker Registry 並設定 ID/密碼</title><link>https://blog.lemondouble.com/zh-tw/p/be354d4b5f50a3ee/</link><pubDate>Sun, 10 Dec 2023 10:08:50 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/be354d4b5f50a3ee/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-前言"&gt;1. 前言&lt;/h3&gt;
+&lt;p&gt;既然已經把基礎建設準備好了，我們順便也來自己建一個私有 Docker Registry 吧。&lt;/p&gt;
+&lt;p&gt;我自己的情況是，後來在這個叢集上另外部署了一些個人伺服器，為了管理這些容器映像，所以使用了私有 Registry。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 7. 透過 Sealed Secrets 進行密鑰管理 + Traefik Basic Auth 設定</title><link>https://blog.lemondouble.com/zh-tw/p/1379182f14a62e9b/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/1379182f14a62e9b/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-sealed-secrets"&gt;1. Sealed Secrets?&lt;/h3&gt;
+&lt;p&gt;我們現在正在做 GitOps。也就是說，我們把所有與叢集相關的設定都上傳到 Git。&lt;/p&gt;
+&lt;p&gt;可是，Kubernetes Secret 沒有加密功能。任何人用 base64 解碼後都能看到明文內容。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集架設資料中心 - 7-1. 透過 Web UI 輕鬆建立 Sealed Secrets</title><link>https://blog.lemondouble.com/zh-tw/p/567b4c177bdb8401/</link><pubDate>Sun, 10 Dec 2023 00:41:05 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/567b4c177bdb8401/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-前言"&gt;1. 前言&lt;/h3&gt;
+&lt;p&gt;Sealed Secrets 整體上都不錯，但有一個問題：每次設定時都要建立 Secrets.yaml，再用 CLI 轉換為 Sealed Secrets，然後加入 Git，這個過程實在非常繁瑣。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 6. 新增分散式儲存並透過 Longhorn 提供服務</title><link>https://blog.lemondouble.com/zh-tw/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/615befc538a81902/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-新增並掛載新磁碟"&gt;1. 新增並掛載新磁碟&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;此部分內容與一般 SSD / HDD 掛載相同！如果遇到問題，也可以搜尋 &lt;code&gt;Ubuntu 硬碟掛載&lt;/code&gt; 等關鍵字參考操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;將 SSD 或 HDD 連接到樹莓派。&lt;/p&gt;</description></item><item><title>在家用 Raspberry Pi 叢集打造資料中心 - 5. ArgoCD GitOps 設定與 Longhorn 安裝</title><link>https://blog.lemondouble.com/zh-tw/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/107eed6a453d6238/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-開始-gitops"&gt;1. 開始 GitOps&lt;/h3&gt;
+&lt;p&gt;ArgoCD 已經安裝完成，接下來整理一下儲存庫的結構。&lt;/p&gt;
+&lt;p&gt;我們會使用 App On Apps 模式來打造一套簡潔的部署方式。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集架設資料中心 - 4. Traefik HTTPS 認證及 ArgoCD 設定</title><link>https://blog.lemondouble.com/zh-tw/p/f10efbc0bcc4c537/</link><pubDate>Wed, 06 Dec 2023 05:21:00 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/f10efbc0bcc4c537/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;如果透過 Git 來管理整個系統會怎麼樣呢？
+將所需的容器種類、數量等全部宣告在 Git 中，叢集完全按照 Git 中宣告的內容運作，這樣不是非常方便嗎？&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集搭建資料中心 - 3. 安裝 Helm 並使用 MetalLB 設定負載平衡器</title><link>https://blog.lemondouble.com/zh-tw/p/06a98c88458a5fb7/</link><pubDate>Wed, 06 Dec 2023 05:20:00 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/06a98c88458a5fb7/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="安裝-helm"&gt;安裝 Helm&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;參考文章：&lt;a href="https://helm.sh/docs/intro/install/" target="_blank" rel="noopener noreferrer"
+&gt;Installing Helm&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;依序輸入以下指令來安裝 Helm。&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;接著設定 kubeconfig 檔案。&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+chmod 600 ~/.kube/config&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;之後在 bashrc 的最底部加入下面這一行，再使用 &lt;code&gt;source ~/.bashrc&lt;/code&gt; 立即套用 Shell 設定。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集架設資料中心 - 2. 叢集初始化設定篇</title><link>https://blog.lemondouble.com/zh-tw/p/f4efced2e8d5b1d8/</link><pubDate>Sun, 03 Dec 2023 22:20:29 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/f4efced2e8d5b1d8/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="硬體"&gt;硬體&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/f4efced2e8d5b1d8/image.png" alt="硬體構成示意圖"&gt;&lt;/p&gt;
+&lt;p&gt;請參考上圖來組裝硬體。&lt;/p&gt;
+&lt;p&gt;如果家裡有在用電腦，那大概率已經有路由器跟平常使用的桌機了，所以只需要在上圖中加上綠色部分即可。&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集搭建資料中心 - 1. 硬體篇</title><link>https://blog.lemondouble.com/zh-tw/p/20ae99fa945edf10/</link><pubDate>Sun, 03 Dec 2023 14:54:33 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/20ae99fa945edf10/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;第一節是硬體時間！從簡單的內容到稍微複雜的話題，讓我們快速開始吧！&lt;/p&gt;
+&lt;h3 id="1-sbc-single-board-computer"&gt;1. SBC (Single Board Computer)&lt;/h3&gt;
+&lt;p&gt;最重要的當然還是SBC吧？&lt;/p&gt;</description></item><item><title>在家用樹莓派叢集打造資料中心 - 序論</title><link>https://blog.lemondouble.com/zh-tw/p/d42387934c57aa25/</link><pubDate>Sun, 03 Dec 2023 13:24:05 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/d42387934c57aa25/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="我第一次建置樹莓派叢集至今大約已經過了300天"&gt;我第一次建置樹莓派叢集至今，大約已經過了300天。&lt;/h3&gt;
+&lt;p&gt;契機其實並不算大。&lt;/p&gt;
+&lt;p&gt;我每天早上上班路上都會看一個叫&lt;a href="https://news.hada.io/" target="_blank" rel="noopener noreferrer"
+&gt;GeekNews&lt;/a&gt;
+&lt;sup id="fnref:1"&gt;&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref"&gt;1&lt;/a&gt;&lt;/sup&gt;的新聞策展服務，其中一篇題為&lt;a href="https://news.hada.io/topic?id=8306" target="_blank" rel="noopener noreferrer"
+&gt;Chick-Fil-A 的 Edge Computing 技術架構：Enterprise Restaurant Compute&lt;/a&gt;
+的文章引起了我的注意。&lt;/p&gt;</description></item><item><title>自用 K8S 資源整理</title><link>https://blog.lemondouble.com/zh-tw/p/f13e7c85c56b2c7c/</link><pubDate>Thu, 26 Jan 2023 23:15:42 +0900</pubDate><guid>https://blog.lemondouble.com/zh-tw/p/f13e7c85c56b2c7c/</guid><description>&lt;p&gt;&lt;em&gt;註：筆者居住於韓國，部分內容包含韓國特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; -o&lt;/code&gt; 或 &lt;code&gt;k describe pod &amp;lt;podname&amp;gt;&lt;/code&gt;：詳細查看狀態資訊&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k logs -f &amp;lt;podname&amp;gt; -c &amp;lt;container-name&amp;gt;&lt;/code&gt;：查看 log&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;k get pod &amp;lt;podname&amp;gt; --show-lables&lt;/code&gt;：查看 Label 資訊&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-pod"&gt;1. Pod&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;一個或多個 Container 的集合&lt;/p&gt;</description></item></channel></rss>

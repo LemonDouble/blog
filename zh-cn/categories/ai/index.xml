@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI on Lemon Blog</title><link>https://blog.lemondouble.com/zh-cn/categories/ai/</link><description>Recent content in AI on Lemon Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Sun, 26 Apr 2026 23:23:19 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/zh-cn/categories/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>打包成库时考虑的问题 — hayakoe Part 4</title><link>https://blog.lemondouble.com/zh-cn/p/b7791b4f6c0818da/</link><pubDate>Sun, 26 Apr 2026 23:23:19 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/b7791b4f6c0818da/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;这是 hayakoe 系列的第四篇，也是最后一篇正篇。前一篇可在 &lt;a href="https://blog.lemondouble.com/zh-cn/p/9a99dd816456c397/"
+&gt;榨干最后 1% — torch.compile、批量推理、Pause 恢复、ARM64 - hayakoe Part 3&lt;/a&gt;
+ 查看。&lt;/p&gt;</description></item><item><title>榨干最后1% — torch.compile、批量推理、Pause恢复、ARM64 - hayakoe Part 3</title><link>https://blog.lemondouble.com/zh-cn/p/9a99dd816456c397/</link><pubDate>Sun, 26 Apr 2026 19:29:25 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/9a99dd816456c397/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;这是hayakoe系列的第三篇正篇。上一篇文章可以在&lt;a href="https://blog.lemondouble.com/zh-cn/p/137243ede98030f1/"
+&gt;内存减半，速度提升1.5倍 - hayakoe Part 2&lt;/a&gt;
+中查看。&lt;/p&gt;</description></item><item><title>内存减半,速度提升1.5倍 - hayakoe Part 2</title><link>https://blog.lemondouble.com/zh-cn/p/137243ede98030f1/</link><pubDate>Sun, 26 Apr 2026 17:40:46 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/137243ede98030f1/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国,部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;这是hayakoe系列的第二篇正文。前一篇文章可以在&lt;a href="https://blog.lemondouble.com/zh-cn/p/4c2a6225a737f531/"
+&gt;hayakoe - 时隔2年再次研究各种TTS模型后又回归VITS的故事 - Part 1&lt;/a&gt;
+查看。&lt;/p&gt;</description></item><item><title>hayakoe — 时隔2年再次研究各种TTS模型，最终还是回到VITS的故事 - Part 1</title><link>https://blog.lemondouble.com/zh-cn/p/4c2a6225a737f531/</link><pubDate>Sun, 26 Apr 2026 16:33:46 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/4c2a6225a737f531/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;这是 hayakoe 系列的第一篇正文。前言性质的文章可以在 &lt;a href="https://blog.lemondouble.com/zh-cn/p/ea78fbb9b78c38ac/"
+&gt;hayakoe — 打造好用又快的 TTS 库 — 引言&lt;/a&gt;
+ 查看。&lt;/p&gt;
+&lt;p&gt;引言中简单提到的一个话题是「重新选择了模型」。Part 1 我想把这个过程讲得更详细一些。&lt;/p&gt;</description></item><item><title>hayakoe - 打造易用且快速的TTS库 - 序论</title><link>https://blog.lemondouble.com/zh-cn/p/ea78fbb9b78c38ac/</link><pubDate>Sun, 26 Apr 2026 11:31:45 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/ea78fbb9b78c38ac/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;大约两年前，我接触到了一个叫做Bert-VITS2的日语TTS库，并曾经写过一篇整理学习方法的文章。&lt;/p&gt;</description></item><item><title>炫耀一下我用语音控制的AI智能家居</title><link>https://blog.lemondouble.com/zh-cn/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/30f1bf25ad8b594a/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="我做的智能家居预览注意日语音频"&gt;我做的智能家居预览（注意：日语音频）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistant"&gt;1. HomeAssistant？&lt;/h3&gt;
+&lt;p&gt;故事从一个我&lt;a href="https://blog.lemondouble.com/zh-cn/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/"
+&gt;以前写过文章&lt;/a&gt;
+的平台 HomeAssistant 开始。&lt;/p&gt;
+&lt;p&gt;对 HomeAssistant 来说，2023年是&lt;a href="https://www.home-assistant.io/blog/2022/12/20/year-of-voice/" target="_blank" rel="noopener noreferrer"
+&gt;语音之年&lt;/a&gt;
+。&lt;/p&gt;</description></item><item><title>用 Bert-VITS2 打造属于自己的 TTS</title><link>https://blog.lemondouble.com/zh-cn/p/9c06f7dc324b5986/</link><pubDate>Fri, 26 Jul 2024 20:24:29 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/9c06f7dc324b5986/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id="先听一下我们要做的音频日语"&gt;先听一下我们要做的音频（日语）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="audio.wav"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-tts"&gt;1. TTS？&lt;/h3&gt;
+&lt;p&gt;Text-To-Speech，顾名思义，是将文本转换为语音数据的软件。&lt;/p&gt;
+&lt;p&gt;只要做好一次，就可以在大量自动化场景中使用，不必担心调用次数，所以我的目标是亲手做一个。&lt;/p&gt;</description></item><item><title>ChatGPT 能很好地解决常识问题吗？（论文解读）</title><link>https://blog.lemondouble.com/zh-cn/p/dedda5393e239315/</link><pubDate>Thu, 30 Mar 2023 19:15:11 +0900</pubDate><guid>https://blog.lemondouble.com/zh-cn/p/dedda5393e239315/</guid><description>&lt;p&gt;&lt;em&gt;注：作者居住在韩国，部分内容包含韩国特有的背景。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;最近，我养成了在闲暇时读论文的习惯。
+其中，我在 arxiv 上读到一篇有趣的论文，所以想整理并分享一下。&lt;/p&gt;
+&lt;p&gt;论文标题是 &lt;code&gt;ChatGPT is a Knowledgeable but Inexperienced Solver: An Investigation of Commonsense Problem in Large Language Models&lt;/code&gt; (&lt;a href="https://arxiv.org/abs/2303.16421" target="_blank" rel="noopener noreferrer"
+&gt;Arxiv Link&lt;/a&gt;
+)。&lt;/p&gt;</description></item></channel></rss>
