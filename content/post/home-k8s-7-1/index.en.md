@@ -24,7 +24,7 @@ Sealed Secrets is great overall, but it has one annoying issue: every time I con
 
 To make this a bit easier, I'm going to build a simple Web UI using [kubeseal-webgui](https://github.com/Jaydee94/kubeseal-webgui).
 
-![Kubeseal webui — you can simply set up Secrets in the web and get Sealed Secrets back.](image.png)
+![Kubeseal webui: you can simply set up Secrets in the web and get Sealed Secrets back.](image.png)
 
 ### 2. Installation
 

@@ -89,9 +89,9 @@ pyopenjtalk 원본도 1년 넘게 업데이트가 없고, prebuilt도 안 올라
 
 그리고 안 쓰는 파일들은 다 지우고... 
 
-- `docs`, `dev` optional-dependencies — Sphinx(문서 생성), pysen(린터), mypy(타입 체크) 등 개발용 도구들. 우리는 빌드된 wheel만 배포하면 되니까 필요 없음
-- pysen 린터 설정 전체 — 원본 레포의 코드 스타일 검사 설정. 굳이 포크에서 관리할 이유 없음. 업데이트 끊긴지 1년 넘었으니.. 잘 되겠지 뭐..
-- Python 3.8 관련 조건부 의존성 — `importlib_resources`(3.8에서 리소스 접근용), `oldest-supported-numpy`(3.8용 numpy) 등. 최소 버전을 3.9로 올렸으니 불필요
+- `docs`, `dev` optional-dependencies: Sphinx(문서 생성), pysen(린터), mypy(타입 체크) 등 개발용 도구들. 우리는 빌드된 wheel만 배포하면 되니까 필요 없음
+- pysen 린터 설정 전체: 원본 레포의 코드 스타일 검사 설정. 굳이 포크에서 관리할 이유 없음. 업데이트 끊긴지 1년 넘었으니.. 잘 되겠지 뭐..
+- Python 3.8 관련 조건부 의존성: `importlib_resources`(3.8에서 리소스 접근용), `oldest-supported-numpy`(3.8용 numpy) 등. 최소 버전을 3.9로 올렸으니 불필요
 
 그리고 핵심인 **[cibuildwheel](https://cibuildwheel.pypa.io/)** 설정을 추가했어요. PyPA에서 관리하는 도구인데, "CPython 3.9~3.13 × Linux/Windows" 같은 조합을 `pyproject.toml`에 선언해두면, GitHub Actions에서 알아서 각 조합마다 wheel을 빌드해줍니다. 직접 OS별로 Python 깔고 빌드 스크립트 돌릴 필요가 없어요.
 
@@ -126,8 +126,8 @@ pyopenjtalk 원본도 1년 넘게 업데이트가 없고, prebuilt도 안 올라
 
 그리고 GitHub Actions에서 checkout 할 때 두 가지 옵션이 핵심인데요:
 
-- **`submodules: recursive`** — pyopenjtalk은 내부에 OpenJTalk C++ 소스를 git submodule로 갖고 있어요. 이 옵션이 없으면 서브모듈 폴더가 빈 채로 체크아웃돼서, C++ 빌드할 소스가 없으니까 당연히 실패합니다.
-- **`fetch-depth: 0`** — 기본적으로 GitHub Actions는 최신 커밋 1개만 가져오는데(shallow clone), setuptools_scm은 git 태그 히스토리를 보고 버전을 결정하거든요. 히스토리가 없으면 버전을 못 알아내서 빌드가 깨져요. `0`으로 설정하면 전체 히스토리를 가져옵니다.
+- **`submodules: recursive`**: pyopenjtalk은 내부에 OpenJTalk C++ 소스를 git submodule로 갖고 있어요. 이 옵션이 없으면 서브모듈 폴더가 빈 채로 체크아웃돼서, C++ 빌드할 소스가 없으니까 당연히 실패합니다.
+- **`fetch-depth: 0`**: 기본적으로 GitHub Actions는 최신 커밋 1개만 가져오는데(shallow clone), setuptools_scm은 git 태그 히스토리를 보고 버전을 결정하거든요. 히스토리가 없으면 버전을 못 알아내서 빌드가 깨져요. `0`으로 설정하면 전체 히스토리를 가져옵니다.
 
 ### 3. 삽질의 기록
 

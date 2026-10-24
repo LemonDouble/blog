@@ -99,14 +99,14 @@ AliExpress에서 TV 백라이트를 하나 샀습니다.
 
 트러블슈팅 이야기 전에.. 전체 구조를 대충 훑고 갈건데, 이해를 하려면 BLE 관련 용어를 좀 정리해볼게요.
 
-**BLE (Bluetooth Low Energy)** — 블루투스 저전력 버전. 저전력 소형 디바이스에서 주로 쓰는 프로토콜이에요. 소비전력 중요한 IoT에서도 많이 씁니다.
+**BLE (Bluetooth Low Energy)**: 블루투스 저전력 버전. 저전력 소형 디바이스에서 주로 쓰는 프로토콜이에요. 소비전력 중요한 IoT에서도 많이 씁니다.
 
-**GATT (Generic Attribute Profile)** — BLE 디바이스랑 데이터를 주고받는 규약입니다. 쉽게 말하면 "이 디바이스한테 어떤 주소로 뭘 보내면 뭘 할 수 있다"를 정의한 거예요. 구조가 이렇게 생겼는데:
-- **Service** — 기능 묶음 (예: "LED 제어 서비스"). UUID라는 고유 주소가 있음
-- **Characteristic** — Service 안의 개별 기능 (예: "전원 ON/OFF"). 얘도 UUID가 있음
+**GATT (Generic Attribute Profile)**: BLE 디바이스랑 데이터를 주고받는 규약입니다. 쉽게 말하면 "이 디바이스한테 어떤 주소로 뭘 보내면 뭘 할 수 있다"를 정의한 거예요. 구조가 이렇게 생겼는데:
+- **Service**: 기능 묶음 (예: "LED 제어 서비스"). UUID라는 고유 주소가 있음
+- **Characteristic**: Service 안의 개별 기능 (예: "전원 ON/OFF"). 얘도 UUID가 있음
 - 결국 **Service UUID + Characteristic UUID + 보낼 hex 데이터**, 이 세 가지만 알면 어떤 디바이스든 제어할 수 있습니다
 
-**BlueZ** — 리눅스의 블루투스 스택. Home Assistant가 리눅스 기반이라 BLE 통신은 전부 BlueZ를 거쳐요. 가끔 이상한 에러를 뱉는데.. 그건 뒤에서 다룰게요.
+**BlueZ**: 리눅스의 블루투스 스택. Home Assistant가 리눅스 기반이라 BLE 통신은 전부 BlueZ를 거쳐요. 가끔 이상한 에러를 뱉는데.. 그건 뒤에서 다룰게요.
 
 그래서 이 세 가지 값을 UI에서 직접 입력받는 구조로 만들었어요.
 
@@ -119,7 +119,7 @@ button.py        ← 버튼 엔티티
 select.py        ← 셀렉트 엔티티
 ```
 
-#### BLEDeviceManager — 연결의 심장
+#### BLEDeviceManager: 연결 관리
 
 `ble_client.py`의 `BLEDeviceManager`가 모든 BLE 연결을 관리합니다.
 
@@ -180,8 +180,8 @@ async def _keepalive_loop(self):
 **원인**: 테스트 디바이스(uLamp TV 백라이트)의 Write Characteristic (기능)이 `Write Without Response`(0x04)만 지원하는데, `Write With Response`를 ON으로 설정한 상태였거든요.
 
 잠깐 설명하면.. BLE Characteristic에는 **Properties**라는 속성이 있습니다. "나한테 데이터를 보낼 때 이런 방식으로 보내라"를 정의하는 건데요. 주요한 건 두 가지:
-- **Write Without Response (0x04)** — 데이터를 보내고 끝. 디바이스가 받았는지 확인 안 함
-- **Write With Response (0x08)** — 데이터를 보내고 "잘 받았음" ACK를 기다림
+- **Write Without Response (0x04)**: 데이터를 보내고 끝. 디바이스가 받았는지 확인 안 함
+- **Write With Response (0x08)**: 데이터를 보내고 "잘 받았음" ACK를 기다림
 
 이걸 [nRF Connect](https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-mobile)라는 앱으로 확인할 수 있는데..
 
@@ -219,7 +219,7 @@ async def write(self, char_uuid, data, response=False):
 **교훈**: BLE 디바이스를 제어하기 전에, nRF Connect 같은 앱으로 Characteristic Properties를 꼭 확인합시다. 디바이스가 ACK 주는지를 일단 좀 봐야합니다..
 
 
-#### 2-2. 0x0e Unlikely Error — Notify 구독 충돌
+#### 2-2. 0x0e Unlikely Error: Notify 구독 충돌
 
 **증상**: 간헐적으로 `BleakDBusError: 0x0e Unlikely Error` 발생.
 
@@ -232,10 +232,10 @@ async def write(self, char_uuid, data, response=False):
 문제는 이 구독을 여러 곳에서 동시에 거는 경우였어요. 백그라운드에서 상태를 주기적으로 확인하는 루프와, 사용자가 스위치를 눌렀을 때 실행되는 코드가 동시에 같은 Characteristic(기능)에 구독을 시도하면.. BlueZ가 `0x0e`를 던집니다.
 
 원래 구현은 데이터를 보낼 때마다:
-1. `start_notify()` — 구독 시작
+1. `start_notify()`: 구독 시작
 2. 데이터 전송
 3. Notify 응답 대기
-4. `stop_notify()` — 구독 해제
+4. `stop_notify()`: 구독 해제
 
 이걸 두 곳에서 동시에 실행하면 충돌이 나는 거죠.
 
@@ -284,7 +284,7 @@ self.async_write_ha_state()
 만약 디바이스 상태가 실제로 다르면? 그건 Keepalive 루프에서 주기적으로 디바이스 상태를 받아오니, 그걸 기준으로 교정합니다. 결과적으로 UI는 즉시 반응하고, 실제 상태와의 차이는 몇 초 내에 보정되는 구조예요.
 
 
-#### 2-4. BLE 연결 끊김 — Keepalive가 Keep Alive를 안 하던 문제
+#### 2-4. BLE 연결 끊김: Keepalive가 Keep Alive를 안 하던 문제
 
 **증상**: Keep Alive 켰는데 "예기치 않은 연결 끊김" 로그가 2분에 8~12회씩 계속 찍힘.
 
@@ -318,7 +318,7 @@ while True:
 2. 상태 조회 응답으로 HA 엔티티 상태도 항상 최신
 
 
-#### 2-5. Keepalive 주기 — 디바이스마다 다르더라
+#### 2-5. Keepalive 주기: 디바이스마다 다르더라
 
 **증상**: Keepalive 주기를 60초 → 30초 → 15초 → 10초로 줄여봤는데 여전히 끊김.
 
@@ -379,10 +379,10 @@ Claude Code에 던지고 "이거 BLE GATT Write 패킷 찾아줘"하고 시켰�
 0A A5 <SEQ> <CMD> [<PARAMS>]
 ```
 
-- `0AA5` — 프로토콜 헤더 (고정)
-- `SEQ` — 시퀀스 ID (매번 1 증가, 근데 검증 안 해서 고정값 써도 동작은 함)
-- `CMD 01` — 전원 ON/OFF (`01`=ON, `00`=OFF)
-- `CMD FF` — 상태 조회
+- `0AA5`: 프로토콜 헤더 (고정)
+- `SEQ`: 시퀀스 ID (매번 1 증가, 근데 검증 안 해서 고정값 써도 동작은 함)
+- `CMD 01`: 전원 ON/OFF (`01`=ON, `00`=OFF)
+- `CMD FF`: 상태 조회
 
 HCI 로그에서 캡처한 전원 토글:
 

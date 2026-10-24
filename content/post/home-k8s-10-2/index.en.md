@@ -26,7 +26,7 @@ When we need authentication logic, where can we implement it?
 
 The first thought that comes to mind is implementing it directly in the application.
 
-But what if we have many applications? Or what if some applications were not built by us — they were built by someone else, and we cannot freely implement authentication logic in them?
+But what if we have many applications? Or what if some applications were built by someone else, so we cannot freely implement authentication logic in them?
 
 We are using Kubernetes, and every request goes through Traefik once.
 
@@ -80,7 +80,7 @@ I also need to maintain the login on other sites like a.lemondouble.com, b.lemon
 
 To solve this, we will store the token in a Cookie.
 
-For example, if we set a Cookie on `.lemondouble.com`, that Cookie is automatically sent when accessing any subdomain — `a.lemondouble.com`, `auth.lemondouble.com`, `'b.lemondouble.com'`. We use this property.
+For example, if we set a Cookie on `.lemondouble.com`, that Cookie is automatically sent when accessing any subdomain, such as `a.lemondouble.com`, `auth.lemondouble.com`, and `'b.lemondouble.com'`. We use this property.
 
 ```javascript
 res.cookie('forward-auth-token', token, {
@@ -105,7 +105,7 @@ In this case, JWT seems appropriate. A token that is stateless and very hard to 
 
 The contents... user ID or email would be good.
 
-But once we issue a token, can we use it forever...? Then if a token is stolen once, the server is compromised forever...? So we need to set a token expiration. We can balance security and convenience — for convenience, let's say I use 3600 seconds (1 hour).
+But once we issue a token, can we use it forever...? Then if a token is stolen once, the server is compromised forever...? So we need to set a token expiration. We can balance security and convenience. For convenience, let's say I use 3600 seconds (1 hour).
 
 Then
 

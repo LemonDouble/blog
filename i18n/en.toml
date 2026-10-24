@@ -65,7 +65,7 @@ other = "Previous page"
 other = "Next page"
 
 [pagination_jump_label]
-other = "Current page — enter a number to jump"
+other = "Current page, enter a number to jump"
 
 [license_notice]
 other = "Licensed under CC BY-NC-SA 4.0"

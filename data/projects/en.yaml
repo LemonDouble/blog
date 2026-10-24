@@ -1,4 +1,4 @@
-intro: "A page summarizing the projects I've worked on so far. Personal projects, open source contributions, school assignments — I gathered them all here. Turns out it's quite a lot."
+intro: "A page summarizing the projects I've worked on so far. Personal projects, open source contributions, school assignments: I gathered them all here. Turns out it's quite a lot."
 
 opensource:
   description: "I'm not really aiming for fame and fortune through open source contributions, but when you use enough open source software, you'll occasionally find things that just don't work. Rather than waiting for someone else to fix them, it's faster to fix them myself, so I send PRs whenever something needs fixing."
@@ -22,13 +22,13 @@ opensource:
         - repo: "opensearch-project/helm-charts"
           pr: "https://github.com/opensearch-project/helm-charts/pull/618"
           pr_number: 618
-          description: "Bumped the version in Helm and the deploy stopped working — turned out the default opensearch.yml was conflicting with the security plugin."
+          description: "Bumped the version in Helm and the deploy stopped working, and it turned out the default opensearch.yml was conflicting with the security plugin."
     - year: 2023
       items:
         - repo: "minio/operator"
           pr: "https://github.com/minio/operator/pull/1910"
           pr_number: 1910
-          description: "existingSecret wasn't being applied — turned out the YAML indentation was wrong."
+          description: "existingSecret wasn't being applied, and it turned out the YAML indentation was wrong."
         - repo: "getsentry/sentry"
           pr: "https://github.com/getsentry/sentry/pull/60571"
           pr_number: 60571
@@ -48,11 +48,11 @@ projects:
         languages: ["CSS"]
         status: "완료"
         description: |
-          I saw [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) on GeekNews (a Korean tech news aggregator). I'm not a fan of the idea of ripping off other websites' designs as presets, but the idea itself — that AI can carry a consistent design system — struck me as a good one.
+          I saw [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) on GeekNews (a Korean tech news aggregator). I'm not a fan of the idea of ripping off other websites' designs as presets, but the idea that AI can carry a consistent design system struck me as a good one.
 
           Since I work on a lot of side projects, I've always wanted my own design system, where you could see the design alone and instantly recognize "ah, this is a LemonDouble project!"
 
-          I actually commissioned a designer I know on Figma once, but as a server engineer, some parts were tricky to implement, and I needed components for every project — I couldn't keep commissioning a designer every time. So I never really applied it.
+          I actually commissioned a designer I know on Figma once, but as a server engineer, some parts were tricky to implement, and I needed components for every project, and I couldn't keep commissioning a designer every time. So I never really applied it.
 
           But I figured this methodology might make it possible. Starting from my favicon logo, I extracted Primary / Secondary colors, then adjusted saturation/brightness for each, generated mockups, eyeballed them, and iterated until I was happy.
 
@@ -84,9 +84,9 @@ projects:
           - Fixed an issue where English inside TTS text was treated as silence. Used [loanwords_gairaigo](https://github.com/jamesohortle/loanwords_gairaigo) data to automatically support ~220k English→Katakana mappings, and simplified custom dictionary registration.
           - Dynamically quantized BERT weights to cut memory usage by ~50%.
           - Optimized the Synthesizer to ONNX, achieving ~1.6x speedup on CPU.
-          - Separated BERT / Synthesizer model loading so BERT is shared, and only the per-speaker Synthesizer is loaded separately — each speaker now uses only ~200MB of memory.
-          - Distributed as a PyPI package — `pip install hayakoe` and you can use it in 3 lines.
-          - On CPU-only environments, made it possible to run inference with just ONNX Runtime, no PyTorch install needed — dual backend.
+          - Separated BERT / Synthesizer model loading so BERT is shared, and only the per-speaker Synthesizer is loaded separately, so each speaker now uses only ~200MB of memory.
+          - Distributed as a PyPI package: `pip install hayakoe` and you can use it in 3 lines.
+          - On CPU-only environments, made it possible to run inference with just ONNX Runtime, no PyTorch install needed (dual backend).
           - Added sentence-level streaming TTS (`stream()`). Long text isn't processed all at once; it's generated sentence by sentence, usable for real-time response.
           - `generate()` automatically splits long text into sentences, achieving ~37x speedup (143s → 3.8s for 400 chars).
           - Migrated from `weight_norm` → `parametrizations.weight_norm` for PyTorch 2.x+ compatibility.
@@ -100,7 +100,7 @@ projects:
       - name: "super-arona"
         slug: "super-arona"
         private: true
-        tagline: "Talk to Arona — an LLM-based 3D MMD character viewer"
+        tagline: "Talk to Arona: an LLM-based 3D MMD character viewer"
         languages: ["TypeScript"]
         status: "완료 (고도화 중)"
         description: |
@@ -113,7 +113,7 @@ projects:
 
           There was an earlier project called arona, but it was a simple chat interface that displayed text passed via query parameters.
 
-          super-arona is its successor — as the name suggests, a much more ambitious version.
+          super-arona is its successor and, as the name suggests, a much more ambitious version.
         url: null
 
       - name: "shiroko"
@@ -127,7 +127,7 @@ projects:
 
           Shows weather animations like rain/snow based on the precipitation type from the Korean Meteorological Administration forecast.
 
-          It's just for personal use so nothing fancy, but a daily morning weather briefing helps me decide whether to bike to work — pretty handy.
+          It's just for personal use so nothing fancy, but a daily morning weather briefing helps me decide whether to bike to work, which is pretty handy.
         url: null
 
       - name: "haruna"
@@ -268,7 +268,7 @@ projects:
         languages: ["TypeScript"]
         status: "완료"
         description: |
-          I use Kanban for personal task management. Jira costs money for company use, Notion is slow with awkward features, and the rest all feel like they're missing something — so I built my own.
+          I use Kanban for personal task management. Jira costs money for company use, Notion is slow with awkward features, and the rest all feel like they're missing something, so I built my own.
 
           - Cards are `.md` files, so LLMs can process them automatically.
           - Archived items become a personal work-log.
@@ -296,7 +296,7 @@ projects:
         description: |
           The biggest space hog in my vault is images. So I made it auto-convert JPG/PNG/HEIC → WebP/AVIF on clipboard paste or vault add.
 
-          Pasting from clipboard sometimes inserts an external link that breaks later — this prevents that too.
+          Pasting from clipboard sometimes inserts an external link that breaks later. This prevents that too.
         url: "https://github.com/Lemon-Obsidian/image-manager"
 
       - name: "git-sync"
@@ -308,7 +308,7 @@ projects:
         description: |
           There's an existing git plugin, but I kept forgetting to sync before closing the vault, so I made my own.
 
-          Hit the X button and it does commit→push automatically — way fewer "I forgot to sync" moments.
+          Hit the X button and it does commit→push automatically, so there are way fewer "I forgot to sync" moments.
         url: "https://github.com/Lemon-Obsidian/git-sync"
 
       - name: "lemon-pyopenjtalk-prebuilt"
@@ -320,7 +320,7 @@ projects:
         description: |
           pyopenjtalk doesn't support Python 3.10+, so I built it myself and published the package.
 
-          Installs with just pip install — no CMake / C++ compiler required.
+          Installs with just pip install, with no CMake / C++ compiler required.
         url: "https://github.com/LemonDoubleHQ/lemon-pyopenjtalk-prebuilt"
         fork_of: null
 
@@ -350,7 +350,7 @@ projects:
         languages: ["CSS"]
         status: "완료"
         description: |
-          As I started publishing various libraries, I wanted the docs pages to match my tone too — so I made this.
+          As I started publishing various libraries, I wanted the docs pages to match my tone too, so I made this.
 
           A theme package that applies lemon-design-system's color/typography to VitePress.
 
@@ -441,7 +441,7 @@ projects:
 
           I kept it private due to dataset publication concerns. I got as far as detecting hate speech in the DOM and marking it with a red box..
 
-          But improving the dataset is hard, Transformers.js support was weak, the DOM has way too much data so extreme optimization was needed, and one person can't possibly cover every site — so I dropped it for now.
+          But improving the dataset is hard, Transformers.js support was weak, the DOM has way too much data so extreme optimization was needed, and one person can't possibly cover every site, so I dropped it for now.
         url: null
 
       - name: "project-arona"
@@ -453,7 +453,7 @@ projects:
         description: |
           A project where I tried to build a speaker that responds when you say "Arona", using OpenWakeWord to train a custom wakeword.
 
-          I got as far as training the wakeword, but writing firmware was daunting, the built-in mic quality was bad, and I wasn't sure this was even the right direction — so I dropped it.
+          I got as far as training the wakeword, but writing firmware was daunting, the built-in mic quality was bad, and I wasn't sure this was even the right direction, so I dropped it.
 
           What I really wanted was to see Arona on a moving screen.
         url: null
@@ -483,7 +483,7 @@ projects:
         description: |
           GitOps config repository for my home K3S cluster.
 
-          Managed with the ArgoCD Apps-of-Apps pattern, running across 2 nodes — a mini PC (Ryzen 3750H) and a GPU workstation (Ryzen 5600x / RTX 3090 / 64GB).
+          Managed with the ArgoCD Apps-of-Apps pattern, running across 2 nodes: a mini PC (Ryzen 3750H) and a GPU workstation (Ryzen 5600x / RTX 3090 / 64GB).
 
           Services running on this cluster:
 
@@ -515,7 +515,7 @@ projects:
 
           The pipeline is pretty long: voice recording → STT → ChatGPT response generation → translation → TTS voice synthesis → video generation via talking-head-anime-3, all in one flow.
 
-          I also paid attention to detail — averaging the eye blinks so they're symmetric, closing the mouth when conversation ends, and making the character look at you depending on head/body orientation.
+          I also paid attention to detail: averaging the eye blinks so they're symmetric, closing the mouth when conversation ends, and making the character look at you depending on head/body orientation.
 
           For browser compatibility I switched the video codec from VP9 → H.264 (PyAV), which took some debugging, and I ran translation and TTS generation concurrently to cut inference time.
 
@@ -563,7 +563,7 @@ projects:
         languages: ["TypeScript"]
         status: "archived"
         description: |
-          Same idea as above — a serverless Slack bot template based on ChatGPT API + AWS Lambda.
+          Same idea as above: a serverless Slack bot template based on ChatGPT API + AWS Lambda.
         url: "https://github.com/LemonDouble/chatgpt-serverless-slack-bot"
 
       - name: "lemon-chatgpt-translator"
@@ -607,7 +607,7 @@ projects:
 
           The architecture was hybrid: an AWS Lambda + SQS pipeline parallelized ML processing, while a Spring server at home handled auth/DB.
 
-          On launch day, the Spring SQS-consumption bottleneck and the Twitter API rate limit hit at the same time, which was rough — the full story is in the retrospective post.
+          On launch day, the Spring SQS-consumption bottleneck and the Twitter API rate limit hit at the same time, which was rough. The full story is in the retrospective post.
 
           With LLMs everywhere now, BERT might look ancient, but at the time, as an undergrad, it was pretty cutting-edge.
         url: null
@@ -620,7 +620,7 @@ projects:
         languages: ["JavaScript"]
         status: "드랍"
         description: |
-          I needed a way to transfer huge files (100GB+ Skyrim modpacks and the like), so I started designing this. But what's multipart upload, what's the storage policy, how do I handle this and that — there was just too much to think about, and I dropped it.
+          I needed a way to transfer huge files (100GB+ Skyrim modpacks and the like), so I started designing this. But what's multipart upload, what's the storage policy, how do I handle this and that? There was just too much to think about, and I dropped it.
         url: null
 
   - year: 2021
@@ -632,9 +632,9 @@ projects:
         languages: ["Java"]
         status: "archived"
         description: |
-          During COVID, everyone had to fill out a visitor log every time they entered a place. I figured BLE could handle it automatically as you walk by, and that would be better for everyone — so I built it.
+          During COVID, everyone had to fill out a visitor log every time they entered a place. I figured BLE could handle it automatically as you walk by, and that would be better for everyone, so I built it.
 
-          We did this through the school's global cooperation program (GBPL) with friends from Japan, China, Taiwan, and Vietnam — a really unique experience working with people from different countries.
+          We did this through the school's global cooperation program (GBPL) with friends from Japan, China, Taiwan, and Vietnam. It was a really unique experience working with people from different countries.
 
           I built the Bluetooth beacon myself too, and somehow got Android working without knowing anything about it(...).
         url: "https://github.com/LemonDouble/Beacon_based_Automatic_visitor_check_program_GBPL"
@@ -649,7 +649,7 @@ projects:
         description: |
           During my first internship I joined a music-processing startup, and built this repo to study.
 
-          Things like mel-spectrograms — I learned them here, and they come in handy now while I'm playing with VITS.
+          I learned things like mel-spectrograms here, and they come in handy now while I'm playing with VITS.
 
           Turns out everything you learn ends up being useful eventually.
         url: "https://github.com/LemonDouble/Audio_processing_practice"
@@ -661,7 +661,7 @@ projects:
         languages: ["C++"]
         status: "archived"
         description: |
-          A network-socket programming class assignment in college — I remember pulling an all-nighter the day before the presentation to barely finish it(...).
+          A network-socket programming class assignment in college. I remember pulling an all-nighter the day before the presentation to barely finish it(...).
 
           First time doing low-level socket communication in C++, including defining packet sizes myself for custom protocols. It was actually pretty fun.
         url: "https://github.com/LemonDouble/Socket_Order_Program"
@@ -747,7 +747,7 @@ projects:
         description: |
           A repo where I worked through "Architecture Patterns with Python" (Cosmic Python), studying DDD, the Repository pattern, Unit of Work, CQRS, event-driven architecture, and so on.
 
-          I learned a lot, but actually applying it is a different story — something I came to understand once I started working.
+          I learned a lot, but actually applying it is a different story, which I came to understand once I started working.
         url: "https://github.com/LemonDouble/python_architecture"
         fork_of: "cosmicpython/code"
 
@@ -766,5 +766,5 @@ projects:
           - System Call-based snake game
           - A simple SQL implementation that mimics MySQL's basic features
 
-          Be gentle — these are first-year work(...). They were genuinely tough at the time.
+          Be gentle: these are first-year work(...). They were genuinely tough at the time.
         url: "https://github.com/LemonDouble/Omok"

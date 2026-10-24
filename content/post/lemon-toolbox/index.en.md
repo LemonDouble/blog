@@ -30,7 +30,7 @@ _Note: I'm based in Korea, so some context here is Korea-specific._
 
 ~~I originally wrote something long, but other people's TMI isn't very fun, so I'm keeping it short. Even shortened, it's still pretty long though!~~
 
-While reading [Introduction to Natural Language Processing with Deep Learning](https://wikidocs.net/book/2155) as a hobby, I was on the [Korean chatbot using BERT sentence embedding](https://wikidocs.net/154530) section when it suddenly hit me — couldn't I use tweets as training data?
+While reading [Introduction to Natural Language Processing with Deep Learning](https://wikidocs.net/book/2155) as a hobby, I was on the [Korean chatbot using BERT sentence embedding](https://wikidocs.net/154530) section when it suddenly hit me: couldn't I use tweets as training data?
 
 ![Book example](image-1.png)
 
@@ -71,7 +71,7 @@ For those unfamiliar with serverless, let me explain briefly with a diagram.
 
 ![Traditional VPS usage example](image-4.png)
 
-> This is the traditional way of using the cloud. You rent a computer for a fixed period — a month, a week, a day — and pay for the time you rented. VPS is a similar concept!
+> This is the traditional way of using the cloud. You rent a computer for a fixed period (a month, a week, a day) and pay for the time you rented. VPS is a similar concept!
 
 ![](image-5.png)
 
@@ -106,9 +106,9 @@ The key parts are as follows.
 2. Heavy computations like machine learning are sent to the cloud (AWS) and processed using AWS server resources.
 3. When AWS finishes processing, it notifies the home server, which records completion in the DB.
 
-Since I personally have a home server, I built the service with the dream and hope of catching both **cost-effectiveness** and **performance** — letting the home server handle light tasks to save on server rental fees, and offloading heavy computation to the cloud (AWS)!
+Since I personally have a home server, I built the service with the dream and hope of catching both **cost-effectiveness** and **performance** by letting the home server handle light tasks to save on server rental fees, and offloading heavy computation to the cloud (AWS)!
 
-### 4. Launch — Subtitle: Bottlenecks emerge from where you least expect
+### 4. Launch: Subtitle: Bottlenecks emerge from where you least expect
 
 ![First-day incident response tweets](image-9.png)
 
@@ -130,7 +130,7 @@ But the queue (3) that, on completion of all pipeline tasks, notifies Spring and
 
 The problem is that the initial architecture assumed ServiceReadyQueue would be processed instantly.
 
-So when training completes, both the Twitter notification (serverless) and the Spring notification fire simultaneously — but the Twitter notification arrives immediately, while the DB write is delayed.
+So when training completes, both the Twitter notification (serverless) and the Spring notification fire simultaneously, but the Twitter notification arrives immediately, while the DB write is delayed.
 In other words, a user who clicks the notification could see a "Service unavailable!" screen for **up to 33 minutes**.
 
 Honestly, I agonized over this for a while.
@@ -157,7 +157,7 @@ Looking at another currently-open [issue](https://github.com/awspring/spring-clo
 > Ah... so a hotfix is going to be tough...
 
 
-In conclusion, the bottleneck itself can't be solved easily — fixing it would require either rewriting Spring's job in a serverless architecture, or doing a massive overhaul (...) of the library dependencies. Either way, it's not something for today after launching, so I decided to do more monitoring.
+In conclusion, the bottleneck itself can't be solved easily. Fixing it would require either rewriting Spring's job in a serverless architecture, or doing a massive overhaul (...) of the library dependencies. Either way, it's not something for today after launching, so I decided to do more monitoring.
 
 #### Whoops!
 
@@ -175,11 +175,11 @@ I went into CloudWatch, opened the logs for that Lambda function, and sure enoug
 > Yep, API limit!
 
 I didn't know what kind of limit it was
-~~(Twitter has all sorts of limits — user limits, app limits, 15-minute limits, daily limits, monthly limits...)~~
+~~(Twitter has all sorts of limits: user limits, app limits, 15-minute limits, daily limits, monthly limits...)~~
 but it was obvious I had to remove the signup button (...)
 After removing the signup button and posting a related notice on Twitter, three stormy hours had passed.
 
-Since I'd hit the daily limit and there was nothing more I could do (...), I decided to do a service post-mortem and leave a record — which is what I'm writing right now.
+Since I'd hit the daily limit and there was nothing more I could do (...), I decided to do a service post-mortem and leave a record, which is what I'm writing right now.
 
 ### 5. Conclusion and Reflection
 
@@ -188,7 +188,7 @@ and I think this was the first time I experienced that panic state when traffic 
 
 Especially since I built the entire service myself (...), I think I found the failure points fast, but the hardest part was figuring out how to fix a service while it's live? what side effects might occur? and so on.
 
-Especially in cases like the one in the middle, **"a critical service failure (notification sent but execution unavailable)"** — having to fix it quickly on a live server while not knowing what side effects hastily-written code might cause was the most psychologically taxing and nerve-wracking moment.
+Especially in cases like the one in the middle, **"a critical service failure (notification sent but execution unavailable)"**, having to fix it quickly on a live server while not knowing what side effects hastily-written code might cause was the most psychologically taxing and nerve-wracking moment.
 
 Honestly, the biggest takeaway was
 > Ahhh, this is why people keep saying automated tests, automated tests...

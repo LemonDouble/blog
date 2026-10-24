@@ -17,7 +17,7 @@ tags:
 
 _Note: I'm based in Korea, so some context here is Korea-specific._
 
-Fly.io is a company that lets you easily deploy a Docker image to a specific country (or region) — all you need to do is prepare the Docker image.
+Fly.io is a company that lets you easily deploy a Docker image to a specific country (or region). All you need to do is prepare the Docker image.
 
 After signing up, once you write a `fly.toml` file appropriately and run
 
@@ -60,7 +60,7 @@ and Organization-based password sharing.
 
 This is handy when you're developing with others and need to share things like Slack Webhook URLs, environment variables, dev DB IDs and passwords, etc.
 
-It also offers security audits — checking whether your password matches any leaked DB entries or whether you're reusing passwords — and a SEND feature for transmitting sensitive data with end-to-end encryption.
+It also offers security audits (checking whether your password matches any leaked DB entries or whether you're reusing passwords) and a SEND feature for transmitting sensitive data with end-to-end encryption.
 
 However, since Bitwarden is open-source, you can self-host the password server, but to ensure high availability at production level, it requires high specs and a lot of configuration. ([Bitwarden Install Docs](https://bitwarden.com/help/install-on-premise-linux/))
 

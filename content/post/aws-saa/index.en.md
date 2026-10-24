@@ -82,4 +82,4 @@ The exam fee was steep so I'd been hesitant, but I figured if I kept hesitating 
 
 I'm thinking about going for the Developer cert next, though I haven't decided when. See you later!
 
-[^1]: AWS Korea User Group (AWSKRUG) — a community of AWS users in Korea that runs meetups and a Slack workspace.
+[^1]: AWS Korea User Group (AWSKRUG): a community of AWS users in Korea that runs meetups and a Slack workspace.

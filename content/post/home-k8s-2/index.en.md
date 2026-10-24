@@ -68,7 +68,7 @@ For this, we'll use **Supabase**, which provides a free DB.
 
 Sign up at [Supabase](https://supabase.com/), then set up and grab the Postgres connection credentials.
 
-If you can, configure PgBouncer too — Supabase supports it. 
+If you can, configure PgBouncer too. Supabase supports it. 
 
 (Because of connection limits, once you install Portainer later it works fine, but you'll see a lot of error messages without PgBouncer.)
 
@@ -185,7 +185,7 @@ kubectl label nodes worker03 node-type=worker
 
 Now do a final check.
 
-Here's what mine looks like — your ROLES column may still differ. (`kubectl get nodes`)
+Here's what mine looks like, though your ROLES column may still differ. (`kubectl get nodes`)
 
 ```sh
 NAME           STATUS   ROLES                  AGE    VERSION
@@ -197,7 +197,7 @@ worker03       Ready    worker                 307d   v1.27.4+k3s1
 
 Also check the labels you added (`kubectl get nodes --show-labels`).
 
-There will be a bunch of labels — you only need to confirm that the `node-type=worker` you added is there.
+There will be a bunch of labels, but you only need to confirm that the `node-type=worker` you added is there.
 
 ### Wrapping Up
 

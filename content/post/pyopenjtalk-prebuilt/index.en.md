@@ -24,7 +24,7 @@ When a repo stops getting updates, what's the problem? Bumping Python versions a
 
 In my case, I have an "ML Server" on my home server where I've crammed all my ML-related stuff. So I've installed all sorts of things on it… and when there's a stale repo like that, conflicts keep popping up whenever I try to install something. For example, numpy 2.0…
 
-So even when I just wanted to add one more thing… every install kept running into conflicts, which made it not so easy. Then I started digging — who exactly keeps breaking my dependencies? Turned out it was that package. The one that wouldn't let me bump past Python 3.10… I want to taste 3.12 too, you know.
+So even when I just wanted to add one more thing… every install kept running into conflicts, which made it not so easy. Then I started digging: who exactly keeps breaking my dependencies? Turned out it was that package. The one that wouldn't let me bump past Python 3.10… I want to taste 3.12 too, you know.
 
 So after enduring it for a while… I just decided to do it myself. Once I saw that **pyopenjtalk** was the reason I couldn't go past Python 3.10, I thought: oh, if I just fix that one thing, I'm done!
 
@@ -91,11 +91,11 @@ I cleaned up the original pyopenjtalk's `pyproject.toml` to fit the new package.
 
 And I dropped all the unused stuff…
 
-- `docs`, `dev` optional-dependencies — Sphinx (doc generation), pysen (linter), mypy (type checker), etc. We only need to ship built wheels, so unnecessary
-- The entire pysen lint config — code style settings from the original repo. No reason to maintain that in a fork. It's been frozen for over a year, so… it'll probably be fine
-- Python 3.8 conditional dependencies — `importlib_resources` (resource access on 3.8), `oldest-supported-numpy` (numpy for 3.8), etc. Since I bumped minimum to 3.9, these aren't needed
+- `docs`, `dev` optional-dependencies: Sphinx (doc generation), pysen (linter), mypy (type checker), etc. We only need to ship built wheels, so unnecessary
+- The entire pysen lint config: code style settings from the original repo. No reason to maintain that in a fork. It's been frozen for over a year, so… it'll probably be fine
+- Python 3.8 conditional dependencies: `importlib_resources` (resource access on 3.8), `oldest-supported-numpy` (numpy for 3.8), etc. Since I bumped minimum to 3.9, these aren't needed
 
-And the core piece: I added the **[cibuildwheel](https://cibuildwheel.pypa.io/)** config. It's a tool maintained by PyPA — if you declare combinations like "CPython 3.9~3.13 × Linux/Windows" in `pyproject.toml`, GitHub Actions builds a wheel for each combination automatically. No need to manually install Python on each OS and run build scripts.
+And the core piece: I added the **[cibuildwheel](https://cibuildwheel.pypa.io/)** config. It's a tool maintained by PyPA. If you declare combinations like "CPython 3.9~3.13 × Linux/Windows" in `pyproject.toml`, GitHub Actions builds a wheel for each combination automatically. No need to manually install Python on each OS and run build scripts.
 
 With this, a single workflow run produces **10 wheels + 1 sdist** (5 Linux + 5 Windows).
 
@@ -128,8 +128,8 @@ Trigger: version tag (v*) push or manual run
 
 And for GitHub Actions checkout, two options are critical:
 
-- **`submodules: recursive`** — pyopenjtalk has the OpenJTalk C++ source as a git submodule. Without this option, the submodule folder gets checked out empty, so there's no C++ source to build, and naturally the build fails.
-- **`fetch-depth: 0`** — by default, GitHub Actions only fetches the latest commit (shallow clone), but setuptools_scm looks at git tag history to determine the version. Without history, it can't figure out the version and the build breaks. Setting it to `0` fetches the full history.
+- **`submodules: recursive`**: pyopenjtalk has the OpenJTalk C++ source as a git submodule. Without this option, the submodule folder gets checked out empty, so there's no C++ source to build, and naturally the build fails.
+- **`fetch-depth: 0`**: by default, GitHub Actions only fetches the latest commit (shallow clone), but setuptools_scm looks at git tag history to determine the version. Without history, it can't figure out the version and the build breaks. Setting it to `0` fetches the full history.
 
 ### 3. The yak shaving log
 
@@ -139,7 +139,7 @@ This is where it gets real. Between first putting up the pipeline and actually g
 
 #### 3-1. numpy build dependency and the manylinux container
 
-cibuildwheel builds inside a Docker container called manylinux on Linux. manylinux is the standard build environment that guarantees "this wheel runs on most Linux systems." Different container versions ship different glibc (Linux's core C library) versions — lower versions are compatible with more Linux distros, but newer packages might not install.
+cibuildwheel builds inside a Docker container called manylinux on Linux. manylinux is the standard build environment that guarantees "this wheel runs on most Linux systems." Different container versions ship different glibc (Linux's core C library) versions. Lower versions are compatible with more Linux distros, but newer packages might not install.
 
 Initially I used the default manylinux1 container (a very old environment), and the build failed because no `numpy>=1.25.0` wheel exists for it.
 

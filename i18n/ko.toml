@@ -65,7 +65,7 @@ other = "이전 페이지"
 other = "다음 페이지"
 
 [pagination_jump_label]
-other = "현재 페이지 — 숫자를 입력하여 이동"
+other = "현재 페이지, 숫자를 입력하여 이동"
 
 [license_notice]
 other = "Licensed under CC BY-NC-SA 4.0"

@@ -27,11 +27,11 @@ Honestly, I didn't really care about integrations at first.. some lights behind 
 
 It would be nice if it could sync with what's playing on the TV in real time, but..
 
-If it were a Chromecast, I could just hook the HDMI line, but my TV doesn't have anything like that — it's an Android TV. So in theory? I could connect via ADB or install a separate app, extract pixel info from the screen edges, and sync it in real time..?
+If it were a Chromecast, I could just hook the HDMI line, but my TV doesn't have anything like that. It's an Android TV. So in theory? I could connect via ADB or install a separate app, extract pixel info from the screen edges, and sync it in real time..?
 
 But hey, expecting all that from a $20 device is asking too much. So I figured it was probably a simple setup where a camera sensor sits next to the TV and just shoots whatever color the camera sees onto the LEDs.
 
-Because it only captures the center of the TV, it's not exactly perfectly synced with the TV colors — but whatever, the point is that there's light behind the TV. That's what matters.
+Because it only captures the center of the TV, it's not exactly perfectly synced with the TV colors, but whatever, the point is that there's light behind the TV. That's what matters.
 
 But then..
 
@@ -39,14 +39,14 @@ But then..
 
 After receiving it, I noticed there was a dedicated app and a remote. I tossed the remote since I'd never use it, but when I tried the dedicated app, I saw it connected via Bluetooth.
 
-So I'm thinking — this thing's at the top of AliExpress's best-sellers, surely some hidden master out there has built a sketchy 10-star integration for it..? But after rummaging around, I couldn't find any.
+So I'm thinking: this thing's at the top of AliExpress's best-sellers, surely some hidden master out there has built a sketchy 10-star integration for it..? But after rummaging around, I couldn't find any.
 
 There was a cheap dedicated app that pops up Bluetooth permission prompts about ten times.. and no matter how hard I dug through HA integrations, nothing came up.
 
 But then it hit me..
 
 - Bluetooth signals are basically broadcasted everywhere, so I can intercept them somewhere else and analyze them
-- Even better — the app sends signals from my own phone, so I should be able to see them in Android debug logs
+- Even better, the app sends signals from my own phone, so I should be able to see them in Android debug logs
 - Then if I can capture just the ON/OFF signals, I should be able to wire it into Home Assistant, right?
 
 This crossed my mind, but..
@@ -100,14 +100,14 @@ Claude said it could see the logs, so I started flailing around. If it works, gr
 
 Before the troubleshooting stories.. I'll quickly walk through the overall structure. To follow along, let me clear up some BLE terminology.
 
-**BLE (Bluetooth Low Energy)** — The low-power version of Bluetooth. Mainly used in low-power, small devices. Heavily used in IoT where power consumption matters.
+**BLE (Bluetooth Low Energy)**: The low-power version of Bluetooth. Mainly used in low-power, small devices. Heavily used in IoT where power consumption matters.
 
-**GATT (Generic Attribute Profile)** — The protocol for exchanging data with BLE devices. Simply put, it defines "if you send X to this address on this device, X will happen." The structure looks like this:
-- **Service** — A bundle of features (e.g., "LED control service"). Has a unique address called UUID
-- **Characteristic** — Individual features within a Service (e.g., "Power ON/OFF"). Also has a UUID
+**GATT (Generic Attribute Profile)**: The protocol for exchanging data with BLE devices. Simply put, it defines "if you send X to this address on this device, X will happen." The structure looks like this:
+- **Service**: A bundle of features (e.g., "LED control service"). Has a unique address called UUID
+- **Characteristic**: Individual features within a Service (e.g., "Power ON/OFF"). Also has a UUID
 - In the end, if you know the **Service UUID + Characteristic UUID + hex data to send**, you can control any device
 
-**BlueZ** — Linux's Bluetooth stack. Since Home Assistant runs on Linux, all BLE communication goes through BlueZ. It throws weird errors sometimes — I'll cover that later.
+**BlueZ**: Linux's Bluetooth stack. Since Home Assistant runs on Linux, all BLE communication goes through BlueZ. It throws weird errors sometimes, which I'll cover later.
 
 So I built a structure where these three values are entered directly through the UI.
 
@@ -120,7 +120,7 @@ button.py        ← Button entity
 select.py        ← Select entity
 ```
 
-#### BLEDeviceManager — The Heart of the Connection
+#### BLEDeviceManager: Connection Management
 
 `BLEDeviceManager` in `ble_client.py` handles all BLE connections.
 
@@ -181,8 +181,8 @@ Honestly, I never thought building a single On/Off switch would take this much e
 **Cause**: The test device (uLamp TV backlight)'s Write Characteristic only supports `Write Without Response` (0x04), but I had `Write With Response` set to ON.
 
 Quick explanation: BLE Characteristics have **Properties**. They define "send data to me using this method." The two main ones:
-- **Write Without Response (0x04)** — Send and forget. Doesn't check if the device received it
-- **Write With Response (0x08)** — Send and wait for an ACK saying "received"
+- **Write Without Response (0x04)**: Send and forget. Doesn't check if the device received it
+- **Write With Response (0x08)**: Send and wait for an ACK saying "received"
 
 You can check this with [nRF Connect](https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-mobile)..
 
@@ -220,7 +220,7 @@ On timeout, force-disconnect to release the Lock, then reconnect on the next com
 **Lesson**: Before controlling a BLE device, always check Characteristic Properties with something like nRF Connect. You really need to verify whether the device sends ACKs..
 
 
-#### 2-2. 0x0e Unlikely Error — Notify Subscription Conflicts
+#### 2-2. 0x0e Unlikely Error: Notify Subscription Conflicts
 
 **Symptom**: Sporadic `BleakDBusError: 0x0e Unlikely Error`.
 
@@ -228,15 +228,15 @@ The fact that it was sporadic made it even more annoying (..)
 
 What is `0x0e Unlikely Error`? It's an error BlueZ (the Linux Bluetooth stack) throws when it thinks "this shouldn't happen." Funny that it's called Unlikely, but in practice you hit it pretty often (..)
 
-**Cause**: BLE has a feature called **Notify**. The device proactively says "my state changed!" — to receive that, you have to subscribe via `start_notify()`.
+**Cause**: BLE has a feature called **Notify**. The device proactively says "my state changed!", and to receive that, you have to subscribe via `start_notify()`.
 
 The problem was that the subscription was being set from multiple places at once. The background loop that checks state periodically and the code that runs when the user flips a switch were both trying to subscribe to the same Characteristic.. and BlueZ throws `0x0e`.
 
 The original implementation was, every time data was sent:
-1. `start_notify()` — Start subscription
+1. `start_notify()`: Start subscription
 2. Send data
 3. Wait for Notify response
-4. `stop_notify()` — Unsubscribe
+4. `stop_notify()`: Unsubscribe
 
 When two places ran this simultaneously, conflict.
 
@@ -267,7 +267,7 @@ It was pretty noticeable in practice.
 
 **Cause**: `write_and_notify()` waited up to 1.5 seconds for a Notify response after Write. If no Notify came or it didn't match, you'd lose 1.5 seconds every time..
 
-**Fix**: After Write, optimistically update state immediately. As I mentioned, in Write Without Response mode the device doesn't send an ACK. So there's no way to know if it really arrived — but if the connection's healthy, it probably went through, so let's just update the UI first. The chance is much higher that it was delivered if the connection's fine. (TMI: Twitter likes/retweets work this way too.)
+**Fix**: After Write, optimistically update state immediately. As I mentioned, in Write Without Response mode the device doesn't send an ACK. So there's no way to know if it really arrived. But if the connection's healthy, it probably went through, so let's just update the UI first. The chance is much higher that it was delivered if the connection's fine. (TMI: Twitter likes/retweets work this way too.)
 
 ```python
 # Before: Wait for Notify response with write_and_notify()
@@ -285,7 +285,7 @@ self.async_write_ha_state()
 What if the actual device state is different? The Keepalive loop periodically queries device state and corrects based on that. End result: the UI reacts instantly, and any discrepancy with the real state gets reconciled within a few seconds.
 
 
-#### 2-4. BLE Disconnects — When Keepalive Wasn't Keeping Alive
+#### 2-4. BLE Disconnects: When Keepalive Wasn't Keeping Alive
 
 **Symptom**: Keep Alive was on, but "unexpected disconnect" logs were firing 8-12 times every 2 minutes.
 
@@ -319,7 +319,7 @@ This actually killed two birds with one stone:
 2. Status query responses also keep HA entity state up-to-date
 
 
-#### 2-5. Keepalive Interval — Varies by Device
+#### 2-5. Keepalive Interval: Varies by Device
 
 **Symptom**: I tried Keepalive intervals of 60s → 30s → 15s → 10s, but it still kept disconnecting.
 
@@ -341,7 +341,7 @@ Added a `keepalive_interval` field to both Config Flow and Options Flow so each 
 
 **Symptom**: I entered Notify ON/OFF patterns but state checks weren't working. No errors, just silently ignored, making the cause hard to track down.
 
-**Cause**: Some devices don't support Notify, so I made it Optional.. but for Notify to work, you need all four of these as a set: **Notify UUID, ON pattern, OFF pattern, status query command**. Miss any one and it doesn't work — but initially there was no validation, so it would save fine even if you only forgot the Notify UUID, with no error.
+**Cause**: Some devices don't support Notify, so I made it Optional.. but for Notify to work, you need all four of these as a set: **Notify UUID, ON pattern, OFF pattern, status query command**. Miss any one and it doesn't work, but initially there was no validation, so it would save fine even if you only forgot the Notify UUID, with no error.
 
 **Fix**: Added validation at save time. If any of the 4 fields is filled, require the rest too.
 
@@ -380,10 +380,10 @@ The packet format I derived looks like this:
 0A A5 <SEQ> <CMD> [<PARAMS>]
 ```
 
-- `0AA5` — Protocol header (fixed)
-- `SEQ` — Sequence ID (incremented each time, but it's not validated so a fixed value still works)
-- `CMD 01` — Power ON/OFF (`01`=ON, `00`=OFF)
-- `CMD FF` — Status query
+- `0AA5`: Protocol header (fixed)
+- `SEQ`: Sequence ID (incremented each time, but it's not validated so a fixed value still works)
+- `CMD 01`: Power ON/OFF (`01`=ON, `00`=OFF)
+- `CMD FF`: Status query
 
 Power toggles captured from HCI logs:
 
