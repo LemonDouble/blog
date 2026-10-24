@@ -113,10 +113,7 @@ other = "已弃用"
 other = ""
 
 [skill_level_primary]
-other = "🔥 主力"
+other = "🔥 常用"
 
 [skill_level_secondary]
 other = "🛠️ 偶尔使用"
-
-[skill_level_familiar]
-other = "📚 略懂"

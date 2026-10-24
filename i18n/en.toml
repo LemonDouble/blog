@@ -113,10 +113,7 @@ other = "Dropped"
 other = ""
 
 [skill_level_primary]
-other = "🔥 Primary"
+other = "🔥 Frequently"
 
 [skill_level_secondary]
 other = "🛠️ Occasional"
-
-[skill_level_familiar]
-other = "📚 Familiar"

@@ -113,10 +113,7 @@ other = "中止"
 other = ""
 
 [skill_level_primary]
-other = "🔥 メイン"
+other = "🔥 よく使う"
 
 [skill_level_secondary]
 other = "🛠️ たまに使う"
-
-[skill_level_familiar]
-other = "📚 触ったことあり"

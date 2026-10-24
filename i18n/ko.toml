@@ -113,10 +113,7 @@ other = "드랍"
 other = ""
 
 [skill_level_primary]
-other = "🔥 주력"
+other = "🔥 자주 써요"
 
 [skill_level_secondary]
 other = "🛠️ 가끔씩 써요"
-
-[skill_level_familiar]
-other = "📚 할 줄은 알아요"
