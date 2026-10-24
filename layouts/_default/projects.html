@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $data := index site.Data.projects .Site.Language.Lang }}
+{{ $data := index hugo.Data.projects .Site.Language.Lang }}
 {{ $statusClass := dict "개발중" "dev" "완료" "done" "운영중" "running" "archived" "archived" "드랍" "dropped" "완료 (개인용)" "done" "완료 (고도화 중)" "done" }}
 {{ $statusKey := dict "개발중" "dev" "완료" "done" "운영중" "running" "archived" "archived" "드랍" "dropped" "완료 (개인용)" "done_personal" "완료 (고도화 중)" "done_advancing" }}
 

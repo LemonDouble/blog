@@ -5,7 +5,7 @@
     </header>
 
     <div class="skills-table-wrapper">
-        {{ $data := index site.Data.skills .Site.Language.Lang }}
+        {{ $data := index hugo.Data.skills .Site.Language.Lang }}
         <table class="skills-table">
             <colgroup>
                 <col class="col-category">
