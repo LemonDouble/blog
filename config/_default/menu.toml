@@ -16,14 +16,6 @@ url = "https://github.com/LemonDouble"
 icon = "brand-github"
 
 [[social]]
-identifier = "twitter"
-name = "Twitter"
-url = "https://twitter.com/_lemon_berry_"
-
-[social.params]
-icon = "brand-twitter"
-
-[[social]]
 identifier = "mail"
 name = "mail"
 url = "mailto:contact@lemondouble.com"
