@@ -1,4 +1,11 @@
 {{ define "main" }}
+{{/* 지원을 중단한 언어(ja, zh-cn, zh-tw)의 기존 주소를 영어 버전으로 옮긴다. GitHub Pages는 서버 리다이렉트를 지원하지 않는다. */}}
+<script>
+    (function() {
+        var match = location.pathname.match(/^\/(ja|zh-cn|zh-tw)(\/.*)?$/);
+        if (match) location.replace('/en' + (match[2] || '/') + location.search + location.hash);
+    })();
+</script>
 <section class="error-page">
     <div class="error-container">
         <h1 class="error-code">404</h1>
