@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Storage on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/storage/</link><description>Recent content in Storage on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 09 Dec 2023 10:48:57 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/storage/index.xml" rel="self" type="application/rss+xml"/><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 6. Adding Distributed Storage and Serving It via Longhorn</title><link>https://blog.lemondouble.com/en/p/615befc538a81902/</link><pubDate>Sat, 09 Dec 2023 10:48:57 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/615befc538a81902/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-add-and-mount-a-new-disk"&gt;1. Add and Mount a New Disk&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;This part is the same as a regular SSD / HDD mount! If something doesn&amp;rsquo;t work, feel free to search for &lt;code&gt;Ubuntu hard disk mount&lt;/code&gt; and follow along.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Connect the SSD or HDD to the Raspberry Pi.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;code&gt;sudo fdisk -l&lt;/code&gt; to find the name of the mounted hard disk. In my case, it&amp;rsquo;s &lt;code&gt;/dev/sda&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Building a Datacenter at Home with a Raspberry Pi Cluster - 5. ArgoCD GitOps Setup and Longhorn Installation</title><link>https://blog.lemondouble.com/en/p/107eed6a453d6238/</link><pubDate>Sat, 09 Dec 2023 09:16:13 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/107eed6a453d6238/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id="1-getting-started-with-gitops"&gt;1. Getting Started with GitOps&lt;/h3&gt;
+&lt;p&gt;Now that we&amp;rsquo;ve installed ArgoCD, let&amp;rsquo;s organize our repository structure.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;re going to use the App On Apps pattern to create a clean deployment method.&lt;/p&gt;
+&lt;p&gt;Even if it doesn&amp;rsquo;t quite make sense yet, just follow along for now.&lt;/p&gt;
+&lt;p&gt;Take the empty repository we created last time and structure it like this:&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;sh&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-sh"&gt;/apps
+ ㄴ/disabled
+ ㄴ/enabled
+/init
+/modules&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Then, add all the files we worked on earlier (ip_address_pool.yaml, the ArgoCD ingress.yaml, traefik-update.yaml, and values.yaml) to the init folder.&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AWS on Lemon Blog</title><link>https://blog.lemondouble.com/tags/aws/</link><description>Recent content in AWS on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sun, 04 Aug 2024 20:11:48 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>AWS SAA 당일 시험 합격 후기글</title><link>https://blog.lemondouble.com/p/d3c7a9de0a536286/</link><pubDate>Sun, 04 Aug 2024 20:11:48 +0900</pubDate><guid>https://blog.lemondouble.com/p/d3c7a9de0a536286/</guid><description>&lt;p&gt;AWS에는 활용 자격증이 있습니다. (&lt;a href="https://aws.amazon.com/ko/certification/exams/" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+)&lt;/p&gt;
+&lt;p&gt;언젠간 따야지.. 따야지.. 하고 벼르고만 있다, 이러다간 평생 못 딸 것 같아서, 오늘 약속도 없겠다 당일에 시험 신청하고 온라인 시험으로 한번 봤습니다.&lt;/p&gt;</description></item><item><title>Private DNS와 ALB를 이용해 VPC 외부에선 접속이 불가능한 API 만들기</title><link>https://blog.lemondouble.com/p/acf607c351652785/</link><pubDate>Sun, 22 Jan 2023 17:12:43 +0900</pubDate><guid>https://blog.lemondouble.com/p/acf607c351652785/</guid><description>&lt;p&gt;MSA 서비스를 만들면 서버 간 굉장히 잦은 통신이 일어납니다.&lt;/p&gt;
+&lt;p&gt;예를 들어 (아주 간략화한) 송금 서비스가 있다고 가정해 봅시다.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/acf607c351652785/2023-01-22-17-22-23.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;지갑 서버와 유저정보 서버가 있다면, 송금 API를 호출하면 위와 같은 일이 일어날 겁니다.&lt;/p&gt;</description></item><item><title>Github OIDC를 이용해 Github Actions에 AWS Key 넣지 않고 AWS 리소스 사용하기 (무료)</title><link>https://blog.lemondouble.com/p/github-oidc%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-github-actions%EC%97%90-aws-key-%EB%84%A3%EC%A7%80-%EC%95%8A%EA%B3%A0-aws-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EB%AC%B4%EB%A3%8C/</link><pubDate>Sun, 22 Jan 2023 11:18:50 +0900</pubDate><guid>https://blog.lemondouble.com/p/github-oidc%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4-github-actions%EC%97%90-aws-key-%EB%84%A3%EC%A7%80-%EC%95%8A%EA%B3%A0-aws-%EB%A6%AC%EC%86%8C%EC%8A%A4-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EB%AC%B4%EB%A3%8C/</guid><description>&lt;p&gt;Github Actions에서 AWS를 사용하려면 보통 다음과 같은 과정을 거칩니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;IAM 창에 들어가서 새로운 유저를 발급합니다.&lt;/li&gt;
+&lt;li&gt;Github Actions에서 IAM Role을 추가하고, Programmatic access 방식을 추가해 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt;, &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt; 를 발급받습니다.&lt;/li&gt;
+&lt;li&gt;레포지토리에 설정에서, Github Secrets에 방금 발급받은 &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt;, &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt;를 추가합니다.&lt;/li&gt;
+&lt;li&gt;이후 github actions에서 다음과 같은 워크플로우를 추가한 뒤 AWS 리소스에 접근합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;yaml&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-yaml"&gt;- name: Configure AWS Credentials
+ uses: aws-actions/configure-aws-credentials@v1
+ with:
+ aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+ aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ aws-region: us-east-2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;프로젝트가 하나라면, 이런 식으로 관리해도 큰 문제가 없습니다.&lt;/p&gt;</description></item><item><title>AWS SSO로 회사에서 보던 그 화면 집에서도 쓰기 (무료)</title><link>https://blog.lemondouble.com/p/1c9eaebbdee2ac98/</link><pubDate>Sat, 21 Jan 2023 16:17:06 +0900</pubDate><guid>https://blog.lemondouble.com/p/1c9eaebbdee2ac98/</guid><description>&lt;p&gt;회사나 조직에서 AWS를 사용하다 보면, 다음과 같은 SSO (Single Sign On) 페이지를 통해 로그인 하는 아래와 같은 페이지를 본 적이 있으실 겁니다.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/1c9eaebbdee2ac98/2023-01-21-23-57-37.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;한번 설정해 보면 세션이 유지되는 동안 매번 id/password를 입력해 주지 않아도 되어서 사용하기도 편하고,&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bitwarden on Lemon Blog</title><link>https://blog.lemondouble.com/tags/bitwarden/</link><description>Recent content in Bitwarden on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Tue, 17 Jan 2023 14:03:50 +0000</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/bitwarden/index.xml" rel="self" type="application/rss+xml"/><item><title>Fly.io 소개 및 Fly.io에 올리기 좋은 서비스 추천 (VaultWarden)</title><link>https://blog.lemondouble.com/p/740c42a214d8ce6b/</link><pubDate>Tue, 17 Jan 2023 14:03:50 +0000</pubDate><guid>https://blog.lemondouble.com/p/740c42a214d8ce6b/</guid><description>&lt;p&gt;Fly.io 라는 회사에선 도커 이미지만 준비하면 간단히 도커 이미지를 특정 국가 등에 배포할 수 있는 기능을 제공합니다.&lt;/p&gt;
+&lt;p&gt;(가입 완료 후) fly.toml 이란 파일을 적절히 작성 후&lt;/p&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;bash&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-bash"&gt;flyctl deploy&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;만 입력하면, 잘 지지고 볶아서 이미지를 서버에 올려 주고, DNS, https 설정, IP 발급, 모니터링 (Grafana) 설정 등을 해 줍니다.&lt;/p&gt;</description></item></channel></rss>

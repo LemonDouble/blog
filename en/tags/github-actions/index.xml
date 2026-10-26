@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GitHub Actions on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/github-actions/</link><description>Recent content in GitHub Actions on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 05 Apr 2026 21:22:00 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/github-actions/index.xml" rel="self" type="application/rss+xml"/><item><title>Forking a prebuilt wheel package to support newer Python versions because the upstream stopped updating (Pyopenjtalk)</title><link>https://blog.lemondouble.com/en/p/pyopenjtalk-prebuilt/</link><pubDate>Sun, 05 Apr 2026 21:22:00 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/pyopenjtalk-prebuilt/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A while back I wrote a &lt;a href="../make-vits2-tts/"
+&gt;post about building a TTS with Bert-VITS2&lt;/a&gt;
+. I&amp;rsquo;ve been using that TTS pretty happily ever since. But… the Bert-VITS2 repo development just stopped.&lt;/p&gt;
+&lt;p&gt;When a repo stops getting updates, what&amp;rsquo;s the problem? Bumping Python versions and managing dependencies becomes painful.&lt;/p&gt;
+&lt;p&gt;In my case, I have an &amp;ldquo;ML Server&amp;rdquo; on my home server where I&amp;rsquo;ve crammed all my ML-related stuff. So I&amp;rsquo;ve installed all sorts of things on it… and when there&amp;rsquo;s a stale repo like that, conflicts keep popping up whenever I try to install something. For example, numpy 2.0…&lt;/p&gt;</description></item><item><title>Use AWS Resources from GitHub Actions Without AWS Keys via GitHub OIDC (Free)</title><link>https://blog.lemondouble.com/en/p/use-aws-resources-from-github-actions-without-aws-keys-via-github-oidc-free/</link><pubDate>Sun, 22 Jan 2023 11:18:50 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/use-aws-resources-from-github-actions-without-aws-keys-via-github-oidc-free/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;To use AWS from GitHub Actions, you typically go through the following steps.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Go to the IAM console and create a new user.&lt;/li&gt;
+&lt;li&gt;Add an IAM Role for GitHub Actions and use Programmatic access to issue an &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; and &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;In your repository settings, add the freshly issued &lt;code&gt;AWS_ACCESS_KEY_ID&lt;/code&gt; and &lt;code&gt;AWS_SECRET_ACCESS_KEY&lt;/code&gt; to GitHub Secrets.&lt;/li&gt;
+&lt;li&gt;Then add a workflow like the one below in GitHub Actions to access AWS resources.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="code-block"&gt;
+ &lt;div class="code-header"&gt;
+ &lt;div class="code-dots"&gt;
+ &lt;span class="dot dot-red"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-yellow"&gt;&lt;/span&gt;
+ &lt;span class="dot dot-green"&gt;&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;span class="code-lang"&gt;yaml&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;pre class="line-numbers"&gt;&lt;code class="language-yaml"&gt;- name: Configure AWS Credentials
+ uses: aws-actions/configure-aws-credentials@v1
+ with:
+ aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+ aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ aws-region: us-east-2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;If you only have one project, managing things this way isn&amp;rsquo;t a big problem.&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Monitoring on Lemon Blog</title><link>https://blog.lemondouble.com/en/tags/monitoring/</link><description>Recent content in Monitoring on Lemon Blog</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 22 Jan 2023 20:41:31 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/en/tags/monitoring/index.xml" rel="self" type="application/rss+xml"/><item><title>A Service That Fits Well on Fly.io (Uptime Kuma)</title><link>https://blog.lemondouble.com/en/p/7da6be543113ac58/</link><pubDate>Sun, 22 Jan 2023 20:41:31 +0900</pubDate><guid>https://blog.lemondouble.com/en/p/7da6be543113ac58/</guid><description>&lt;p&gt;&lt;em&gt;Note: I&amp;rsquo;m based in Korea, so some context here is Korea-specific.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The project I&amp;rsquo;m introducing this time is a service called Uptime Kuma, which records the uptime of your servers.&lt;/p&gt;
+&lt;p&gt;You can monitor your own clusters/servers, and when something goes wrong, it can notify you that the server is down through various channels like Telegram, Slack, Discord, E-mail, and so on.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/7da6be543113ac58/2023-01-22-20-50-49.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;This is what it looks like!&lt;/p&gt;
+&lt;p&gt;If you visit the GitHub address ( &lt;a href="https://github.com/louislam/uptime-kuma" target="_blank" rel="noopener noreferrer"
+&gt;Link&lt;/a&gt;
+ ), you can also try out the demo service.&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MQTT on Lemon Blog</title><link>https://blog.lemondouble.com/tags/mqtt/</link><description>Recent content in MQTT on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Fri, 26 Jul 2024 22:07:33 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/tags/mqtt/index.xml" rel="self" type="application/rss+xml"/><item><title>음성으로 컨트롤되는 인공지능 스마트홈 자랑하는 글</title><link>https://blog.lemondouble.com/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/p/30f1bf25ad8b594a/</guid><description>&lt;h2 id="만든-스마트홈-미리보기-일본어-주의"&gt;만든 스마트홈 미리보기 (일본어 주의)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistant"&gt;1. HomeAssistant?&lt;/h3&gt;
+&lt;p&gt;이전에 한번 &lt;a href="https://lemondouble.github.io/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/" target="_blank" rel="noopener noreferrer"
+&gt;글을 쓴 적이 있는&lt;/a&gt;
+ HomeAssistant라는 플랫폼에서 출발합니다.&lt;/p&gt;
+&lt;p&gt;2023년은 HomeAssistant에겐 &lt;a href="https://www.home-assistant.io/blog/2022/12/20/year-of-voice/" target="_blank" rel="noopener noreferrer"
+&gt;음성의 해&lt;/a&gt;
+ 였습니다.&lt;/p&gt;</description></item></channel></rss>

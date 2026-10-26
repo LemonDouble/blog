@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>IoT on Lemon Blog</title><link>https://blog.lemondouble.com/categories/iot/</link><description>Recent content in IoT on Lemon Blog</description><generator>Hugo</generator><language>ko</language><lastBuildDate>Sun, 05 Apr 2026 18:07:00 +0900</lastBuildDate><atom:link href="https://blog.lemondouble.com/categories/iot/index.xml" rel="self" type="application/rss+xml"/><item><title>알리에서 산 TV 백라이트를 Home Assistant에서 쓰고 싶어서 블루투스 프로토콜 뜯어본 이야기</title><link>https://blog.lemondouble.com/p/ble-controller-dev-story/</link><pubDate>Sun, 05 Apr 2026 18:07:00 +0900</pubDate><guid>https://blog.lemondouble.com/p/ble-controller-dev-story/</guid><description>&lt;p&gt;&lt;img src="https://blog.lemondouble.com/p/ble-controller-dev-story/backlight.webp" alt="알리 상품 이미지"&gt;&lt;/p&gt;
+&lt;p&gt;AliExpress에서 TV 백라이트를 하나 샀습니다.&lt;/p&gt;
+&lt;p&gt;사실 처음에는 연동이 되는건 별로 신경쓰지 않았고.. 대충 TV 뒤에 빛 나는데 단돈 2만5천원? 안 살 이유가 없잖아요?&lt;/p&gt;</description></item><item><title>음성으로 컨트롤되는 인공지능 스마트홈 자랑하는 글</title><link>https://blog.lemondouble.com/p/30f1bf25ad8b594a/</link><pubDate>Fri, 26 Jul 2024 22:07:33 +0900</pubDate><guid>https://blog.lemondouble.com/p/30f1bf25ad8b594a/</guid><description>&lt;h2 id="만든-스마트홈-미리보기-일본어-주의"&gt;만든 스마트홈 미리보기 (일본어 주의)&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="smart-home.mp4"
+&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="1-homeassistant"&gt;1. HomeAssistant?&lt;/h3&gt;
+&lt;p&gt;이전에 한번 &lt;a href="https://lemondouble.github.io/p/homeassistant%EB%A1%9C-iot-%ED%95%9C%EB%B2%88-%ED%95%B4-%EB%B3%B4%EC%A7%80-%EC%95%8A%EC%9D%84%EB%9E%98%EC%9A%94/" target="_blank" rel="noopener noreferrer"
+&gt;글을 쓴 적이 있는&lt;/a&gt;
+ HomeAssistant라는 플랫폼에서 출발합니다.&lt;/p&gt;
+&lt;p&gt;2023년은 HomeAssistant에겐 &lt;a href="https://www.home-assistant.io/blog/2022/12/20/year-of-voice/" target="_blank" rel="noopener noreferrer"
+&gt;음성의 해&lt;/a&gt;
+ 였습니다.&lt;/p&gt;</description></item><item><title>HomeAssistant로 IoT 한번 해 보지 않을래요?</title><link>https://blog.lemondouble.com/p/107dcfce6eca0dd7/</link><pubDate>Sun, 21 May 2023 09:40:47 +0900</pubDate><guid>https://blog.lemondouble.com/p/107dcfce6eca0dd7/</guid><description>&lt;p&gt;IoT는 꽤 재밌는 주제인데도,&lt;/p&gt;
+&lt;p&gt;입문 난이도가 높음 + 잘 알려지지 않은 주제라 이걸로 뭘 할 수 있는지도 잘 알려지지 않은 것 같습니다.&lt;/p&gt;
+&lt;p&gt;저는 여러 플랫폼 중 HomeAssistant(이하 HASS)라는 플랫폼을 직접 설치해서 사용 중인데요, 왜 이런 플랫폼이 필요하고, 우리의 삶에서 뭘 개선시킬 수 있는지 이야기를 하려고 합니다!&lt;/p&gt;</description></item></channel></rss>
