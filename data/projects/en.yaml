@@ -41,11 +41,11 @@ opensource:
 projects:
   - year: 2026
     items:
-      - name: "lemon-design-system"
-        slug: "lemon-design-system"
+      - name: "lemon-ui"
+        slug: "lemon-ui"
         private: false
         tagline: "An AI-agent-friendly personal design system"
-        languages: ["CSS"]
+        languages: ["TypeScript", "CSS"]
         status: "완료"
         description: |
           I saw [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) on GeekNews (a Korean tech news aggregator). I'm not a fan of the idea of ripping off other websites' designs as presets, but the idea that AI can carry a consistent design system struck me as a good one.
@@ -58,8 +58,10 @@ projects:
 
           Applied it to my blog and every page I have a frontend on.
 
+          At first I only had a design doc and sample HTML, and rebuilt the components in each project by hand. Updating them meant going through every project one by one, which got tedious fast. So I bundled the components into an npm package (`@lemondouble/ui`) and set up a [Storybook](https://lemondouble.github.io/lemon-ui/) to see how they look at a glance.
+
           Worked out pretty well.
-        url: "https://github.com/LemonDouble/lemon-design-system"
+        url: "https://github.com/LemonDouble/lemon-ui"
 
       - name: "hayakoe"
         slug: "hayakoe"
@@ -352,7 +354,7 @@ projects:
         description: |
           As I started publishing various libraries, I wanted the docs pages to match my tone too, so I made this.
 
-          A theme package that applies lemon-design-system's color/typography to VitePress.
+          A theme package that applies lemon-ui's color/typography to VitePress.
 
           [hayakoe docs](https://lemondouble.github.io/hayakoe/) are built with this theme.
         url: "https://github.com/LemonDouble/lemon-vitepress-theme"

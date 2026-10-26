@@ -41,11 +41,11 @@ opensource:
 projects:
   - year: 2026
     items:
-      - name: "lemon-design-system"
-        slug: "lemon-design-system"
+      - name: "lemon-ui"
+        slug: "lemon-ui"
         private: false
         tagline: "AI 에이전트 친화적 개인 디자인 시스템"
-        languages: ["CSS"]
+        languages: ["TypeScript", "CSS"]
         status: "완료"
         description: |
           [awesome-design-md](https://github.com/VoltAgent/awesome-design-md)를 GeekNews에서 봤는데, 다른 웹사이트의 디자인을 뜯어서 프리셋으로 제공한다는 건 마음에 안 들지만.. AI가 일관적인 디자인 시스템을 가질 수 있다는 아이디어 자체는 좋다고 생각했습니다.
@@ -58,8 +58,10 @@ projects:
 
           블로그부터 프론트 떠있는 모든 페이지에 적용했습니다.
 
+          처음엔 디자인 문서와 샘플 HTML만 두고 프로젝트마다 따라 만들었는데, 고칠 때마다 프로젝트를 돌아다니며 하나하나 바꾸는 게 너무 비효율적이더라구요. 그래서 컴포넌트를 npm 패키지(`@lemondouble/ui`)로 묶고, [Storybook](https://lemondouble.github.io/lemon-ui/)으로 어떻게 생겼는지 바로 볼 수 있게 했습니다.
+
           잘 되더라구요.
-        url: "https://github.com/LemonDouble/lemon-design-system"
+        url: "https://github.com/LemonDouble/lemon-ui"
 
       - name: "hayakoe"
         slug: "hayakoe"
@@ -352,7 +354,7 @@ projects:
         description: |
           이런저런 라이브러리를 만들어서 공개하려다 보니, docs 페이지도 톤앤매너를 맞추고 싶어서 만들었습니다.
 
-          lemon-design-system의 컬러/타이포그래피를 VitePress에 적용한 테마 패키지입니다.
+          lemon-ui의 컬러/타이포그래피를 VitePress에 적용한 테마 패키지입니다.
 
           [hayakoe docs](https://lemondouble.github.io/hayakoe/)가 이 테마를 사용해서 만들어졌습니다.
         url: "https://github.com/LemonDouble/lemon-vitepress-theme"
